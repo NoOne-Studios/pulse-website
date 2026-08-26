@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Hind+Madurai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:oklch(96.5% 0.006 262)}
+a{color:oklch(42% 0.13 255);text-decoration:underline}
+a:hover{color:oklch(33% 0.12 255)}
+@keyframes shimmer{0%{opacity:.55}50%{opacity:.9}100%{opacity:.55}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important}}
+</style>
+</helmet>
+
+<div style="font-family:'Hind',sans-serif;color:oklch(20% 0.015 262);background:#fff;max-width:1180px;margin:0 auto;box-shadow:0 1px 3px rgba(0,0,0,.08),0 12px 40px rgba(0,0,0,.06)">
+
+<div style="padding:56px 56px 40px;border-bottom:1px solid oklch(91% 0.008 262);display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap">
+<div>
+<div style="font:600 10px/1;letter-spacing:.1em;text-transform:uppercase;color:oklch(48% 0.02 262);margin-bottom:14px">Component library · v1 · built on Foundations v1</div>
+<div style="display:flex;align-items:center;gap:14px">
+<svg viewBox="0 0 64 64" width="40" height="40" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="oklch(42% 0.13 255)" stroke-width="5" stroke-linecap="round"></path><path d="M8 32 H17 L22 21 L29 43 L34 32 H43" stroke="oklch(42% 0.13 255)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div style="font:700 30px/1 'Hind',sans-serif">Components that carry weight</div>
+</div>
+</div>
+<div style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(45% 0.02 262);max-width:330px">Thirteen components across three surfaces. Each shows its default, the states it can actually reach, and its Tamil rendering. Where a state doesn't exist for a component, it says so and why — an invented empty state is worse than none.</div>
+</div>
+
+<div style="padding:26px 56px;background:oklch(96.5% 0.006 262);border-bottom:1px solid oklch(91% 0.008 262);display:flex;gap:28px;flex-wrap:wrap">
+<div style="font:600 11px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Patient app<div style="font:12.5px/1.8 'Hind',sans-serif;color:oklch(35% 0.018 262);font-weight:400">01 Verified badge · 02 Provider card · 03 Price breakdown · 04 State chip + live status · 05 Slot picker · 06 Address &amp; landmark · 07 Language toggle · 08 Continuity prompt · 09 Out of coverage</div></div>
+<div style="font:600 11px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Provider app<div style="font:12.5px/1.8 'Hind',sans-serif;color:oklch(35% 0.018 262);font-weight:400">10 Verification tracker · 11 Document checklist</div></div>
+<div style="font:600 11px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Admin<div style="font:12.5px/1.8 'Hind',sans-serif;color:oklch(35% 0.018 262);font-weight:400">12 Queue row · 13 Exception list</div></div>
+</div>
+
+<!-- ============ 01 VERIFIED BADGE ============ -->
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:8px">
+<div style="font:700 19px 'Hind',sans-serif">01 · Verified badge</div>
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Patient app · trust primitive</div>
+</div>
+<p style="margin:0 0 24px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:680px">The single component the business rests on. It is a <strong>stamp</strong>, not a status: ink-coloured, 1.5px border, never a hue of its own — so it reads as a mark on a document rather than another chip in the state set. It always states <em>who</em> verified and <em>when</em> at full size; the compact form is a summary that must remain tappable through to the full form.</p>
+
+<div style="display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start;margin-bottom:26px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:12px;padding:22px;background:#fff;min-width:360px;flex:1">
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262);margin-bottom:16px">Anatomy · full</div>
+<div style="border:1.5px solid oklch(20% 0.015 262);border-radius:12px;padding:16px;display:flex;gap:13px;align-items:flex-start;max-width:330px">
+<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="oklch(20% 0.015 262)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px"><path d="M12 3.2a8.8 8.8 0 1 1-6.6 3"></path><path d="M8 12.2l2.6 2.6L16.4 9"></path></svg>
+<div style="display:grid;gap:4px">
+<div style="font:700 15px/1.3 'Hind',sans-serif">Verified by a person</div>
+<div style="font:400 13px/1.5 'Hind',sans-serif;color:oklch(45% 0.018 262)">ID, nursing council registration and address checked by the Pulse team.</div>
+<div style="font:500 12px/1.45 'Hind',sans-serif;color:oklch(45% 0.018 262);font-variant-numeric:tabular-nums">Checked 4 Aug 2026 · valid to 4 Aug 2027</div>
+</div>
+</div>
+<div style="display:grid;gap:7px;margin-top:16px">
+<div style="display:flex;gap:9px;font:11.5px/1.5 'Hind',sans-serif;color:oklch(45% 0.018 262)"><span style="font:600 10.5px ui-monospace,Menlo,monospace;color:oklch(42% 0.13 255);min-width:16px">1</span>Ring-check glyph — the logo's own geometry, so the mark and the badge are visibly the same system.</div>
+<div style="display:flex;gap:9px;font:11.5px/1.5 'Hind',sans-serif;color:oklch(45% 0.018 262)"><span style="font:600 10.5px ui-monospace,Menlo,monospace;color:oklch(42% 0.13 255);min-width:16px">2</span>Claim — fixed wording. Never "Verified", never "Trusted pro". A person did it; the copy says so.</div>
+<div style="display:flex;gap:9px;font:11.5px/1.5 'Hind',sans-serif;color:oklch(45% 0.018 262)"><span style="font:600 10.5px ui-monospace,Menlo,monospace;color:oklch(42% 0.13 255);min-width:16px">3</span>Scope — what was actually checked. Prevents the badge implying clinical endorsement.</div>
+<div style="display:flex;gap:9px;font:11.5px/1.5 'Hind',sans-serif;color:oklch(45% 0.018 262)"><span style="font:600 10.5px ui-monospace,Menlo,monospace;color:oklch(42% 0.13 255);min-width:16px">4</span>Date + expiry — tabular figures. A badge with no date is a claim with no evidence.</div>
+</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:12px;padding:22px;background:#fff;min-width:280px">
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262);margin-bottom:16px">Sizes</div>
+<div style="display:grid;gap:14px">
+<div>
+<span style="display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:100px;font:600 12px 'Hind',sans-serif;background:#fff;border:1.5px solid oklch(20% 0.015 262);color:oklch(20% 0.015 262)">✓ Verified by a person</span>
+<div style="font:10.5px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:6px">compact · lists, cards</div>
+</div>
+<div>
+<span style="display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:100px;font:600 11px 'Hind',sans-serif;background:oklch(20% 0.015 262);color:#fff">✓ Verified</span>
+<div style="font:10.5px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:6px">dense · admin tables only — never patient-facing</div>
+</div>
+<div>
+<span style="display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:100px;font:600 12px 'Hind Madurai',sans-serif;background:#fff;border:1.5px solid oklch(20% 0.015 262);color:oklch(20% 0.015 262)">✓ நேரில் சரிபார்க்கப்பட்டது</span>
+<div style="font:10.5px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:6px">Tamil · wraps to two lines rather than truncating</div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262);margin-bottom:12px">States</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:12px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Loading</div>
+<div style="border:1.5px solid oklch(91% 0.008 262);border-radius:100px;padding:7px 14px;display:inline-flex;gap:8px;align-items:center;animation:shimmer 1.4s ease-in-out infinite"><div style="width:14px;height:14px;border-radius:50%;background:oklch(93% 0.007 262)"></div><div style="width:96px;height:9px;border-radius:4px;background:oklch(93% 0.007 262)"></div></div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">Skeleton keeps the badge's footprint so the card doesn't reflow. Never render an unverified-looking placeholder.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Empty · not yet verified</div>
+<span style="display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:100px;font:600 12px 'Hind',sans-serif;background:oklch(93% 0.007 262);border:1px solid oklch(85% 0.01 262);color:oklch(45% 0.018 262)">◌ Verification in progress</span>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">Grey, hairline border, hollow glyph. Visibly not the stamp. Such providers are never surfaced to patients — this state exists for the provider's own view.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Error · can't confirm</div>
+<span style="display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:100px;font:600 12px 'Hind',sans-serif;background:#fff;border:1px dashed oklch(85% 0.01 262);color:oklch(45% 0.018 262)">— Status unavailable</span>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">If the check fails to load we show nothing affirmative. <strong>Fail closed:</strong> never optimistically render the stamp from cache.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Disabled</div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262)">Not applicable. The badge is never interactive-then-disabled — it is either a live statement of fact or it is absent. The only tap it accepts opens the detail sheet, which is always available when the badge renders.</div>
+</div>
+</div>
+
+<div style="margin-top:14px;border:2px solid oklch(35% 0.11 22);border-radius:12px;padding:18px;background:oklch(98% 0.012 22)">
+<div style="font:600 12.5px 'Hind',sans-serif;margin-bottom:12px;color:oklch(30% 0.1 22)">Suspended — the state that protects the business</div>
+<div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">
+<div style="border:1.5px solid oklch(35% 0.11 22);border-radius:12px;padding:15px;background:#fff;max-width:330px;display:flex;gap:12px;align-items:flex-start">
+<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="oklch(35% 0.11 22)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px"><circle cx="12" cy="12" r="8.8"></circle><path d="M12 7.6v5"></path><path d="M12 16.1v.1"></path></svg>
+<div style="display:grid;gap:4px">
+<div style="font:700 14.5px/1.3 'Hind',sans-serif;color:oklch(30% 0.1 22)">Verification paused</div>
+<div style="font:400 12.5px/1.5 'Hind',sans-serif;color:oklch(35% 0.018 262)">We're re-checking this provider's documents. You can't book them right now. Existing visits are unaffected.</div>
+<div style="font:600 12.5px 'Hind',sans-serif;color:oklch(42% 0.13 255);margin-top:4px">See other available nurses →</div>
+</div>
+</div>
+<ul style="margin:0;padding-left:18px;max-width:440px;flex:1;min-width:250px">
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(38% 0.018 262)">Suspension <strong>replaces</strong> the badge in place — it never sits beside a positive stamp, and the provider card's book action is removed, not greyed.</li>
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(38% 0.018 262)">It is the one badge variant permitted a hue, because it is a warning rather than a mark, and it must not be mistakable for the ink stamp at a glance.</li>
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(38% 0.018 262)">Copy never states a reason. Reasons are between Pulse and the provider; publishing one is a defamation risk and a support load.</li>
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(38% 0.018 262)">Always paired with a forward action, so a suspension is never a dead end for the patient.</li>
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(38% 0.018 262)">Patients with an <em>upcoming</em> visit from a suspended provider are contacted by ops, not notified in-app — the app must not create alarm it can't resolve.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- ============ 02 PROVIDER CARD ============ -->
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:8px">
+<div style="font:700 19px 'Hind',sans-serif">02 · Provider card</div>
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Patient app · booking</div>
+</div>
+<p style="margin:0 0 24px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:680px">Price shown is <strong>always the total the patient pays</strong>, platform fee included — the itemisation lives in the summary, but the number on the card is never one a patient has to add to. Photo is optional and its absence is designed for, not patched.</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start">
+
+<div style="width:330px;border:1px solid oklch(91% 0.008 262);border-radius:12px;padding:16px;background:#fff;display:grid;gap:12px">
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Default · named provider</div>
+<div style="display:flex;gap:12px;align-items:flex-start">
+<div style="width:52px;height:52px;border-radius:50%;background:oklch(94% 0.03 255);flex:none;display:flex;align-items:center;justify-content:center;font:700 18px 'Hind',sans-serif;color:oklch(42% 0.13 255)">MR</div>
+<div style="flex:1;display:grid;gap:5px">
+<div style="display:flex;justify-content:space-between;gap:10px;align-items:baseline"><div style="font:700 16px/1.25 'Hind',sans-serif">Meena R.</div><div style="font:700 16px 'Hind',sans-serif;font-variant-numeric:tabular-nums">₹690</div></div>
+<div style="display:flex;justify-content:space-between;gap:10px;align-items:baseline"><div style="font:400 12.5px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Registered nurse · 6 yrs</div><div style="font:400 11.5px 'Hind',sans-serif;color:oklch(45% 0.018 262)">total, fees included</div></div>
+</div>
+</div>
+<span style="display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:100px;font:600 11.5px 'Hind',sans-serif;background:#fff;border:1.5px solid oklch(20% 0.015 262);color:oklch(20% 0.015 262);width:fit-content">✓ Verified by a person</span>
+<div style="display:grid;gap:7px;border-top:1px solid oklch(93% 0.007 262);padding-top:11px">
+<div style="display:flex;align-items:center;gap:8px;font:13px 'Hind',sans-serif"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="oklch(45% 0.018 262)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.6l2.5 5.4 5.6.7-4.1 3.9 1 5.7L12 16.6 6.9 19.3l1-5.7-4.1-3.9 5.6-.7z"></path></svg><span style="font-weight:600;font-variant-numeric:tabular-nums">4.8</span><span style="color:oklch(45% 0.018 262)">· 214 reviews</span></div>
+<div style="display:flex;align-items:center;gap:8px;font:13px 'Hind',sans-serif"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="oklch(45% 0.018 262)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21z"></path><circle cx="12" cy="10.3" r="2.3"></circle></svg><span>2.4 km · Adyar</span></div>
+<div style="display:flex;align-items:center;gap:8px;font:13px 'Hind',sans-serif"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="oklch(45% 0.018 262)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M3.5 12h17"></path><path d="M12 3.5c2.3 2.6 3.4 5.4 3.4 8.5S14.3 18.4 12 20.5c-2.3-2.1-3.4-5.4-3.4-8.5S9.7 6.1 12 3.5z"></path></svg><span>Tamil, English</span></div>
+<div style="display:flex;align-items:center;gap:8px;font:13px 'Hind',sans-serif"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="oklch(31% 0.09 152)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7v5.2l3.2 2"></path></svg><span style="color:oklch(31% 0.09 152);font-weight:600">Available today, from 10:00</span></div>
+</div>
+<div style="background:oklch(42% 0.13 255);color:#fff;border-radius:8px;padding:13px;text-align:center;font:600 14.5px 'Hind',sans-serif;min-height:48px;box-sizing:border-box">Choose Meena</div>
+</div>
+
+<div style="width:330px;border:1px solid oklch(91% 0.008 262);border-radius:12px;padding:16px;background:#fff;display:grid;gap:12px">
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Degraded · provider not yet assigned</div>
+<div style="display:flex;gap:12px;align-items:flex-start">
+<div style="width:52px;height:52px;border-radius:50%;background:oklch(96.5% 0.006 262);border:1px dashed oklch(85% 0.01 262);flex:none;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="oklch(58% 0.015 262)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="3.4"></circle><path d="M5.5 19.5a6.5 6.5 0 0 1 13 0"></path></svg></div>
+<div style="flex:1;display:grid;gap:5px">
+<div style="display:flex;justify-content:space-between;gap:10px;align-items:baseline"><div style="font:700 16px/1.25 'Hind',sans-serif">A verified nurse</div><div style="font:700 16px 'Hind',sans-serif;font-variant-numeric:tabular-nums">₹690</div></div>
+<div style="display:flex;justify-content:space-between;gap:10px;align-items:baseline"><div style="font:400 12.5px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Assigned 2 hrs before your slot</div><div style="font:400 11.5px 'Hind',sans-serif;color:oklch(45% 0.018 262)">total, fees included</div></div>
+</div>
+</div>
+<span style="display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:100px;font:600 11.5px 'Hind',sans-serif;background:#fff;border:1.5px solid oklch(20% 0.015 262);color:oklch(20% 0.015 262);width:fit-content">✓ Every nurse is verified by a person</span>
+<div style="display:grid;gap:7px;border-top:1px solid oklch(93% 0.007 262);padding-top:11px">
+<div style="display:flex;align-items:center;gap:8px;font:13px 'Hind',sans-serif"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="oklch(45% 0.018 262)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21z"></path><circle cx="12" cy="10.3" r="2.3"></circle></svg><span>Serving Adyar &amp; Besant Nagar</span></div>
+<div style="display:flex;align-items:center;gap:8px;font:13px 'Hind',sans-serif"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="oklch(45% 0.018 262)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M3.5 12h17"></path><path d="M12 3.5c2.3 2.6 3.4 5.4 3.4 8.5S14.3 18.4 12 20.5c-2.3-2.1-3.4-5.4-3.4-8.5S9.7 6.1 12 3.5z"></path></svg><span>Tamil-speaking nurse guaranteed</span></div>
+<div style="display:flex;align-items:center;gap:8px;font:13px 'Hind',sans-serif"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="oklch(31% 0.09 152)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7v5.2l3.2 2"></path></svg><span style="color:oklch(31% 0.09 152);font-weight:600">Slots today from 10:00</span></div>
+</div>
+<div style="background:oklch(42% 0.13 255);color:#fff;border-radius:8px;padding:13px;text-align:center;font:600 14.5px 'Hind',sans-serif;min-height:48px;box-sizing:border-box">Book this visit</div>
+</div>
+
+<div style="width:330px;border:1px solid oklch(91% 0.008 262);border-radius:12px;padding:16px;background:#fff;display:grid;gap:12px">
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262);font-family:'Hind',sans-serif">Tamil rendering</div>
+<div style="display:flex;gap:12px;align-items:flex-start">
+<div style="width:52px;height:52px;border-radius:50%;background:oklch(94% 0.03 255);flex:none;display:flex;align-items:center;justify-content:center;font:700 18px 'Hind',sans-serif;color:oklch(42% 0.13 255)">MR</div>
+<div style="flex:1;display:grid;gap:5px">
+<div style="display:flex;justify-content:space-between;gap:10px;align-items:baseline"><div style="font:700 16px/1.4 'Hind Madurai',sans-serif">மீனா ரா.</div><div style="font:700 16px 'Hind',sans-serif;font-variant-numeric:tabular-nums">₹690</div></div>
+<div style="display:flex;justify-content:space-between;gap:10px;align-items:baseline"><div style="font:400 12.5px/1.55 'Hind Madurai',sans-serif;color:oklch(45% 0.018 262)">பதிவு செவிலியர் · 6 ஆண்டுகள்</div><div style="font:400 11.5px/1.55 'Hind Madurai',sans-serif;color:oklch(45% 0.018 262);text-align:right">கட்டணம் உட்பட</div></div>
+</div>
+</div>
+<span style="display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:100px;font:600 11.5px/1.5 'Hind Madurai',sans-serif;background:#fff;border:1.5px solid oklch(20% 0.015 262);color:oklch(20% 0.015 262);width:fit-content">✓ நேரில் சரிபார்க்கப்பட்டது</span>
+<div style="display:grid;gap:7px;border-top:1px solid oklch(93% 0.007 262);padding-top:11px">
+<div style="display:flex;align-items:center;gap:8px;font:13px/1.6 'Hind Madurai',sans-serif"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="oklch(45% 0.018 262)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M12 3.6l2.5 5.4 5.6.7-4.1 3.9 1 5.7L12 16.6 6.9 19.3l1-5.7-4.1-3.9 5.6-.7z"></path></svg><span style="font-weight:600;font-family:'Hind',sans-serif;font-variant-numeric:tabular-nums">4.8</span><span style="color:oklch(45% 0.018 262)">· 214 மதிப்புரைகள்</span></div>
+<div style="display:flex;align-items:center;gap:8px;font:13px/1.6 'Hind Madurai',sans-serif"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="oklch(45% 0.018 262)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21z"></path><circle cx="12" cy="10.3" r="2.3"></circle></svg><span>2.4 கி.மீ · அடையாறு</span></div>
+<div style="display:flex;align-items:center;gap:8px;font:13px/1.6 'Hind Madurai',sans-serif"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="oklch(31% 0.09 152)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7v5.2l3.2 2"></path></svg><span style="color:oklch(31% 0.09 152);font-weight:600">இன்று காலை 10:00 முதல்</span></div>
+</div>
+<div style="background:oklch(42% 0.13 255);color:#fff;border-radius:8px;padding:13px;text-align:center;font:600 14.5px/1.5 'Hind Madurai',sans-serif;min-height:48px;box-sizing:border-box">மீனாவைத் தேர்ந்தெடு</div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:12px;margin-top:16px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Loading</div>
+<div style="display:grid;gap:9px;animation:shimmer 1.4s ease-in-out infinite">
+<div style="display:flex;gap:10px"><div style="width:44px;height:44px;border-radius:50%;background:oklch(93% 0.007 262)"></div><div style="flex:1;display:grid;gap:6px;align-content:center"><div style="height:11px;width:60%;border-radius:4px;background:oklch(93% 0.007 262)"></div><div style="height:9px;width:40%;border-radius:4px;background:oklch(93% 0.007 262)"></div></div></div>
+<div style="height:9px;width:80%;border-radius:4px;background:oklch(93% 0.007 262)"></div>
+<div style="height:9px;width:55%;border-radius:4px;background:oklch(93% 0.007 262)"></div>
+</div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">Exactly the card's real footprint. Three skeletons maximum, then a spinner-free "still looking" line at 4s.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Empty · no one available</div>
+<div style="font:13px/1.5 'Hind',sans-serif;margin-bottom:6px;font-weight:600">No nurses free in this slot</div>
+<div style="font:12px/1.55 'Hind',sans-serif;color:oklch(45% 0.018 262);margin-bottom:9px">Tomorrow morning has 6 open slots.</div>
+<div style="border:2px solid oklch(42% 0.13 255);color:oklch(42% 0.13 255);border-radius:8px;padding:10px;text-align:center;font:600 13px 'Hind',sans-serif">See tomorrow</div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">Empty always names the nearest alternative. An empty list with no exit is a support call.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Error</div>
+<div style="border:2px solid oklch(35% 0.11 22);border-radius:8px;padding:11px;display:grid;gap:6px">
+<div style="font:600 12.5px 'Hind',sans-serif;color:oklch(30% 0.1 22)">Couldn't load nurses</div>
+<div style="font:11.5px/1.5 'Hind',sans-serif;color:oklch(40% 0.018 262)">Check your connection.</div>
+<div style="font:600 12.5px 'Hind',sans-serif;color:oklch(42% 0.13 255)">Try again</div>
+</div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">Retry is the primary action and the phone number for support sits below it, always visible.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Disabled · unavailable in slot</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:8px;padding:11px;opacity:.55;display:grid;gap:6px">
+<div style="font:600 13px 'Hind',sans-serif">Meena R.</div>
+<div style="font:11.5px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Booked for your chosen slot</div>
+</div>
+<div style="background:oklch(91% 0.008 262);color:oklch(58% 0.015 262);border-radius:8px;padding:10px;text-align:center;font:600 12.5px 'Hind',sans-serif;margin-top:8px">Not available</div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">Dimmed, but the <em>reason</em> is stated — a disabled control with no explanation reads as a broken app.</div>
+</div>
+</div>
+</div>
+
+<!-- ============ 03 PRICE BREAKDOWN ============ -->
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:8px">
+<div style="font:700 19px 'Hind',sans-serif">03 · Price breakdown / pre-confirmation summary</div>
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Patient app · the moment of commitment</div>
+</div>
+<p style="margin:0 0 24px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:680px">The platform fee is itemised on its own line, in the same weight as the service price — never folded in, never in smaller grey type. The cancellation policy is <strong>inline, in full sentences</strong>, above the confirm button: it is not a link, not an accordion, and not a checkbox.</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start">
+
+<div style="width:340px;border:1px solid oklch(91% 0.008 262);border-radius:12px;background:#fff;overflow:hidden">
+<div style="padding:16px;display:grid;gap:12px">
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Default</div>
+<div style="display:grid;gap:3px">
+<div style="font:700 17px 'Hind',sans-serif">Home Nursing Visit</div>
+<div style="font:13px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Fri 14 Aug · 10:00–11:00 · Meena R.</div>
+</div>
+<div style="border-top:1px solid oklch(93% 0.007 262);padding-top:12px;display:grid;gap:9px;font-variant-numeric:tabular-nums">
+<div style="display:flex;justify-content:space-between;font:15px 'Hind',sans-serif"><span>Visit (60 min)</span><span>₹650</span></div>
+<div style="display:flex;justify-content:space-between;font:15px 'Hind',sans-serif"><span style="display:flex;align-items:center;gap:6px">Platform fee<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="oklch(58% 0.015 262)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8.6"></circle><path d="M12 11v5.2"></path><path d="M12 7.7v.1"></path></svg></span><span>₹40</span></div>
+<div style="font:12px/1.5 'Hind',sans-serif;color:oklch(45% 0.018 262);margin-top:-3px">Covers verification, insurance and support. Charged once per visit.</div>
+<div style="display:flex;justify-content:space-between;font:700 18px 'Hind',sans-serif;border-top:1px solid oklch(20% 0.015 262);padding-top:11px"><span>Total to pay</span><span>₹690</span></div>
+</div>
+<div style="background:oklch(96.5% 0.006 262);border-radius:8px;padding:12px;display:grid;gap:5px">
+<div style="font:600 12.5px 'Hind',sans-serif">If you need to cancel</div>
+<div style="font:12.5px/1.6 'Hind',sans-serif;color:oklch(35% 0.018 262)">Free until 8:00 on Fri 14 Aug — 2 hours before your slot. After that we keep the ₹40 platform fee and refund ₹650 to your original payment method within 5 working days.</div>
+</div>
+<div style="background:oklch(42% 0.13 255);color:#fff;border-radius:8px;padding:14px;text-align:center;font:700 15px 'Hind',sans-serif;min-height:48px;box-sizing:border-box">Confirm and pay ₹690</div>
+</div>
+</div>
+
+<div style="width:340px;border:1px solid oklch(91% 0.008 262);border-radius:12px;background:#fff;overflow:hidden">
+<div style="padding:16px;display:grid;gap:12px">
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262);font-family:'Hind',sans-serif">Tamil rendering</div>
+<div style="display:grid;gap:3px">
+<div style="font:700 17px/1.4 'Hind Madurai',sans-serif">வீட்டு செவிலியர் வருகை</div>
+<div style="font:13px/1.6 'Hind Madurai',sans-serif;color:oklch(45% 0.018 262)">14 ஆக · காலை 10:00–11:00 · மீனா ரா.</div>
+</div>
+<div style="border-top:1px solid oklch(93% 0.007 262);padding-top:12px;display:grid;gap:9px;font-variant-numeric:tabular-nums">
+<div style="display:flex;justify-content:space-between;gap:12px;font:15px/1.6 'Hind Madurai',sans-serif"><span>வருகை (60 நிமிடம்)</span><span style="font-family:'Hind',sans-serif">₹650</span></div>
+<div style="display:flex;justify-content:space-between;gap:12px;font:15px/1.6 'Hind Madurai',sans-serif"><span>சேவைக் கட்டணம்</span><span style="font-family:'Hind',sans-serif">₹40</span></div>
+<div style="font:12px/1.7 'Hind Madurai',sans-serif;color:oklch(45% 0.018 262);margin-top:-3px">சரிபார்ப்பு, காப்பீடு மற்றும் உதவிக்கான கட்டணம்.</div>
+<div style="display:flex;justify-content:space-between;gap:12px;font:700 18px/1.5 'Hind Madurai',sans-serif;border-top:1px solid oklch(20% 0.015 262);padding-top:11px"><span>மொத்தம்</span><span style="font-family:'Hind',sans-serif">₹690</span></div>
+</div>
+<div style="background:oklch(96.5% 0.006 262);border-radius:8px;padding:12px;display:grid;gap:5px">
+<div style="font:600 12.5px/1.55 'Hind Madurai',sans-serif">ரத்து செய்ய வேண்டுமானால்</div>
+<div style="font:12.5px/1.75 'Hind Madurai',sans-serif;color:oklch(35% 0.018 262)">14 ஆக காலை 8:00 வரை இலவசம். அதன் பிறகு ₹40 கட்டணம் பிடிக்கப்படும்; ₹650 5 வேலை நாட்களில் திரும்பக் கிடைக்கும்.</div>
+</div>
+<div style="background:oklch(42% 0.13 255);color:#fff;border-radius:8px;padding:14px;text-align:center;font:700 15px/1.5 'Hind Madurai',sans-serif;min-height:48px;box-sizing:border-box">உறுதி செய்து ₹690 செலுத்து</div>
+</div>
+</div>
+
+<div style="width:340px;display:grid;gap:12px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Loading · price not yet final</div>
+<div style="display:grid;gap:9px;font-variant-numeric:tabular-nums">
+<div style="display:flex;justify-content:space-between;font:15px 'Hind',sans-serif"><span>Visit (60 min)</span><span>₹650</span></div>
+<div style="display:flex;justify-content:space-between;font:15px 'Hind',sans-serif;align-items:center"><span>Platform fee</span><span style="width:44px;height:12px;border-radius:4px;background:oklch(93% 0.007 262);animation:shimmer 1.4s ease-in-out infinite"></span></div>
+<div style="display:flex;justify-content:space-between;font:700 18px 'Hind',sans-serif;border-top:1px solid oklch(85% 0.01 262);padding-top:10px;align-items:center"><span>Total to pay</span><span style="width:66px;height:16px;border-radius:4px;background:oklch(93% 0.007 262);animation:shimmer 1.4s ease-in-out infinite"></span></div>
+</div>
+<div style="background:oklch(91% 0.008 262);color:oklch(58% 0.015 262);border-radius:8px;padding:13px;text-align:center;font:700 14.5px 'Hind',sans-serif;margin-top:11px;min-height:48px;box-sizing:border-box">Working out the total…</div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:9px">Confirm is <strong>disabled while any figure is unknown</strong>. Never show a total that can change after tapping.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Error · payment declined</div>
+<div style="border:2px solid oklch(35% 0.11 22);border-radius:8px;padding:12px;display:grid;gap:6px">
+<div style="font:600 13px 'Hind',sans-serif;color:oklch(30% 0.1 22)">Your bank declined the payment</div>
+<div style="font:12px/1.55 'Hind',sans-serif;color:oklch(40% 0.018 262)">Nothing was charged and your 10:00 slot is held for 10 more minutes.</div>
+<div style="font:600 13px 'Hind',sans-serif;color:oklch(42% 0.13 255)">Try another method</div>
+</div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:9px">Always states what was <em>not</em> charged and what is still held. Money errors are where trust is lost fastest.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:8px">Empty</div>
+<div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(45% 0.018 262)">Not applicable — a summary with nothing in it is never reached. If the slot expires before confirmation the component is replaced entirely by the slot-expired screen, not emptied in place.</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ 04 STATE CHIP + LIVE STATUS ============ -->
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:8px">
+<div style="font:700 19px 'Hind',sans-serif">04 · Booking state chip &amp; live status view</div>
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Patient app · after booking</div>
+</div>
+<p style="margin:0 0 20px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:680px">Labels are what a person would say out loud. Internal state names — <code style="font:12px ui-monospace,Menlo,monospace">ASSIGNED</code>, <code style="font:12px ui-monospace,Menlo,monospace">PENDING_DISPATCH</code>, <code style="font:12px ui-monospace,Menlo,monospace">FULFILLED</code> — never reach the patient, in either language.</p>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;overflow:hidden;margin-bottom:20px">
+<div style="display:grid;grid-template-columns:1fr 1fr 1.1fr 1fr;background:oklch(96.5% 0.006 262);padding:11px 16px;font:600 10px 'Hind',sans-serif;letter-spacing:.07em;text-transform:uppercase;color:oklch(48% 0.02 262)"><div>Internal</div><div>Chip · English</div><div>Chip · Tamil</div><div>Never say</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1.1fr 1fr;padding:11px 16px;border-top:1px solid oklch(93% 0.007 262);align-items:center;gap:8px"><code style="font:11px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262)">CONFIRMED</code><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px 'Hind',sans-serif;background:oklch(92% 0.05 152);color:oklch(31% 0.09 152);width:fit-content">● Booked</span><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px/1.5 'Hind Madurai',sans-serif;background:oklch(92% 0.05 152);color:oklch(31% 0.09 152);width:fit-content">● பதிவு ஆனது</span><span style="font:11.5px 'Hind',sans-serif;color:oklch(50% 0.018 262)">"Confirmed"</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1.1fr 1fr;padding:11px 16px;border-top:1px solid oklch(93% 0.007 262);align-items:center;gap:8px"><code style="font:11px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262)">EN_ROUTE</code><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px 'Hind',sans-serif;background:oklch(92% 0.05 292);color:oklch(33% 0.1 292);width:fit-content">▸ On the way</span><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px/1.5 'Hind Madurai',sans-serif;background:oklch(92% 0.05 292);color:oklch(33% 0.1 292);width:fit-content">▸ வழியில்</span><span style="font:11.5px 'Hind',sans-serif;color:oklch(50% 0.018 262)">"En route"</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1.1fr 1fr;padding:11px 16px;border-top:1px solid oklch(93% 0.007 262);align-items:center;gap:8px"><code style="font:11px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262)">IN_PROGRESS</code><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px 'Hind',sans-serif;background:oklch(92% 0.06 68);color:oklch(35% 0.1 68);width:fit-content">◐ Visit going on</span><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px/1.5 'Hind Madurai',sans-serif;background:oklch(92% 0.06 68);color:oklch(35% 0.1 68);width:fit-content">◐ வருகை நடக்கிறது</span><span style="font:11.5px 'Hind',sans-serif;color:oklch(50% 0.018 262)">"In progress"</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1.1fr 1fr;padding:11px 16px;border-top:1px solid oklch(93% 0.007 262);align-items:center;gap:8px"><code style="font:11px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262)">FULFILLED</code><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px 'Hind',sans-serif;background:oklch(92% 0.04 195);color:oklch(31% 0.08 195);width:fit-content">✓ Visit done</span><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px/1.5 'Hind Madurai',sans-serif;background:oklch(92% 0.04 195);color:oklch(31% 0.08 195);width:fit-content">✓ வருகை முடிந்தது</span><span style="font:11.5px 'Hind',sans-serif;color:oklch(50% 0.018 262)">"Fulfilled"</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1.1fr 1fr;padding:11px 16px;border-top:1px solid oklch(93% 0.007 262);align-items:center;gap:8px"><code style="font:11px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262)">CANCELLED</code><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px 'Hind',sans-serif;background:oklch(92% 0.005 262);color:oklch(41% 0.01 262);width:fit-content">— Cancelled</span><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px/1.5 'Hind Madurai',sans-serif;background:oklch(92% 0.005 262);color:oklch(41% 0.01 262);width:fit-content">— ரத்து செய்யப்பட்டது</span><span style="font:11.5px 'Hind',sans-serif;color:oklch(50% 0.018 262)">"Void"</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1.1fr 1fr;padding:11px 16px;border-top:1px solid oklch(93% 0.007 262);align-items:center;gap:8px"><code style="font:11px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262)">ASSIGN_FAILED</code><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px 'Hind',sans-serif;background:oklch(92% 0.05 22);color:oklch(35% 0.11 22);width:fit-content">! Needs your input</span><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px/1.5 'Hind Madurai',sans-serif;background:oklch(92% 0.05 22);color:oklch(35% 0.11 22);width:fit-content">! உங்கள் பதில் தேவை</span><span style="font:11.5px 'Hind',sans-serif;color:oklch(50% 0.018 262)">"Failed"</span></div>
+</div>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start">
+<div style="width:330px;border:1px solid oklch(91% 0.008 262);border-radius:12px;background:#fff;padding:16px;display:grid;gap:13px">
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Live status · default</div>
+<div style="display:grid;gap:6px">
+<span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px 'Hind',sans-serif;background:oklch(92% 0.05 292);color:oklch(33% 0.1 292);width:fit-content">▸ On the way</span>
+<div style="font:700 20px/1.3 'Hind',sans-serif">Meena is arriving by 10:40</div>
+<div style="font:13px/1.55 'Hind',sans-serif;color:oklch(45% 0.018 262)">Updated a moment ago</div>
+</div>
+<div style="display:grid;gap:0;border-left:2px solid oklch(91% 0.008 262);padding-left:14px;margin-left:5px">
+<div style="display:flex;gap:11px;align-items:flex-start;padding-bottom:13px;position:relative"><div style="position:absolute;left:-21px;top:3px;width:10px;height:10px;border-radius:50%;background:oklch(31% 0.08 195)"></div><div><div style="font:600 13px 'Hind',sans-serif">Booked</div><div style="font:11.5px 'Hind',sans-serif;color:oklch(45% 0.018 262);font-variant-numeric:tabular-nums">Yesterday, 18:20</div></div></div>
+<div style="display:flex;gap:11px;align-items:flex-start;padding-bottom:13px;position:relative"><div style="position:absolute;left:-21px;top:3px;width:10px;height:10px;border-radius:50%;background:oklch(33% 0.1 292)"></div><div><div style="font:600 13px 'Hind',sans-serif">Left for your address</div><div style="font:11.5px 'Hind',sans-serif;color:oklch(45% 0.018 262);font-variant-numeric:tabular-nums">10:12</div></div></div>
+<div style="display:flex;gap:11px;align-items:flex-start;position:relative;opacity:.5"><div style="position:absolute;left:-21px;top:3px;width:10px;height:10px;border-radius:50%;border:2px solid oklch(85% 0.01 262);background:#fff;box-sizing:border-box"></div><div><div style="font:600 13px 'Hind',sans-serif">Visit starts</div><div style="font:11.5px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Expected 10:40</div></div></div>
+</div>
+<div style="border:2px solid oklch(42% 0.13 255);color:oklch(42% 0.13 255);border-radius:8px;padding:13px;text-align:center;font:600 14px 'Hind',sans-serif;min-height:48px;box-sizing:border-box">Call Meena</div>
+</div>
+<div style="width:330px;display:grid;gap:12px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Loading · no fresh update</div>
+<div style="display:grid;gap:6px"><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px 'Hind',sans-serif;background:oklch(92% 0.05 292);color:oklch(33% 0.1 292);width:fit-content">▸ On the way</span><div style="font:700 17px/1.3 'Hind',sans-serif">Arriving by 10:40</div><div style="font:12.5px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Last updated 4 minutes ago · reconnecting</div></div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">The last known truth stays on screen with its age. We never blank a live view to a spinner.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Error · assignment failed</div>
+<div style="border:2px solid oklch(35% 0.11 22);border-radius:8px;padding:12px;display:grid;gap:6px">
+<span style="display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:100px;font:600 11px 'Hind',sans-serif;background:oklch(92% 0.05 22);color:oklch(35% 0.11 22);width:fit-content">! Needs your input</span>
+<div style="font:600 13.5px/1.4 'Hind',sans-serif">We couldn't find a nurse for 10:00</div>
+<div style="font:12px/1.55 'Hind',sans-serif;color:oklch(40% 0.018 262)">Your ₹690 hasn't been taken. Pick another time, or we'll call you in 10 minutes.</div>
+<div style="background:oklch(42% 0.13 255);color:#fff;border-radius:8px;padding:11px;text-align:center;font:600 13px 'Hind',sans-serif;min-height:44px;box-sizing:border-box">Choose another time</div>
+</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:8px">Empty · no visits</div>
+<div style="font:13.5px 'Hind',sans-serif;font-weight:600;margin-bottom:4px">Nothing booked right now</div>
+<div style="font:12px/1.55 'Hind',sans-serif;color:oklch(45% 0.018 262);margin-bottom:9px">Your past visits are in History.</div>
+<div style="background:oklch(42% 0.13 255);color:#fff;border-radius:8px;padding:11px;text-align:center;font:600 13px 'Hind',sans-serif">Book a visit</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:8px">Disabled</div>
+<div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(45% 0.018 262)">The chip is never interactive, so it has no disabled state. In the live view, actions disappear rather than dim once a visit completes — a greyed "Call nurse" invites a tap that can't work.</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ 05 SLOT PICKER ============ -->
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:8px">
+<div style="font:700 19px 'Hind',sans-serif">05 · Slot picker</div>
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Patient app · booking</div>
+</div>
+<p style="margin:0 0 24px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:680px">Unavailable slots stay visible — hiding them makes a sparse day look broken and hides the pattern of when nurses are free. They are struck through, not merely dimmed, so unavailability survives greyscale, glare and colour blindness, and they are not focusable.</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start">
+<div style="width:340px;border:1px solid oklch(91% 0.008 262);border-radius:12px;background:#fff;padding:16px;display:grid;gap:14px">
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Default</div>
+<div style="display:flex;gap:8px;overflow:hidden">
+<div style="flex:1;text-align:center;padding:9px 4px;border-radius:8px;border:2px solid oklch(42% 0.13 255);background:oklch(94% 0.03 255)"><div style="font:600 11px 'Hind',sans-serif;color:oklch(42% 0.13 255)">Fri</div><div style="font:700 16px 'Hind',sans-serif;color:oklch(42% 0.13 255);font-variant-numeric:tabular-nums">14</div></div>
+<div style="flex:1;text-align:center;padding:9px 4px;border-radius:8px;border:1px solid oklch(85% 0.01 262)"><div style="font:600 11px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Sat</div><div style="font:700 16px 'Hind',sans-serif;font-variant-numeric:tabular-nums">15</div></div>
+<div style="flex:1;text-align:center;padding:9px 4px;border-radius:8px;border:1px solid oklch(85% 0.01 262)"><div style="font:600 11px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Sun</div><div style="font:700 16px 'Hind',sans-serif;font-variant-numeric:tabular-nums">16</div></div>
+<div style="flex:1;text-align:center;padding:9px 4px;border-radius:8px;border:1px solid oklch(85% 0.01 262)"><div style="font:600 11px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Mon</div><div style="font:700 16px 'Hind',sans-serif;font-variant-numeric:tabular-nums">17</div></div>
+</div>
+<div>
+<div style="font:600 13px 'Hind',sans-serif;margin-bottom:9px">Morning</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+<div style="border:1px solid oklch(85% 0.01 262);border-radius:8px;padding:13px 4px;text-align:center;font:600 14px 'Hind',sans-serif;font-variant-numeric:tabular-nums;min-height:48px;box-sizing:border-box">08:00</div>
+<div style="border:2px solid oklch(42% 0.13 255);background:oklch(94% 0.03 255);color:oklch(42% 0.13 255);border-radius:8px;padding:12px 4px;text-align:center;font:700 14px 'Hind',sans-serif;font-variant-numeric:tabular-nums;min-height:48px;box-sizing:border-box">10:00</div>
+<div style="border:1px dashed oklch(88% 0.008 262);border-radius:8px;padding:13px 4px;text-align:center;font:500 14px 'Hind',sans-serif;color:oklch(64% 0.012 262);text-decoration:line-through;text-decoration-thickness:1.5px;font-variant-numeric:tabular-nums;background:oklch(96.5% 0.006 262);min-height:48px;box-sizing:border-box">11:00</div>
+<div style="border:1px solid oklch(85% 0.01 262);border-radius:8px;padding:13px 4px;text-align:center;font:600 14px 'Hind',sans-serif;font-variant-numeric:tabular-nums;min-height:48px;box-sizing:border-box">12:00</div>
+<div style="border:1px dashed oklch(88% 0.008 262);border-radius:8px;padding:13px 4px;text-align:center;font:500 14px 'Hind',sans-serif;color:oklch(64% 0.012 262);text-decoration:line-through;text-decoration-thickness:1.5px;font-variant-numeric:tabular-nums;background:oklch(96.5% 0.006 262);min-height:48px;box-sizing:border-box">13:00</div>
+<div style="border:1px solid oklch(85% 0.01 262);border-radius:8px;padding:13px 4px;text-align:center;font:600 14px 'Hind',sans-serif;font-variant-numeric:tabular-nums;min-height:48px;box-sizing:border-box">14:00</div>
+</div>
+<div style="display:flex;gap:16px;margin-top:11px;flex-wrap:wrap">
+<div style="display:flex;align-items:center;gap:6px;font:11.5px 'Hind',sans-serif;color:oklch(45% 0.018 262)"><span style="width:14px;height:14px;border:1px solid oklch(85% 0.01 262);border-radius:4px;display:inline-block"></span>Free</div>
+<div style="display:flex;align-items:center;gap:6px;font:11.5px 'Hind',sans-serif;color:oklch(45% 0.018 262)"><span style="width:14px;height:14px;border:1px dashed oklch(88% 0.008 262);background:oklch(96.5% 0.006 262);border-radius:4px;display:inline-block"></span>Already taken</div>
+</div>
+</div>
+</div>
+<div style="width:330px;display:grid;gap:12px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Tamil rendering</div>
+<div style="font:600 13px/1.55 'Hind Madurai',sans-serif;margin-bottom:9px">காலை</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+<div style="border:1px solid oklch(85% 0.01 262);border-radius:8px;padding:12px 4px;text-align:center;font:600 14px 'Hind',sans-serif;font-variant-numeric:tabular-nums;min-height:48px;box-sizing:border-box">08:00</div>
+<div style="border:2px solid oklch(42% 0.13 255);background:oklch(94% 0.03 255);color:oklch(42% 0.13 255);border-radius:8px;padding:11px 4px;text-align:center;font:700 14px 'Hind',sans-serif;font-variant-numeric:tabular-nums;min-height:48px;box-sizing:border-box">10:00</div>
+<div style="border:1px dashed oklch(88% 0.008 262);border-radius:8px;padding:12px 4px;text-align:center;font:500 14px 'Hind',sans-serif;color:oklch(64% 0.012 262);text-decoration:line-through;background:oklch(96.5% 0.006 262);font-variant-numeric:tabular-nums;min-height:48px;box-sizing:border-box">11:00</div>
+</div>
+<div style="font:11.5px/1.7 'Hind Madurai',sans-serif;color:oklch(45% 0.018 262);margin-top:10px">முன்பதிவு ஆனது என்பதைக் காட்ட கோடு போடப்பட்டுள்ளது.</div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:8px">Times stay Latin numerals in both languages — universally read, and they keep the grid aligned.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Loading</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;animation:shimmer 1.4s ease-in-out infinite"><div style="height:46px;border-radius:8px;background:oklch(93% 0.007 262)"></div><div style="height:46px;border-radius:8px;background:oklch(93% 0.007 262)"></div><div style="height:46px;border-radius:8px;background:oklch(93% 0.007 262)"></div><div style="height:46px;border-radius:8px;background:oklch(93% 0.007 262)"></div><div style="height:46px;border-radius:8px;background:oklch(93% 0.007 262)"></div><div style="height:46px;border-radius:8px;background:oklch(93% 0.007 262)"></div></div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:9px">Empty · day fully booked</div>
+<div style="font:13px/1.5 'Hind',sans-serif;font-weight:600;margin-bottom:4px">Fri 14 Aug is fully booked</div>
+<div style="font:12px/1.55 'Hind',sans-serif;color:oklch(45% 0.018 262);margin-bottom:9px">Sat 15 has 8 slots from 08:00.</div>
+<div style="border:2px solid oklch(42% 0.13 255);color:oklch(42% 0.13 255);border-radius:8px;padding:10px;text-align:center;font:600 13px 'Hind',sans-serif">Jump to Sat 15</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:9px">Error &amp; disabled</div>
+<div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(45% 0.018 262)"><strong>Error:</strong> the grid keeps its shape with an inline retry bar above it, so the day tabs stay usable. <strong>Disabled:</strong> the whole picker is disabled only while a service type is unchosen — and then it is not rendered at all, since a disabled grid of times teaches nothing.</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ 06 ADDRESS ============ -->
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:8px">
+<div style="font:700 19px 'Hind',sans-serif">06 · Address &amp; landmark entry</div>
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Patient app · booking</div>
+</div>
+<p style="margin:0 0 24px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:680px">Landmark is optional but sits at full field weight with its own helper line and an example — in practice it is how the nurse actually finds the door. It is never collapsed behind "Add more details", and its label says "Optional" rather than being marked with an asterisk convention nobody reads.</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start">
+<div style="width:340px;border:1px solid oklch(91% 0.008 262);border-radius:12px;background:#fff;padding:16px;display:grid;gap:14px">
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Default</div>
+<div style="display:grid;gap:6px">
+<label style="font:600 13px 'Hind',sans-serif">Flat / house number</label>
+<div style="border:1px solid oklch(85% 0.01 262);border-radius:8px;padding:13px;font:15px 'Hind',sans-serif;min-height:48px;box-sizing:border-box">3B, Sunrise Apartments</div>
+</div>
+<div style="display:grid;gap:6px">
+<label style="font:600 13px 'Hind',sans-serif">Street / area</label>
+<div style="border:1px solid oklch(85% 0.01 262);border-radius:8px;padding:13px;font:15px 'Hind',sans-serif;min-height:48px;box-sizing:border-box">2nd Cross Street, Adyar</div>
+</div>
+<div style="display:grid;gap:6px">
+<label style="font:600 13px 'Hind',sans-serif;display:flex;justify-content:space-between;align-items:baseline">Landmark <span style="font:500 12px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Optional</span></label>
+<div style="border:2px solid oklch(42% 0.13 255);border-radius:8px;padding:12px;font:15px 'Hind',sans-serif;color:oklch(58% 0.015 262);min-height:48px;box-sizing:border-box">Opposite the Ayyappan temple</div>
+<div style="font:12px/1.55 'Hind',sans-serif;color:oklch(45% 0.018 262)">This is what helps the nurse reach you quickly. A shop, temple or bus stop nearby works best.</div>
+</div>
+<div style="background:oklch(42% 0.13 255);color:#fff;border-radius:8px;padding:13px;text-align:center;font:600 14.5px 'Hind',sans-serif;min-height:48px;box-sizing:border-box">Save address</div>
+</div>
+<div style="width:330px;display:grid;gap:12px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Tamil rendering</div>
+<div style="display:grid;gap:6px;margin-bottom:11px">
+<label style="font:600 13px/1.55 'Hind Madurai',sans-serif">தெரு / பகுதி</label>
+<div style="border:1px solid oklch(85% 0.01 262);border-radius:8px;padding:12px;font:15px/1.6 'Hind Madurai',sans-serif;min-height:48px;box-sizing:border-box">2வது குறுக்குத் தெரு, அடையாறு</div>
+</div>
+<div style="display:grid;gap:6px">
+<label style="font:600 13px/1.55 'Hind Madurai',sans-serif;display:flex;justify-content:space-between;gap:8px;align-items:baseline">அடையாளம் <span style="font:500 12px/1.55 'Hind Madurai',sans-serif;color:oklch(45% 0.018 262)">விருப்பத்தேர்வு</span></label>
+<div style="border:2px solid oklch(42% 0.13 255);border-radius:8px;padding:11px;font:15px/1.6 'Hind Madurai',sans-serif;color:oklch(58% 0.015 262);min-height:48px;box-sizing:border-box">ஐயப்பன் கோவில் எதிரில்</div>
+<div style="font:12px/1.75 'Hind Madurai',sans-serif;color:oklch(45% 0.018 262)">அருகிலுள்ள கடை, கோவில் அல்லது பேருந்து நிறுத்தம் குறிப்பிடவும்.</div>
+</div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:9px">Labels grow ~35% longer in Tamil — fields are single-column at every breakpoint so nothing truncates.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Empty · placeholder ≠ label</div>
+<div style="display:grid;gap:6px">
+<label style="font:600 13px 'Hind',sans-serif;display:flex;justify-content:space-between">Landmark <span style="font:500 12px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Optional</span></label>
+<div style="border:1px solid oklch(85% 0.01 262);border-radius:8px;padding:12px;font:15px 'Hind',sans-serif;color:oklch(58% 0.015 262);min-height:48px;box-sizing:border-box">e.g. next to Saravana Stores</div>
+</div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">The label never disappears into the field. Placeholders are examples only.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Error</div>
+<div style="display:grid;gap:6px">
+<label style="font:600 13px 'Hind',sans-serif">Flat / house number</label>
+<div style="border:2px solid oklch(35% 0.11 22);border-radius:8px;padding:12px;font:15px 'Hind',sans-serif;color:oklch(58% 0.015 262);min-height:48px;box-sizing:border-box">&nbsp;</div>
+<div style="font:12px/1.55 'Hind',sans-serif;color:oklch(30% 0.1 22);display:flex;gap:6px"><span>!</span>The nurse needs a flat or house number to reach you.</div>
+</div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">Errors say what breaks in the real world, never "This field is required". Validation fires on blur, never per keystroke.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Loading &amp; disabled</div>
+<div style="display:grid;gap:6px;opacity:.6">
+<label style="font:600 13px 'Hind',sans-serif">City</label>
+<div style="border:1px solid oklch(91% 0.008 262);background:oklch(96.5% 0.006 262);border-radius:8px;padding:12px;font:15px 'Hind',sans-serif;color:oklch(58% 0.015 262);min-height:48px;box-sizing:border-box">Chennai</div>
+</div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">Disabled fields keep their value legible (never below 4.5:1) and carry a reason nearby: "We only serve Chennai today." Loading uses the same skeleton bar as elsewhere, inside the field's own height.</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ 07 LANGUAGE TOGGLE ============ -->
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:8px">
+<div style="font:700 19px 'Hind',sans-serif">07 · Language toggle</div>
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Patient app · pre sign-in</div>
+</div>
+<p style="margin:0 0 24px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:680px">The first screen, before any account exists. Each option is written <em>in its own language</em> — a Tamil speaker should never have to read English to find Tamil. It persists on-device without an account, and remains reachable from the header on every screen thereafter.</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start">
+<div style="width:300px;border:1px solid oklch(91% 0.008 262);border-radius:12px;background:#fff;padding:24px 20px;display:grid;gap:18px;justify-items:center">
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262);justify-self:start">Default · first launch</div>
+<svg viewBox="0 0 64 64" width="44" height="44" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="oklch(42% 0.13 255)" stroke-width="5" stroke-linecap="round"></path><path d="M8 32 H17 L22 21 L29 43 L34 32 H43" stroke="oklch(42% 0.13 255)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div style="text-align:center;display:grid;gap:3px"><div style="font:600 15px 'Hind',sans-serif">Choose your language</div><div style="font:600 15px/1.5 'Hind Madurai',sans-serif;color:oklch(45% 0.018 262)">உங்கள் மொழியைத் தேர்ந்தெடுக்கவும்</div></div>
+<div style="display:grid;gap:10px;width:100%">
+<div style="border:2px solid oklch(42% 0.13 255);background:oklch(94% 0.03 255);border-radius:10px;padding:15px;display:flex;justify-content:space-between;align-items:center;min-height:48px;box-sizing:border-box"><span style="font:600 17px/1.5 'Hind Madurai',sans-serif;color:oklch(30% 0.1 255)">தமிழ்</span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="oklch(42% 0.13 255)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div>
+<div style="border:1px solid oklch(85% 0.01 262);border-radius:10px;padding:15px;display:flex;justify-content:space-between;align-items:center;min-height:48px;box-sizing:border-box"><span style="font:600 17px 'Hind',sans-serif">English</span></div>
+</div>
+<div style="background:oklch(42% 0.13 255);color:#fff;border-radius:8px;padding:13px;text-align:center;font:600 15px 'Hind',sans-serif;width:100%;box-sizing:border-box;min-height:48px">தொடர் · Continue</div>
+</div>
+<div style="width:330px;display:grid;gap:12px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">In-app · persistent header control</div>
+<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid oklch(91% 0.008 262);padding-bottom:11px">
+<div style="display:flex;align-items:center;gap:8px"><svg viewBox="0 0 64 64" width="24" height="24" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="oklch(42% 0.13 255)" stroke-width="7" stroke-linecap="round"></path><path d="M8 32 H17 L22 22 L29 42 L34 32 H43" stroke="oklch(42% 0.13 255)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="font:700 15px 'Hind',sans-serif">Pulse</span></div>
+<div style="display:flex;align-items:center;gap:6px;border:1px solid oklch(85% 0.01 262);border-radius:100px;padding:7px 12px;min-height:44px;box-sizing:border-box"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="oklch(45% 0.018 262)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M3.5 12h17"></path><path d="M12 3.5c2.3 2.6 3.4 5.4 3.4 8.5S14.3 18.4 12 20.5c-2.3-2.1-3.4-5.4-3.4-8.5S9.7 6.1 12 3.5z"></path></svg><span style="font:600 13px 'Hind',sans-serif">EN</span></div>
+</div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">Two languages only, so it is a direct toggle, not a dropdown. Switching never loses form data or navigates back to the start.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Loading · switching</div>
+<div style="display:flex;align-items:center;gap:8px;border:1px solid oklch(85% 0.01 262);border-radius:100px;padding:7px 12px;width:fit-content;opacity:.6;min-height:44px;box-sizing:border-box"><span style="width:15px;height:15px;border-radius:50%;background:oklch(93% 0.007 262);animation:shimmer 1.4s ease-in-out infinite"></span><span style="font:600 13px 'Hind',sans-serif">தமிழ்</span></div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">Strings are bundled, not fetched — the switch is instant. This state only appears if a font is still loading, and text renders in the fallback stack meanwhile rather than staying invisible.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:9px">Empty, error &amp; disabled</div>
+<div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(45% 0.018 262)">None exist. The list is a fixed two, always available, and cannot fail — it is the one control that must work before anything else does. If a translation string is missing, the English string renders rather than a blank or a key.</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ 08 CONTINUITY PROMPT ============ -->
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:8px">
+<div style="font:700 19px 'Hind',sans-serif">08 · Continuity prompt</div>
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Patient app · re-booking</div>
+</div>
+<p style="margin:0 0 24px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:680px">Suggests the same nurse as last time. It must not read as a clinical recommendation, a reminder, or a nag: no medical framing, no alarm colour, no urgency, no "your care plan". Visually it is the quietest card in the app — hairline border, no fill, no icon — and it is dismissible with a real 48px control, not a 12px ✕.</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start">
+<div style="width:340px;display:grid;gap:12px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:12px;background:#fff;padding:16px;display:grid;gap:12px">
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Default</div>
+<div style="display:flex;gap:12px;align-items:center">
+<div style="width:40px;height:40px;border-radius:50%;background:oklch(94% 0.03 255);flex:none;display:flex;align-items:center;justify-content:center;font:700 14px 'Hind',sans-serif;color:oklch(42% 0.13 255)">MR</div>
+<div style="font:14px/1.5 'Hind',sans-serif">Meena R. visited you last time. Book her again?</div>
+</div>
+<div style="display:flex;gap:9px">
+<div style="flex:1;border:2px solid oklch(42% 0.13 255);color:oklch(42% 0.13 255);border-radius:8px;padding:12px;text-align:center;font:600 13.5px 'Hind',sans-serif;min-height:48px;box-sizing:border-box">Book Meena</div>
+<div style="flex:1;border:1px solid oklch(85% 0.01 262);color:oklch(45% 0.018 262);border-radius:8px;padding:12px;text-align:center;font:600 13.5px 'Hind',sans-serif;min-height:48px;box-sizing:border-box">No thanks</div>
+</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:12px;background:#fff;padding:16px;display:grid;gap:12px">
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262);font-family:'Hind',sans-serif">Tamil rendering</div>
+<div style="display:flex;gap:12px;align-items:center">
+<div style="width:40px;height:40px;border-radius:50%;background:oklch(94% 0.03 255);flex:none;display:flex;align-items:center;justify-content:center;font:700 14px 'Hind',sans-serif;color:oklch(42% 0.13 255)">MR</div>
+<div style="font:14px/1.75 'Hind Madurai',sans-serif">கடந்த முறை மீனா ரா. வந்தார். மீண்டும் அவரையே பதிவு செய்யவா?</div>
+</div>
+<div style="display:flex;gap:9px">
+<div style="flex:1;border:2px solid oklch(42% 0.13 255);color:oklch(42% 0.13 255);border-radius:8px;padding:11px;text-align:center;font:600 13.5px/1.5 'Hind Madurai',sans-serif;min-height:48px;box-sizing:border-box">மீனாவைப் பதிவு செய்</div>
+<div style="flex:1;border:1px solid oklch(85% 0.01 262);color:oklch(45% 0.018 262);border-radius:8px;padding:11px;text-align:center;font:600 13.5px/1.5 'Hind Madurai',sans-serif;min-height:48px;box-sizing:border-box">வேண்டாம்</div>
+</div>
+</div>
+</div>
+<div style="width:330px;display:grid;gap:12px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Empty · nothing to suggest</div>
+<div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(45% 0.018 262)">The component <strong>does not render</strong>. There is no "no suggestions yet" card — an empty state here would be an advert for a feature the patient didn't ask for.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Disabled · nurse unavailable</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:13px;display:grid;gap:9px">
+<div style="font:13.5px/1.5 'Hind',sans-serif;color:oklch(45% 0.018 262)">Meena R. isn't free on Fri 14 Aug.</div>
+<div style="border:1px solid oklch(85% 0.01 262);color:oklch(45% 0.018 262);border-radius:8px;padding:10px;text-align:center;font:600 13px 'Hind',sans-serif">See her next free day</div>
+</div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">Downgrades to plain information rather than showing a dead button. Still dismissible.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:9px">Loading &amp; error</div>
+<div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(45% 0.018 262)">Neither renders. The prompt is non-essential, so it appears only once its data has resolved and it fails silently — it must never delay, occupy, or interrupt the booking flow it sits beside.</div>
+</div>
+<div style="border:2px solid oklch(42% 0.13 255);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:9px">Dismissal is permanent-ish</div>
+<div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(45% 0.018 262)">"No thanks" suppresses the prompt for that provider for 90 days. Two dismissals in a row turn it off entirely until the patient books that provider again by choice.</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ 09 OUT OF COVERAGE ============ -->
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:8px">
+<div style="font:700 19px 'Hind',sans-serif">09 · Out of coverage</div>
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Patient app · discovery</div>
+</div>
+<p style="margin:0 0 24px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:680px">Never an empty list. It names the area, states plainly that we aren't there yet, gives the nearest thing that <em>is</em> true, and offers a way to be told when that changes. Somebody in this state has an unwell relative and no plan — the screen's job is to hand them one.</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start">
+<div style="width:340px;border:1px solid oklch(91% 0.008 262);border-radius:12px;background:#fff;padding:20px 16px;display:grid;gap:14px">
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Default</div>
+<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="oklch(45% 0.018 262)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21z"></path><path d="M9.6 10.3h4.8"></path></svg>
+<div style="display:grid;gap:6px">
+<div style="font:700 18px/1.35 'Hind',sans-serif">We're not in Tambaram yet</div>
+<div style="font:14px/1.6 'Hind',sans-serif;color:oklch(35% 0.018 262)">Right now our nurses cover Adyar, Besant Nagar, Velachery and T. Nagar. Tambaram is next on our list.</div>
+</div>
+<div style="background:oklch(42% 0.13 255);color:#fff;border-radius:8px;padding:13px;text-align:center;font:600 14.5px 'Hind',sans-serif;min-height:48px;box-sizing:border-box">Tell me when you're here</div>
+<div style="border:2px solid oklch(42% 0.13 255);color:oklch(42% 0.13 255);border-radius:8px;padding:12px;text-align:center;font:600 14px 'Hind',sans-serif;min-height:48px;box-sizing:border-box">Book for a different address</div>
+<div style="border-top:1px solid oklch(93% 0.007 262);padding-top:12px;display:grid;gap:4px">
+<div style="font:600 13px 'Hind',sans-serif">Need help urgently?</div>
+<div style="font:13px/1.5 'Hind',sans-serif;color:oklch(45% 0.018 262)">Call us on <span style="font-weight:600;color:oklch(42% 0.13 255)">044 4000 1234</span> — we can often suggest someone nearby.</div>
+</div>
+</div>
+<div style="width:340px;border:1px solid oklch(91% 0.008 262);border-radius:12px;background:#fff;padding:20px 16px;display:grid;gap:14px">
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262);font-family:'Hind',sans-serif">Tamil rendering</div>
+<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="oklch(45% 0.018 262)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21z"></path><path d="M9.6 10.3h4.8"></path></svg>
+<div style="display:grid;gap:6px">
+<div style="font:700 18px/1.5 'Hind Madurai',sans-serif">தாம்பரத்தில் நாங்கள் இன்னும் இல்லை</div>
+<div style="font:14px/1.8 'Hind Madurai',sans-serif;color:oklch(35% 0.018 262)">தற்போது அடையாறு, பெசன்ட் நகர், வேளச்சேரி மற்றும் தி. நகர் பகுதிகளில் சேவை உள்ளது. தாம்பரம் விரைவில்.</div>
+</div>
+<div style="background:oklch(42% 0.13 255);color:#fff;border-radius:8px;padding:12px;text-align:center;font:600 14.5px/1.5 'Hind Madurai',sans-serif;min-height:48px;box-sizing:border-box">வந்ததும் தெரிவிக்கவும்</div>
+<div style="border-top:1px solid oklch(93% 0.007 262);padding-top:12px;display:grid;gap:4px">
+<div style="font:600 13px/1.55 'Hind Madurai',sans-serif">அவசரமாகத் தேவையா?</div>
+<div style="font:13px/1.75 'Hind Madurai',sans-serif;color:oklch(45% 0.018 262)">எங்களை <span style="font-weight:600;color:oklch(42% 0.13 255);font-family:'Hind',sans-serif">044 4000 1234</span> என்ற எண்ணில் அழைக்கவும்.</div>
+</div>
+</div>
+<div style="width:300px;display:grid;gap:12px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Loading · checking coverage</div>
+<div style="display:grid;gap:8px;animation:shimmer 1.4s ease-in-out infinite"><div style="height:12px;width:70%;border-radius:4px;background:oklch(93% 0.007 262)"></div><div style="height:9px;width:90%;border-radius:4px;background:oklch(93% 0.007 262)"></div></div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">Coverage resolves before the slot picker renders, so nobody picks a time we can't serve.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Error · can't tell</div>
+<div style="font:13px/1.5 'Hind',sans-serif;font-weight:600;margin-bottom:4px">We couldn't check your area</div>
+<div style="font:12px/1.55 'Hind',sans-serif;color:oklch(45% 0.018 262);margin-bottom:9px">Try again, or call 044 4000 1234 and we'll check for you.</div>
+<div style="border:2px solid oklch(42% 0.13 255);color:oklch(42% 0.13 255);border-radius:8px;padding:10px;text-align:center;font:600 13px 'Hind',sans-serif">Try again</div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">Uncertainty is stated as uncertainty. We never guess "not covered" — a false negative loses a patient permanently.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:9px">Empty &amp; disabled</div>
+<div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(45% 0.018 262)">This <em>is</em> the empty state — it replaces the provider list entirely rather than sitting above an empty one. No disabled state: every control on it is live, which is the whole point.</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ 10 VERIFICATION TRACKER ============ -->
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262);background:oklch(96.5% 0.006 262)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:8px">
+<div style="font:700 19px 'Hind',sans-serif">10 · Verification progress tracker</div>
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Provider app · onboarding</div>
+</div>
+<p style="margin:0 0 24px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:680px">A provider waiting on approval cannot earn. Every state carries an <strong>expected time</strong> — silence is what makes people call support or give up. Rejection is never a wall: it names the fixable thing and puts the fix one tap away.</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start">
+<div style="width:340px;border:1px solid oklch(91% 0.008 262);border-radius:12px;background:#fff;padding:18px 16px;display:grid;gap:16px">
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Default · under review</div>
+<div style="display:grid;gap:0;border-left:2px solid oklch(91% 0.008 262);padding-left:16px;margin-left:6px">
+<div style="position:relative;padding-bottom:18px"><div style="position:absolute;left:-23px;top:2px;width:12px;height:12px;border-radius:50%;background:oklch(31% 0.08 195)"></div><div style="font:600 14px 'Hind',sans-serif">Submitted</div><div style="font:12.5px 'Hind',sans-serif;color:oklch(45% 0.018 262);font-variant-numeric:tabular-nums">6 Aug, 14:20</div></div>
+<div style="position:relative;padding-bottom:18px"><div style="position:absolute;left:-23px;top:2px;width:12px;height:12px;border-radius:50%;background:oklch(35% 0.1 68)"></div><div style="font:700 14px 'Hind',sans-serif;color:oklch(35% 0.1 68)">Under review</div><div style="font:12.5px/1.5 'Hind',sans-serif;color:oklch(35% 0.018 262)">A member of our team is checking your documents.</div><div style="font:600 12.5px 'Hind',sans-serif;margin-top:4px">Usually done within 2 working days — by Mon 10 Aug.</div></div>
+<div style="position:relative;opacity:.5"><div style="position:absolute;left:-23px;top:2px;width:12px;height:12px;border-radius:50%;border:2px solid oklch(85% 0.01 262);background:#fff;box-sizing:border-box"></div><div style="font:600 14px 'Hind',sans-serif">Approved</div><div style="font:12.5px 'Hind',sans-serif;color:oklch(45% 0.018 262)">You'll start getting visit requests.</div></div>
+</div>
+<div style="border-top:1px solid oklch(93% 0.007 262);padding-top:12px;font:12.5px/1.6 'Hind',sans-serif;color:oklch(45% 0.018 262)">Questions? WhatsApp us on <span style="font-weight:600;color:oklch(42% 0.13 255)">98400 12345</span>.</div>
+</div>
+<div style="width:340px;border:2px solid oklch(35% 0.11 22);border-radius:12px;background:#fff;padding:18px 16px;display:grid;gap:14px">
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Error · rejected, with a route out</div>
+<div style="display:grid;gap:6px">
+<span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px 'Hind',sans-serif;background:oklch(92% 0.05 22);color:oklch(35% 0.11 22);width:fit-content">! Needs one more thing</span>
+<div style="font:700 17px/1.35 'Hind',sans-serif">We couldn't read your nursing council certificate</div>
+<div style="font:13.5px/1.6 'Hind',sans-serif;color:oklch(35% 0.018 262)">The photo was too blurred to confirm the registration number. Everything else is fine — you don't need to start again.</div>
+</div>
+<div style="background:oklch(42% 0.13 255);color:#fff;border-radius:8px;padding:13px;text-align:center;font:600 14.5px 'Hind',sans-serif;min-height:48px;box-sizing:border-box">Take a new photo</div>
+<div style="border:2px solid oklch(42% 0.13 255);color:oklch(42% 0.13 255);border-radius:8px;padding:12px;text-align:center;font:600 14px 'Hind',sans-serif;min-height:48px;box-sizing:border-box">Send it on WhatsApp instead</div>
+<div style="font:12.5px/1.6 'Hind',sans-serif;color:oklch(45% 0.018 262)">Once we have it, review takes about a day.</div>
+</div>
+<div style="width:300px;display:grid;gap:12px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Approved</div>
+<div style="display:grid;gap:6px"><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px 'Hind',sans-serif;background:oklch(92% 0.04 195);color:oklch(31% 0.08 195);width:fit-content">✓ Approved</span><div style="font:600 14px/1.4 'Hind',sans-serif">You're verified. Visit requests start from tomorrow.</div></div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">No confetti, no animation, no celebration — per the motion rule. The next step is stated instead.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Tamil rendering</div>
+<div style="display:grid;gap:5px"><div style="font:700 14px/1.55 'Hind Madurai',sans-serif;color:oklch(35% 0.1 68)">பரிசீலனையில் உள்ளது</div><div style="font:12.5px/1.75 'Hind Madurai',sans-serif;color:oklch(35% 0.018 262)">உங்கள் ஆவணங்கள் சரிபார்க்கப்படுகின்றன.</div><div style="font:600 12.5px/1.7 'Hind Madurai',sans-serif">பொதுவாக 2 வேலை நாட்களில் — 10 ஆக-க்குள்.</div></div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:9px">Loading, empty &amp; disabled</div>
+<div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(45% 0.018 262)"><strong>Loading:</strong> the three step labels render immediately from local state; only timestamps skeleton. <strong>Empty:</strong> pre-submission the tracker is replaced by the upload checklist (11). <strong>Disabled:</strong> steps aren't controls — the only action, "Take a new photo", is disabled solely while an upload is in flight, with the progress shown on the button itself.</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ 11 DOCUMENT CHECKLIST ============ -->
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262);background:oklch(96.5% 0.006 262)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:8px">
+<div style="font:700 19px 'Hind',sans-serif">11 · Document upload checklist</div>
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Provider app · onboarding</div>
+</div>
+<p style="margin:0 0 24px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:680px">Exactly three items, visible from the start — no progressive reveal, no "and a few more details". WhatsApp is presented as a <strong>peer path with equal visual weight</strong>, not a fallback link at the bottom: for many providers it is the way they already send documents, and treating it as second-class costs sign-ups.</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start">
+<div style="width:350px;border:1px solid oklch(91% 0.008 262);border-radius:12px;background:#fff;padding:18px 16px;display:grid;gap:14px">
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Default · mixed states</div>
+<div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:700 17px 'Hind',sans-serif">Three documents</div><div style="font:600 13px 'Hind',sans-serif;color:oklch(45% 0.018 262);font-variant-numeric:tabular-nums">1 of 3 done</div></div>
+
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:13px;display:flex;gap:12px;align-items:center">
+<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="oklch(31% 0.08 195)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="12" cy="12" r="8.8"></circle><path d="M8.2 12.2l2.6 2.6 5-5.2"></path></svg>
+<div style="flex:1"><div style="font:600 14px 'Hind',sans-serif">Photo ID</div><div style="font:12.5px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Aadhaar or driving licence · uploaded</div></div>
+<div style="font:600 12.5px 'Hind',sans-serif;color:oklch(42% 0.13 255)">Change</div>
+</div>
+
+<div style="border:2px solid oklch(42% 0.13 255);border-radius:10px;padding:13px;display:grid;gap:11px">
+<div style="display:flex;gap:12px;align-items:center">
+<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="oklch(45% 0.018 262)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="12" cy="12" r="8.8"></circle></svg>
+<div style="flex:1"><div style="font:600 14px 'Hind',sans-serif">Nursing council certificate</div><div style="font:12.5px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Must show your registration number</div></div>
+</div>
+<div style="display:flex;gap:9px">
+<div style="flex:1;background:oklch(42% 0.13 255);color:#fff;border-radius:8px;padding:11px;text-align:center;font:600 13.5px 'Hind',sans-serif;display:flex;align-items:center;justify-content:center;gap:7px;min-height:48px;box-sizing:border-box"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 8.5h3l1.4-2h6.2l1.4 2h3v10h-15z"></path><circle cx="12" cy="13" r="3.1"></circle></svg>Take photo</div>
+<div style="flex:1;border:1px solid oklch(85% 0.01 262);border-radius:8px;padding:11px;text-align:center;font:600 13.5px 'Hind',sans-serif;display:flex;align-items:center;justify-content:center;min-height:48px;box-sizing:border-box">Choose file</div>
+</div>
+</div>
+
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:13px;display:flex;gap:12px;align-items:center">
+<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="oklch(58% 0.015 262)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="12" cy="12" r="8.8"></circle></svg>
+<div style="flex:1"><div style="font:600 14px 'Hind',sans-serif">Address proof</div><div style="font:12.5px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Any bill from the last 3 months</div></div>
+</div>
+
+<div style="border-top:1px solid oklch(93% 0.007 262);padding-top:14px;display:grid;gap:9px">
+<div style="font:600 14px 'Hind',sans-serif">Or send them on WhatsApp</div>
+<div style="font:12.5px/1.6 'Hind',sans-serif;color:oklch(45% 0.018 262)">Same team, same speed. Photograph the three documents and send them to us — we'll do the rest.</div>
+<div style="border:2px solid oklch(42% 0.13 255);color:oklch(42% 0.13 255);border-radius:8px;padding:12px;text-align:center;font:600 14px 'Hind',sans-serif;min-height:48px;box-sizing:border-box">Open WhatsApp · 98400 12345</div>
+</div>
+</div>
+<div style="width:320px;display:grid;gap:12px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Loading · upload in flight</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:12px;display:grid;gap:9px">
+<div style="font:600 13.5px 'Hind',sans-serif">Nursing council certificate</div>
+<div style="height:6px;border-radius:3px;background:oklch(93% 0.007 262);overflow:hidden"><div style="width:62%;height:100%;background:oklch(42% 0.13 255)"></div></div>
+<div style="font:12px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Sending… 62%</div>
+</div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">Determinate bar, never a spinner — on a slow connection a provider needs to see it is moving.</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Error · upload failed</div>
+<div style="border:2px solid oklch(35% 0.11 22);border-radius:10px;padding:12px;display:grid;gap:7px">
+<div style="font:600 13.5px/1.4 'Hind',sans-serif;color:oklch(30% 0.1 22)">That photo didn't send</div>
+<div style="font:12px/1.5 'Hind',sans-serif;color:oklch(40% 0.018 262)">Your other documents are safe. This often happens on a weak signal.</div>
+<div style="display:flex;gap:8px"><div style="flex:1;background:oklch(42% 0.13 255);color:#fff;border-radius:8px;padding:10px;text-align:center;font:600 12.5px 'Hind',sans-serif">Retry</div><div style="flex:1;border:1px solid oklch(85% 0.01 262);border-radius:8px;padding:10px;text-align:center;font:600 12.5px 'Hind',sans-serif">Use WhatsApp</div></div>
+</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Tamil rendering</div>
+<div style="display:grid;gap:5px"><div style="font:700 15px/1.5 'Hind Madurai',sans-serif">மூன்று ஆவணங்கள்</div><div style="font:600 13.5px/1.6 'Hind Madurai',sans-serif">செவிலியர் கவுன்சில் சான்றிதழ்</div><div style="font:12.5px/1.75 'Hind Madurai',sans-serif;color:oklch(45% 0.018 262)">உங்கள் பதிவு எண் தெரியும்படி இருக்க வேண்டும்.</div></div>
+<div style="border:2px solid oklch(42% 0.13 255);color:oklch(42% 0.13 255);border-radius:8px;padding:11px;text-align:center;font:600 13.5px/1.5 'Hind Madurai',sans-serif;margin-top:10px;min-height:48px;box-sizing:border-box">வாட்ஸ்அப்பில் அனுப்பவும்</div>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff">
+<div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:9px">Empty &amp; disabled</div>
+<div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(45% 0.018 262)"><strong>Empty</strong> is the default first view — three hollow circles and "0 of 3 done", which is informative, not sad. <strong>Disabled:</strong> only the final Submit is disabled until all three are in, with the reason stated beneath it; the individual upload buttons are never disabled.</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ 12 QUEUE ROW ============ -->
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:8px">
+<div style="font:700 19px 'Hind',sans-serif">12 · Verification queue row</div>
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Admin · desktop-first</div>
+</div>
+<p style="margin:0 0 20px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:680px">Built for a reviewer working the queue for hours: dense rows, tabular figures, thumbnails large enough to judge legibility without opening. Elapsed time is the sort key; SLA proximity is a flag on the row, not a separate column to scan.</p>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;overflow:hidden;margin-bottom:16px">
+<div style="display:grid;grid-template-columns:1.5fr .9fr 1fr 1.3fr .9fr;background:oklch(96.5% 0.006 262);padding:10px 16px;font:600 10px 'Hind',sans-serif;letter-spacing:.07em;text-transform:uppercase;color:oklch(48% 0.02 262)"><div>Provider</div><div>Waiting</div><div>SLA</div><div>Documents</div><div style="text-align:right">Action</div></div>
+
+<div style="display:grid;grid-template-columns:1.5fr .9fr 1fr 1.3fr .9fr;padding:12px 16px;border-top:1px solid oklch(93% 0.007 262);align-items:center;gap:10px">
+<div><div style="font:600 13.5px 'Hind',sans-serif">Kavitha S.</div><div style="font:11.5px 'Hind',sans-serif;color:oklch(45% 0.018 262);font-variant-numeric:tabular-nums">RN · TN-4471 · Velachery</div></div>
+<div style="font:600 13.5px 'Hind',sans-serif;font-variant-numeric:tabular-nums">4h 12m</div>
+<div><span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:100px;font:600 11px 'Hind',sans-serif;background:oklch(92% 0.05 152);color:oklch(31% 0.09 152)">● 20h left</span></div>
+<div style="display:flex;gap:6px"><div style="width:38px;height:28px;border-radius:4px;background:oklch(93% 0.007 262);border:1px solid oklch(85% 0.01 262)"></div><div style="width:38px;height:28px;border-radius:4px;background:oklch(93% 0.007 262);border:1px solid oklch(85% 0.01 262)"></div><div style="width:38px;height:28px;border-radius:4px;background:oklch(93% 0.007 262);border:1px solid oklch(85% 0.01 262)"></div></div>
+<div style="text-align:right"><span style="display:inline-block;background:oklch(42% 0.13 255);color:#fff;border-radius:6px;padding:8px 14px;font:600 12.5px 'Hind',sans-serif">Review</span></div>
+</div>
+
+<div style="display:grid;grid-template-columns:1.5fr .9fr 1fr 1.3fr .9fr;padding:12px 16px;border-top:1px solid oklch(93% 0.007 262);align-items:center;gap:10px;background:oklch(99% 0.012 68);box-shadow:inset 3px 0 0 oklch(35% 0.1 68)">
+<div><div style="font:600 13.5px 'Hind',sans-serif">Rajesh M.</div><div style="font:11.5px 'Hind',sans-serif;color:oklch(45% 0.018 262);font-variant-numeric:tabular-nums">RN · TN-8823 · Adyar</div></div>
+<div style="font:600 13.5px 'Hind',sans-serif;font-variant-numeric:tabular-nums">21h 40m</div>
+<div><span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:100px;font:600 11px 'Hind',sans-serif;background:oklch(92% 0.06 68);color:oklch(35% 0.1 68)">◐ 2h left</span></div>
+<div style="display:flex;gap:6px;align-items:center"><div style="width:38px;height:28px;border-radius:4px;background:oklch(93% 0.007 262);border:1px solid oklch(85% 0.01 262)"></div><div style="width:38px;height:28px;border-radius:4px;background:oklch(93% 0.007 262);border:1px solid oklch(85% 0.01 262)"></div><div style="width:38px;height:28px;border-radius:4px;border:1px dashed oklch(85% 0.01 262);display:flex;align-items:center;justify-content:center;font:10px 'Hind',sans-serif;color:oklch(58% 0.015 262)">—</div></div>
+<div style="text-align:right"><span style="display:inline-block;background:oklch(42% 0.13 255);color:#fff;border-radius:6px;padding:8px 14px;font:600 12.5px 'Hind',sans-serif">Review</span></div>
+</div>
+
+<div style="display:grid;grid-template-columns:1.5fr .9fr 1fr 1.3fr .9fr;padding:12px 16px;border-top:1px solid oklch(93% 0.007 262);align-items:center;gap:10px;background:oklch(99% 0.012 22);box-shadow:inset 3px 0 0 oklch(35% 0.11 22)">
+<div><div style="font:600 13.5px 'Hind',sans-serif">Priya D.</div><div style="font:11.5px 'Hind',sans-serif;color:oklch(45% 0.018 262);font-variant-numeric:tabular-nums">RN · TN-1190 · T. Nagar</div></div>
+<div style="font:700 13.5px 'Hind',sans-serif;font-variant-numeric:tabular-nums;color:oklch(35% 0.11 22)">2d 03h</div>
+<div><span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:100px;font:600 11px 'Hind',sans-serif;background:oklch(92% 0.05 22);color:oklch(35% 0.11 22)">! Breached 27h</span></div>
+<div style="display:flex;gap:6px"><div style="width:38px;height:28px;border-radius:4px;background:oklch(93% 0.007 262);border:1px solid oklch(85% 0.01 262)"></div><div style="width:38px;height:28px;border-radius:4px;background:oklch(93% 0.007 262);border:1px solid oklch(85% 0.01 262)"></div><div style="width:38px;height:28px;border-radius:4px;background:oklch(93% 0.007 262);border:1px solid oklch(85% 0.01 262)"></div></div>
+<div style="text-align:right"><span style="display:inline-block;background:oklch(42% 0.13 255);color:#fff;border-radius:6px;padding:8px 14px;font:600 12.5px 'Hind',sans-serif">Review</span></div>
+</div>
+
+<div style="display:grid;grid-template-columns:1.5fr .9fr 1fr 1.3fr .9fr;padding:12px 16px;border-top:1px solid oklch(93% 0.007 262);align-items:center;gap:10px;opacity:.55">
+<div><div style="font:600 13.5px 'Hind',sans-serif">Anand K.</div><div style="font:11.5px 'Hind',sans-serif;color:oklch(45% 0.018 262);font-variant-numeric:tabular-nums">RN · TN-3302 · Besant Nagar</div></div>
+<div style="font:600 13.5px 'Hind',sans-serif;font-variant-numeric:tabular-nums">1h 05m</div>
+<div><span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:100px;font:600 11px 'Hind',sans-serif;background:oklch(92% 0.005 262);color:oklch(41% 0.01 262)">— Locked by Divya</span></div>
+<div style="display:flex;gap:6px"><div style="width:38px;height:28px;border-radius:4px;background:oklch(93% 0.007 262);border:1px solid oklch(85% 0.01 262)"></div><div style="width:38px;height:28px;border-radius:4px;background:oklch(93% 0.007 262);border:1px solid oklch(85% 0.01 262)"></div><div style="width:38px;height:28px;border-radius:4px;background:oklch(93% 0.007 262);border:1px solid oklch(85% 0.01 262)"></div></div>
+<div style="text-align:right"><span style="display:inline-block;background:oklch(91% 0.008 262);color:oklch(58% 0.015 262);border-radius:6px;padding:8px 14px;font:600 12.5px 'Hind',sans-serif">In review</span></div>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:12px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff"><div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Loading</div><div style="display:grid;gap:9px;animation:shimmer 1.4s ease-in-out infinite"><div style="height:11px;width:85%;border-radius:4px;background:oklch(93% 0.007 262)"></div><div style="height:11px;width:70%;border-radius:4px;background:oklch(93% 0.007 262)"></div><div style="height:11px;width:78%;border-radius:4px;background:oklch(93% 0.007 262)"></div></div><div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">Ten skeleton rows — the reviewer's eye should land on a full-height table, not a growing one.</div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff"><div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:9px">Empty · queue clear</div><div style="font:13px 'Hind',sans-serif;font-weight:600;margin-bottom:4px">Queue is clear</div><div style="font:12px/1.55 'Hind',sans-serif;color:oklch(45% 0.018 262)">Last approval 12 minutes ago. Median wait today: 3h 40m.</div><div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">Empty carries the stat the reviewer would otherwise go looking for.</div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff"><div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:9px">Error · thumbnails unavailable</div><div style="display:flex;gap:6px;margin-bottom:9px"><div style="width:38px;height:28px;border-radius:4px;border:1px dashed oklch(85% 0.01 262);display:flex;align-items:center;justify-content:center;font:11px 'Hind',sans-serif;color:oklch(45% 0.018 262)">!</div><div style="width:38px;height:28px;border-radius:4px;border:1px dashed oklch(85% 0.01 262);display:flex;align-items:center;justify-content:center;font:11px 'Hind',sans-serif;color:oklch(45% 0.018 262)">!</div></div><div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(45% 0.018 262)">The row stays actionable — Review still opens the case, where the full document loads or fails loudly. A thumbnail failure never blocks the queue.</div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff"><div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:9px">Disabled · locked by a colleague</div><div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(45% 0.018 262)">Row dims to 55% and the action reads "In review" with the holder's name in the SLA cell — never a bare greyed button. Prevents two reviewers duplicating work, which is the main source of contradictory decisions.</div><div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(45% 0.018 262);margin-top:8px"><strong>Tamil:</strong> admin is English-only by decision — the ops team works in English and mixing scripts in a dense table hurts scanning. Provider names render in whatever script they were entered.</div></div>
+</div>
+</div>
+
+<!-- ============ 13 EXCEPTION LIST ============ -->
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262)">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:8px">
+<div style="font:700 19px 'Hind',sans-serif">13 · Exception &amp; support case list</div>
+<div style="font:600 10px;letter-spacing:.08em;text-transform:uppercase;color:oklch(52% 0.02 262)">Admin · desktop-first</div>
+</div>
+<p style="margin:0 0 20px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:680px">Everything that fell out of the happy path, in one list, ordered by how much a patient is currently suffering — not by when it arrived. Severity is a left rail plus a word, never colour alone.</p>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;overflow:hidden;margin-bottom:16px">
+<div style="display:grid;grid-template-columns:.7fr 1.5fr 1.2fr 1fr .8fr .8fr;background:oklch(96.5% 0.006 262);padding:10px 16px;font:600 10px 'Hind',sans-serif;letter-spacing:.07em;text-transform:uppercase;color:oklch(48% 0.02 262)"><div>Sev</div><div>What happened</div><div>Patient / booking</div><div>Raised</div><div>Owner</div><div style="text-align:right">Action</div></div>
+<div style="display:grid;grid-template-columns:.7fr 1.5fr 1.2fr 1fr .8fr .8fr;padding:11px 16px;border-top:1px solid oklch(93% 0.007 262);align-items:center;gap:10px;box-shadow:inset 3px 0 0 oklch(35% 0.11 22)"><div style="font:700 11.5px 'Hind',sans-serif;color:oklch(35% 0.11 22)">P1</div><div style="font:13px 'Hind',sans-serif">Nurse didn't arrive · visit in 20 min</div><div style="font:12.5px 'Hind',sans-serif">Lakshmi V. · <span style="font-variant-numeric:tabular-nums;color:oklch(45% 0.018 262)">BK-40218</span></div><div style="font:12.5px 'Hind',sans-serif;font-variant-numeric:tabular-nums">8m ago</div><div style="font:12.5px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Unassigned</div><div style="text-align:right"><span style="display:inline-block;background:oklch(42% 0.13 255);color:#fff;border-radius:6px;padding:7px 13px;font:600 12px 'Hind',sans-serif">Take</span></div></div>
+<div style="display:grid;grid-template-columns:.7fr 1.5fr 1.2fr 1fr .8fr .8fr;padding:11px 16px;border-top:1px solid oklch(93% 0.007 262);align-items:center;gap:10px;box-shadow:inset 3px 0 0 oklch(35% 0.11 22)"><div style="font:700 11.5px 'Hind',sans-serif;color:oklch(35% 0.11 22)">P1</div><div style="font:13px 'Hind',sans-serif">Payment taken, booking not created</div><div style="font:12.5px 'Hind',sans-serif">Suresh N. · <span style="font-variant-numeric:tabular-nums;color:oklch(45% 0.018 262)">BK-40203</span></div><div style="font:12.5px 'Hind',sans-serif;font-variant-numeric:tabular-nums">24m ago</div><div style="font:12.5px 'Hind',sans-serif">Divya</div><div style="text-align:right"><span style="display:inline-block;border:1px solid oklch(85% 0.01 262);border-radius:6px;padding:7px 13px;font:600 12px 'Hind',sans-serif">Open</span></div></div>
+<div style="display:grid;grid-template-columns:.7fr 1.5fr 1.2fr 1fr .8fr .8fr;padding:11px 16px;border-top:1px solid oklch(93% 0.007 262);align-items:center;gap:10px;box-shadow:inset 3px 0 0 oklch(35% 0.1 68)"><div style="font:700 11.5px 'Hind',sans-serif;color:oklch(35% 0.1 68)">P2</div><div style="font:13px 'Hind',sans-serif">No nurse assigned · slot in 3h</div><div style="font:12.5px 'Hind',sans-serif">Ganesh P. · <span style="font-variant-numeric:tabular-nums;color:oklch(45% 0.018 262)">BK-40199</span></div><div style="font:12.5px 'Hind',sans-serif;font-variant-numeric:tabular-nums">1h ago</div><div style="font:12.5px 'Hind',sans-serif">Arun</div><div style="text-align:right"><span style="display:inline-block;border:1px solid oklch(85% 0.01 262);border-radius:6px;padding:7px 13px;font:600 12px 'Hind',sans-serif">Open</span></div></div>
+<div style="display:grid;grid-template-columns:.7fr 1.5fr 1.2fr 1fr .8fr .8fr;padding:11px 16px;border-top:1px solid oklch(93% 0.007 262);align-items:center;gap:10px;box-shadow:inset 3px 0 0 oklch(35% 0.1 68)"><div style="font:700 11.5px 'Hind',sans-serif;color:oklch(35% 0.1 68)">P2</div><div style="font:13px 'Hind',sans-serif">Refund not received after 5 days</div><div style="font:12.5px 'Hind',sans-serif">Meera J. · <span style="font-variant-numeric:tabular-nums;color:oklch(45% 0.018 262)">BK-39877</span></div><div style="font:12.5px 'Hind',sans-serif;font-variant-numeric:tabular-nums">3h ago</div><div style="font:12.5px 'Hind',sans-serif">Divya</div><div style="text-align:right"><span style="display:inline-block;border:1px solid oklch(85% 0.01 262);border-radius:6px;padding:7px 13px;font:600 12px 'Hind',sans-serif">Open</span></div></div>
+<div style="display:grid;grid-template-columns:.7fr 1.5fr 1.2fr 1fr .8fr .8fr;padding:11px 16px;border-top:1px solid oklch(93% 0.007 262);align-items:center;gap:10px;box-shadow:inset 3px 0 0 oklch(85% 0.01 262)"><div style="font:700 11.5px 'Hind',sans-serif;color:oklch(45% 0.018 262)">P3</div><div style="font:13px 'Hind',sans-serif">Patient asked to change address mid-visit</div><div style="font:12.5px 'Hind',sans-serif">Anitha R. · <span style="font-variant-numeric:tabular-nums;color:oklch(45% 0.018 262)">BK-40150</span></div><div style="font:12.5px 'Hind',sans-serif;font-variant-numeric:tabular-nums">6h ago</div><div style="font:12.5px 'Hind',sans-serif">Arun</div><div style="text-align:right"><span style="display:inline-block;border:1px solid oklch(85% 0.01 262);border-radius:6px;padding:7px 13px;font:600 12px 'Hind',sans-serif">Open</span></div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:12px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff"><div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:11px">Loading</div><div style="display:grid;gap:8px;animation:shimmer 1.4s ease-in-out infinite"><div style="height:10px;width:90%;border-radius:4px;background:oklch(93% 0.007 262)"></div><div style="height:10px;width:75%;border-radius:4px;background:oklch(93% 0.007 262)"></div><div style="height:10px;width:82%;border-radius:4px;background:oklch(93% 0.007 262)"></div><div style="height:10px;width:68%;border-radius:4px;background:oklch(93% 0.007 262)"></div></div><div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">Filters and the P1 count render before the rows, so triage can begin immediately.</div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff"><div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:9px">Empty · no open exceptions</div><div style="font:13px 'Hind',sans-serif;font-weight:600;margin-bottom:4px">Nothing open</div><div style="font:12px/1.55 'Hind',sans-serif;color:oklch(45% 0.018 262)">7 cases closed today · longest open 42m.</div><div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">No illustration, no congratulation. An ops tool's empty state is a status report.</div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff"><div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:9px">Error · list stale</div><div style="border:2px solid oklch(35% 0.11 22);border-radius:8px;padding:11px;display:grid;gap:5px"><div style="font:600 12.5px 'Hind',sans-serif;color:oklch(30% 0.1 22)">Not updating — last refreshed 09:41</div><div style="font:11.5px/1.5 'Hind',sans-serif;color:oklch(40% 0.018 262)">Rows below may be out of date. Don't action P1s until this clears.</div></div><div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:10px">Staleness is stated loudly. A silently frozen ops list is worse than an error.</div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:15px;background:#fff"><div style="font:600 11.5px 'Hind',sans-serif;margin-bottom:9px">Disabled · no permission</div><div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(45% 0.018 262)">Refund and reassign actions render as plain text with a tooltip naming the role required. Rows stay readable — visibility is never the permission boundary, action is.</div></div>
+</div>
+</div>
+
+<!-- ============ USAGE SUMMARY ============ -->
+<div style="padding:44px 56px 56px;background:oklch(96.5% 0.006 262)">
+<div style="font:700 19px 'Hind',sans-serif;margin-bottom:6px">Usage summary</div>
+<p style="margin:0 0 22px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:680px">One line each: what it's for, when it's the wrong choice, and who it serves. "PER-001" is the low-digital-confidence patient persona; the remaining audiences are described in words since their persona IDs weren't in the brief.</p>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;overflow:hidden;background:#fff">
+<div style="display:grid;grid-template-columns:1.1fr 1.5fr 1.5fr 1fr;background:oklch(93% 0.007 262);padding:11px 16px;font:600 10px 'Hind',sans-serif;letter-spacing:.07em;text-transform:uppercase;color:oklch(45% 0.02 262)"><div>Component</div><div>What it's for</div><div>Don't use it when</div><div>Serves</div></div>
+
+<div style="display:grid;grid-template-columns:1.1fr 1.5fr 1.5fr 1fr;padding:13px 16px;border-top:1px solid oklch(93% 0.007 262);gap:12px;font:12.5px/1.6 'Hind',sans-serif"><div style="font-weight:600">01 Verified badge</div><div>Stating that a human checked this provider's identity and registration.</div><div>You mean "good", "recommended", or "insured". It certifies identity — nothing clinical.</div><div style="color:oklch(45% 0.018 262)">PER-001; anyone letting a stranger in</div></div>
+<div style="display:grid;grid-template-columns:1.1fr 1.5fr 1.5fr 1fr;padding:13px 16px;border-top:1px solid oklch(93% 0.007 262);gap:12px;font:12.5px/1.6 'Hind',sans-serif"><div style="font-weight:600">02 Provider card</div><div>Choosing between people, or previewing who will come.</div><div>Only one provider is possible — then it's a confirmation, not a choice.</div><div style="color:oklch(45% 0.018 262)">Patient; remote family caregiver</div></div>
+<div style="display:grid;grid-template-columns:1.1fr 1.5fr 1.5fr 1fr;padding:13px 16px;border-top:1px solid oklch(93% 0.007 262);gap:12px;font:12.5px/1.6 'Hind',sans-serif"><div style="font-weight:600">03 Price breakdown</div><div>The last screen before money moves. Itemised fee, inline cancellation terms.</div><div>Earlier in the flow — repeating it makes the fee feel negotiable.</div><div style="color:oklch(45% 0.018 262)">Every patient; fee transparency</div></div>
+<div style="display:grid;grid-template-columns:1.1fr 1.5fr 1.5fr 1fr;padding:13px 16px;border-top:1px solid oklch(93% 0.007 262);gap:12px;font:12.5px/1.6 'Hind',sans-serif"><div style="font-weight:600">04 State chip + live view</div><div>Telling someone where their visit has got to, in their words.</div><div>You'd have to expose an internal state to be accurate — fix the state model instead.</div><div style="color:oklch(45% 0.018 262)">Patient; caregiver watching remotely</div></div>
+<div style="display:grid;grid-template-columns:1.1fr 1.5fr 1.5fr 1fr;padding:13px 16px;border-top:1px solid oklch(93% 0.007 262);gap:12px;font:12.5px/1.6 'Hind',sans-serif"><div style="font-weight:600">05 Slot picker</div><div>Choosing a time, and seeing which times are gone.</div><div>Fewer than three options exist — a list of two reads better than a grid.</div><div style="color:oklch(45% 0.018 262)">PER-001 (clarity over density)</div></div>
+<div style="display:grid;grid-template-columns:1.1fr 1.5fr 1.5fr 1fr;padding:13px 16px;border-top:1px solid oklch(93% 0.007 262);gap:12px;font:12.5px/1.6 'Hind',sans-serif"><div style="font-weight:600">06 Address &amp; landmark</div><div>Getting the nurse to the actual door.</div><div>A saved address exists — show it and offer edit, don't re-ask.</div><div style="color:oklch(45% 0.018 262)">Patient; provider finding the house</div></div>
+<div style="display:grid;grid-template-columns:1.1fr 1.5fr 1.5fr 1fr;padding:13px 16px;border-top:1px solid oklch(93% 0.007 262);gap:12px;font:12.5px/1.6 'Hind',sans-serif"><div style="font-weight:600">07 Language toggle</div><div>Choosing Tamil or English before anything else happens.</div><div>Never buried in settings. If it's hard to find, it doesn't exist.</div><div style="color:oklch(45% 0.018 262)">Tamil-first patients; PER-001</div></div>
+<div style="display:grid;grid-template-columns:1.1fr 1.5fr 1.5fr 1fr;padding:13px 16px;border-top:1px solid oklch(93% 0.007 262);gap:12px;font:12.5px/1.6 'Hind',sans-serif"><div style="font-weight:600">08 Continuity prompt</div><div>Offering the same nurse again, once, quietly.</div><div>There's clinical reasoning behind it, or it would be the loudest thing on screen.</div><div style="color:oklch(45% 0.018 262)">Repeat patients; retention</div></div>
+<div style="display:grid;grid-template-columns:1.1fr 1.5fr 1.5fr 1fr;padding:13px 16px;border-top:1px solid oklch(93% 0.007 262);gap:12px;font:12.5px/1.6 'Hind',sans-serif"><div style="font-weight:600">09 Out of coverage</div><div>Turning "we can't help" into a next step and a future lead.</div><div>Coverage is merely uncertain — say that instead; never guess a no.</div><div style="color:oklch(45% 0.018 262)">Prospective patients outside zones</div></div>
+<div style="display:grid;grid-template-columns:1.1fr 1.5fr 1.5fr 1fr;padding:13px 16px;border-top:1px solid oklch(93% 0.007 262);gap:12px;font:12.5px/1.6 'Hind',sans-serif"><div style="font-weight:600">10 Verification tracker</div><div>Keeping a waiting provider informed and calm, with dates.</div><div>You can't state an expected time — then the tracker is just anxiety with a progress bar.</div><div style="color:oklch(45% 0.018 262)">Provider; supply acquisition</div></div>
+<div style="display:grid;grid-template-columns:1.1fr 1.5fr 1.5fr 1fr;padding:13px 16px;border-top:1px solid oklch(93% 0.007 262);gap:12px;font:12.5px/1.6 'Hind',sans-serif"><div style="font-weight:600">11 Document checklist</div><div>Getting three documents in, by whichever route suits the provider.</div><div>The list would exceed three — anything more needs a staged flow, not a longer list.</div><div style="color:oklch(45% 0.018 262)">Provider; onboarding conversion</div></div>
+<div style="display:grid;grid-template-columns:1.1fr 1.5fr 1.5fr 1fr;padding:13px 16px;border-top:1px solid oklch(93% 0.007 262);gap:12px;font:12.5px/1.6 'Hind',sans-serif"><div style="font-weight:600">12 Queue row</div><div>Working the verification backlog against an SLA.</div><div>Someone needs the full document — that's the case view, not a row.</div><div style="color:oklch(45% 0.018 262)">Ops reviewer; trust &amp; safety</div></div>
+<div style="display:grid;grid-template-columns:1.1fr 1.5fr 1.5fr 1fr;padding:13px 16px;border-top:1px solid oklch(93% 0.007 262);gap:12px;font:12.5px/1.6 'Hind',sans-serif"><div style="font-weight:600">13 Exception list</div><div>Triaging everything off the happy path by patient impact.</div><div>It's a routine queue — routine work doesn't belong in the exception view.</div><div style="color:oklch(45% 0.018 262)">Ops / support; service recovery</div></div>
+</div>
+
+<div style="margin-top:22px;background:#fff;border-radius:10px;padding:20px">
+<div style="font:600 12px 'Hind',sans-serif;margin-bottom:10px">Open before build</div>
+<ul style="margin:0;padding-left:18px;max-width:720px">
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(38% 0.018 262)">All Tamil copy remains placeholder and needs a native speaker — the state labels especially, since plain-language wording is the whole point of component 04.</li>
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(38% 0.018 262)">The provider card is drawn for both the <em>pick a person</em> and the <em>assigned later</em> models because that product decision is still open. Whichever you choose, the other variant stays useful.</li>
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(38% 0.018 262)">Cancellation terms, SLA windows, refund timings and the 90-day continuity suppression are illustrative numbers, not policy. They need sign-off before they ship as copy.</li>
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(38% 0.018 262)">Admin is specified English-only. Worth confirming with the ops team before it's built in.</li>
+</ul>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:1600}}"></script>
+</body>
+</html>

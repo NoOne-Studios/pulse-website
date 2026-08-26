@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Hind+Madurai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:oklch(96.5% 0.006 262)}
+a{color:oklch(42% 0.13 255);text-decoration:underline}
+a:hover{color:oklch(33% 0.12 255)}
+</style>
+</helmet>
+
+<div style="font-family:'Hind',sans-serif;color:oklch(20% 0.015 262);background:#fff;max-width:1120px;margin:0 auto;box-shadow:0 1px 3px rgba(0,0,0,.08),0 12px 40px rgba(0,0,0,.06)">
+
+<div style="padding:56px 56px 40px;border-bottom:1px solid oklch(91% 0.008 262);display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap">
+<div>
+<div style="font:600 10px/1;letter-spacing:.1em;text-transform:uppercase;color:oklch(48% 0.02 262);margin-bottom:14px">Foundation layer · v1 · engineering handoff</div>
+<div style="display:flex;align-items:center;gap:14px">
+<svg viewBox="0 0 64 64" width="44" height="44" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="oklch(42% 0.13 255)" stroke-width="5" stroke-linecap="round"></path><path d="M8 32 H17 L22 21 L29 43 L34 32 H43" stroke="oklch(42% 0.13 255)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div style="font:700 32px/1 'Hind',sans-serif">Pulse — Design Tokens</div>
+</div>
+</div>
+<div style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(45% 0.02 262);max-width:340px">Every token below is semantic: it names a job, not a colour. Engineering consumes the names; the values are ours to change. Literal ramp values appear once, in the primitive layer, and nothing in the product references them directly.</div>
+</div>
+
+<div style="padding:40px 56px;border-bottom:1px solid oklch(91% 0.008 262);background:oklch(96.5% 0.006 262)">
+<div style="font:600 10px/1;letter-spacing:.09em;text-transform:uppercase;color:oklch(50% 0.02 262);margin-bottom:14px">How to read this</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px">
+<div style="background:#fff;border-radius:10px;padding:18px"><div style="font:600 13px 'Hind',sans-serif;margin-bottom:6px">Two layers</div><div style="font:12.5px/1.65 'Hind',sans-serif;color:oklch(42% 0.018 262)">Primitives (<code style="font:11.5px ui-monospace,Menlo,monospace">--blue-600</code>) are private. Semantic tokens (<code style="font:11.5px ui-monospace,Menlo,monospace">--color-action-primary</code>) are the public API. A component referencing a primitive is a bug.</div></div>
+<div style="background:#fff;border-radius:10px;padding:18px"><div style="font:600 13px 'Hind',sans-serif;margin-bottom:6px">Theming</div><div style="font:12.5px/1.65 'Hind',sans-serif;color:oklch(42% 0.018 262)">Only semantic tokens are re-declared under <code style="font:11.5px ui-monospace,Menlo,monospace">[data-theme="dark"]</code>. Same names, different values — no component branches on theme.</div></div>
+<div style="background:#fff;border-radius:10px;padding:18px"><div style="font:600 13px 'Hind',sans-serif;margin-bottom:6px">Script-aware type</div><div style="font:12.5px/1.65 'Hind',sans-serif;color:oklch(42% 0.018 262)">Type tokens come in Latin and Tamil pairs where the scripts genuinely need to differ. Everything else is shared, so there is one scale, not two.</div></div>
+<div style="background:#fff;border-radius:10px;padding:18px"><div style="font:600 13px 'Hind',sans-serif;margin-bottom:6px">Naming</div><div style="font:12.5px/1.65 'Hind',sans-serif;color:oklch(42% 0.018 262)"><code style="font:11.5px ui-monospace,Menlo,monospace">--{category}-{role}-{variant}-{state}</code>. Categories: color, font, space, radius, elevation, border, motion, size.</div></div>
+</div>
+</div>
+
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262)">
+<div style="font:600 10px/1;letter-spacing:.09em;text-transform:uppercase;color:oklch(50% 0.02 262);margin-bottom:6px">01 · Colour — surfaces and text</div>
+<p style="margin:0 0 24px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:660px">White is the base surface and cards sit on it flush, separated by border rather than shadow. Sunken is the only tinted ground and it is used for insets inside cards, never for the page. Blue is the action colour and appears nowhere as decoration.</p>
+
+<div style="font:600 11px 'Hind',sans-serif;color:oklch(45% 0.018 262);margin-bottom:10px">Light theme</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(212px,1fr));gap:10px;margin-bottom:26px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;overflow:hidden"><div style="height:52px;background:#fff;border-bottom:1px solid oklch(91% 0.008 262)"></div><div style="padding:10px 12px"><div style="font:600 11px ui-monospace,Menlo,monospace">--color-surface-base</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:3px">#FFFFFF · page ground</div></div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;overflow:hidden"><div style="height:52px;background:#fff;box-shadow:inset 0 0 0 1px oklch(91% 0.008 262)"></div><div style="padding:10px 12px"><div style="font:600 11px ui-monospace,Menlo,monospace">--color-surface-raised</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:3px">#FFFFFF + border · cards</div></div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;overflow:hidden"><div style="height:52px;background:oklch(96.5% 0.006 262)"></div><div style="padding:10px 12px"><div style="font:600 11px ui-monospace,Menlo,monospace">--color-surface-sunken</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:3px">oklch(96.5% .006 262)</div></div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;overflow:hidden"><div style="height:52px;background:oklch(94% 0.03 255)"></div><div style="padding:10px 12px"><div style="font:600 11px ui-monospace,Menlo,monospace">--color-surface-selected</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:3px">oklch(94% .03 255)</div></div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;overflow:hidden"><div style="height:52px;background:oklch(42% 0.13 255)"></div><div style="padding:10px 12px"><div style="font:600 11px ui-monospace,Menlo,monospace">--color-surface-brand</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:3px">oklch(42% .13 255) · splash only</div></div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;overflow:hidden"><div style="height:52px;background:oklch(17% 0.015 262)"></div><div style="padding:10px 12px"><div style="font:600 11px ui-monospace,Menlo,monospace">--color-surface-inverse</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:3px">oklch(17% .015 262) · stamp fill</div></div></div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;margin-bottom:26px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px"><div style="font:600 20px 'Hind',sans-serif;color:oklch(20% 0.015 262);margin-bottom:8px">Text primary</div><div style="font:600 11px ui-monospace,Menlo,monospace">--color-text-primary</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:3px">16.1:1 on base · AAA</div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px"><div style="font:600 20px 'Hind',sans-serif;color:oklch(45% 0.018 262);margin-bottom:8px">Text secondary</div><div style="font:600 11px ui-monospace,Menlo,monospace">--color-text-secondary</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:3px">7.4:1 · AAA body</div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px"><div style="font:600 20px 'Hind',sans-serif;color:oklch(58% 0.015 262);margin-bottom:8px">Text tertiary</div><div style="font:600 11px ui-monospace,Menlo,monospace">--color-text-tertiary</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:3px">4.6:1 · ≥16px only, never for prices</div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px"><div style="font:600 20px 'Hind',sans-serif;color:oklch(42% 0.13 255);margin-bottom:8px">Text brand</div><div style="font:600 11px ui-monospace,Menlo,monospace">--color-text-brand</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:3px">8.4:1 · links, ghost buttons</div></div>
+</div>
+
+<div style="font:600 11px 'Hind',sans-serif;color:oklch(45% 0.018 262);margin-bottom:10px">Dark theme — same names, remapped. Surfaces lift with lightness, not with shadow.</div>
+<div style="background:oklch(17% 0.015 262);border-radius:10px;padding:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px">
+<div style="border:1px solid oklch(30% 0.015 262);border-radius:9px;overflow:hidden"><div style="height:44px;background:oklch(17% 0.015 262)"></div><div style="padding:9px 11px"><div style="font:600 10.5px ui-monospace,Menlo,monospace;color:#fff">surface-base</div><div style="font:9.5px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.6);margin-top:3px">oklch(17% .015 262)</div></div></div>
+<div style="border:1px solid oklch(30% 0.015 262);border-radius:9px;overflow:hidden"><div style="height:44px;background:oklch(23% 0.016 262)"></div><div style="padding:9px 11px"><div style="font:600 10.5px ui-monospace,Menlo,monospace;color:#fff">surface-raised</div><div style="font:9.5px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.6);margin-top:3px">oklch(23% .016 262)</div></div></div>
+<div style="border:1px solid oklch(30% 0.015 262);border-radius:9px;overflow:hidden"><div style="height:44px;background:oklch(13% 0.014 262)"></div><div style="padding:9px 11px"><div style="font:600 10.5px ui-monospace,Menlo,monospace;color:#fff">surface-sunken</div><div style="font:9.5px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.6);margin-top:3px">oklch(13% .014 262)</div></div></div>
+<div style="border:1px solid oklch(30% 0.015 262);border-radius:9px;overflow:hidden"><div style="height:44px;background:oklch(30% 0.055 255)"></div><div style="padding:9px 11px"><div style="font:600 10.5px ui-monospace,Menlo,monospace;color:#fff">surface-selected</div><div style="font:9.5px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.6);margin-top:3px">oklch(30% .055 255)</div></div></div>
+<div style="border:1px solid oklch(30% 0.015 262);border-radius:9px;overflow:hidden"><div style="height:44px;background:oklch(62% 0.14 255)"></div><div style="padding:9px 11px"><div style="font:600 10.5px ui-monospace,Menlo,monospace;color:#fff">action-primary</div><div style="font:9.5px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.6);margin-top:3px">oklch(62% .14 255) · ink text</div></div></div>
+<div style="border:1px solid oklch(30% 0.015 262);border-radius:9px;overflow:hidden"><div style="height:44px;background:#fff"></div><div style="padding:9px 11px"><div style="font:600 10.5px ui-monospace,Menlo,monospace;color:#fff">text-primary</div><div style="font:9.5px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.6);margin-top:3px">oklch(97% .004 262)</div></div></div>
+</div>
+<p style="margin:16px 0 0;font:12.5px/1.65 'Hind',sans-serif;color:oklch(42% 0.018 262);max-width:660px">Dark-theme action flips polarity: the blue lightens to <code style="font:11.5px ui-monospace,Menlo,monospace">oklch(62% .14 255)</code> and takes <em>ink</em> text, because a mid-blue with white text on a dark ground fails AA at body size. This is the one place where the light and dark specs are not mirror images, and it is deliberate.</p>
+</div>
+
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262)">
+<div style="font:600 10px/1;letter-spacing:.09em;text-transform:uppercase;color:oklch(50% 0.02 262);margin-bottom:6px">02 · Colour — booking state and verification</div>
+<p style="margin:0 0 22px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:660px">Each state is three tokens — surface, text, and glyph — so a state is never expressed as one colour applied by hand. Blue is absent from the set: it is the brand, and a status that looks like a button is a bug waiting to happen.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:10px;margin-bottom:20px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px;display:flex;flex-direction:column;gap:9px"><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px 'Hind',sans-serif;background:oklch(92% 0.05 152);color:oklch(31% 0.09 152);width:fit-content">● Confirmed</span><div style="font:600 10.5px ui-monospace,Menlo,monospace">--color-state-confirmed-{surface,text,glyph}</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262)">glyph ● filled dot · 7.9:1</div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px;display:flex;flex-direction:column;gap:9px"><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px 'Hind',sans-serif;background:oklch(92% 0.05 292);color:oklch(33% 0.1 292);width:fit-content">▸ En route</span><div style="font:600 10.5px ui-monospace,Menlo,monospace">--color-state-enroute-{surface,text,glyph}</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262)">glyph ▸ triangle · 7.5:1</div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px;display:flex;flex-direction:column;gap:9px"><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px 'Hind',sans-serif;background:oklch(92% 0.06 68);color:oklch(35% 0.1 68);width:fit-content">◐ In progress</span><div style="font:600 10.5px ui-monospace,Menlo,monospace">--color-state-inprogress-{surface,text,glyph}</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262)">glyph ◐ half-fill · 7.2:1</div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px;display:flex;flex-direction:column;gap:9px"><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px 'Hind',sans-serif;background:oklch(92% 0.04 195);color:oklch(31% 0.08 195);width:fit-content">✓ Completed</span><div style="font:600 10.5px ui-monospace,Menlo,monospace">--color-state-completed-{surface,text,glyph}</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262)">glyph ✓ check · 8.1:1</div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px;display:flex;flex-direction:column;gap:9px"><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px 'Hind',sans-serif;background:oklch(92% 0.005 262);color:oklch(41% 0.01 262);width:fit-content">— Cancelled</span><div style="font:600 10.5px ui-monospace,Menlo,monospace">--color-state-cancelled-{surface,text,glyph}</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262)">glyph — dash · 8.5:1</div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px;display:flex;flex-direction:column;gap:9px"><span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px 'Hind',sans-serif;background:oklch(92% 0.05 22);color:oklch(35% 0.11 22);width:fit-content">! Failed</span><div style="font:600 10.5px ui-monospace,Menlo,monospace">--color-state-failed-{surface,text,glyph}</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262)">glyph ! bang · 7.1:1</div></div>
+</div>
+<div style="background:oklch(96.5% 0.006 262);border-radius:10px;padding:18px;display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+<span style="display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:100px;font:600 12px 'Hind',sans-serif;background:#fff;border:1.5px solid oklch(20% 0.015 262);color:oklch(20% 0.015 262)">✓ Verified by a person</span>
+<div style="font:12.5px/1.65 'Hind',sans-serif;color:oklch(40% 0.018 262);max-width:620px;flex:1;min-width:260px"><code style="font:11.5px ui-monospace,Menlo,monospace">--color-verified-border</code> / <code style="font:11.5px ui-monospace,Menlo,monospace">-text</code> / <code style="font:11.5px ui-monospace,Menlo,monospace">-surface</code>. Verified deliberately has no hue of its own — it borrows ink so it reads as a stamp on a document rather than another status. Border weight is <code style="font:11.5px ui-monospace,Menlo,monospace">--border-width-stamp: 1.5px</code>, the only place that weight is used.</div>
+</div>
+</div>
+
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262)">
+<div style="font:600 10px/1;letter-spacing:.09em;text-transform:uppercase;color:oklch(50% 0.02 262);margin-bottom:6px">03 · Type scale</div>
+<p style="margin:0 0 8px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:660px">Latin runs Hind, Tamil runs Hind Madurai — same superfamily, so weights and colour match without tuning. Three rules where the scripts diverge, applied throughout:</p>
+<ul style="margin:0 0 24px;padding-left:18px;max-width:660px">
+<li style="font:13px/1.7 'Hind',sans-serif;color:oklch(38% 0.018 262)">Tamil line-height is <strong>+0.15</strong> over Latin at every step — the script's ascenders and vowel signs collide at Latin leading.</li>
+<li style="font:13px/1.7 'Hind',sans-serif;color:oklch(38% 0.018 262)">Tamil letter-spacing is always <strong>0</strong>. Never track Tamil, including in uppercase-style labels; the shaping breaks.</li>
+<li style="font:13px/1.7 'Hind',sans-serif;color:oklch(38% 0.018 262)">Tamil display sizes step down <strong>−2px</strong> from Latin so the two scripts have matching optical weight in a bilingual lockup.</li>
+</ul>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;overflow:hidden">
+<div style="display:grid;grid-template-columns:150px 1fr 1fr;gap:0;background:oklch(96.5% 0.006 262);padding:11px 16px;font:600 10px 'Hind',sans-serif;letter-spacing:.07em;text-transform:uppercase;color:oklch(48% 0.02 262)"><div>Token</div><div>Latin</div><div>Tamil</div></div>
+<div style="display:grid;grid-template-columns:150px 1fr 1fr;padding:16px;border-top:1px solid oklch(93% 0.008 262);align-items:center;gap:12px"><div><div style="font:600 11px ui-monospace,Menlo,monospace">display</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(55% 0.015 262);margin-top:3px">32/700/1.15/-0.01em</div></div><div style="font:700 32px/1.15 'Hind',sans-serif;letter-spacing:-.01em">Book a visit</div><div style="font:700 30px/1.3 'Hind Madurai',sans-serif">வருகை பதிவு</div></div>
+<div style="display:grid;grid-template-columns:150px 1fr 1fr;padding:16px;border-top:1px solid oklch(93% 0.008 262);align-items:center;gap:12px"><div><div style="font:600 11px ui-monospace,Menlo,monospace">title</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(55% 0.015 262);margin-top:3px">24/700/1.25/-0.005em</div></div><div style="font:700 24px/1.25 'Hind',sans-serif">Home Nursing Visit</div><div style="font:700 22px/1.4 'Hind Madurai',sans-serif">வீட்டு செவிலியர் வருகை</div></div>
+<div style="display:grid;grid-template-columns:150px 1fr 1fr;padding:16px;border-top:1px solid oklch(93% 0.008 262);align-items:center;gap:12px"><div><div style="font:600 11px ui-monospace,Menlo,monospace">heading</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(55% 0.015 262);margin-top:3px">18/600/1.35/0</div></div><div style="font:600 18px/1.35 'Hind',sans-serif">Choose a time slot</div><div style="font:600 17px/1.5 'Hind Madurai',sans-serif">நேரத்தைத் தேர்ந்தெடுக்கவும்</div></div>
+<div style="display:grid;grid-template-columns:150px 1fr 1fr;padding:16px;border-top:1px solid oklch(93% 0.008 262);align-items:center;gap:12px"><div><div style="font:600 11px ui-monospace,Menlo,monospace">body-lg</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(55% 0.015 262);margin-top:3px">17/400/1.55/0</div></div><div style="font:400 17px/1.55 'Hind',sans-serif">A nurse will arrive at your address within the slot you choose.</div><div style="font:400 17px/1.7 'Hind Madurai',sans-serif">நீங்கள் தேர்ந்தெடுத்த நேரத்தில் செவிலியர் வருவார்.</div></div>
+<div style="display:grid;grid-template-columns:150px 1fr 1fr;padding:16px;border-top:1px solid oklch(93% 0.008 262);align-items:center;gap:12px"><div><div style="font:600 11px ui-monospace,Menlo,monospace">body</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(55% 0.015 262);margin-top:3px">15/400/1.55/0 · base</div></div><div style="font:400 15px/1.55 'Hind',sans-serif">Everything below this size must justify itself.</div><div style="font:400 15px/1.7 'Hind Madurai',sans-serif">இதற்குக் கீழ் உள்ள அளவு தேவைப்பட்டால் மட்டுமே.</div></div>
+<div style="display:grid;grid-template-columns:150px 1fr 1fr;padding:16px;border-top:1px solid oklch(93% 0.008 262);align-items:center;gap:12px"><div><div style="font:600 11px ui-monospace,Menlo,monospace">label</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(55% 0.015 262);margin-top:3px">13/600/1.4/0.01em · Tamil 0</div></div><div style="font:600 13px/1.4 'Hind',sans-serif;letter-spacing:.01em">Platform fee</div><div style="font:600 13px/1.55 'Hind Madurai',sans-serif">சேவைக் கட்டணம்</div></div>
+<div style="display:grid;grid-template-columns:150px 1fr 1fr;padding:16px;border-top:1px solid oklch(93% 0.008 262);align-items:center;gap:12px"><div><div style="font:600 11px ui-monospace,Menlo,monospace">caption</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(55% 0.015 262);margin-top:3px">12/500/1.45/0 · floor</div></div><div style="font:500 12px/1.45 'Hind',sans-serif;color:oklch(45% 0.018 262)">Cancellation is free until 2 hours before.</div><div style="font:500 12px/1.6 'Hind Madurai',sans-serif;color:oklch(45% 0.018 262)">2 மணி நேரத்திற்கு முன் ரத்து இலவசம்.</div></div>
+<div style="display:grid;grid-template-columns:150px 1fr 1fr;padding:16px;border-top:1px solid oklch(93% 0.008 262);align-items:center;gap:12px"><div><div style="font:600 11px ui-monospace,Menlo,monospace">numeric</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(55% 0.015 262);margin-top:3px">15/600 · tabular-nums</div></div><div style="font:600 15px/1.4 'Hind',sans-serif;font-variant-numeric:tabular-nums">₹650 · ₹40 · ₹690</div><div style="font:500 12px/1.6 'Hind',sans-serif;color:oklch(45% 0.018 262)">Prices, times and durations are always Latin numerals with tabular figures, in both languages, so columns align.</div></div>
+</div>
+<p style="margin:16px 0 0;font:12.5px/1.65 'Hind',sans-serif;color:oklch(42% 0.018 262);max-width:660px"><strong>Body is 15px, not 14.</strong> The audience skews older and low-confidence with phones; the scale starts one step up from the usual and the caption floor is 12px. Layouts must survive OS font scaling to 200% without truncation — which is why no card in this system has a fixed height.</p>
+</div>
+
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262)">
+<div style="font:600 10px/1;letter-spacing:.09em;text-transform:uppercase;color:oklch(50% 0.02 262);margin-bottom:6px">04 · Space, radius, elevation, border</div>
+<p style="margin:0 0 22px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:660px">4px base grid. Elevation is used sparingly — this is a document-feeling system, so separation comes from border first and shadow only when something genuinely floats above the page.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
+<div>
+<div style="font:600 11px 'Hind',sans-serif;color:oklch(45% 0.018 262);margin-bottom:10px">Spacing · --space-*</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;align-items:center;gap:12px"><span style="font:10.5px ui-monospace,Menlo,monospace;width:52px;color:oklch(50% 0.015 262)">2xs 4</span><div style="height:14px;width:4px;background:oklch(42% 0.13 255);border-radius:2px"></div></div>
+<div style="display:flex;align-items:center;gap:12px"><span style="font:10.5px ui-monospace,Menlo,monospace;width:52px;color:oklch(50% 0.015 262)">xs 8</span><div style="height:14px;width:8px;background:oklch(42% 0.13 255);border-radius:2px"></div></div>
+<div style="display:flex;align-items:center;gap:12px"><span style="font:10.5px ui-monospace,Menlo,monospace;width:52px;color:oklch(50% 0.015 262)">sm 12</span><div style="height:14px;width:12px;background:oklch(42% 0.13 255);border-radius:2px"></div></div>
+<div style="display:flex;align-items:center;gap:12px"><span style="font:10.5px ui-monospace,Menlo,monospace;width:52px;color:oklch(50% 0.015 262)">md 16</span><div style="height:14px;width:16px;background:oklch(42% 0.13 255);border-radius:2px"></div></div>
+<div style="display:flex;align-items:center;gap:12px"><span style="font:10.5px ui-monospace,Menlo,monospace;width:52px;color:oklch(50% 0.015 262)">lg 24</span><div style="height:14px;width:24px;background:oklch(42% 0.13 255);border-radius:2px"></div></div>
+<div style="display:flex;align-items:center;gap:12px"><span style="font:10.5px ui-monospace,Menlo,monospace;width:52px;color:oklch(50% 0.015 262)">xl 32</span><div style="height:14px;width:32px;background:oklch(42% 0.13 255);border-radius:2px"></div></div>
+<div style="display:flex;align-items:center;gap:12px"><span style="font:10.5px ui-monospace,Menlo,monospace;width:52px;color:oklch(50% 0.015 262)">2xl 48</span><div style="height:14px;width:48px;background:oklch(42% 0.13 255);border-radius:2px"></div></div>
+<div style="display:flex;align-items:center;gap:12px"><span style="font:10.5px ui-monospace,Menlo,monospace;width:52px;color:oklch(50% 0.015 262)">3xl 64</span><div style="height:14px;width:64px;background:oklch(42% 0.13 255);border-radius:2px"></div></div>
+</div>
+<div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:12px">Card padding is <code style="font:11px ui-monospace,Menlo,monospace">md</code> on mobile, <code style="font:11px ui-monospace,Menlo,monospace">lg</code> from tablet. Gap between stacked cards is <code style="font:11px ui-monospace,Menlo,monospace">sm</code>.</div>
+</div>
+<div>
+<div style="font:600 11px 'Hind',sans-serif;color:oklch(45% 0.018 262);margin-bottom:10px">Radius · --radius-*</div>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+<div style="width:64px"><div style="height:44px;background:oklch(94% 0.03 255);border-radius:4px"></div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(50% 0.015 262);margin-top:5px">xs 4<br>inputs inline</div></div>
+<div style="width:64px"><div style="height:44px;background:oklch(94% 0.03 255);border-radius:8px"></div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(50% 0.015 262);margin-top:5px">sm 8<br>buttons</div></div>
+<div style="width:64px"><div style="height:44px;background:oklch(94% 0.03 255);border-radius:12px"></div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(50% 0.015 262);margin-top:5px">md 12<br>cards</div></div>
+<div style="width:64px"><div style="height:44px;background:oklch(94% 0.03 255);border-radius:16px"></div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(50% 0.015 262);margin-top:5px">lg 16<br>sheets</div></div>
+<div style="width:64px"><div style="height:44px;background:oklch(94% 0.03 255);border-radius:999px"></div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(50% 0.015 262);margin-top:5px">full<br>pills only</div></div>
+</div>
+<div style="font:600 11px 'Hind',sans-serif;color:oklch(45% 0.018 262);margin:18px 0 10px">Border · --border-*</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:8px;padding:9px 12px;font:11px ui-monospace,Menlo,monospace;color:oklch(45% 0.018 262)">width-hairline 1px · subtle · dividers, card edges</div>
+<div style="border:1px solid oklch(85% 0.01 262);border-radius:8px;padding:9px 12px;font:11px ui-monospace,Menlo,monospace;color:oklch(45% 0.018 262)">width-hairline 1px · default · inputs at rest</div>
+<div style="border:1.5px solid oklch(20% 0.015 262);border-radius:8px;padding:9px 12px;font:11px ui-monospace,Menlo,monospace;color:oklch(30% 0.018 262)">width-stamp 1.5px · strong · verified only</div>
+<div style="border:2px solid oklch(42% 0.13 255);border-radius:8px;padding:9px 12px;font:11px ui-monospace,Menlo,monospace;color:oklch(35% 0.09 255)">width-emphasis 2px · brand · secondary button, selected</div>
+</div>
+</div>
+<div>
+<div style="font:600 11px 'Hind',sans-serif;color:oklch(45% 0.018 262);margin-bottom:10px">Elevation · --elevation-*</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="background:#fff;border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:13px"><div style="font:600 11px ui-monospace,Menlo,monospace">0 · flat</div><div style="font:11px/1.6 'Hind',sans-serif;color:oklch(50% 0.018 262)">Border only. The default for cards.</div></div>
+<div style="background:#fff;border-radius:10px;padding:13px;box-shadow:0 1px 2px rgba(23,32,54,.06),0 1px 3px rgba(23,32,54,.05)"><div style="font:600 11px ui-monospace,Menlo,monospace">1 · raised</div><div style="font:11px/1.6 'Hind',sans-serif;color:oklch(50% 0.018 262)">Sticky headers, the booking summary bar.</div></div>
+<div style="background:#fff;border-radius:10px;padding:13px;box-shadow:0 4px 10px rgba(23,32,54,.08),0 1px 3px rgba(23,32,54,.05)"><div style="font:600 11px ui-monospace,Menlo,monospace">2 · floating</div><div style="font:11px/1.6 'Hind',sans-serif;color:oklch(50% 0.018 262)">Dropdowns, date picker, toasts.</div></div>
+<div style="background:#fff;border-radius:10px;padding:13px;box-shadow:0 12px 28px rgba(23,32,54,.14),0 2px 6px rgba(23,32,54,.07)"><div style="font:600 11px ui-monospace,Menlo,monospace">3 · overlay</div><div style="font:11px/1.6 'Hind',sans-serif;color:oklch(50% 0.018 262)">Modals and bottom sheets. Nothing above this.</div></div>
+</div>
+<div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(50% 0.018 262);margin-top:12px">Shadow colour is a blue-tinted ink, never pure black — black shadows read muddy against a cool white.</div>
+</div>
+</div>
+</div>
+
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262)">
+<div style="font:600 10px/1;letter-spacing:.09em;text-transform:uppercase;color:oklch(50% 0.02 262);margin-bottom:6px">05 · Iconography</div>
+<p style="margin:0 0 6px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:660px">24px grid, 2px live-area inset, <strong>1.75px stroke</strong>, round caps and round joins — the same drawing rules as the pulse mark, so the icon set and the logo look drawn by one hand. Outline only; no filled icons, no two-tone, no colour inside an icon. Icons inherit <code style="font:11.5px ui-monospace,Menlo,monospace">currentColor</code> without exception.</p>
+<p style="margin:0 0 24px;font:12.5px/1.65 'Hind',sans-serif;color:oklch(48% 0.018 262);max-width:660px">Below 20px the stroke steps to 2px and interior detail is dropped rather than scaled. An icon never appears without a text label in a primary action — this audience does not read icons alone.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(146px,1fr));gap:10px">
+
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px;display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="oklch(20% 0.015 262)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10.5 12 3.5l8.5 7"></path><path d="M5.5 9.5v10h13v-10"></path><path d="M8.5 14.5h2l1-2 1.6 4 1.1-2h1.8"></path></svg>
+<div><div style="font:600 12px 'Hind',sans-serif">Home nursing</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:2px">icon-service-nursing</div></div>
+</div>
+
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px;display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="oklch(20% 0.015 262)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"></path><path d="M10 3v11.5a2.8 2.8 0 0 0 4 2.5 2.8 2.8 0 0 0 0-2.5V3"></path><path d="M10 13h4"></path><path d="M10.2 17.6c1.2.7 2.4.7 3.6 0"></path></svg>
+<div><div style="font:600 12px 'Hind',sans-serif">Lab collection</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:2px">icon-service-lab</div></div>
+</div>
+
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px;display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="oklch(20% 0.015 262)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.2"></circle><path d="M12 9v5"></path><path d="M8 11.5 12 9.5l4 2"></path><path d="M12 14l-2.5 6"></path><path d="M12 14l3 3 .5 3"></path></svg>
+<div><div style="font:600 12px 'Hind',sans-serif">Physiotherapy</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:2px">icon-service-physio</div></div>
+</div>
+
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px;display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="oklch(20% 0.015 262)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2a8.8 8.8 0 1 1-6.6 3"></path><path d="M8 12.2l2.6 2.6L16.4 9"></path></svg>
+<div><div style="font:600 12px 'Hind',sans-serif">Verified</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:2px">icon-verified</div></div>
+</div>
+
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px;display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="oklch(20% 0.015 262)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7v5.2l3.2 2"></path></svg>
+<div><div style="font:600 12px 'Hind',sans-serif">Slot / time</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:2px">icon-slot</div></div>
+</div>
+
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px;display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="oklch(20% 0.015 262)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15 12 21 12 21z"></path><circle cx="12" cy="10.3" r="2.4"></circle></svg>
+<div><div style="font:600 12px 'Hind',sans-serif">Location / zone</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:2px">icon-zone</div></div>
+</div>
+
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px;display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="oklch(20% 0.015 262)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M3.5 12h17"></path><path d="M12 3.5c2.3 2.6 3.4 5.4 3.4 8.5S14.3 18.4 12 20.5c-2.3-2.1-3.4-5.4-3.4-8.5S9.7 6.1 12 3.5z"></path></svg>
+<div><div style="font:600 12px 'Hind',sans-serif">Language</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:2px">icon-language</div></div>
+</div>
+
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px;display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="oklch(20% 0.015 262)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 3.5h13v17l-2.2-1.6-2.2 1.6-2.1-1.6-2.2 1.6-2.1-1.6-2.2 1.6z"></path><path d="M9 8.5h6"></path><path d="M9 12.2h6"></path></svg>
+<div><div style="font:600 12px 'Hind',sans-serif">Price breakdown</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:2px">icon-price</div></div>
+</div>
+
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px;display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="oklch(20% 0.015 262)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18.5 11.5 12 18a4.2 4.2 0 0 1-6-6l6.6-6.6a2.9 2.9 0 0 1 4.1 4.1l-6.6 6.6a1.6 1.6 0 0 1-2.2-2.2l6.1-6.1"></path></svg>
+<div><div style="font:600 12px 'Hind',sans-serif">Attachment</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:2px">icon-attachment</div></div>
+</div>
+
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px;display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="oklch(20% 0.015 262)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 14v-2a7.5 7.5 0 0 1 15 0v2"></path><path d="M4.5 13.5h2.2v5H5.6a1.1 1.1 0 0 1-1.1-1.1z"></path><path d="M19.5 13.5h-2.2v5h1.1a1.1 1.1 0 0 0 1.1-1.1z"></path><path d="M17.3 18.5c0 1.4-1.6 2.2-3.3 2.2"></path></svg>
+<div><div style="font:600 12px 'Hind',sans-serif">Support</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:2px">icon-support</div></div>
+</div>
+
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:14px;display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="oklch(20% 0.015 262)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="8" r="3.3"></circle><path d="M4.5 19.5a6 6 0 0 1 10.4-4"></path><circle cx="17.4" cy="17.4" r="3.1"></circle></svg>
+<div><div style="font:600 12px 'Hind',sans-serif">Provider status</div><div style="font:10px ui-monospace,Menlo,monospace;color:oklch(52% 0.015 262);margin-top:2px">icon-provider-status</div></div>
+</div>
+
+<div style="border:1px dashed oklch(85% 0.01 262);border-radius:9px;padding:14px;display:flex;flex-direction:column;gap:8px;justify-content:center">
+<div style="font:600 12px 'Hind',sans-serif;color:oklch(45% 0.018 262)">Grid rule</div>
+<div style="font:11px/1.55 'Hind',sans-serif;color:oklch(50% 0.018 262)">24 box · 20 live area · terminals land on whole or half pixels · no shape smaller than 2px.</div>
+</div>
+</div>
+<div style="margin-top:16px;background:oklch(96.5% 0.006 262);border-radius:10px;padding:16px;font:12.5px/1.7 'Hind',sans-serif;color:oklch(40% 0.018 262)">Provider status is the one icon that carries a colour: the trailing circle takes <code style="font:11.5px ui-monospace,Menlo,monospace">--color-state-*-glyph</code> and is <em>always</em> accompanied by the state's text label. The circle alone never communicates status.</div>
+</div>
+
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262)">
+<div style="font:600 10px/1;letter-spacing:.09em;text-transform:uppercase;color:oklch(50% 0.02 262);margin-bottom:6px">06 · Motion</div>
+<p style="margin:0 0 22px;font:13.5px/1.65 'Hind',sans-serif;color:oklch(35% 0.018 262);max-width:660px"><strong>Motion in this product is confirmation, never celebration.</strong> People book here because someone is unwell. A bouncing success animation on a confirmed hospital-grade visit is tonally wrong, and it delays the information. Nothing overshoots, nothing springs, nothing scales above 1.0, and no confetti, ever — including on first booking, referral, and payment success.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:20px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:15px"><div style="font:600 11px ui-monospace,Menlo,monospace;margin-bottom:6px">--motion-duration-instant · 0ms</div><div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(48% 0.018 262)">Selection, checkbox, tab switch. State the user caused directly is immediate.</div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:15px"><div style="font:600 11px ui-monospace,Menlo,monospace;margin-bottom:6px">--motion-duration-fast · 120ms</div><div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(48% 0.018 262)">Hover, focus ring, button press. Colour and opacity only.</div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:15px"><div style="font:600 11px ui-monospace,Menlo,monospace;margin-bottom:6px">--motion-duration-base · 180ms</div><div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(48% 0.018 262)">Accordion, inline expand, toast in. The default.</div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:15px"><div style="font:600 11px ui-monospace,Menlo,monospace;margin-bottom:6px">--motion-duration-slow · 240ms</div><div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(48% 0.018 262)">Bottom sheet, modal, screen transition. The ceiling — nothing is slower.</div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:20px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:15px"><div style="font:600 11px ui-monospace,Menlo,monospace;margin-bottom:6px">--motion-ease-standard</div><div style="font:10.5px ui-monospace,Menlo,monospace;color:oklch(50% 0.015 262);margin-bottom:6px">cubic-bezier(.2, 0, 0, 1)</div><div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(48% 0.018 262)">Everything that moves on screen. Decelerating, no overshoot.</div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:15px"><div style="font:600 11px ui-monospace,Menlo,monospace;margin-bottom:6px">--motion-ease-exit</div><div style="font:10.5px ui-monospace,Menlo,monospace;color:oklch(50% 0.015 262);margin-bottom:6px">cubic-bezier(.4, 0, 1, 1)</div><div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(48% 0.018 262)">Things leaving. Accelerate out; don't linger.</div></div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:9px;padding:15px"><div style="font:600 11px ui-monospace,Menlo,monospace;margin-bottom:6px">--motion-ease-linear</div><div style="font:10.5px ui-monospace,Menlo,monospace;color:oklch(50% 0.015 262);margin-bottom:6px">linear</div><div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(48% 0.018 262)">Progress and the en-route pulse only. Never for layout.</div></div>
+<div style="border:2px solid oklch(42% 0.13 255);border-radius:9px;padding:15px"><div style="font:600 11px 'Hind',sans-serif;margin-bottom:6px">No spring tokens exist</div><div style="font:11.5px/1.6 'Hind',sans-serif;color:oklch(40% 0.018 262)">There is no bounce, elastic, or back easing in this system — omitted so it can't be reached for.</div></div>
+</div>
+<div style="background:oklch(96.5% 0.006 262);border-radius:10px;padding:18px">
+<div style="font:600 12.5px 'Hind',sans-serif;margin-bottom:8px">Reduced motion — <code style="font:11.5px ui-monospace,Menlo,monospace">prefers-reduced-motion: reduce</code></div>
+<ul style="margin:0;padding-left:18px">
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(40% 0.018 262)">All durations collapse to 0ms via the token, not via a blanket <code style="font:11px ui-monospace,Menlo,monospace">* { animation: none }</code> — components keep working, they just arrive instantly.</li>
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(40% 0.018 262)">Position and scale transitions become cross-fades at 0ms; sheets appear in place rather than sliding.</li>
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(40% 0.018 262)">The en-route pulse indicator stops animating and becomes a static filled glyph — the information is in the glyph and label, never in the animation.</li>
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(40% 0.018 262)">Loading skeletons stop shimmering and render as flat surfaces; spinners become a static determinate bar or a text status.</li>
+</ul>
+</div>
+</div>
+
+<div style="padding:44px 56px;border-bottom:1px solid oklch(91% 0.008 262)">
+<div style="font:600 10px/1;letter-spacing:.09em;text-transform:uppercase;color:oklch(50% 0.02 262);margin-bottom:6px">07 · Accessibility</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:24px">
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:18px">
+<div style="font:600 13px 'Hind',sans-serif;margin-bottom:8px">Contrast</div>
+<ul style="margin:0;padding-left:16px">
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(40% 0.018 262)">Body text ≥ 7:1 (AAA), not 4.5. Daylight on a cheap LCD eats the difference.</li>
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(40% 0.018 262)">Any text below 15px must clear 7:1 — no exceptions for captions.</li>
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(40% 0.018 262)">Non-text (icons, borders, focus ring) ≥ 3:1 against its neighbour.</li>
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(40% 0.018 262)">Disabled controls are exempt from contrast but must never be the only affordance.</li>
+</ul>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:18px">
+<div style="font:600 13px 'Hind',sans-serif;margin-bottom:8px">Targets</div>
+<ul style="margin:0;padding-left:16px">
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(40% 0.018 262)"><code style="font:11px ui-monospace,Menlo,monospace">--size-target-min: 48px</code>. Not 44 — the older end of the audience is the design point.</li>
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(40% 0.018 262)">Minimum 8px between adjacent targets.</li>
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(40% 0.018 262)">A visually smaller control keeps a 48px hit area via padding or a pseudo-element.</li>
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(40% 0.018 262)">Destructive actions (cancel a visit) are never adjacent to a confirm.</li>
+</ul>
+</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;padding:18px">
+<div style="font:600 13px 'Hind',sans-serif;margin-bottom:8px">Focus</div>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px">
+<div style="background:oklch(42% 0.13 255);color:#fff;border-radius:8px;padding:11px 16px;font:600 13.5px 'Hind',sans-serif;outline:2px solid oklch(52% 0.16 255);outline-offset:2px">Focused</div>
+<div style="background:#fff;border:1px solid oklch(85% 0.01 262);border-radius:8px;padding:11px 16px;font:600 13.5px 'Hind',sans-serif;outline:2px solid oklch(52% 0.16 255);outline-offset:2px">Focused</div>
+</div>
+<ul style="margin:0;padding-left:16px">
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(40% 0.018 262)">2px ring, 2px offset, <code style="font:11px ui-monospace,Menlo,monospace">--color-border-focus</code>. Same ring on every control.</li>
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(40% 0.018 262)">Never removed — <code style="font:11px ui-monospace,Menlo,monospace">:focus-visible</code> only, so it doesn't fire on touch.</li>
+<li style="font:12.5px/1.7 'Hind',sans-serif;color:oklch(40% 0.018 262)">Ring sits outside the element so it survives on coloured surfaces.</li>
+</ul>
+</div>
+</div>
+<div style="font:600 12.5px 'Hind',sans-serif;margin-bottom:10px">Every booking state, signalled three ways — colour is the third, and removable</div>
+<div style="border:1px solid oklch(91% 0.008 262);border-radius:10px;overflow:hidden">
+<div style="display:grid;grid-template-columns:1.1fr .7fr 1.4fr 1.6fr;background:oklch(96.5% 0.006 262);padding:11px 16px;font:600 10px 'Hind',sans-serif;letter-spacing:.07em;text-transform:uppercase;color:oklch(48% 0.02 262)"><div>State</div><div>Glyph</div><div>Text label</div><div>Structural cue</div></div>
+<div style="display:grid;grid-template-columns:1.1fr .7fr 1.4fr 1.6fr;padding:12px 16px;border-top:1px solid oklch(93% 0.008 262);font:12.5px/1.5 'Hind',sans-serif;align-items:center"><div style="font-weight:600">Confirmed</div><div style="font-size:15px">●</div><div>"Confirmed"</div><div style="color:oklch(45% 0.018 262)">Card at rest, no progress rail</div></div>
+<div style="display:grid;grid-template-columns:1.1fr .7fr 1.4fr 1.6fr;padding:12px 16px;border-top:1px solid oklch(93% 0.008 262);font:12.5px/1.5 'Hind',sans-serif;align-items:center"><div style="font-weight:600">En route</div><div style="font-size:15px">▸</div><div>"On the way · ETA 10:40"</div><div style="color:oklch(45% 0.018 262)">Live ETA line appears; card pinned to top</div></div>
+<div style="display:grid;grid-template-columns:1.1fr .7fr 1.4fr 1.6fr;padding:12px 16px;border-top:1px solid oklch(93% 0.008 262);font:12.5px/1.5 'Hind',sans-serif;align-items:center"><div style="font-weight:600">In progress</div><div style="font-size:15px">◐</div><div>"Visit in progress"</div><div style="color:oklch(45% 0.018 262)">Progress rail half-filled; actions reduce to Support</div></div>
+<div style="display:grid;grid-template-columns:1.1fr .7fr 1.4fr 1.6fr;padding:12px 16px;border-top:1px solid oklch(93% 0.008 262);font:12.5px/1.5 'Hind',sans-serif;align-items:center"><div style="font-weight:600">Completed</div><div style="font-size:15px">✓</div><div>"Completed · 12 Aug"</div><div style="color:oklch(45% 0.018 262)">Rail full; card moves to History section</div></div>
+<div style="display:grid;grid-template-columns:1.1fr .7fr 1.4fr 1.6fr;padding:12px 16px;border-top:1px solid oklch(93% 0.008 262);font:12.5px/1.5 'Hind',sans-serif;align-items:center"><div style="font-weight:600">Cancelled</div><div style="font-size:15px">—</div><div>"Cancelled · refund issued"</div><div style="color:oklch(45% 0.018 262)">Title struck through; card in History, no actions</div></div>
+<div style="display:grid;grid-template-columns:1.1fr .7fr 1.4fr 1.6fr;padding:12px 16px;border-top:1px solid oklch(93% 0.008 262);font:12.5px/1.5 'Hind',sans-serif;align-items:center"><div style="font-weight:600">Failed</div><div style="font-size:15px">!</div><div>"Couldn't assign a nurse"</div><div style="color:oklch(45% 0.018 262)">2px border-emphasis on card + a required next action</div></div>
+</div>
+<div style="margin-top:14px;background:oklch(96.5% 0.006 262);border-radius:10px;padding:16px;font:12.5px/1.7 'Hind',sans-serif;color:oklch(40% 0.018 262)">Test: render the booking list in greyscale. If any state is still unambiguous — and it must be — the spec holds. Screen readers get the same information via <code style="font:11.5px ui-monospace,Menlo,monospace">aria-label</code> on the pill carrying the full text label, and live regions announce en-route and failed transitions only.</div>
+</div>
+
+<div style="padding:44px 56px;background:oklch(17% 0.015 262)">
+<div style="font:600 10px/1;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:6px">08 · CSS custom properties</div>
+<p style="margin:0 0 20px;font:13px/1.65 'Hind',sans-serif;color:rgba(255,255,255,.7);max-width:660px">Drop-in. Primitives are separated so a rebrand touches one block; nothing in the product should reference a primitive directly.</p>
+<pre style="margin:0;padding:22px;background:oklch(13% 0.014 262);border-radius:10px;overflow-x:auto;font:11.5px/1.75 ui-monospace,Menlo,Consolas,monospace;color:oklch(88% 0.01 262);white-space:pre">/* ============================================================
+   PULSE · FOUNDATION TOKENS v1
+   Layer 1 primitives are private. Consume layer 2 only.
+   ============================================================ */
+
+:root {
+  /* --- L1 PRIMITIVES (private — do not reference in components) --- */
+  --blue-50:  oklch(96% 0.018 255);
+  --blue-100: oklch(94% 0.030 255);
+  --blue-400: oklch(62% 0.140 255);
+  --blue-600: oklch(42% 0.130 255);
+  --blue-700: oklch(36% 0.120 255);
+  --blue-800: oklch(30% 0.100 255);
+
+  --ink-0:    #ffffff;
+  --ink-50:   oklch(96.5% 0.006 262);
+  --ink-100:  oklch(93%   0.007 262);
+  --ink-200:  oklch(91%   0.008 262);
+  --ink-300:  oklch(85%   0.010 262);
+  --ink-400:  oklch(72%   0.012 262);
+  --ink-500:  oklch(58%   0.015 262);
+  --ink-600:  oklch(45%   0.018 262);
+  --ink-800:  oklch(31%   0.015 262);
+  --ink-900:  oklch(20%   0.015 262);
+  --ink-950:  oklch(17%   0.015 262);
+  --ink-1000: oklch(13%   0.014 262);
+
+  --green-100: oklch(92% 0.05 152);  --green-700: oklch(31% 0.09 152);
+  --violet-100:oklch(92% 0.05 292);  --violet-700:oklch(33% 0.10 292);
+  --amber-100: oklch(92% 0.06 68);   --amber-700: oklch(35% 0.10 68);
+  --teal-100:  oklch(92% 0.04 195);  --teal-700:  oklch(31% 0.08 195);
+  --red-100:   oklch(92% 0.05 22);   --red-700:   oklch(35% 0.11 22);
+
+  /* --- L2 SEMANTIC · COLOUR (light) --- */
+  --color-surface-base:      var(--ink-0);
+  --color-surface-raised:    var(--ink-0);
+  --color-surface-sunken:    var(--ink-50);
+  --color-surface-selected:  var(--blue-100);
+  --color-surface-brand:     var(--blue-600);
+  --color-surface-inverse:   var(--ink-950);
+  --color-surface-overlay-scrim: oklch(20% 0.015 262 / 0.45);
+
+  --color-text-primary:   var(--ink-900);
+  --color-text-secondary: var(--ink-600);
+  --color-text-tertiary:  var(--ink-500);
+  --color-text-brand:     var(--blue-600);
+  --color-text-inverse:   var(--ink-0);
+  --color-text-on-brand:  var(--ink-0);
+  --color-text-disabled:  var(--ink-400);
+
+  --color-border-subtle:  var(--ink-200);
+  --color-border-default: var(--ink-300);
+  --color-border-strong:  var(--ink-900);
+  --color-border-brand:   var(--blue-600);
+  --color-border-focus:   oklch(52% 0.16 255);
+
+  --color-action-primary:          var(--blue-600);
+  --color-action-primary-hover:    var(--blue-700);
+  --color-action-primary-active:   var(--blue-800);
+  --color-action-primary-text:     var(--ink-0);
+  --color-action-secondary:        transparent;
+  --color-action-secondary-border: var(--blue-600);
+  --color-action-secondary-text:   var(--blue-600);
+  --color-action-disabled:         var(--ink-200);
+  --color-action-disabled-text:    var(--ink-500);
+  --color-action-destructive:      var(--red-700);
+
+  /* Booking state — surface / text / glyph, always as a trio */
+  --color-state-confirmed-surface:  var(--green-100);
+  --color-state-confirmed-text:     var(--green-700);
+  --color-state-confirmed-glyph:    var(--green-700);
+  --color-state-enroute-surface:    var(--violet-100);
+  --color-state-enroute-text:       var(--violet-700);
+  --color-state-enroute-glyph:      var(--violet-700);
+  --color-state-inprogress-surface: var(--amber-100);
+  --color-state-inprogress-text:    var(--amber-700);
+  --color-state-inprogress-glyph:   var(--amber-700);
+  --color-state-completed-surface:  var(--teal-100);
+  --color-state-completed-text:     var(--teal-700);
+  --color-state-completed-glyph:    var(--teal-700);
+  --color-state-cancelled-surface:  var(--ink-100);
+  --color-state-cancelled-text:     var(--ink-600);
+  --color-state-cancelled-glyph:    var(--ink-600);
+  --color-state-failed-surface:     var(--red-100);
+  --color-state-failed-text:        var(--red-700);
+  --color-state-failed-glyph:       var(--red-700);
+
+  /* Verification stamp — borrows ink, never a hue */
+  --color-verified-surface: var(--ink-0);
+  --color-verified-border:  var(--ink-900);
+  --color-verified-text:    var(--ink-900);
+
+  /* --- L2 SEMANTIC · TYPE --- */
+  --font-family-latin: "Hind", system-ui, sans-serif;
+  --font-family-tamil: "Hind Madurai", "Noto Sans Tamil", sans-serif;
+  --font-family-numeric: "Hind", system-ui, sans-serif;
+
+  --font-weight-regular: 400;
+  --font-weight-medium:  500;
+  --font-weight-semibold:600;
+  --font-weight-bold:    700;
+
+  --font-size-display:  32px;  --font-size-display-ta:  30px;
+  --font-size-title:    24px;  --font-size-title-ta:    22px;
+  --font-size-heading:  18px;  --font-size-heading-ta:  17px;
+  --font-size-body-lg:  17px;  --font-size-body-lg-ta:  17px;
+  --font-size-body:     15px;  --font-size-body-ta:     15px;
+  --font-size-label:    13px;  --font-size-label-ta:    13px;
+  --font-size-caption:  12px;  --font-size-caption-ta:  12px;
+
+  --line-height-display: 1.15; --line-height-display-ta: 1.30;
+  --line-height-title:   1.25; --line-height-title-ta:   1.40;
+  --line-height-heading: 1.35; --line-height-heading-ta: 1.50;
+  --line-height-body:    1.55; --line-height-body-ta:    1.70;
+  --line-height-label:   1.40; --line-height-label-ta:   1.55;
+  --line-height-caption: 1.45; --line-height-caption-ta: 1.60;
+
+  --letter-spacing-display: -0.01em;
+  --letter-spacing-title:   -0.005em;
+  --letter-spacing-body:     0;
+  --letter-spacing-label:    0.01em;
+  --letter-spacing-tamil:    0;      /* never track Tamil, any size */
+
+  /* --- L2 SEMANTIC · SPACE / RADIUS / BORDER / ELEVATION --- */
+  --space-2xs: 4px;  --space-xs: 8px;  --space-sm: 12px; --space-md: 16px;
+  --space-lg:  24px; --space-xl: 32px; --space-2xl:48px; --space-3xl:64px;
+
+  --radius-xs: 4px; --radius-sm: 8px; --radius-md: 12px;
+  --radius-lg: 16px; --radius-full: 999px;
+
+  --border-width-hairline: 1px;
+  --border-width-stamp:    1.5px;   /* verified badge only */
+  --border-width-emphasis: 2px;
+  --border-width-focus:    2px;
+
+  --elevation-0: none;
+  --elevation-1: 0 1px 2px oklch(20% 0.03 262 / .06), 0 1px 3px oklch(20% 0.03 262 / .05);
+  --elevation-2: 0 4px 10px oklch(20% 0.03 262 / .08), 0 1px 3px oklch(20% 0.03 262 / .05);
+  --elevation-3: 0 12px 28px oklch(20% 0.03 262 / .14), 0 2px 6px oklch(20% 0.03 262 / .07);
+
+  /* --- L2 SEMANTIC · SIZE / A11Y --- */
+  --size-target-min:   48px;
+  --size-target-gap:   8px;
+  --size-icon-sm:      20px;
+  --size-icon-md:      24px;
+  --size-icon-lg:      32px;
+  --icon-stroke-width: 1.75;
+  --icon-stroke-width-sm: 2;   /* below 20px */
+
+  /* --- L2 SEMANTIC · MOTION --- */
+  --motion-duration-instant: 0ms;
+  --motion-duration-fast:    120ms;
+  --motion-duration-base:    180ms;
+  --motion-duration-slow:    240ms;
+  --motion-ease-standard: cubic-bezier(.2, 0, 0, 1);
+  --motion-ease-exit:     cubic-bezier(.4, 0, 1, 1);
+  --motion-ease-linear:   linear;
+  /* No spring / bounce / back easing exists in this system, by design. */
+}
+
+/* ============================================================
+   DARK THEME — semantic names only; primitives unchanged
+   ============================================================ */
+[data-theme="dark"] {
+  --color-surface-base:     var(--ink-950);
+  --color-surface-raised:   oklch(23% 0.016 262);
+  --color-surface-sunken:   var(--ink-1000);
+  --color-surface-selected: oklch(30% 0.055 255);
+  --color-surface-brand:    var(--blue-800);
+  --color-surface-inverse:  var(--ink-0);
+  --color-surface-overlay-scrim: oklch(10% 0.01 262 / .62);
+
+  --color-text-primary:   oklch(97% 0.004 262);
+  --color-text-secondary: oklch(78% 0.010 262);
+  --color-text-tertiary:  oklch(64% 0.012 262);
+  --color-text-brand:     oklch(74% 0.120 255);
+  --color-text-inverse:   var(--ink-900);
+  --color-text-on-brand:  var(--ink-950);   /* light blue takes ink text */
+  --color-text-disabled:  oklch(48% 0.010 262);
+
+  --color-border-subtle:  oklch(28% 0.014 262);
+  --color-border-default: oklch(36% 0.016 262);
+  --color-border-strong:  oklch(88% 0.010 262);
+  --color-border-brand:   var(--blue-400);
+  --color-border-focus:   oklch(76% 0.140 255);
+
+  --color-action-primary:        var(--blue-400);
+  --color-action-primary-hover:  oklch(68% 0.140 255);
+  --color-action-primary-active: oklch(56% 0.130 255);
+  --color-action-primary-text:   var(--ink-950);
+  --color-action-secondary-border: var(--blue-400);
+  --color-action-secondary-text:   oklch(74% 0.120 255);
+  --color-action-disabled:       oklch(28% 0.012 262);
+  --color-action-disabled-text:  oklch(52% 0.010 262);
+  --color-action-destructive:    oklch(72% 0.130 22);
+
+  --color-state-confirmed-surface:  oklch(34% 0.06 152);
+  --color-state-confirmed-text:     oklch(90% 0.05 152);
+  --color-state-confirmed-glyph:    oklch(90% 0.05 152);
+  --color-state-enroute-surface:    oklch(34% 0.06 292);
+  --color-state-enroute-text:       oklch(90% 0.05 292);
+  --color-state-enroute-glyph:      oklch(90% 0.05 292);
+  --color-state-inprogress-surface: oklch(36% 0.06 68);
+  --color-state-inprogress-text:    oklch(92% 0.06 68);
+  --color-state-inprogress-glyph:   oklch(92% 0.06 68);
+  --color-state-completed-surface:  oklch(34% 0.05 195);
+  --color-state-completed-text:     oklch(90% 0.045 195);
+  --color-state-completed-glyph:    oklch(90% 0.045 195);
+  --color-state-cancelled-surface:  oklch(33% 0.006 262);
+  --color-state-cancelled-text:     oklch(86% 0.006 262);
+  --color-state-cancelled-glyph:    oklch(86% 0.006 262);
+  --color-state-failed-surface:     oklch(34% 0.06 22);
+  --color-state-failed-text:        oklch(90% 0.05 22);
+  --color-state-failed-glyph:       oklch(90% 0.05 22);
+
+  --color-verified-surface: transparent;
+  --color-verified-border:  oklch(88% 0.010 262);
+  --color-verified-text:    oklch(94% 0.006 262);
+
+  --elevation-1: 0 1px 2px oklch(0% 0 0 / .40);
+  --elevation-2: 0 4px 10px oklch(0% 0 0 / .48);
+  --elevation-3: 0 12px 28px oklch(0% 0 0 / .58);
+}
+
+/* ============================================================
+   REDUCED MOTION — collapse durations, keep behaviour
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-fast: 0ms;
+    --motion-duration-base: 0ms;
+    --motion-duration-slow: 0ms;
+  }
+}
+
+/* ============================================================
+   BASE APPLICATION
+   ============================================================ */
+:lang(ta) {
+  font-family: var(--font-family-tamil);
+  letter-spacing: var(--letter-spacing-tamil);
+  line-height: var(--line-height-body-ta);
+}
+
+:focus-visible {
+  outline: var(--border-width-focus) solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+.numeric { font-variant-numeric: tabular-nums; }
+
+[data-target] { min-block-size: var(--size-target-min);
+                min-inline-size: var(--size-target-min); }</pre>
+</div>
+
+<div style="padding:40px 56px 52px;background:oklch(96.5% 0.006 262)">
+<div style="font:600 10px/1;letter-spacing:.09em;text-transform:uppercase;color:oklch(50% 0.02 262);margin-bottom:14px">Assumptions to confirm before engineering builds on this</div>
+<ul style="margin:0;padding-left:18px;max-width:700px">
+<li style="font:13px/1.7 'Hind',sans-serif;color:oklch(35% 0.018 262);margin-bottom:6px"><strong>Three service lines</strong> are drawn as home nursing, lab sample collection, and physiotherapy. If the real lineup differs, the icons change but the rules don't.</li>
+<li style="font:13px/1.7 'Hind',sans-serif;color:oklch(35% 0.018 262);margin-bottom:6px"><strong>All Tamil strings remain placeholder</strong>, including the specimen sentences here. Line-height and size ratios were set for the script generally and should be re-checked against real copy.</li>
+<li style="font:13px/1.7 'Hind',sans-serif;color:oklch(35% 0.018 262);margin-bottom:6px"><strong>Contrast ratios are calculated, not measured.</strong> Worth one pass on a low-cost Android panel outdoors before engineering locks the ramp.</li>
+<li style="font:13px/1.7 'Hind',sans-serif;color:oklch(35% 0.018 262)"><strong>Hind / Hind Madurai are Google-hosted.</strong> If the app must work offline-first or on very slow connections, we should self-host and subset — that decision affects the type tokens' fallback stack.</li>
+</ul>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1120,&quot;height&quot;:1600}}"></script>
+</body>
+</html>

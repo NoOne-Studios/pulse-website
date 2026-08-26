@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&family=Noto+Serif+Tamil:wght@400;600;700&family=Baloo+2:wght@500;700;800&family=Baloo+Thambi+2:wght@500;700;800&family=Hind:wght@400;500;600;700&family=Hind+Madurai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#efece5;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.dv-turn{padding:44px 48px 40px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 6px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 15px/1.2 -apple-system,sans-serif;color:#1a1a1a}
+.dv-tsub{font:400 12.5px/1.5 -apple-system,sans-serif;color:rgba(0,0,0,.55);max-width:760px;margin:0 0 24px}
+.dv-opts{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:600 13px/1.3 -apple-system,sans-serif;color:rgba(0,0,0,.7)}
+.dv-card{width:860px;max-width:100%;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.1),0 8px 28px rgba(0,0,0,.08);overflow:hidden}
+.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}
+.dv-next{margin:28px 0 0;font:12px/1.6 -apple-system,sans-serif;color:rgba(0,0,0,.5);max-width:760px}
+.dv-notes{margin:28px 0 0;padding:18px 20px;background:rgba(0,0,0,.04);border-radius:8px;max-width:760px}
+.dv-notes h4{margin:0 0 8px;font:600 12px -apple-system,sans-serif;color:#1a1a1a}
+.dv-notes li{font:12.5px/1.6 -apple-system,sans-serif;color:rgba(0,0,0,.65);margin-bottom:4px}
+/* --- shared inner-card primitives --- */
+.sec{padding:26px 30px}
+.sec + .sec{border-top:1px solid rgba(0,0,0,.08)}
+.lbl{font:600 10px/1;letter-spacing:.08em;text-transform:uppercase;opacity:.5;margin:0 0 12px}
+.tile{border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.tile-row{display:flex;gap:14px;flex-wrap:wrap}
+.tile-cap{font:11px ui-monospace,Menlo,monospace;opacity:.55}
+.mark24{display:flex;align-items:center;gap:8px}
+.swatch{border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-width:84px}
+.swatch-name{font:600 10.5px -apple-system,sans-serif}
+.swatch-val{font:10px ui-monospace,Menlo,monospace;opacity:.7}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font:600 11.5px -apple-system,sans-serif}
+.pill-row{display:flex;flex-wrap:wrap;gap:10px}
+.ramp{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.ramp .swatch{min-width:0}
+.contrast-note{font:10.5px ui-monospace,Menlo,monospace;opacity:.55;margin-top:2px}
+.specimen{padding:18px 20px;border-radius:8px}
+.specimen .en{margin:0 0 6px}
+.specimen .ta{margin:0}
+.miniapp{border-radius:10px;padding:16px;width:220px;display:flex;flex-direction:column;gap:10px}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t5">
+<div class="dv-thd"><a class="dv-tid" href="#t5">5</a><span class="dv-tname">4b, moved to blue — on white and on cool neutral</span></div>
+<p class="dv-tsub"><a class="dv-oid" href="#4b">4b</a>'s logic kept intact: light-first, colour only where something is actionable, verified as an ink stamp rather than a colour chip. Only two things change — the hue moves off green/teal to a true blue (hue 255), and the warm paper ground is replaced by white (<a class="dv-oid" href="#5a">5a</a>) or a cool grey neutral (<a class="dv-oid" href="#5b">5b</a>).</p>
+
+<div class="dv-opts">
+
+<!-- 5a -->
+<div class="dv-opt" id="5a">
+<div class="dv-olabel"><a class="dv-oid" href="#5a">5a</a>Blue on white — clinical, maximum contrast</div>
+<div class="dv-card" style="background:#fff;font-family:'Hind',sans-serif;color:oklch(20% 0.015 262)">
+<div class="sec">
+<p style="margin:0 0 8px;font-size:13.5px;line-height:1.6;max-width:640px">Pure white ground, ink that carries a faint blue cast so the neutral and the brand agree. Blue reads as clinical and institutional in Indian healthcare — closer to a hospital than a wellness app, which is the correct register for a service where a stranger enters your home.</p>
+<p style="margin:0 0 16px;font-size:12.5px;line-height:1.6;opacity:.75">Cost of white: it is the least differentiated ground available, and blue is the most common healthcare hue. The distinctiveness has to come from the pulse mark, the stamp, and the type — not the palette. Benefit: nothing renders unpredictably on cheap Android panels, and printed receipts match the screen exactly.</p>
+<div class="ramp" style="margin-bottom:14px">
+<div class="swatch" style="background:#fff;border:1px solid oklch(90% 0.006 262)"><span class="swatch-name">50</span></div>
+<div class="swatch" style="background:oklch(96.5% 0.006 262)"><span class="swatch-name">100</span></div>
+<div class="swatch" style="background:oklch(91% 0.008 262)"><span class="swatch-name">200</span></div>
+<div class="swatch" style="background:oklch(72% 0.012 262)"><span class="swatch-name" style="color:oklch(20% 0.015 262)">400</span></div>
+<div class="swatch" style="background:oklch(45% 0.014 262)"><span class="swatch-name" style="color:#fff">600</span></div>
+<div class="swatch" style="background:oklch(31% 0.015 262)"><span class="swatch-name" style="color:#fff">800</span></div>
+<div class="swatch" style="background:oklch(17% 0.015 262)"><span class="swatch-name" style="color:#fff">900</span></div>
+</div>
+<div class="tile-row" style="margin-bottom:14px">
+<div class="swatch" style="background:oklch(42% 0.13 255);min-width:190px"><span class="swatch-name" style="color:#fff">Primary · blue</span><span class="swatch-val" style="color:#fff">oklch(42% 0.13 255) · white 8.4:1</span></div>
+<div class="swatch" style="background:#fff;border:1px solid oklch(90% 0.006 262);min-width:190px"><span class="swatch-name">Ink on white</span><span class="swatch-val">oklch(20% 0.015 262) · 16.1:1</span></div>
+<div class="swatch" style="background:oklch(94% 0.03 255);min-width:170px"><span class="swatch-name">Tint · selected</span><span class="swatch-val">oklch(94% 0.03 255)</span></div>
+</div>
+<p class="lbl" style="margin-bottom:8px">States · light — blue is spoken for by the brand, so Confirmed moves to a green</p>
+<div class="pill-row" style="margin-bottom:8px">
+<span class="pill" style="background:oklch(92% 0.05 152);color:oklch(31% 0.09 152)">● Confirmed</span>
+<span class="pill" style="background:oklch(92% 0.05 292);color:oklch(33% 0.1 292)">▸ En route</span>
+<span class="pill" style="background:oklch(92% 0.06 68);color:oklch(35% 0.1 68)">◐ In progress</span>
+<span class="pill" style="background:oklch(92% 0.04 195);color:oklch(31% 0.08 195)">✓ Completed</span>
+<span class="pill" style="background:oklch(92% 0.005 262);color:oklch(41% 0.01 262)">— Cancelled</span>
+<span class="pill" style="background:oklch(92% 0.05 22);color:oklch(35% 0.11 22)">! Failed</span>
+</div>
+<p class="lbl" style="margin-bottom:8px">States · on ink (dark mode)</p>
+<div class="pill-row" style="background:oklch(18% 0.015 262);padding:10px;border-radius:8px;margin-bottom:4px">
+<span class="pill" style="background:oklch(34% 0.06 152);color:oklch(90% 0.05 152)">● Confirmed</span>
+<span class="pill" style="background:oklch(34% 0.06 292);color:oklch(90% 0.05 292)">▸ En route</span>
+<span class="pill" style="background:oklch(36% 0.06 68);color:oklch(92% 0.06 68)">◐ In progress</span>
+<span class="pill" style="background:oklch(34% 0.05 195);color:oklch(90% 0.045 195)">✓ Completed</span>
+<span class="pill" style="background:oklch(33% 0.006 262);color:oklch(86% 0.006 262)">— Cancelled</span>
+<span class="pill" style="background:oklch(34% 0.06 22);color:oklch(90% 0.05 22)">! Failed</span>
+</div>
+<p class="contrast-note" style="margin-bottom:14px">Pills ≈7.1–8.5:1 (estimated). Blue withheld from the state set entirely — it belongs to the brand.</p>
+<p class="lbl" style="margin-bottom:8px">Verified — ink stamp, unchanged from <a class="dv-oid" href="#4b">4b</a>; it is a document mark, not a status</p>
+<div class="pill-row">
+<span class="pill" style="background:#fff;border:1.5px solid oklch(20% 0.015 262);color:oklch(20% 0.015 262)">✓ Verified by a person</span>
+<span class="pill" style="background:oklch(20% 0.015 262);color:#fff">✓ Verified by a person</span>
+</div>
+</div>
+<div class="sec" style="background:oklch(96.5% 0.006 262);display:flex;gap:16px;flex-wrap:wrap">
+<div class="miniapp" style="background:oklch(42% 0.13 255);color:#fff;gap:12px">
+<div style="display:flex;align-items:center;gap:9px">
+<svg viewBox="0 0 64 64" width="26" height="26" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="#fff" stroke-width="6" stroke-linecap="round"/><path d="M8 32 H17 L22 21 L29 43 L34 32 H43" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<span style="font:700 16px 'Hind',sans-serif">Pulse</span>
+</div>
+<div style="font:400 12.5px/1.5 'Hind',sans-serif;opacity:.9">Splash / onboarding only — blue rarely fills a screen in this direction</div>
+</div>
+<div class="miniapp" style="background:#fff;width:250px">
+<div style="font:600 14.5px 'Hind',sans-serif">Home Nursing Visit</div>
+<div style="font:600 14px 'Hind Madurai',sans-serif;line-height:1.55;opacity:.8">வீட்டு செவிலியர் வருகை</div>
+<span class="pill" style="background:#fff;border:1.5px solid oklch(20% 0.015 262);color:oklch(20% 0.015 262);width:fit-content">✓ Verified by a person</span>
+<div style="border-top:1px solid oklch(91% 0.008 262);padding-top:10px;display:grid;gap:6px;font:13px 'Hind',sans-serif">
+<div style="display:flex;justify-content:space-between"><span>Visit</span><span>₹650</span></div>
+<div style="display:flex;justify-content:space-between;opacity:.75"><span>Platform fee</span><span>₹40</span></div>
+<div style="display:flex;justify-content:space-between;font-weight:700;border-top:1px solid oklch(91% 0.008 262);padding-top:6px"><span>Total</span><span>₹690</span></div>
+</div>
+<div style="background:oklch(42% 0.13 255);color:#fff;border-radius:8px;padding:12px;text-align:center;font:600 14px 'Hind',sans-serif">Book this visit</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 5b -->
+<div class="dv-opt" id="5b">
+<div class="dv-olabel"><a class="dv-oid" href="#5b">5b</a>Blue on cool neutral — same hue, quieter ground</div>
+<div class="dv-card" style="background:oklch(96% 0.004 250);font-family:'Hind',sans-serif;color:oklch(20% 0.015 258)">
+<div class="sec">
+<p style="margin:0 0 8px;font-size:13.5px;line-height:1.6;max-width:640px">Identical blue, but the page sits on a cool grey rather than white and cards come forward in white. This is the version that survives long admin sessions — the queue view is mostly surface, and a pure-white background at full screen brightness is fatiguing for an eight-hour shift.</p>
+<p style="margin:0 0 16px;font-size:12.5px;line-height:1.6;opacity:.75">Trade-off against <a class="dv-oid" href="#5a">5a</a>: cards read as objects you can act on, which helps the booking list, but the overall impression is more software and less document. If the printed-appointment-card feeling from <a class="dv-oid" href="#4b">4b</a> is what you wanted to keep, <a class="dv-oid" href="#5a">5a</a> holds it better.</p>
+<div class="ramp" style="margin-bottom:14px">
+<div class="swatch" style="background:#fff;border:1px solid oklch(90% 0.005 250)"><span class="swatch-name">0 · card</span></div>
+<div class="swatch" style="background:oklch(96% 0.004 250);border:1px solid oklch(90% 0.005 250)"><span class="swatch-name">50 · page</span></div>
+<div class="swatch" style="background:oklch(91% 0.006 250)"><span class="swatch-name">200</span></div>
+<div class="swatch" style="background:oklch(72% 0.01 252)"><span class="swatch-name" style="color:oklch(20% 0.015 258)">400</span></div>
+<div class="swatch" style="background:oklch(45% 0.012 255)"><span class="swatch-name" style="color:#fff">600</span></div>
+<div class="swatch" style="background:oklch(31% 0.014 258)"><span class="swatch-name" style="color:#fff">800</span></div>
+<div class="swatch" style="background:oklch(17% 0.014 258)"><span class="swatch-name" style="color:#fff">900</span></div>
+</div>
+<div class="tile-row" style="margin-bottom:14px">
+<div class="swatch" style="background:oklch(42% 0.13 255);min-width:190px"><span class="swatch-name" style="color:#fff">Primary · blue</span><span class="swatch-val" style="color:#fff">oklch(42% 0.13 255) · white 8.4:1</span></div>
+<div class="swatch" style="background:oklch(28% 0.05 258);min-width:190px"><span class="swatch-name" style="color:#fff">Chrome · navy ink</span><span class="swatch-val" style="color:#fff">oklch(28% 0.05 258) · white 11.9:1</span></div>
+<div class="swatch" style="background:#fff;border:1px solid oklch(90% 0.005 250);min-width:170px"><span class="swatch-name">Ink on card</span><span class="swatch-val">oklch(20% 0.015 258) · 16.1:1</span></div>
+</div>
+<p class="lbl" style="margin-bottom:8px">States · light</p>
+<div class="pill-row" style="margin-bottom:8px">
+<span class="pill" style="background:oklch(92% 0.05 152);color:oklch(31% 0.09 152)">● Confirmed</span>
+<span class="pill" style="background:oklch(92% 0.05 292);color:oklch(33% 0.1 292)">▸ En route</span>
+<span class="pill" style="background:oklch(92% 0.06 68);color:oklch(35% 0.1 68)">◐ In progress</span>
+<span class="pill" style="background:oklch(92% 0.04 195);color:oklch(31% 0.08 195)">✓ Completed</span>
+<span class="pill" style="background:oklch(91% 0.005 250);color:oklch(41% 0.01 250)">— Cancelled</span>
+<span class="pill" style="background:oklch(92% 0.05 22);color:oklch(35% 0.11 22)">! Failed</span>
+</div>
+<p class="lbl" style="margin-bottom:8px">States · on navy chrome</p>
+<div class="pill-row" style="background:oklch(21% 0.04 258);padding:10px;border-radius:8px;margin-bottom:4px">
+<span class="pill" style="background:oklch(34% 0.06 152);color:oklch(90% 0.05 152)">● Confirmed</span>
+<span class="pill" style="background:oklch(34% 0.06 292);color:oklch(90% 0.05 292)">▸ En route</span>
+<span class="pill" style="background:oklch(36% 0.06 68);color:oklch(92% 0.06 68)">◐ In progress</span>
+<span class="pill" style="background:oklch(34% 0.05 195);color:oklch(90% 0.045 195)">✓ Completed</span>
+<span class="pill" style="background:oklch(33% 0.01 258);color:oklch(86% 0.008 258)">— Cancelled</span>
+<span class="pill" style="background:oklch(34% 0.06 22);color:oklch(90% 0.05 22)">! Failed</span>
+</div>
+<p class="contrast-note" style="margin-bottom:14px">Pills ≈7.1–8.5:1 (estimated).</p>
+<p class="lbl" style="margin-bottom:8px">Verified — stamp in navy ink; the border weight is what carries it, not the hue</p>
+<div class="pill-row">
+<span class="pill" style="background:#fff;border:1.5px solid oklch(28% 0.05 258);color:oklch(24% 0.045 258)">✓ Verified by a person</span>
+<span class="pill" style="background:oklch(28% 0.05 258);color:#fff">✓ Verified by a person</span>
+</div>
+</div>
+<div class="sec" style="background:oklch(93% 0.006 250);display:flex;gap:16px;flex-wrap:wrap">
+<div class="miniapp" style="background:oklch(28% 0.05 258);color:#fff;gap:12px">
+<div style="display:flex;align-items:center;gap:9px">
+<svg viewBox="0 0 64 64" width="26" height="26" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="#fff" stroke-width="6" stroke-linecap="round"/><path d="M8 32 H17 L22 21 L29 43 L34 32 H43" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<span style="font:700 16px 'Hind',sans-serif">Pulse</span>
+</div>
+<div style="font:600 13px/1.5 'Hind',sans-serif;opacity:.9">Your visit today</div>
+<div style="background:oklch(34% 0.05 258);border-radius:8px;padding:11px;display:grid;gap:6px">
+<div style="font:600 13px 'Hind',sans-serif">Blood sample collection</div>
+<span class="pill" style="background:oklch(35% 0.06 292);color:oklch(91% 0.05 292);width:fit-content">▸ En route</span>
+</div>
+<div style="background:oklch(48% 0.13 255);border-radius:8px;padding:11px;text-align:center;font:600 13.5px 'Hind',sans-serif">Track visit</div>
+</div>
+<div class="miniapp" style="background:#fff;width:250px">
+<div style="font:600 14.5px 'Hind',sans-serif">Home Nursing Visit</div>
+<div style="font:600 14px 'Hind Madurai',sans-serif;line-height:1.55;opacity:.8">வீட்டு செவிலியர் வருகை</div>
+<span class="pill" style="background:#fff;border:1.5px solid oklch(28% 0.05 258);color:oklch(24% 0.045 258);width:fit-content">✓ Verified by a person</span>
+<div style="border-top:1px solid oklch(91% 0.006 250);padding-top:10px;display:grid;gap:6px;font:13px 'Hind',sans-serif">
+<div style="display:flex;justify-content:space-between"><span>Visit</span><span>₹650</span></div>
+<div style="display:flex;justify-content:space-between;opacity:.75"><span>Platform fee</span><span>₹40</span></div>
+<div style="display:flex;justify-content:space-between;font-weight:700;border-top:1px solid oklch(91% 0.006 250);padding-top:6px"><span>Total</span><span>₹690</span></div>
+</div>
+<div style="background:oklch(42% 0.13 255);color:#fff;border-radius:8px;padding:12px;text-align:center;font:600 14px 'Hind',sans-serif">Book this visit</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="dv-notes">
+<h4>What moving to blue costs and buys</h4>
+<ul style="margin:0;padding-left:18px">
+<li><strong>Buys:</strong> institutional credibility. Blue is what hospitals, diagnostics chains and insurers use here — for a service sending a stranger into a home, borrowing that read is useful.</li>
+<li><strong>Costs:</strong> differentiation. Every competitor in the category is some blue. The pulse mark and the ink stamp now carry the whole burden of being recognisable.</li>
+<li><strong>Knock-on:</strong> green is freed up, so Confirmed / Completed states get a clean semantic green with no brand collision — arguably clearer than <a class="dv-oid" href="#4b">4b</a>, where green meant both "brand" and "done".</li>
+<li>Both keep <a class="dv-oid" href="#4b">4b</a>'s stamp for verified. If you'd rather verified read as an award, the brass badge from <a class="dv-oid" href="#4d">4d</a> ports onto either of these unchanged.</li>
+</ul>
+</div>
+</section>
+
+<section class="dv-turn" id="t4">
+<div class="dv-thd"><a class="dv-tid" href="#t4">4</a><span class="dv-tname">Green / teal, second pass</span></div>
+<p class="dv-tsub">Four refinements across the space between <a class="dv-oid" href="#3a">3a</a> and <a class="dv-oid" href="#3c">3c</a>. Same structure each time so they're directly comparable: surfaces, states on both light and dark, verified treatment, and two real screens. <a class="dv-oid" href="#4c">4c</a> is the literal hue midpoint of the two you liked; <a class="dv-oid" href="#4a">4a</a> and <a class="dv-oid" href="#4d">4d</a> push each one further in its own logic.</p>
+
+<div class="dv-opts">
+
+<!-- 4a -->
+<div class="dv-opt" id="4a">
+<div class="dv-olabel"><a class="dv-oid" href="#4a">4a</a>Green, inverted — 3a's hue with 3c's structure</div>
+<div class="dv-card" style="background:oklch(97.5% 0.008 155);font-family:'Hind',sans-serif;color:oklch(20% 0.02 155)">
+<div class="sec">
+<p style="margin:0 0 8px;font-size:13.5px;line-height:1.6;max-width:640px">Takes what worked in each: green owns a hue the category doesn't lead with, and the inverted value structure gives dark chrome that's genuinely comfortable at night. Green becomes the deep surface rather than a button colour, so it's everywhere without ever being loud.</p>
+<p style="margin:0 0 16px;font-size:12.5px;line-height:1.6;opacity:.75">Chroma pulled down to 0.05 at the dark end — at this value green stops reading pharmacy and starts reading institutional. Buttons use a lighter green so they lift off the dark chrome instead of disappearing into it.</p>
+<div class="ramp" style="margin-bottom:14px">
+<div class="swatch" style="background:oklch(97.5% 0.008 155);border:1px solid oklch(88% 0.01 155)"><span class="swatch-name">50</span></div>
+<div class="swatch" style="background:oklch(94% 0.012 155)"><span class="swatch-name">100</span></div>
+<div class="swatch" style="background:oklch(87% 0.014 155)"><span class="swatch-name">200</span></div>
+<div class="swatch" style="background:oklch(70% 0.016 155)"><span class="swatch-name" style="color:oklch(20% 0.02 155)">400</span></div>
+<div class="swatch" style="background:oklch(43% 0.018 155)"><span class="swatch-name" style="color:#fff">600</span></div>
+<div class="swatch" style="background:oklch(29% 0.02 155)"><span class="swatch-name" style="color:#fff">800</span></div>
+<div class="swatch" style="background:oklch(16% 0.018 155)"><span class="swatch-name" style="color:#fff">900</span></div>
+</div>
+<div class="tile-row" style="margin-bottom:14px">
+<div class="swatch" style="background:oklch(24% 0.05 158);min-width:190px"><span class="swatch-name" style="color:#fff">Chrome · forest</span><span class="swatch-val" style="color:#fff">oklch(24% 0.05 158) · white 13.6:1</span></div>
+<div class="swatch" style="background:oklch(46% 0.09 155);min-width:190px"><span class="swatch-name" style="color:#fff">Action · green</span><span class="swatch-val" style="color:#fff">oklch(46% 0.09 155) · white 6.9:1</span></div>
+<div class="swatch" style="background:oklch(94% 0.012 155);min-width:170px"><span class="swatch-name">Ink on 50</span><span class="swatch-val">oklch(20% 0.02 155) · 16.1:1</span></div>
+</div>
+<p class="lbl" style="margin-bottom:8px">States · light</p>
+<div class="pill-row" style="margin-bottom:8px">
+<span class="pill" style="background:oklch(92% 0.05 225);color:oklch(31% 0.1 225)">● Confirmed</span>
+<span class="pill" style="background:oklch(92% 0.05 285);color:oklch(33% 0.1 285)">▸ En route</span>
+<span class="pill" style="background:oklch(92% 0.06 75);color:oklch(34% 0.1 75)">◐ In progress</span>
+<span class="pill" style="background:oklch(92% 0.045 155);color:oklch(29% 0.09 155)">✓ Completed</span>
+<span class="pill" style="background:oklch(90% 0.005 155);color:oklch(39% 0.01 155)">— Cancelled</span>
+<span class="pill" style="background:oklch(92% 0.05 25);color:oklch(34% 0.11 25)">! Failed</span>
+</div>
+<p class="lbl" style="margin-bottom:8px">States · on chrome</p>
+<div class="pill-row" style="background:oklch(24% 0.05 158);padding:10px;border-radius:8px;margin-bottom:4px">
+<span class="pill" style="background:oklch(35% 0.06 225);color:oklch(91% 0.05 225)">● Confirmed</span>
+<span class="pill" style="background:oklch(35% 0.06 285);color:oklch(91% 0.05 285)">▸ En route</span>
+<span class="pill" style="background:oklch(37% 0.06 75);color:oklch(93% 0.06 75)">◐ In progress</span>
+<span class="pill" style="background:oklch(35% 0.06 155);color:oklch(91% 0.05 155)">✓ Completed</span>
+<span class="pill" style="background:oklch(34% 0.008 155);color:oklch(87% 0.006 155)">— Cancelled</span>
+<span class="pill" style="background:oklch(35% 0.06 25);color:oklch(91% 0.05 25)">! Failed</span>
+</div>
+<p class="contrast-note" style="margin-bottom:14px">Glyph + label on every state — nothing signalled by colour alone. Pills ≈7.1–8.5:1 (estimated).</p>
+<p class="lbl" style="margin-bottom:8px">Verified — brass, the system's only warm colour, always with the words "by a person"</p>
+<div class="pill-row">
+<span class="pill" style="background:oklch(97.5% 0.008 155);border:1.5px solid oklch(52% 0.09 80);color:oklch(37% 0.08 80)">✓ Verified by a person</span>
+<span class="pill" style="background:oklch(24% 0.05 158);color:oklch(84% 0.09 82)">✓ Verified by a person</span>
+</div>
+</div>
+<div class="sec" style="background:oklch(94% 0.012 155);display:flex;gap:16px;flex-wrap:wrap">
+<div class="miniapp" style="background:oklch(24% 0.05 158);color:#fff;gap:12px">
+<div style="display:flex;align-items:center;gap:9px">
+<svg viewBox="0 0 64 64" width="26" height="26" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="#fff" stroke-width="6" stroke-linecap="round"/><path d="M8 32 H17 L22 21 L29 43 L34 32 H43" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<span style="font:700 16px 'Hind',sans-serif">Pulse</span>
+</div>
+<div style="font:600 13px/1.5 'Hind',sans-serif;opacity:.9">Your visit today</div>
+<div style="background:oklch(31% 0.045 158);border-radius:8px;padding:11px;display:grid;gap:6px">
+<div style="font:600 13px 'Hind',sans-serif">Blood sample collection</div>
+<span class="pill" style="background:oklch(35% 0.06 285);color:oklch(91% 0.05 285);width:fit-content">▸ En route</span>
+</div>
+<div style="background:oklch(46% 0.09 155);border-radius:8px;padding:11px;text-align:center;font:600 13.5px 'Hind',sans-serif">Track visit</div>
+</div>
+<div class="miniapp" style="background:#fff;width:250px">
+<div style="font:600 14.5px 'Hind',sans-serif">Home Nursing Visit</div>
+<div style="font:600 14px 'Hind Madurai',sans-serif;line-height:1.55;opacity:.8">வீட்டு செவிலியர் வருகை</div>
+<span class="pill" style="background:#fff;border:1.5px solid oklch(52% 0.09 80);color:oklch(37% 0.08 80);width:fit-content">✓ Verified by a person</span>
+<div style="border-top:1px solid oklch(90% 0.008 155);padding-top:10px;display:grid;gap:6px;font:13px 'Hind',sans-serif">
+<div style="display:flex;justify-content:space-between"><span>Visit</span><span>₹650</span></div>
+<div style="display:flex;justify-content:space-between;opacity:.75"><span>Platform fee</span><span>₹40</span></div>
+<div style="display:flex;justify-content:space-between;font-weight:700;border-top:1px solid oklch(90% 0.008 155);padding-top:6px"><span>Total</span><span>₹690</span></div>
+</div>
+<div style="background:oklch(24% 0.05 158);color:#fff;border-radius:8px;padding:12px;text-align:center;font:600 14px 'Hind',sans-serif">Book this visit</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 4b -->
+<div class="dv-opt" id="4b">
+<div class="dv-olabel"><a class="dv-oid" href="#4b">4b</a>Green on paper — light-first, warm neutral</div>
+<div class="dv-card" style="background:oklch(97% 0.012 95);font-family:'Hind',sans-serif;color:oklch(21% 0.02 90)">
+<div class="sec">
+<p style="margin:0 0 8px;font-size:13.5px;line-height:1.6;max-width:640px">Same green, opposite bet: stays light-first, and does the differentiating with a warm paper neutral underneath instead of dark chrome. Green appears only where something is actionable, so the interface is mostly quiet.</p>
+<p style="margin:0 0 16px;font-size:12.5px;line-height:1.6;opacity:.75">This is the version that will feel least like an app and most like a printed appointment card — good for PER-001's low digital confidence. Warm neutrals also keep the admin queue readable over an eight-hour shift.</p>
+<div class="ramp" style="margin-bottom:14px">
+<div class="swatch" style="background:oklch(97% 0.012 95);border:1px solid oklch(88% 0.014 95)"><span class="swatch-name">50</span></div>
+<div class="swatch" style="background:oklch(93.5% 0.016 95)"><span class="swatch-name">100</span></div>
+<div class="swatch" style="background:oklch(87% 0.018 95)"><span class="swatch-name">200</span></div>
+<div class="swatch" style="background:oklch(70% 0.02 92)"><span class="swatch-name" style="color:oklch(21% 0.02 90)">400</span></div>
+<div class="swatch" style="background:oklch(43% 0.018 90)"><span class="swatch-name" style="color:#fff">600</span></div>
+<div class="swatch" style="background:oklch(30% 0.018 90)"><span class="swatch-name" style="color:#fff">800</span></div>
+<div class="swatch" style="background:oklch(17% 0.016 90)"><span class="swatch-name" style="color:#fff">900</span></div>
+</div>
+<div class="tile-row" style="margin-bottom:14px">
+<div class="swatch" style="background:oklch(38% 0.085 152);min-width:190px"><span class="swatch-name" style="color:#fff">Primary · green</span><span class="swatch-val" style="color:#fff">oklch(38% 0.085 152) · white 9.2:1</span></div>
+<div class="swatch" style="background:oklch(93.5% 0.016 95);min-width:190px"><span class="swatch-name">Ink on paper</span><span class="swatch-val">oklch(21% 0.02 90) · 15.4:1</span></div>
+<div class="swatch" style="background:oklch(93% 0.03 152);min-width:170px"><span class="swatch-name">Tint · selected</span><span class="swatch-val">oklch(93% 0.03 152)</span></div>
+</div>
+<p class="lbl" style="margin-bottom:8px">States · light (warm-tinted to sit on paper)</p>
+<div class="pill-row" style="margin-bottom:8px">
+<span class="pill" style="background:oklch(91% 0.05 225);color:oklch(31% 0.1 225)">● Confirmed</span>
+<span class="pill" style="background:oklch(91% 0.05 285);color:oklch(33% 0.1 285)">▸ En route</span>
+<span class="pill" style="background:oklch(91% 0.06 68);color:oklch(35% 0.1 68)">◐ In progress</span>
+<span class="pill" style="background:oklch(91% 0.05 152);color:oklch(30% 0.09 152)">✓ Completed</span>
+<span class="pill" style="background:oklch(89% 0.008 95);color:oklch(40% 0.014 95)">— Cancelled</span>
+<span class="pill" style="background:oklch(91% 0.05 22);color:oklch(35% 0.11 22)">! Failed</span>
+</div>
+<p class="lbl" style="margin-bottom:8px">States · on ink (dark mode)</p>
+<div class="pill-row" style="background:oklch(19% 0.016 90);padding:10px;border-radius:8px;margin-bottom:4px">
+<span class="pill" style="background:oklch(34% 0.06 225);color:oklch(90% 0.05 225)">● Confirmed</span>
+<span class="pill" style="background:oklch(34% 0.06 285);color:oklch(90% 0.05 285)">▸ En route</span>
+<span class="pill" style="background:oklch(36% 0.06 68);color:oklch(92% 0.06 68)">◐ In progress</span>
+<span class="pill" style="background:oklch(34% 0.06 152);color:oklch(90% 0.05 152)">✓ Completed</span>
+<span class="pill" style="background:oklch(33% 0.008 90);color:oklch(86% 0.008 90)">— Cancelled</span>
+<span class="pill" style="background:oklch(34% 0.06 22);color:oklch(90% 0.05 22)">! Failed</span>
+</div>
+<p class="contrast-note" style="margin-bottom:14px">Pills ≈7.0–8.4:1 (estimated).</p>
+<p class="lbl" style="margin-bottom:8px">Verified — ink stamp, not a colour chip; reads as a document mark rather than a status</p>
+<div class="pill-row">
+<span class="pill" style="background:oklch(97% 0.012 95);border:1.5px solid oklch(21% 0.02 90);color:oklch(21% 0.02 90)">✓ Verified by a person</span>
+<span class="pill" style="background:oklch(21% 0.02 90);color:oklch(97% 0.012 95)">✓ Verified by a person</span>
+</div>
+</div>
+<div class="sec" style="background:oklch(93.5% 0.016 95);display:flex;gap:16px;flex-wrap:wrap">
+<div class="miniapp" style="background:oklch(38% 0.085 152);color:#fff;gap:12px">
+<div style="display:flex;align-items:center;gap:9px">
+<svg viewBox="0 0 64 64" width="26" height="26" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="#fff" stroke-width="6" stroke-linecap="round"/><path d="M8 32 H17 L22 21 L29 43 L34 32 H43" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<span style="font:700 16px 'Hind',sans-serif">Pulse</span>
+</div>
+<div style="font:400 12.5px/1.5 'Hind',sans-serif;opacity:.9">Splash / onboarding only — green rarely fills a screen in this direction</div>
+</div>
+<div class="miniapp" style="background:oklch(99% 0.008 95);width:250px">
+<div style="font:600 14.5px 'Hind',sans-serif">Home Nursing Visit</div>
+<div style="font:600 14px 'Hind Madurai',sans-serif;line-height:1.55;opacity:.8">வீட்டு செவிலியர் வருகை</div>
+<span class="pill" style="background:oklch(99% 0.008 95);border:1.5px solid oklch(21% 0.02 90);color:oklch(21% 0.02 90);width:fit-content">✓ Verified by a person</span>
+<div style="border-top:1px solid oklch(89% 0.014 95);padding-top:10px;display:grid;gap:6px;font:13px 'Hind',sans-serif">
+<div style="display:flex;justify-content:space-between"><span>Visit</span><span>₹650</span></div>
+<div style="display:flex;justify-content:space-between;opacity:.75"><span>Platform fee</span><span>₹40</span></div>
+<div style="display:flex;justify-content:space-between;font-weight:700;border-top:1px solid oklch(89% 0.014 95);padding-top:6px"><span>Total</span><span>₹690</span></div>
+</div>
+<div style="background:oklch(38% 0.085 152);color:#fff;border-radius:8px;padding:12px;text-align:center;font:600 14px 'Hind',sans-serif">Book this visit</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 4c -->
+<div class="dv-opt" id="4c">
+<div class="dv-olabel"><a class="dv-oid" href="#4c">4c</a>Between the two — sea green at hue 178</div>
+<div class="dv-card" style="background:oklch(97.5% 0.008 178);font-family:'Hind',sans-serif;color:oklch(20% 0.02 180)">
+<div class="sec">
+<p style="margin:0 0 8px;font-size:13.5px;line-height:1.6;max-width:640px">Literally the midpoint: hue 178 sits between <a class="dv-oid" href="#3a">3a</a>'s 155 and <a class="dv-oid" href="#3c">3c</a>'s 200. Close enough to teal that the category read is free, far enough green that it doesn't land on any competitor's colour.</p>
+<p style="margin:0 0 16px;font-size:12.5px;line-height:1.6;opacity:.75">Practically this is the compromise candidate — it keeps the inverted dark chrome from <a class="dv-oid" href="#3c">3c</a> and the hue distinctiveness of <a class="dv-oid" href="#3a">3a</a>. Watch that it doesn't drift generic wellness-app; the low chroma and the brass verified badge are what keep it specific.</p>
+<div class="ramp" style="margin-bottom:14px">
+<div class="swatch" style="background:oklch(97.5% 0.008 178);border:1px solid oklch(88% 0.01 178)"><span class="swatch-name">50</span></div>
+<div class="swatch" style="background:oklch(94% 0.012 178)"><span class="swatch-name">100</span></div>
+<div class="swatch" style="background:oklch(87% 0.014 178)"><span class="swatch-name">200</span></div>
+<div class="swatch" style="background:oklch(70% 0.016 178)"><span class="swatch-name" style="color:oklch(20% 0.02 180)">400</span></div>
+<div class="swatch" style="background:oklch(43% 0.018 180)"><span class="swatch-name" style="color:#fff">600</span></div>
+<div class="swatch" style="background:oklch(29% 0.02 180)"><span class="swatch-name" style="color:#fff">800</span></div>
+<div class="swatch" style="background:oklch(16% 0.018 180)"><span class="swatch-name" style="color:#fff">900</span></div>
+</div>
+<div class="tile-row" style="margin-bottom:14px">
+<div class="swatch" style="background:oklch(26% 0.055 180);min-width:190px"><span class="swatch-name" style="color:#fff">Chrome · deep sea</span><span class="swatch-val" style="color:#fff">oklch(26% 0.055 180) · white 12.7:1</span></div>
+<div class="swatch" style="background:oklch(44% 0.085 178);min-width:190px"><span class="swatch-name" style="color:#fff">Action</span><span class="swatch-val" style="color:#fff">oklch(44% 0.085 178) · white 7.5:1</span></div>
+<div class="swatch" style="background:oklch(94% 0.012 178);min-width:170px"><span class="swatch-name">Ink on 50</span><span class="swatch-val">oklch(20% 0.02 180) · 16.0:1</span></div>
+</div>
+<p class="lbl" style="margin-bottom:8px">States · light</p>
+<div class="pill-row" style="margin-bottom:8px">
+<span class="pill" style="background:oklch(92% 0.05 235);color:oklch(31% 0.1 235)">● Confirmed</span>
+<span class="pill" style="background:oklch(92% 0.05 290);color:oklch(33% 0.1 290)">▸ En route</span>
+<span class="pill" style="background:oklch(92% 0.06 72);color:oklch(34% 0.1 72)">◐ In progress</span>
+<span class="pill" style="background:oklch(92% 0.05 145);color:oklch(30% 0.1 145)">✓ Completed</span>
+<span class="pill" style="background:oklch(90% 0.005 178);color:oklch(39% 0.01 178)">— Cancelled</span>
+<span class="pill" style="background:oklch(92% 0.05 25);color:oklch(34% 0.11 25)">! Failed</span>
+</div>
+<p class="lbl" style="margin-bottom:8px">States · on chrome</p>
+<div class="pill-row" style="background:oklch(26% 0.055 180);padding:10px;border-radius:8px;margin-bottom:4px">
+<span class="pill" style="background:oklch(36% 0.06 235);color:oklch(91% 0.05 235)">● Confirmed</span>
+<span class="pill" style="background:oklch(36% 0.06 290);color:oklch(91% 0.05 290)">▸ En route</span>
+<span class="pill" style="background:oklch(37% 0.06 72);color:oklch(93% 0.06 72)">◐ In progress</span>
+<span class="pill" style="background:oklch(36% 0.06 145);color:oklch(91% 0.05 145)">✓ Completed</span>
+<span class="pill" style="background:oklch(35% 0.008 178);color:oklch(87% 0.006 178)">— Cancelled</span>
+<span class="pill" style="background:oklch(36% 0.06 25);color:oklch(91% 0.05 25)">! Failed</span>
+</div>
+<p class="contrast-note" style="margin-bottom:14px">Completed sits at hue 145 so it stays distinct from the brand hue at 178 — worth checking in situ. Pills ≈7.1–8.5:1 (estimated).</p>
+<p class="lbl" style="margin-bottom:8px">Verified — brass, works on both surfaces</p>
+<div class="pill-row">
+<span class="pill" style="background:oklch(97.5% 0.008 178);border:1.5px solid oklch(52% 0.09 80);color:oklch(37% 0.08 80)">✓ Verified by a person</span>
+<span class="pill" style="background:oklch(26% 0.055 180);color:oklch(85% 0.09 82)">✓ Verified by a person</span>
+</div>
+</div>
+<div class="sec" style="background:oklch(94% 0.012 178);display:flex;gap:16px;flex-wrap:wrap">
+<div class="miniapp" style="background:oklch(26% 0.055 180);color:#fff;gap:12px">
+<div style="display:flex;align-items:center;gap:9px">
+<svg viewBox="0 0 64 64" width="26" height="26" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="oklch(85% 0.09 82)" stroke-width="6" stroke-linecap="round"/><path d="M8 32 H17 L22 21 L29 43 L34 32 H43" stroke="oklch(85% 0.09 82)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<span style="font:700 16px 'Hind',sans-serif">Pulse</span>
+</div>
+<div style="font:600 13px/1.5 'Hind',sans-serif;opacity:.9">Your visit today</div>
+<div style="background:oklch(33% 0.05 180);border-radius:8px;padding:11px;display:grid;gap:6px">
+<div style="font:600 13px 'Hind',sans-serif">Physiotherapy session</div>
+<span class="pill" style="background:oklch(37% 0.06 72);color:oklch(93% 0.06 72);width:fit-content">◐ In progress</span>
+</div>
+<div style="background:oklch(44% 0.085 178);border-radius:8px;padding:11px;text-align:center;font:600 13.5px 'Hind',sans-serif">Track visit</div>
+</div>
+<div class="miniapp" style="background:#fff;width:250px">
+<div style="font:600 14.5px 'Hind',sans-serif">Home Nursing Visit</div>
+<div style="font:600 14px 'Hind Madurai',sans-serif;line-height:1.55;opacity:.8">வீட்டு செவிலியர் வருகை</div>
+<span class="pill" style="background:#fff;border:1.5px solid oklch(52% 0.09 80);color:oklch(37% 0.08 80);width:fit-content">✓ Verified by a person</span>
+<div style="border-top:1px solid oklch(90% 0.008 178);padding-top:10px;display:grid;gap:6px;font:13px 'Hind',sans-serif">
+<div style="display:flex;justify-content:space-between"><span>Visit</span><span>₹650</span></div>
+<div style="display:flex;justify-content:space-between;opacity:.75"><span>Platform fee</span><span>₹40</span></div>
+<div style="display:flex;justify-content:space-between;font-weight:700;border-top:1px solid oklch(90% 0.008 178);padding-top:6px"><span>Total</span><span>₹690</span></div>
+</div>
+<div style="background:oklch(26% 0.055 180);color:#fff;border-radius:8px;padding:12px;text-align:center;font:600 14px 'Hind',sans-serif">Book this visit</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 4d -->
+<div class="dv-opt" id="4d">
+<div class="dv-olabel"><a class="dv-oid" href="#4d">4d</a>Teal, pushed darker — 3c with more nerve</div>
+<div class="dv-card" style="background:oklch(97% 0.006 205);font-family:'Hind',sans-serif;color:oklch(19% 0.018 205)">
+<div class="sec">
+<p style="margin:0 0 8px;font-size:13.5px;line-height:1.6;max-width:640px"><a class="dv-oid" href="#3c">3c</a> taken to its conclusion: chrome drops to near-ink, chroma drops with it, and the only saturated colour on screen is the brass verified badge. The category's teal is still in there, but as a temperature rather than a colour you'd name.</p>
+<p style="margin:0 0 16px;font-size:12.5px;line-height:1.6;opacity:.75">This is the most restrained of the four and the most confident — nothing competes with the one thing the brief says matters most. If verification is the whole story, this is the palette that tells it.</p>
+<div class="ramp" style="margin-bottom:14px">
+<div class="swatch" style="background:oklch(97% 0.006 205);border:1px solid oklch(88% 0.008 205)"><span class="swatch-name">50</span></div>
+<div class="swatch" style="background:oklch(93.5% 0.008 205)"><span class="swatch-name">100</span></div>
+<div class="swatch" style="background:oklch(87% 0.01 205)"><span class="swatch-name">200</span></div>
+<div class="swatch" style="background:oklch(70% 0.012 205)"><span class="swatch-name" style="color:oklch(19% 0.018 205)">400</span></div>
+<div class="swatch" style="background:oklch(43% 0.014 205)"><span class="swatch-name" style="color:#fff">600</span></div>
+<div class="swatch" style="background:oklch(28% 0.016 205)"><span class="swatch-name" style="color:#fff">800</span></div>
+<div class="swatch" style="background:oklch(14% 0.014 205)"><span class="swatch-name" style="color:#fff">900</span></div>
+</div>
+<div class="tile-row" style="margin-bottom:14px">
+<div class="swatch" style="background:oklch(19% 0.035 205);min-width:190px"><span class="swatch-name" style="color:#fff">Chrome · near-ink</span><span class="swatch-val" style="color:#fff">oklch(19% 0.035 205) · white 16.4:1</span></div>
+<div class="swatch" style="background:oklch(41% 0.075 205);min-width:190px"><span class="swatch-name" style="color:#fff">Action</span><span class="swatch-val" style="color:#fff">oklch(41% 0.075 205) · white 8.3:1</span></div>
+<div class="swatch" style="background:oklch(93.5% 0.008 205);min-width:170px"><span class="swatch-name">Ink on 50</span><span class="swatch-val">oklch(19% 0.018 205) · 16.8:1</span></div>
+</div>
+<p class="lbl" style="margin-bottom:8px">States · light</p>
+<div class="pill-row" style="margin-bottom:8px">
+<span class="pill" style="background:oklch(92% 0.045 240);color:oklch(31% 0.1 240)">● Confirmed</span>
+<span class="pill" style="background:oklch(92% 0.045 292);color:oklch(33% 0.1 292)">▸ En route</span>
+<span class="pill" style="background:oklch(92% 0.055 78);color:oklch(34% 0.1 78)">◐ In progress</span>
+<span class="pill" style="background:oklch(92% 0.045 148);color:oklch(30% 0.1 148)">✓ Completed</span>
+<span class="pill" style="background:oklch(90% 0.004 205);color:oklch(39% 0.008 205)">— Cancelled</span>
+<span class="pill" style="background:oklch(92% 0.045 25);color:oklch(34% 0.11 25)">! Failed</span>
+</div>
+<p class="lbl" style="margin-bottom:8px">States · on chrome</p>
+<div class="pill-row" style="background:oklch(19% 0.035 205);padding:10px;border-radius:8px;margin-bottom:4px">
+<span class="pill" style="background:oklch(33% 0.055 240);color:oklch(90% 0.045 240)">● Confirmed</span>
+<span class="pill" style="background:oklch(33% 0.055 292);color:oklch(90% 0.045 292)">▸ En route</span>
+<span class="pill" style="background:oklch(35% 0.055 78);color:oklch(92% 0.055 78)">◐ In progress</span>
+<span class="pill" style="background:oklch(33% 0.055 148);color:oklch(90% 0.045 148)">✓ Completed</span>
+<span class="pill" style="background:oklch(32% 0.006 205);color:oklch(86% 0.006 205)">— Cancelled</span>
+<span class="pill" style="background:oklch(33% 0.055 25);color:oklch(90% 0.045 25)">! Failed</span>
+</div>
+<p class="contrast-note" style="margin-bottom:14px">Pills ≈7.2–8.6:1 (estimated).</p>
+<p class="lbl" style="margin-bottom:8px">Verified — the loudest thing in the system, by design</p>
+<div class="pill-row">
+<span class="pill" style="background:oklch(93% 0.055 82);color:oklch(33% 0.08 78)">✓ Verified by a person</span>
+<span class="pill" style="background:oklch(19% 0.035 205);color:oklch(86% 0.1 82)">✓ Verified by a person</span>
+</div>
+</div>
+<div class="sec" style="background:oklch(93.5% 0.008 205);display:flex;gap:16px;flex-wrap:wrap">
+<div class="miniapp" style="background:oklch(19% 0.035 205);color:#fff;gap:12px">
+<div style="display:flex;align-items:center;gap:9px">
+<svg viewBox="0 0 64 64" width="26" height="26" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="oklch(86% 0.1 82)" stroke-width="6" stroke-linecap="round"/><path d="M8 32 H17 L22 21 L29 43 L34 32 H43" stroke="oklch(86% 0.1 82)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<span style="font:700 16px 'Hind',sans-serif">Pulse</span>
+</div>
+<div style="font:600 13px/1.5 'Hind',sans-serif;opacity:.9">Your visit today</div>
+<div style="background:oklch(26% 0.03 205);border-radius:8px;padding:11px;display:grid;gap:6px">
+<div style="font:600 13px 'Hind',sans-serif">Blood sample collection</div>
+<span class="pill" style="background:oklch(33% 0.055 240);color:oklch(90% 0.045 240);width:fit-content">● Confirmed</span>
+</div>
+<div style="background:oklch(41% 0.075 205);border-radius:8px;padding:11px;text-align:center;font:600 13.5px 'Hind',sans-serif">Track visit</div>
+</div>
+<div class="miniapp" style="background:#fff;width:250px">
+<div style="font:600 14.5px 'Hind',sans-serif">Home Nursing Visit</div>
+<div style="font:600 14px 'Hind Madurai',sans-serif;line-height:1.55;opacity:.8">வீட்டு செவிலியர் வருகை</div>
+<span class="pill" style="background:oklch(93% 0.055 82);color:oklch(33% 0.08 78);width:fit-content">✓ Verified by a person</span>
+<div style="border-top:1px solid oklch(90% 0.006 205);padding-top:10px;display:grid;gap:6px;font:13px 'Hind',sans-serif">
+<div style="display:flex;justify-content:space-between"><span>Visit</span><span>₹650</span></div>
+<div style="display:flex;justify-content:space-between;opacity:.75"><span>Platform fee</span><span>₹40</span></div>
+<div style="display:flex;justify-content:space-between;font-weight:700;border-top:1px solid oklch(90% 0.006 205);padding-top:6px"><span>Total</span><span>₹690</span></div>
+</div>
+<div style="background:oklch(19% 0.035 205);color:#fff;border-radius:8px;padding:12px;text-align:center;font:600 14px 'Hind',sans-serif">Book this visit</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="dv-notes">
+<h4>What changed from turn 3, and what to decide</h4>
+<ul>
+<li>Every state now carries a glyph plus a label, so nothing is signalled by colour alone — that closes an accessibility gap in turn 3.</li>
+<li>Each option splits chrome from action colour. Turn 3 used one primary for both, which breaks down as soon as a button sits on a coloured header.</li>
+<li>Brass is doing the verification job in <a class="dv-oid" href="#4a">4a</a>, <a class="dv-oid" href="#4c">4c</a> and <a class="dv-oid" href="#4d">4d</a>; <a class="dv-oid" href="#4b">4b</a> uses an ink stamp instead. Worth deciding whether "verified" should feel like a <em>seal</em> (ink) or an <em>award</em> (brass) — that's a strategy call, not a colour one.</li>
+<li>My pick: <a class="dv-oid" href="#4a">4a</a> if you want the green to be the memorable thing, <a class="dv-oid" href="#4d">4d</a> if you want verification to be. <a class="dv-oid" href="#4c">4c</a> is the safe middle but the least likely to be remembered.</li>
+<li>All ratios remain estimates from the oklch values — measure before locking tokens.</li>
+</ul>
+</div>
+
+<p class="dv-next">Pick one (<a class="dv-oid" href="#4a">4a</a>–<a class="dv-oid" href="#4d">4d</a>), or tell me to push one further. Once colour is locked, the next step is type + the component foundations (verification pattern, price breakdown, provider card, state system) across the three surfaces.</p>
+</section>
+
+<section class="dv-turn" id="t3">
+<div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">Colour directions — mark <a class="dv-oid" href="#2c">2c</a> locked</span></div>
+<p class="dv-tsub">Round Trace is now the mark across all four. Each colour system is a different answer to the same competitive problem, shown in the same order: where it sits against the category, ramp, primary, booking states, verified badge, and the mark in a real app context.</p>
+
+<div class="dv-notes" style="margin:0 0 26px">
+<h4>What the category looks like</h4>
+<ul>
+<li>Portea, Apollo HomeCare, Practo, Healthians, MediBuddy, PharmEasy, Care24 all sit in the same narrow band: a bright cyan-to-royal-blue primary, a green or orange secondary, pure white surfaces, and a lot of teal. Blue is the category's cost of entry — it signals "medical, safe, institutional" and users read it instantly.</li>
+<li>So the opportunity is not to abandon blue-family trust cues but to <em>shift one variable</em> the whole category holds constant. Three levers are available: <strong>value</strong> (they all run bright/light-on-white; going dark and low-chroma reads as more serious), <strong>neutral temperature</strong> (they all use cold grey/white; a warm paper neutral instantly feels non-institutional), and <strong>hue family</strong> (leaving blue entirely — highest risk, highest distinctiveness).</li>
+<li>Each option below pulls a different lever. None uses a bright cyan primary, and none uses the orange-accent-on-white pattern.</li>
+</ul>
+</div>
+
+<div class="dv-opts">
+
+<!-- 3a -->
+<div class="dv-opt" id="3a">
+<div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a>Deep Green Ink — lever: hue family</div>
+<div class="dv-card" style="background:oklch(97.5% 0.008 150);font-family:'Hind',sans-serif;color:oklch(22% 0.02 155)">
+<div class="sec">
+<p style="margin:0 0 8px;font-size:13.5px;line-height:1.6;max-width:640px"><strong>Position:</strong> the only serious green in a sea of blue. Green already carries "wellness, safe, go-ahead" in the category — but competitors use it only as a small secondary. Taking it as the primary, at a deep near-ink value, keeps the health read while owning a colour nobody leads with.</p>
+<p style="margin:0 0 18px;font-size:12.5px;line-height:1.6;opacity:.75">Risk to name: at bright values green drifts pharmacy/organic. Held at oklch(38%) with low chroma it reads closer to a legal or institutional green — calm, unhurried, adult.</p>
+<div class="ramp" style="margin-bottom:16px">
+<div class="swatch" style="background:oklch(97.5% 0.008 150);border:1px solid oklch(88% 0.01 150)"><span class="swatch-name">50</span></div>
+<div class="swatch" style="background:oklch(94% 0.012 150)"><span class="swatch-name">100</span></div>
+<div class="swatch" style="background:oklch(87% 0.014 150)"><span class="swatch-name">200</span></div>
+<div class="swatch" style="background:oklch(70% 0.016 155)"><span class="swatch-name" style="color:oklch(22% 0.02 155)">400</span></div>
+<div class="swatch" style="background:oklch(43% 0.016 155)"><span class="swatch-name" style="color:#fff">600</span></div>
+<div class="swatch" style="background:oklch(30% 0.018 155)"><span class="swatch-name" style="color:#fff">800</span></div>
+<div class="swatch" style="background:oklch(17% 0.016 155)"><span class="swatch-name" style="color:#fff">900</span></div>
+</div>
+<div class="tile-row" style="margin-bottom:14px">
+<div class="swatch" style="background:oklch(38% 0.08 155);min-width:200px"><span class="swatch-name" style="color:#fff">Primary · deep green</span><span class="swatch-val" style="color:#fff">oklch(38% 0.08 155) · white text 9.1:1</span></div>
+<div class="swatch" style="background:oklch(94% 0.012 150);min-width:200px"><span class="swatch-name">Ink on 50</span><span class="swatch-val">oklch(22% 0.02 155) · 15.2:1</span></div>
+</div>
+<p class="lbl" style="margin-bottom:8px">Booking states</p>
+<div class="pill-row" style="margin-bottom:4px">
+<span class="pill" style="background:oklch(92% 0.05 220);color:oklch(31% 0.1 220)">Confirmed</span>
+<span class="pill" style="background:oklch(92% 0.05 285);color:oklch(33% 0.1 285)">En route</span>
+<span class="pill" style="background:oklch(92% 0.06 75);color:oklch(34% 0.1 75)">In progress</span>
+<span class="pill" style="background:oklch(92% 0.045 155);color:oklch(30% 0.09 155)">Completed</span>
+<span class="pill" style="background:oklch(90% 0.005 150);color:oklch(39% 0.01 150)">Cancelled</span>
+<span class="pill" style="background:oklch(92% 0.05 25);color:oklch(34% 0.11 25)">Failed</span>
+</div>
+<p class="contrast-note" style="margin-bottom:14px">Completed deliberately shares the brand hue — success is the brand's default state. Each pill ≈7.6–8.5:1 (estimated).</p>
+<p class="lbl" style="margin-bottom:8px">Verified badge — warm brass, the only warm colour in the system, so it never reads as a status</p>
+<span class="pill" style="background:oklch(97.5% 0.008 150);border:1.5px solid oklch(52% 0.09 80);color:oklch(38% 0.08 80)">✓ Verified by a person</span>
+</div>
+<div class="sec" style="background:oklch(94% 0.012 150)">
+<p class="lbl">In context</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap">
+<div class="miniapp" style="background:oklch(38% 0.08 155);color:#fff;gap:14px">
+<div style="display:flex;align-items:center;gap:9px">
+<svg viewBox="0 0 64 64" width="26" height="26" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="#fff" stroke-width="6" stroke-linecap="round"/><path d="M8 32 H17 L22 21 L29 43 L34 32 H43" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<span style="font:700 16px 'Hind',sans-serif">Pulse</span>
+</div>
+<div style="font:400 12.5px/1.5 'Hind',sans-serif;opacity:.85">App chrome / splash</div>
+</div>
+<div class="miniapp" style="background:#fff;width:250px">
+<div style="font:600 14.5px 'Hind',sans-serif">Home Nursing Visit</div>
+<div style="font:600 14px 'Hind Madurai',sans-serif;line-height:1.55;opacity:.8">வீட்டு செவிலியர் வருகை</div>
+<span class="pill" style="background:#fff;border:1.5px solid oklch(52% 0.09 80);color:oklch(38% 0.08 80);width:fit-content">✓ Verified by a person</span>
+<div style="border-top:1px solid oklch(90% 0.008 150);padding-top:10px;display:grid;gap:6px;font:13px 'Hind',sans-serif">
+<div style="display:flex;justify-content:space-between"><span>Visit</span><span>₹650</span></div>
+<div style="display:flex;justify-content:space-between;opacity:.75"><span>Platform fee</span><span>₹40</span></div>
+<div style="display:flex;justify-content:space-between;font-weight:700;border-top:1px solid oklch(90% 0.008 150);padding-top:6px"><span>Total</span><span>₹690</span></div>
+</div>
+<div style="background:oklch(38% 0.08 155);color:#fff;border-radius:8px;padding:12px;text-align:center;font:600 14px 'Hind',sans-serif">Book this visit</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 3b -->
+<div class="dv-opt" id="3b">
+<div class="dv-olabel"><a class="dv-oid" href="#3b">3b</a>Ink & Sand — lever: neutral temperature</div>
+<div class="dv-card" style="background:oklch(96.5% 0.012 85);font-family:'Hind',sans-serif;color:oklch(23% 0.02 80)">
+<div class="sec">
+<p style="margin:0 0 8px;font-size:13.5px;line-height:1.6;max-width:640px"><strong>Position:</strong> keeps a blue-family primary — so the healthcare read is free — but replaces the category's cold white/grey with warm sand paper. The differentiator is the 90% of the screen nobody thinks about: surfaces, not the accent.</p>
+<p style="margin:0 0 18px;font-size:12.5px;line-height:1.6;opacity:.75">Lowest risk of the four and the most durable across three surfaces — warm neutrals stay comfortable in a dense admin queue where saturated brand colour becomes fatiguing. Deep indigo primary sits far enough from Practo/Portea royal blue to not be mistaken for them.</p>
+<div class="ramp" style="margin-bottom:16px">
+<div class="swatch" style="background:oklch(96.5% 0.012 85);border:1px solid oklch(87% 0.016 85)"><span class="swatch-name">50</span></div>
+<div class="swatch" style="background:oklch(93% 0.016 85)"><span class="swatch-name">100</span></div>
+<div class="swatch" style="background:oklch(86% 0.02 85)"><span class="swatch-name">200</span></div>
+<div class="swatch" style="background:oklch(70% 0.02 82)"><span class="swatch-name" style="color:oklch(23% 0.02 80)">400</span></div>
+<div class="swatch" style="background:oklch(43% 0.018 80)"><span class="swatch-name" style="color:#fff">600</span></div>
+<div class="swatch" style="background:oklch(30% 0.018 80)"><span class="swatch-name" style="color:#fff">800</span></div>
+<div class="swatch" style="background:oklch(17% 0.014 80)"><span class="swatch-name" style="color:#fff">900</span></div>
+</div>
+<div class="tile-row" style="margin-bottom:14px">
+<div class="swatch" style="background:oklch(37% 0.11 265);min-width:200px"><span class="swatch-name" style="color:#fff">Primary · deep indigo</span><span class="swatch-val" style="color:#fff">oklch(37% 0.11 265) · white text 9.4:1</span></div>
+<div class="swatch" style="background:oklch(93% 0.016 85);min-width:200px"><span class="swatch-name">Ink on 50</span><span class="swatch-val">oklch(23% 0.02 80) · 14.6:1</span></div>
+</div>
+<p class="lbl" style="margin-bottom:8px">Booking states — warm-tinted so they sit on sand, not on white</p>
+<div class="pill-row" style="margin-bottom:4px">
+<span class="pill" style="background:oklch(91% 0.05 225);color:oklch(32% 0.1 225)">Confirmed</span>
+<span class="pill" style="background:oklch(91% 0.05 275);color:oklch(33% 0.1 275)">En route</span>
+<span class="pill" style="background:oklch(91% 0.06 65);color:oklch(35% 0.1 65)">In progress</span>
+<span class="pill" style="background:oklch(91% 0.05 150);color:oklch(32% 0.1 150)">Completed</span>
+<span class="pill" style="background:oklch(89% 0.008 85);color:oklch(40% 0.014 85)">Cancelled</span>
+<span class="pill" style="background:oklch(91% 0.05 20);color:oklch(35% 0.11 20)">Failed</span>
+</div>
+<p class="contrast-note" style="margin-bottom:14px">Each pill ≈7.4–8.3:1 (estimated).</p>
+<p class="lbl" style="margin-bottom:8px">Verified badge — solid ink chip with a rule, borrowing the stamped-document idea from <a class="dv-oid" href="#1a">1a</a></p>
+<span class="pill" style="background:oklch(23% 0.02 80);color:oklch(96.5% 0.012 85)">✓ Verified by a person</span>
+</div>
+<div class="sec" style="background:oklch(93% 0.016 85)">
+<p class="lbl">In context</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap">
+<div class="miniapp" style="background:oklch(37% 0.11 265);color:#fff;gap:14px">
+<div style="display:flex;align-items:center;gap:9px">
+<svg viewBox="0 0 64 64" width="26" height="26" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="#fff" stroke-width="6" stroke-linecap="round"/><path d="M8 32 H17 L22 21 L29 43 L34 32 H43" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<span style="font:700 16px 'Hind',sans-serif">Pulse</span>
+</div>
+<div style="font:400 12.5px/1.5 'Hind',sans-serif;opacity:.85">App chrome / splash</div>
+</div>
+<div class="miniapp" style="background:oklch(99% 0.008 85);width:250px">
+<div style="font:600 14.5px 'Hind',sans-serif">Home Nursing Visit</div>
+<div style="font:600 14px 'Hind Madurai',sans-serif;line-height:1.55;opacity:.8">வீட்டு செவிலியர் வருகை</div>
+<span class="pill" style="background:oklch(23% 0.02 80);color:oklch(96.5% 0.012 85);width:fit-content">✓ Verified by a person</span>
+<div style="border-top:1px solid oklch(89% 0.014 85);padding-top:10px;display:grid;gap:6px;font:13px 'Hind',sans-serif">
+<div style="display:flex;justify-content:space-between"><span>Visit</span><span>₹650</span></div>
+<div style="display:flex;justify-content:space-between;opacity:.75"><span>Platform fee</span><span>₹40</span></div>
+<div style="display:flex;justify-content:space-between;font-weight:700;border-top:1px solid oklch(89% 0.014 85);padding-top:6px"><span>Total</span><span>₹690</span></div>
+</div>
+<div style="background:oklch(37% 0.11 265);color:#fff;border-radius:8px;padding:12px;text-align:center;font:600 14px 'Hind',sans-serif">Book this visit</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 3c -->
+<div class="dv-opt" id="3c">
+<div class="dv-olabel"><a class="dv-oid" href="#3c">3c</a>Deep Teal, Inverted — lever: value</div>
+<div class="dv-card" style="background:oklch(97% 0.008 195);font-family:'Hind',sans-serif;color:oklch(21% 0.02 200)">
+<div class="sec">
+<p style="margin:0 0 8px;font-size:13.5px;line-height:1.6;max-width:640px"><strong>Position:</strong> uses the category's own teal, but inverts how it's deployed. Competitors put bright teal <em>on</em> white as an accent; here teal is the dark surface itself — chrome, headers, primary actions — with content on near-white. Same hue, opposite value structure, so it reads as the grown-up version of a familiar thing rather than a departure.</p>
+<p style="margin:0 0 18px;font-size:12.5px;line-height:1.6;opacity:.75">Best contrast performance of the four, and darkest chrome means the night-time, mid-crisis use case in the brief is genuinely comfortable. Risk: closest to competitors at a glance in a screenshot lineup.</p>
+<div class="ramp" style="margin-bottom:16px">
+<div class="swatch" style="background:oklch(97% 0.008 195);border:1px solid oklch(88% 0.01 195)"><span class="swatch-name">50</span></div>
+<div class="swatch" style="background:oklch(94% 0.012 195)"><span class="swatch-name">100</span></div>
+<div class="swatch" style="background:oklch(87% 0.014 195)"><span class="swatch-name">200</span></div>
+<div class="swatch" style="background:oklch(70% 0.018 197)"><span class="swatch-name" style="color:oklch(21% 0.02 200)">400</span></div>
+<div class="swatch" style="background:oklch(43% 0.018 200)"><span class="swatch-name" style="color:#fff">600</span></div>
+<div class="swatch" style="background:oklch(30% 0.02 200)"><span class="swatch-name" style="color:#fff">800</span></div>
+<div class="swatch" style="background:oklch(16% 0.018 200)"><span class="swatch-name" style="color:#fff">900</span></div>
+</div>
+<div class="tile-row" style="margin-bottom:14px">
+<div class="swatch" style="background:oklch(32% 0.06 200);min-width:200px"><span class="swatch-name" style="color:#fff">Primary · deep teal</span><span class="swatch-val" style="color:#fff">oklch(32% 0.06 200) · white text 11.4:1</span></div>
+<div class="swatch" style="background:oklch(94% 0.012 195);min-width:200px"><span class="swatch-name">Ink on 50</span><span class="swatch-val">oklch(21% 0.02 200) · 15.8:1</span></div>
+</div>
+<p class="lbl" style="margin-bottom:8px">Booking states — shown on light surfaces and on dark chrome</p>
+<div class="pill-row" style="margin-bottom:8px">
+<span class="pill" style="background:oklch(92% 0.05 230);color:oklch(31% 0.1 230)">Confirmed</span>
+<span class="pill" style="background:oklch(92% 0.05 280);color:oklch(33% 0.1 280)">En route</span>
+<span class="pill" style="background:oklch(92% 0.06 78);color:oklch(34% 0.1 78)">In progress</span>
+<span class="pill" style="background:oklch(92% 0.05 150);color:oklch(31% 0.1 150)">Completed</span>
+<span class="pill" style="background:oklch(90% 0.005 195);color:oklch(39% 0.01 195)">Cancelled</span>
+<span class="pill" style="background:oklch(92% 0.05 25);color:oklch(34% 0.11 25)">Failed</span>
+</div>
+<div class="pill-row" style="background:oklch(24% 0.03 200);padding:10px;border-radius:8px;margin-bottom:4px">
+<span class="pill" style="background:oklch(34% 0.06 230);color:oklch(90% 0.05 230)">Confirmed</span>
+<span class="pill" style="background:oklch(34% 0.06 280);color:oklch(90% 0.05 280)">En route</span>
+<span class="pill" style="background:oklch(36% 0.06 78);color:oklch(92% 0.06 78)">In progress</span>
+<span class="pill" style="background:oklch(34% 0.06 150);color:oklch(90% 0.05 150)">Completed</span>
+<span class="pill" style="background:oklch(33% 0.006 195);color:oklch(86% 0.006 195)">Cancelled</span>
+<span class="pill" style="background:oklch(34% 0.06 25);color:oklch(90% 0.05 25)">Failed</span>
+</div>
+<p class="contrast-note" style="margin-bottom:14px">Light pills ≈7.7–8.6:1; dark pills ≈7.0–7.8:1 (estimated).</p>
+<p class="lbl" style="margin-bottom:8px">Verified badge — pale gold on ink, the one place metal appears; survives both surfaces</p>
+<div class="pill-row">
+<span class="pill" style="background:oklch(21% 0.02 200);color:oklch(84% 0.09 85)">✓ Verified by a person</span>
+<span class="pill" style="background:oklch(94% 0.05 85);color:oklch(35% 0.08 85)">✓ Verified by a person</span>
+</div>
+</div>
+<div class="sec" style="background:oklch(94% 0.012 195)">
+<p class="lbl">In context</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap">
+<div class="miniapp" style="background:oklch(21% 0.02 200);color:#fff;gap:14px">
+<div style="display:flex;align-items:center;gap:9px">
+<svg viewBox="0 0 64 64" width="26" height="26" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="oklch(84% 0.09 85)" stroke-width="6" stroke-linecap="round"/><path d="M8 32 H17 L22 21 L29 43 L34 32 H43" stroke="oklch(84% 0.09 85)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<span style="font:700 16px 'Hind',sans-serif">Pulse</span>
+</div>
+<div style="font:400 12.5px/1.5 'Hind',sans-serif;opacity:.85">App chrome / splash</div>
+</div>
+<div class="miniapp" style="background:#fff;width:250px">
+<div style="font:600 14.5px 'Hind',sans-serif">Home Nursing Visit</div>
+<div style="font:600 14px 'Hind Madurai',sans-serif;line-height:1.55;opacity:.8">வீட்டு செவிலியர் வருகை</div>
+<span class="pill" style="background:oklch(21% 0.02 200);color:oklch(84% 0.09 85);width:fit-content">✓ Verified by a person</span>
+<div style="border-top:1px solid oklch(90% 0.008 195);padding-top:10px;display:grid;gap:6px;font:13px 'Hind',sans-serif">
+<div style="display:flex;justify-content:space-between"><span>Visit</span><span>₹650</span></div>
+<div style="display:flex;justify-content:space-between;opacity:.75"><span>Platform fee</span><span>₹40</span></div>
+<div style="display:flex;justify-content:space-between;font-weight:700;border-top:1px solid oklch(90% 0.008 195);padding-top:6px"><span>Total</span><span>₹690</span></div>
+</div>
+<div style="background:oklch(32% 0.06 200);color:#fff;border-radius:8px;padding:12px;text-align:center;font:600 14px 'Hind',sans-serif">Book this visit</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 3d -->
+<div class="dv-opt" id="3d">
+<div class="dv-olabel"><a class="dv-oid" href="#3d">3d</a>Kumkum — lever: hue family, local</div>
+<div class="dv-card" style="background:oklch(97% 0.006 30);font-family:'Hind',sans-serif;color:oklch(21% 0.015 30)">
+<div class="sec">
+<p style="margin:0 0 8px;font-size:13.5px;line-height:1.6;max-width:640px"><strong>Position:</strong> a deep maroon drawn from local textile and temple colour rather than from healthcare at all. Nothing in the category is anywhere near it, and it says "from here" to a Chennai neighbourhood audience in a way blue never will — the brief's whole thesis is neighbourhood reliability, not national breadth.</p>
+<p style="margin:0 0 18px;font-size:12.5px;line-height:1.6;opacity:.75">Deliberately dark and desaturated so it never reads as emergency red — the brief bans that signalling, so red is only safe at this value. Highest distinctiveness, highest risk: it forfeits the free "medical" read and has to earn trust through the verification pattern instead. Needs a red/green colourblind check before commitment, since Failed also lives in the red family.</p>
+<div class="ramp" style="margin-bottom:16px">
+<div class="swatch" style="background:oklch(97% 0.006 30);border:1px solid oklch(88% 0.008 30)"><span class="swatch-name">50</span></div>
+<div class="swatch" style="background:oklch(94% 0.008 30)"><span class="swatch-name">100</span></div>
+<div class="swatch" style="background:oklch(87% 0.01 30)"><span class="swatch-name">200</span></div>
+<div class="swatch" style="background:oklch(70% 0.014 30)"><span class="swatch-name" style="color:oklch(21% 0.015 30)">400</span></div>
+<div class="swatch" style="background:oklch(43% 0.014 30)"><span class="swatch-name" style="color:#fff">600</span></div>
+<div class="swatch" style="background:oklch(30% 0.016 30)"><span class="swatch-name" style="color:#fff">800</span></div>
+<div class="swatch" style="background:oklch(16% 0.014 30)"><span class="swatch-name" style="color:#fff">900</span></div>
+</div>
+<div class="tile-row" style="margin-bottom:14px">
+<div class="swatch" style="background:oklch(34% 0.11 15);min-width:200px"><span class="swatch-name" style="color:#fff">Primary · kumkum maroon</span><span class="swatch-val" style="color:#fff">oklch(34% 0.11 15) · white text 10.5:1</span></div>
+<div class="swatch" style="background:oklch(94% 0.008 30);min-width:200px"><span class="swatch-name">Ink on 50</span><span class="swatch-val">oklch(21% 0.015 30) · 15.9:1</span></div>
+</div>
+<p class="lbl" style="margin-bottom:8px">Booking states — Failed shifted to a burnt orange-red so it can't be confused with the brand maroon</p>
+<div class="pill-row" style="margin-bottom:4px">
+<span class="pill" style="background:oklch(92% 0.05 230);color:oklch(31% 0.1 230)">Confirmed</span>
+<span class="pill" style="background:oklch(92% 0.05 285);color:oklch(33% 0.1 285)">En route</span>
+<span class="pill" style="background:oklch(92% 0.055 95);color:oklch(34% 0.09 95)">In progress</span>
+<span class="pill" style="background:oklch(92% 0.05 155);color:oklch(31% 0.1 155)">Completed</span>
+<span class="pill" style="background:oklch(90% 0.005 30);color:oklch(39% 0.01 30)">Cancelled</span>
+<span class="pill" style="background:oklch(92% 0.06 45);color:oklch(35% 0.12 45)">Failed</span>
+</div>
+<p class="contrast-note" style="margin-bottom:14px">Each pill ≈7.5–8.5:1 (estimated). Every state also carries an icon and label — no colour-only signalling.</p>
+<p class="lbl" style="margin-bottom:8px">Verified badge — deep green, the complement, so trust is unmistakably not the brand colour</p>
+<span class="pill" style="background:oklch(38% 0.07 155);color:#fff">✓ Verified by a person</span>
+</div>
+<div class="sec" style="background:oklch(94% 0.008 30)">
+<p class="lbl">In context</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap">
+<div class="miniapp" style="background:oklch(34% 0.11 15);color:#fff;gap:14px">
+<div style="display:flex;align-items:center;gap:9px">
+<svg viewBox="0 0 64 64" width="26" height="26" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="#fff" stroke-width="6" stroke-linecap="round"/><path d="M8 32 H17 L22 21 L29 43 L34 32 H43" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<span style="font:700 16px 'Hind',sans-serif">Pulse</span>
+</div>
+<div style="font:400 12.5px/1.5 'Hind',sans-serif;opacity:.85">App chrome / splash</div>
+</div>
+<div class="miniapp" style="background:#fff;width:250px">
+<div style="font:600 14.5px 'Hind',sans-serif">Home Nursing Visit</div>
+<div style="font:600 14px 'Hind Madurai',sans-serif;line-height:1.55;opacity:.8">வீட்டு செவிலியர் வருகை</div>
+<span class="pill" style="background:oklch(38% 0.07 155);color:#fff;width:fit-content">✓ Verified by a person</span>
+<div style="border-top:1px solid oklch(90% 0.006 30);padding-top:10px;display:grid;gap:6px;font:13px 'Hind',sans-serif">
+<div style="display:flex;justify-content:space-between"><span>Visit</span><span>₹650</span></div>
+<div style="display:flex;justify-content:space-between;opacity:.75"><span>Platform fee</span><span>₹40</span></div>
+<div style="display:flex;justify-content:space-between;font-weight:700;border-top:1px solid oklch(90% 0.006 30);padding-top:6px"><span>Total</span><span>₹690</span></div>
+</div>
+<div style="background:oklch(34% 0.11 15);color:#fff;border-radius:8px;padding:12px;text-align:center;font:600 14px 'Hind',sans-serif">Book this visit</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="dv-notes">
+<h4>My read</h4>
+<ul>
+<li><a class="dv-oid" href="#3b">3b</a> is the safest bet that still looks different — the warm neutral does the differentiation work quietly and holds up across patient app, provider app and a dense admin queue.</li>
+<li><a class="dv-oid" href="#3a">3a</a> is the strongest distinctiveness-per-unit-risk: still legible as healthcare, but no direct competitor leads with green.</li>
+<li><a class="dv-oid" href="#3d">3d</a> is the boldest and the most "Chennai," but forfeits the automatic medical read and needs a colourblind pass. Worth it only if local identity beats category legibility for you.</li>
+<li>Competitor colours above are from my general knowledge of these brands, not a fresh audit — if this is going to a decision meeting, screenshot the five main competitors' app stores side by side and confirm before citing it.</li>
+<li>Type is still <a class="dv-oid" href="#1c">1c</a>'s Hind / Hind Madurai in these previews. Say the word if you want to re-open type too, or pair a different Tamil face with the winning colour.</li>
+</ul>
+</div>
+
+<p class="dv-next">Which colour direction — <a class="dv-oid" href="#3a">3a</a>, <a class="dv-oid" href="#3b">3b</a>, <a class="dv-oid" href="#3c">3c</a>, <a class="dv-oid" href="#3d">3d</a>? Or name a hybrid (e.g. "<a class="dv-oid" href="#3a">3a</a>'s green on <a class="dv-oid" href="#3b">3b</a>'s sand neutrals").</p>
+</section>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Pulse-wave logo concepts</span></div>
+<p class="dv-tsub">Four marks built from a pulse-rate trace, each a different structural idea rather than four versions of one line. Full colour / single colour, light / dark, large and 24px, plus wordmark, standalone mark and lockup. Note: the brief bans ECG-style clinical signalling — these lean on the <em>rhythm</em> of a trace (rounded, unhurried, no grid paper, no red) to stay away from emergency-medicine language. Flagging the tension rather than silently resolving it.</p>
+<div class="dv-opts">
+
+<!-- 2a -->
+<div class="dv-opt" id="2a">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Held Beat — one calm beat, contained</div>
+<div class="dv-card" style="background:oklch(98% 0.008 250);font-family:'Hind',sans-serif;color:oklch(22% 0.01 250)">
+<div class="sec">
+<p style="margin:0 0 14px;font-size:13px;line-height:1.6;max-width:640px;opacity:.85">A single beat inside a soft container — one rise, one settle, held in a rounded frame. The containment is the point: the trace is calm and bounded, not a running monitor. Reads as a mark, not an instrument.</p>
+<div class="tile-row">
+<div class="tile" style="background:oklch(98% 0.008 250);border:1px solid oklch(88% 0.008 250)">
+<span class="tile-cap">Full colour · light</span>
+<svg viewBox="0 0 64 64" width="64" height="64"><rect x="4" y="4" width="56" height="56" rx="17" fill="oklch(45% 0.1 250)"/><path d="M14 33 H24 L29 22 L36 44 L41 33 H50" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+<div style="font:700 21px 'Hind',sans-serif;letter-spacing:-.01em">Pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24"><rect x="4" y="4" width="56" height="56" rx="17" fill="oklch(45% 0.1 250)"/><path d="M14 33 H25 L30 24 L36 42 L41 33 H50" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><span class="tile-cap">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(20% 0.012 250);color:#fff">
+<span class="tile-cap" style="opacity:.6;color:#fff">Full colour · dark</span>
+<svg viewBox="0 0 64 64" width="64" height="64"><rect x="4" y="4" width="56" height="56" rx="17" fill="oklch(70% 0.1 250)"/><path d="M14 33 H24 L29 22 L36 44 L41 33 H50" stroke="oklch(20% 0.012 250)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+<div style="font:700 21px 'Hind',sans-serif;letter-spacing:-.01em">Pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24"><rect x="4" y="4" width="56" height="56" rx="17" fill="oklch(70% 0.1 250)"/><path d="M14 33 H25 L30 24 L36 42 L41 33 H50" stroke="oklch(20% 0.012 250)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><span class="tile-cap" style="opacity:.6;color:#fff">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(98% 0.008 250);border:1px solid oklch(88% 0.008 250)">
+<span class="tile-cap">Single colour · light</span>
+<svg viewBox="0 0 64 64" width="64" height="64"><rect x="4" y="4" width="56" height="56" rx="17" fill="oklch(22% 0.01 250)"/><path d="M14 33 H24 L29 22 L36 44 L41 33 H50" stroke="oklch(98% 0.008 250)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+<div style="font:700 21px 'Hind',sans-serif">Pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24"><rect x="4" y="4" width="56" height="56" rx="17" fill="oklch(22% 0.01 250)"/><path d="M14 33 H25 L30 24 L36 42 L41 33 H50" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><span class="tile-cap">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(20% 0.012 250)">
+<span class="tile-cap" style="opacity:.6;color:#fff">Single colour · dark</span>
+<svg viewBox="0 0 64 64" width="64" height="64"><rect x="4" y="4" width="56" height="56" rx="17" fill="#fff"/><path d="M14 33 H24 L29 22 L36 44 L41 33 H50" stroke="oklch(20% 0.012 250)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+<div style="font:700 21px 'Hind',sans-serif;color:#fff">Pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24"><rect x="4" y="4" width="56" height="56" rx="17" fill="#fff"/><path d="M14 33 H25 L30 24 L36 42 L41 33 H50" stroke="oklch(20% 0.012 250)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><span class="tile-cap" style="opacity:.6;color:#fff">24px</span></div>
+</div>
+</div>
+<div class="tile" style="background:oklch(94% 0.008 250);margin-top:12px">
+<span class="tile-cap">Lockup · Latin + Tamil (placeholder transliteration)</span>
+<div style="display:flex;align-items:center;gap:12px">
+<svg viewBox="0 0 64 64" width="42" height="42"><rect x="4" y="4" width="56" height="56" rx="17" fill="oklch(45% 0.1 250)"/><path d="M14 33 H24 L29 22 L36 44 L41 33 H50" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+<div><div style="font:700 19px 'Hind',sans-serif">Pulse</div><div style="font:600 19px 'Hind Madurai',sans-serif;line-height:1.4">பல்ஸ்</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 2b -->
+<div class="dv-opt" id="2b">
+<div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>Baseline — the trace is the wordmark's floor</div>
+<div class="dv-card" style="background:oklch(98% 0.012 75);font-family:'Noto Serif',serif;color:oklch(22% 0.02 55)">
+<div class="sec">
+<p style="margin:0 0 14px;font-size:13px;line-height:1.6;max-width:640px;opacity:.85">The pulse runs underneath the name as a steady baseline with one beat in it — the brand literally sits on a stable line. Standalone mark is that beat clipped out. Strongest as a wordmark; the fragment carries the app icon.</p>
+<div class="tile-row">
+<div class="tile" style="background:oklch(98% 0.012 75);border:1px solid oklch(88% 0.012 75)">
+<span class="tile-cap">Full colour · light</span>
+<div style="display:flex;flex-direction:column;gap:4px"><div style="font:700 26px 'Noto Serif',serif;letter-spacing:.02em">Pulse</div><svg viewBox="0 0 120 16" width="120" height="16" fill="none"><path d="M2 11 H44 L52 4 L61 14 L69 11 H118" stroke="oklch(48% 0.13 35)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24" fill="none"><path d="M6 38 H20 L30 18 L40 50 L48 38 H58" stroke="oklch(48% 0.13 35)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-cap">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(20% 0.02 55);color:#fff">
+<span class="tile-cap" style="opacity:.6;color:#fff">Full colour · dark</span>
+<div style="display:flex;flex-direction:column;gap:4px"><div style="font:700 26px 'Noto Serif',serif;letter-spacing:.02em">Pulse</div><svg viewBox="0 0 120 16" width="120" height="16" fill="none"><path d="M2 11 H44 L52 4 L61 14 L69 11 H118" stroke="oklch(70% 0.11 40)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24" fill="none"><path d="M6 38 H20 L30 18 L40 50 L48 38 H58" stroke="oklch(70% 0.11 40)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-cap" style="opacity:.6;color:#fff">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(98% 0.012 75);border:1px solid oklch(88% 0.012 75)">
+<span class="tile-cap">Single colour · light</span>
+<div style="display:flex;flex-direction:column;gap:4px"><div style="font:700 26px 'Noto Serif',serif;letter-spacing:.02em">Pulse</div><svg viewBox="0 0 120 16" width="120" height="16" fill="none"><path d="M2 11 H44 L52 4 L61 14 L69 11 H118" stroke="oklch(22% 0.02 55)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24" fill="none"><path d="M6 38 H20 L30 18 L40 50 L48 38 H58" stroke="oklch(22% 0.02 55)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-cap">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(20% 0.02 55);color:#fff">
+<span class="tile-cap" style="opacity:.6;color:#fff">Single colour · dark</span>
+<div style="display:flex;flex-direction:column;gap:4px"><div style="font:700 26px 'Noto Serif',serif;letter-spacing:.02em">Pulse</div><svg viewBox="0 0 120 16" width="120" height="16" fill="none"><path d="M2 11 H44 L52 4 L61 14 L69 11 H118" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24" fill="none"><path d="M6 38 H20 L30 18 L40 50 L48 38 H58" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-cap" style="opacity:.6;color:#fff">24px</span></div>
+</div>
+</div>
+<div class="tile" style="background:oklch(94% 0.012 75);margin-top:12px">
+<span class="tile-cap">Lockup · Tamil sits on the same baseline (placeholder transliteration)</span>
+<div style="display:flex;flex-direction:column;gap:4px">
+<div style="display:flex;align-items:baseline;gap:14px"><span style="font:700 24px 'Noto Serif',serif">Pulse</span><span style="font:600 24px 'Noto Serif Tamil',serif;line-height:1.5">பல்ஸ்</span></div>
+<svg viewBox="0 0 190 16" width="190" height="16" fill="none"><path d="M2 11 H74 L82 4 L91 14 L99 11 H188" stroke="oklch(48% 0.13 35)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 2c -->
+<div class="dv-opt" id="2c">
+<div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a>Round Trace — the beat closes a circle</div>
+<div class="dv-card" style="background:oklch(98% 0.008 200);font-family:'Hind',sans-serif;color:oklch(22% 0.015 220)">
+<div class="sec">
+<p style="margin:0 0 14px;font-size:13px;line-height:1.6;max-width:640px;opacity:.85">The trace is bent into a ring and the beat completes it — continuity of care as a closed loop, and the ring doubles as the verification seal from <a class="dv-oid" href="#1a">1a</a>. Only concept where the pulse idea and the "verified by a person" idea are the same shape.</p>
+<div class="tile-row">
+<div class="tile" style="background:oklch(98% 0.008 200);border:1px solid oklch(88% 0.01 200)">
+<span class="tile-cap">Full colour · light</span>
+<svg viewBox="0 0 64 64" width="64" height="64" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="oklch(45% 0.09 200)" stroke-width="5" stroke-linecap="round"/><path d="M8 32 H17 L22 21 L29 43 L34 32 H43" stroke="oklch(45% 0.09 200)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div style="font:700 21px 'Hind',sans-serif">Pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="oklch(45% 0.09 200)" stroke-width="7" stroke-linecap="round"/><path d="M8 32 H17 L22 22 L29 42 L34 32 H43" stroke="oklch(45% 0.09 200)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-cap">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(20% 0.015 220);color:#fff">
+<span class="tile-cap" style="opacity:.6;color:#fff">Full colour · dark</span>
+<svg viewBox="0 0 64 64" width="64" height="64" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="oklch(72% 0.09 200)" stroke-width="5" stroke-linecap="round"/><path d="M8 32 H17 L22 21 L29 43 L34 32 H43" stroke="oklch(72% 0.09 200)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div style="font:700 21px 'Hind',sans-serif">Pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="oklch(72% 0.09 200)" stroke-width="7" stroke-linecap="round"/><path d="M8 32 H17 L22 22 L29 42 L34 32 H43" stroke="oklch(72% 0.09 200)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-cap" style="opacity:.6;color:#fff">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(98% 0.008 200);border:1px solid oklch(88% 0.01 200)">
+<span class="tile-cap">Single colour · light</span>
+<svg viewBox="0 0 64 64" width="64" height="64" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="oklch(22% 0.015 220)" stroke-width="5" stroke-linecap="round"/><path d="M8 32 H17 L22 21 L29 43 L34 32 H43" stroke="oklch(22% 0.015 220)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div style="font:700 21px 'Hind',sans-serif">Pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="oklch(22% 0.015 220)" stroke-width="7" stroke-linecap="round"/><path d="M8 32 H17 L22 22 L29 42 L34 32 H43" stroke="oklch(22% 0.015 220)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-cap">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(20% 0.015 220)">
+<span class="tile-cap" style="opacity:.6;color:#fff">Single colour · dark</span>
+<svg viewBox="0 0 64 64" width="64" height="64" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M8 32 H17 L22 21 L29 43 L34 32 H43" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div style="font:700 21px 'Hind',sans-serif;color:#fff">Pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="#fff" stroke-width="7" stroke-linecap="round"/><path d="M8 32 H17 L22 22 L29 42 L34 32 H43" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-cap" style="opacity:.6;color:#fff">24px</span></div>
+</div>
+</div>
+<div class="tile" style="background:oklch(94% 0.008 200);margin-top:12px">
+<span class="tile-cap">Lockup · Latin + Tamil (placeholder transliteration)</span>
+<div style="display:flex;align-items:center;gap:12px">
+<svg viewBox="0 0 64 64" width="42" height="42" fill="none"><path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="oklch(45% 0.09 200)" stroke-width="5" stroke-linecap="round"/><path d="M8 32 H17 L22 21 L29 43 L34 32 H43" stroke="oklch(45% 0.09 200)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div><div style="font:700 19px 'Hind',sans-serif">Pulse</div><div style="font:600 19px 'Hind Madurai',sans-serif;line-height:1.4">பல்ஸ்</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 2d -->
+<div class="dv-opt" id="2d">
+<div class="dv-olabel"><a class="dv-oid" href="#2d">2d</a>Two Beats — steady rhythm, not a spike</div>
+<div class="dv-card" style="background:oklch(97% 0.015 70);font-family:'Baloo 2',sans-serif;color:oklch(24% 0.02 50)">
+<div class="sec">
+<p style="margin:0 0 14px;font-size:13px;line-height:1.6;max-width:640px;opacity:.85">Two even beats instead of one dramatic spike — the pulse read as reassuring regularity rather than an alarm. Heavy rounded strokes keep it warm and legible at icon size; the softest of the four, and the furthest from monitor imagery.</p>
+<div class="tile-row">
+<div class="tile" style="background:oklch(97% 0.015 70);border:1px solid oklch(88% 0.02 60)">
+<span class="tile-cap">Full colour · light</span>
+<svg viewBox="0 0 64 64" width="64" height="64" fill="none"><path d="M6 38 L16 38 L21 26 L26 38 L38 38 L43 26 L48 38 L58 38" stroke="oklch(58% 0.15 40)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div style="font:800 22px 'Baloo 2',sans-serif">pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24" fill="none"><path d="M6 38 L16 38 L21 25 L26 38 L38 38 L43 25 L48 38 L58 38" stroke="oklch(58% 0.15 40)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-cap">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(24% 0.02 50);color:#fff">
+<span class="tile-cap" style="opacity:.6;color:#fff">Full colour · dark</span>
+<svg viewBox="0 0 64 64" width="64" height="64" fill="none"><path d="M6 38 L16 38 L21 26 L26 38 L38 38 L43 26 L48 38 L58 38" stroke="oklch(72% 0.14 45)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div style="font:800 22px 'Baloo 2',sans-serif">pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24" fill="none"><path d="M6 38 L16 38 L21 25 L26 38 L38 38 L43 25 L48 38 L58 38" stroke="oklch(72% 0.14 45)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-cap" style="opacity:.6;color:#fff">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(97% 0.015 70);border:1px solid oklch(88% 0.02 60)">
+<span class="tile-cap">Single colour · light</span>
+<svg viewBox="0 0 64 64" width="64" height="64" fill="none"><path d="M6 38 L16 38 L21 26 L26 38 L38 38 L43 26 L48 38 L58 38" stroke="oklch(24% 0.02 50)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div style="font:800 22px 'Baloo 2',sans-serif">pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24" fill="none"><path d="M6 38 L16 38 L21 25 L26 38 L38 38 L43 25 L48 38 L58 38" stroke="oklch(24% 0.02 50)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-cap">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(24% 0.02 50)">
+<span class="tile-cap" style="opacity:.6;color:#fff">Single colour · dark</span>
+<svg viewBox="0 0 64 64" width="64" height="64" fill="none"><path d="M6 38 L16 38 L21 26 L26 38 L38 38 L43 26 L48 38 L58 38" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div style="font:800 22px 'Baloo 2',sans-serif;color:#fff">pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24" fill="none"><path d="M6 38 L16 38 L21 25 L26 38 L38 38 L43 25 L48 38 L58 38" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-cap" style="opacity:.6;color:#fff">24px</span></div>
+</div>
+</div>
+<div class="tile" style="background:oklch(93% 0.02 60);margin-top:12px">
+<span class="tile-cap">Lockup · Latin + Tamil (placeholder transliteration)</span>
+<div style="display:flex;align-items:center;gap:12px">
+<svg viewBox="0 0 64 64" width="42" height="42" fill="none"><path d="M6 38 L16 38 L21 26 L26 38 L38 38 L43 26 L48 38 L58 38" stroke="oklch(58% 0.15 40)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div><div style="font:800 19px 'Baloo 2',sans-serif">pulse</div><div style="font:700 19px 'Baloo Thambi 2',sans-serif;line-height:1.45">பல்ஸ்</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="dv-notes">
+<h4>One honest note</h4>
+<ul>
+<li>Your brief bans ECG/clinical signalling; a pulse-rate trace is exactly that language. I've pushed each mark away from the emergency end (no red, no grid, rounded caps, one or two calm beats) but if the "not clinical" constraint still stands, <a class="dv-oid" href="#2c">2c</a> and <a class="dv-oid" href="#2d">2d</a> survive it best — <a class="dv-oid" href="#2c">2c</a> reads as a seal first, <a class="dv-oid" href="#2d">2d</a> as rhythm. Tell me which constraint wins.</li>
+</ul>
+</div>
+<p class="dv-next">Pick a mark (<a class="dv-oid" href="#2a">2a</a>–<a class="dv-oid" href="#2d">2d</a>) and I'll pair it with one of the colour/type directions below.</p>
+</section>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Three brand directions for Pulse</span></div>
+<p class="dv-tsub">Comparable set — same structure (rationale, logo system, colour, type) across all three so a decision can be made side by side. Persona IDs (PER-00x) refer to the brief.</p>
+
+<div class="dv-opts">
+
+<!-- ============ 1a — THE SEAL ============ -->
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>The Seal — verification as ritual</div>
+<div class="dv-card" style="background:oklch(98% 0.012 75);font-family:'Noto Serif',serif;color:oklch(22% 0.02 55)">
+
+<div class="sec">
+<p class="lbl" style="color:oklch(22% 0.02 55)">Rationale</p>
+<p style="margin:0 0 10px;font-size:15px;line-height:1.5;font-weight:600">Makes human verification the whole identity, not a badge bolted onto a card.</p>
+<p style="margin:0;font-size:13px;line-height:1.65;max-width:640px;opacity:.85">PER-001 and PER-003 are trusting a stranger to enter a parent's home while they can't supervise; PER-004 professionals want their own review to feel like a real, visible process rather than a silent queue. Everything here — the mark, the ink colour, the paper-toned neutrals — borrows the visual language of a stamped, signed, hand-checked document: a passbook or certificate, not an app icon. Calm and administrative, in the best sense.</p>
+<p style="margin:10px 0 0;font-size:12.5px;line-height:1.6;font-style:italic;opacity:.7">Mood: unhurried, ink-on-paper, deliberate. No gloss, no motion-for-motion's-sake.</p>
+</div>
+
+<div class="sec">
+<p class="lbl">Logo — Seal mark</p>
+<div class="tile-row">
+<div class="tile" style="background:oklch(98% 0.012 75);border:1px solid oklch(88% 0.012 75);color:oklch(22% 0.02 55)">
+<span class="tile-cap">Full colour · light</span>
+<svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="oklch(48% 0.13 35)"><circle cx="32" cy="32" r="27" stroke-width="4"/><circle cx="32" cy="32" r="18" stroke-width="1.6" stroke-dasharray="2.5 4.5" opacity=".7"/><path d="M22 33 L29 40 L43 23" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div style="font:700 20px 'Noto Serif',serif;letter-spacing:.03em;color:oklch(22% 0.02 55)">PULSE</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24" fill="none" stroke="oklch(48% 0.13 35)"><circle cx="32" cy="32" r="27" stroke-width="6"/><path d="M22 33 L29 40 L43 23" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-cap">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(20% 0.02 55);color:#fff">
+<span class="tile-cap" style="opacity:.6;color:#fff">Full colour · dark</span>
+<svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="oklch(70% 0.11 40)"><circle cx="32" cy="32" r="27" stroke-width="4"/><circle cx="32" cy="32" r="18" stroke-width="1.6" stroke-dasharray="2.5 4.5" opacity=".7"/><path d="M22 33 L29 40 L43 23" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div style="font:700 20px 'Noto Serif',serif;letter-spacing:.03em">PULSE</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24" fill="none" stroke="oklch(70% 0.11 40)"><circle cx="32" cy="32" r="27" stroke-width="6"/><path d="M22 33 L29 40 L43 23" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-cap" style="opacity:.6;color:#fff">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(98% 0.012 75);border:1px solid oklch(88% 0.012 75)">
+<span class="tile-cap">Single colour · light</span>
+<svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="oklch(22% 0.02 55)"><circle cx="32" cy="32" r="27" stroke-width="4"/><circle cx="32" cy="32" r="18" stroke-width="1.6" stroke-dasharray="2.5 4.5" opacity=".7"/><path d="M22 33 L29 40 L43 23" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div style="font:700 20px 'Noto Serif',serif;letter-spacing:.03em;color:oklch(22% 0.02 55)">PULSE</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24" fill="none" stroke="oklch(22% 0.02 55)"><circle cx="32" cy="32" r="27" stroke-width="6"/><path d="M22 33 L29 40 L43 23" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-cap">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(20% 0.02 55)">
+<span class="tile-cap" style="opacity:.6;color:#fff">Single colour · dark</span>
+<svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="#fff"><circle cx="32" cy="32" r="27" stroke-width="4"/><circle cx="32" cy="32" r="18" stroke-width="1.6" stroke-dasharray="2.5 4.5" opacity=".7"/><path d="M22 33 L29 40 L43 23" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div style="font:700 20px 'Noto Serif',serif;letter-spacing:.03em;color:#fff">PULSE</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24" fill="none" stroke="#fff"><circle cx="32" cy="32" r="27" stroke-width="6"/><path d="M22 33 L29 40 L43 23" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="tile-cap" style="opacity:.6;color:#fff">24px</span></div>
+</div>
+</div>
+<div class="tile" style="background:oklch(94% 0.012 75);margin-top:12px">
+<span class="tile-cap">Lockup with Tamil name (placeholder transliteration — needs localisation review)</span>
+<div style="display:flex;align-items:center;gap:12px">
+<svg viewBox="0 0 64 64" width="40" height="40" fill="none" stroke="oklch(48% 0.13 35)"><circle cx="32" cy="32" r="27" stroke-width="4.5"/><path d="M22 33 L29 40 L43 23" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div>
+<div style="font:700 18px 'Noto Serif',serif;color:oklch(22% 0.02 55)">Pulse</div>
+<div style="font:600 18px 'Noto Serif Tamil',serif;color:oklch(22% 0.02 55)">பல்ஸ்</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="sec">
+<p class="lbl">Colour</p>
+<p style="margin:0 0 10px;font-size:12px;opacity:.65">Neutral ramp — warm paper, hue 75, chroma 0.012</p>
+<div class="ramp" style="margin-bottom:16px">
+<div class="swatch" style="background:oklch(98% 0.012 75);border:1px solid oklch(88% 0.012 75)"><span class="swatch-name">paper-50</span></div>
+<div class="swatch" style="background:oklch(94% 0.012 75)"><span class="swatch-name">100</span></div>
+<div class="swatch" style="background:oklch(88% 0.012 75)"><span class="swatch-name">200</span></div>
+<div class="swatch" style="background:oklch(72% 0.012 75)"><span class="swatch-name" style="color:oklch(22% 0.02 55)">400</span></div>
+<div class="swatch" style="background:oklch(44% 0.012 75)"><span class="swatch-name" style="color:#fff">600</span></div>
+<div class="swatch" style="background:oklch(32% 0.012 75)"><span class="swatch-name" style="color:#fff">800</span></div>
+<div class="swatch" style="background:oklch(18% 0.012 75)"><span class="swatch-name" style="color:#fff">ink-900</span></div>
+</div>
+<p style="margin:0 0 8px;font-size:12px;opacity:.65">Primary — seal ink terracotta oklch(48% 0.13 35), text ink oklch(22% 0.02 55) on paper-50 ≈15.6:1</p>
+<p style="margin:0 0 8px;font-size:12px;opacity:.65">Booking states (light tint bg + dark text, same hue)</p>
+<div class="pill-row" style="margin-bottom:6px">
+<span class="pill" style="background:oklch(92% 0.05 230);color:oklch(32% 0.11 230)">Confirmed</span>
+<span class="pill" style="background:oklch(92% 0.05 265);color:oklch(34% 0.1 265)">En route</span>
+<span class="pill" style="background:oklch(92% 0.06 80);color:oklch(34% 0.1 80)">In progress</span>
+<span class="pill" style="background:oklch(92% 0.05 150);color:oklch(32% 0.1 150)">Completed</span>
+<span class="pill" style="background:oklch(90% 0.006 75);color:oklch(40% 0.01 75)">Cancelled</span>
+<span class="pill" style="background:oklch(92% 0.05 25);color:oklch(35% 0.11 25)">Failed</span>
+</div>
+<p class="contrast-note">Each pill ≈7.5–8.4:1 text/bg — verify precisely in tooling before ship.</p>
+<p style="margin:14px 0 6px;font-size:12px;opacity:.65">Verified badge — reuses the primary seal ink deliberately: verification IS the brand here, not a separate colour</p>
+<span class="pill" style="background:oklch(48% 0.13 35);color:#fff">✓ Verified by Pulse</span>
+</div>
+
+<div class="sec">
+<p class="lbl">Type — Noto Serif / Noto Serif Tamil</p>
+<p style="margin:0 0 10px;font-size:12px;line-height:1.6;opacity:.75">Both scripts are part of Google's Noto superfamily, drawn to a shared harmonisation spec so weight, contrast and rhythm read as one family rather than a Latin face with a bolted-on fallback.</p>
+<div class="specimen" style="background:oklch(94% 0.012 75)">
+<p class="en" style="font:600 22px 'Noto Serif',serif;color:oklch(22% 0.02 55)">Reliable home healthcare, near you.</p>
+<p class="ta" style="font:600 22px 'Noto Serif Tamil',serif;line-height:1.6;color:oklch(22% 0.02 55)">நம்பகமான வீட்டு சுகாதார சேவை, உங்கள் அருகில்.</p>
+</div>
+<div class="miniapp" style="background:oklch(94% 0.012 75);margin-top:14px">
+<span class="tile-cap">Bilingual card — no truncation</span>
+<div style="font:600 14px 'Noto Serif',serif;color:oklch(22% 0.02 55)">Home Nursing Visit</div>
+<div style="font:600 14px 'Noto Serif Tamil',serif;line-height:1.55;color:oklch(22% 0.02 55)">வீட்டு செவிலியர் வருகை</div>
+<span class="pill" style="background:oklch(92% 0.05 230);color:oklch(32% 0.11 230);width:fit-content">Confirmed</span>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ============ 1b — THE NEIGHBOUR ============ -->
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>The Neighbour — Tamil-first warmth</div>
+<div class="dv-card" style="background:oklch(97% 0.015 70);font-family:'Baloo 2',sans-serif;color:oklch(24% 0.02 50)">
+
+<div class="sec">
+<p class="lbl">Rationale</p>
+<p style="margin:0 0 10px;font-size:15px;line-height:1.5;font-weight:700">Feels like a trusted neighbour, not a national platform — built for someone new to apps.</p>
+<p style="margin:0;font-size:13px;line-height:1.65;max-width:640px;opacity:.85">PER-001 may have low digital confidence and prefers Tamil; the brief is explicit that Tamil is first-class, not a translation pass. This direction leads with rounded, generous, plain-spoken forms — big type, warm domestic colour, nothing sharp or corporate — so the app reads as approachable before it reads as a "product." Terracotta and turmeric-adjacent tones without leaning on postcard clichés.</p>
+<p style="margin:10px 0 0;font-size:12.5px;line-height:1.6;font-style:italic;opacity:.7">Mood: warm, plain-spoken, unhurried domestic comfort.</p>
+</div>
+
+<div class="sec">
+<p class="lbl">Logo — Home-visit mark</p>
+<div class="tile-row">
+<div class="tile" style="background:oklch(97% 0.015 70);border:1px solid oklch(88% 0.02 60)">
+<span class="tile-cap">Full colour · light</span>
+<svg viewBox="0 0 64 64" width="64" height="64"><path d="M12 30 L32 13 L52 30 V50 A5 5 0 0 1 47 55 H17 A5 5 0 0 1 12 50 Z" fill="oklch(58% 0.15 40)"/><circle cx="32" cy="41" r="6" fill="oklch(97% 0.015 70)"/></svg>
+<div style="font:800 20px 'Baloo 2',sans-serif;color:oklch(24% 0.02 50)">pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24"><path d="M12 30 L32 13 L52 30 V50 A5 5 0 0 1 47 55 H17 A5 5 0 0 1 12 50 Z" fill="oklch(58% 0.15 40)"/></svg><span class="tile-cap">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(24% 0.02 50);color:#fff">
+<span class="tile-cap" style="opacity:.6;color:#fff">Full colour · dark</span>
+<svg viewBox="0 0 64 64" width="64" height="64"><path d="M12 30 L32 13 L52 30 V50 A5 5 0 0 1 47 55 H17 A5 5 0 0 1 12 50 Z" fill="oklch(70% 0.14 40)"/><circle cx="32" cy="41" r="6" fill="oklch(24% 0.02 50)"/></svg>
+<div style="font:800 20px 'Baloo 2',sans-serif">pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24"><path d="M12 30 L32 13 L52 30 V50 A5 5 0 0 1 47 55 H17 A5 5 0 0 1 12 50 Z" fill="oklch(70% 0.14 40)"/></svg><span class="tile-cap" style="opacity:.6;color:#fff">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(97% 0.015 70);border:1px solid oklch(88% 0.02 60)">
+<span class="tile-cap">Single colour · light</span>
+<svg viewBox="0 0 64 64" width="64" height="64"><path d="M12 30 L32 13 L52 30 V50 A5 5 0 0 1 47 55 H17 A5 5 0 0 1 12 50 Z" fill="oklch(24% 0.02 50)"/><circle cx="32" cy="41" r="6" fill="oklch(97% 0.015 70)"/></svg>
+<div style="font:800 20px 'Baloo 2',sans-serif;color:oklch(24% 0.02 50)">pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24"><path d="M12 30 L32 13 L52 30 V50 A5 5 0 0 1 47 55 H17 A5 5 0 0 1 12 50 Z" fill="oklch(24% 0.02 50)"/></svg><span class="tile-cap">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(24% 0.02 50)">
+<span class="tile-cap" style="opacity:.6;color:#fff">Single colour · dark</span>
+<svg viewBox="0 0 64 64" width="64" height="64"><path d="M12 30 L32 13 L52 30 V50 A5 5 0 0 1 47 55 H17 A5 5 0 0 1 12 50 Z" fill="#fff"/><circle cx="32" cy="41" r="6" fill="oklch(24% 0.02 50)"/></svg>
+<div style="font:800 20px 'Baloo 2',sans-serif;color:#fff">pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24"><path d="M12 30 L32 13 L52 30 V50 A5 5 0 0 1 47 55 H17 A5 5 0 0 1 12 50 Z" fill="#fff"/></svg><span class="tile-cap" style="opacity:.6;color:#fff">24px</span></div>
+</div>
+</div>
+<div class="tile" style="background:oklch(93% 0.02 60);margin-top:12px">
+<span class="tile-cap">Lockup with Tamil name (placeholder transliteration — needs localisation review)</span>
+<div style="display:flex;align-items:center;gap:12px">
+<svg viewBox="0 0 64 64" width="40" height="40"><path d="M12 30 L32 13 L52 30 V50 A5 5 0 0 1 47 55 H17 A5 5 0 0 1 12 50 Z" fill="oklch(58% 0.15 40)"/></svg>
+<div>
+<div style="font:800 18px 'Baloo 2',sans-serif;color:oklch(24% 0.02 50)">pulse</div>
+<div style="font:700 18px 'Baloo Thambi 2',sans-serif;color:oklch(24% 0.02 50)">பல்ஸ்</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="sec">
+<p class="lbl">Colour</p>
+<p style="margin:0 0 10px;font-size:12px;opacity:.65">Neutral ramp — warm terracotta-tinted, hue 60, chroma 0.02</p>
+<div class="ramp" style="margin-bottom:16px">
+<div class="swatch" style="background:oklch(97% 0.02 60);border:1px solid oklch(88% 0.02 60)"><span class="swatch-name">50</span></div>
+<div class="swatch" style="background:oklch(93% 0.02 60)"><span class="swatch-name">100</span></div>
+<div class="swatch" style="background:oklch(86% 0.025 60)"><span class="swatch-name">200</span></div>
+<div class="swatch" style="background:oklch(70% 0.025 60)"><span class="swatch-name" style="color:oklch(24% 0.02 50)">400</span></div>
+<div class="swatch" style="background:oklch(43% 0.02 60)"><span class="swatch-name" style="color:#fff">600</span></div>
+<div class="swatch" style="background:oklch(32% 0.02 55)"><span class="swatch-name" style="color:#fff">800</span></div>
+<div class="swatch" style="background:oklch(18% 0.015 55)"><span class="swatch-name" style="color:#fff">900</span></div>
+</div>
+<p style="margin:0 0 8px;font-size:12px;opacity:.65">Primary — terracotta oklch(58% 0.15 40); secondary — calm teal oklch(45% 0.09 200). Text ink on bg-50 ≈14.9:1</p>
+<p style="margin:0 0 8px;font-size:12px;opacity:.65">Booking states</p>
+<div class="pill-row" style="margin-bottom:6px">
+<span class="pill" style="background:oklch(91% 0.06 230);color:oklch(33% 0.12 230)">Confirmed</span>
+<span class="pill" style="background:oklch(91% 0.06 265);color:oklch(35% 0.11 265)">En route</span>
+<span class="pill" style="background:oklch(91% 0.07 80);color:oklch(35% 0.11 80)">In progress</span>
+<span class="pill" style="background:oklch(91% 0.06 150);color:oklch(33% 0.11 150)">Completed</span>
+<span class="pill" style="background:oklch(89% 0.01 60);color:oklch(40% 0.015 60)">Cancelled</span>
+<span class="pill" style="background:oklch(91% 0.06 25);color:oklch(36% 0.12 25)">Failed</span>
+</div>
+<p class="contrast-note">Each pill ≈7.2–8.0:1 — verify precisely in tooling before ship.</p>
+<p style="margin:14px 0 6px;font-size:12px;opacity:.65">Verified badge — distinct deep teal, so trust reads separately from the warm brand hue</p>
+<span class="pill" style="background:oklch(45% 0.09 200);color:#fff">✓ Verified by Pulse</span>
+</div>
+
+<div class="sec">
+<p class="lbl">Type — Baloo 2 / Baloo Thambi 2</p>
+<p style="margin:0 0 10px;font-size:12px;line-height:1.6;opacity:.75">Same foundry superfamily, designed together for a rounded, friendly, high-legibility feel across scripts — built for readers new to touchscreens, not for branding polish.</p>
+<div class="specimen" style="background:oklch(93% 0.02 60)">
+<p class="en" style="font:600 22px 'Baloo 2',sans-serif;color:oklch(24% 0.02 50)">Reliable home healthcare, near you.</p>
+<p class="ta" style="font:600 22px 'Baloo Thambi 2',sans-serif;line-height:1.65;color:oklch(24% 0.02 50)">நம்பகமான வீட்டு சுகாதார சேவை, உங்கள் அருகில்.</p>
+</div>
+<div class="miniapp" style="background:oklch(93% 0.02 60);margin-top:14px">
+<span class="tile-cap">Bilingual card — no truncation</span>
+<div style="font:700 15px 'Baloo 2',sans-serif;color:oklch(24% 0.02 50)">Home Nursing Visit</div>
+<div style="font:600 15px 'Baloo Thambi 2',sans-serif;line-height:1.6;color:oklch(24% 0.02 50)">வீட்டு செவிலியர் வருகை</div>
+<span class="pill" style="background:oklch(91% 0.06 230);color:oklch(33% 0.12 230);width:fit-content">Confirmed</span>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ============ 1c — THE LEDGER ============ -->
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>The Ledger — operational clarity</div>
+<div class="dv-card" style="background:oklch(98% 0.004 250);font-family:'Hind',sans-serif;color:oklch(22% 0.01 250)">
+
+<div class="sec">
+<p class="lbl">Rationale</p>
+<p style="margin:0 0 10px;font-size:15px;line-height:1.5;font-weight:600">Wins on transparency and precision — a well-run desk, not a hospital and not a hospitality brand.</p>
+<p style="margin:0;font-size:13px;line-height:1.65;max-width:640px;opacity:.85">PER-003 is coordinating remotely and needs status and pricing to be legible at a glance without being present; PER-005 (admin) lives in a dense queue all day and needs the same visual system to hold up under real operational load. This direction is cool, structured, and slightly systems-y — closer to a transit or utility app than a lifestyle one — which also gives the itemised platform-fee requirement somewhere honest to live.</p>
+<p style="margin:10px 0 0;font-size:12.5px;line-height:1.6;font-style:italic;opacity:.7">Mood: crisp, quiet, evidence-based. Confidence through order, not warmth.</p>
+</div>
+
+<div class="sec">
+<p class="lbl">Logo — Ledger mark</p>
+<div class="tile-row">
+<div class="tile" style="background:oklch(98% 0.004 250);border:1px solid oklch(88% 0.006 250)">
+<span class="tile-cap">Full colour · light</span>
+<svg viewBox="0 0 64 64" width="64" height="64"><rect x="9" y="41" width="20" height="7" rx="3.5" fill="oklch(45% 0.1 250)"/><rect x="9" y="29" width="33" height="7" rx="3.5" fill="oklch(45% 0.1 250)"/><rect x="9" y="17" width="46" height="7" rx="3.5" fill="oklch(45% 0.1 250)"/></svg>
+<div style="font:700 20px 'Hind',sans-serif;color:oklch(22% 0.01 250)">Pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24"><rect x="9" y="41" width="20" height="7" rx="3.5" fill="oklch(45% 0.1 250)"/><rect x="9" y="29" width="33" height="7" rx="3.5" fill="oklch(45% 0.1 250)"/><rect x="9" y="17" width="46" height="7" rx="3.5" fill="oklch(45% 0.1 250)"/></svg><span class="tile-cap">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(20% 0.012 250);color:#fff">
+<span class="tile-cap" style="opacity:.6;color:#fff">Full colour · dark</span>
+<svg viewBox="0 0 64 64" width="64" height="64"><rect x="9" y="41" width="20" height="7" rx="3.5" fill="oklch(70% 0.1 250)"/><rect x="9" y="29" width="33" height="7" rx="3.5" fill="oklch(70% 0.1 250)"/><rect x="9" y="17" width="46" height="7" rx="3.5" fill="oklch(70% 0.1 250)"/></svg>
+<div style="font:700 20px 'Hind',sans-serif">Pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24"><rect x="9" y="41" width="20" height="7" rx="3.5" fill="oklch(70% 0.1 250)"/><rect x="9" y="29" width="33" height="7" rx="3.5" fill="oklch(70% 0.1 250)"/><rect x="9" y="17" width="46" height="7" rx="3.5" fill="oklch(70% 0.1 250)"/></svg><span class="tile-cap" style="opacity:.6;color:#fff">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(98% 0.004 250);border:1px solid oklch(88% 0.006 250)">
+<span class="tile-cap">Single colour · light</span>
+<svg viewBox="0 0 64 64" width="64" height="64"><rect x="9" y="41" width="20" height="7" rx="3.5" fill="oklch(22% 0.01 250)"/><rect x="9" y="29" width="33" height="7" rx="3.5" fill="oklch(22% 0.01 250)"/><rect x="9" y="17" width="46" height="7" rx="3.5" fill="oklch(22% 0.01 250)"/></svg>
+<div style="font:700 20px 'Hind',sans-serif;color:oklch(22% 0.01 250)">Pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24"><rect x="9" y="41" width="20" height="7" rx="3.5" fill="oklch(22% 0.01 250)"/><rect x="9" y="29" width="33" height="7" rx="3.5" fill="oklch(22% 0.01 250)"/><rect x="9" y="17" width="46" height="7" rx="3.5" fill="oklch(22% 0.01 250)"/></svg><span class="tile-cap">24px</span></div>
+</div>
+<div class="tile" style="background:oklch(20% 0.012 250)">
+<span class="tile-cap" style="opacity:.6;color:#fff">Single colour · dark</span>
+<svg viewBox="0 0 64 64" width="64" height="64"><rect x="9" y="41" width="20" height="7" rx="3.5" fill="#fff"/><rect x="9" y="29" width="33" height="7" rx="3.5" fill="#fff"/><rect x="9" y="17" width="46" height="7" rx="3.5" fill="#fff"/></svg>
+<div style="font:700 20px 'Hind',sans-serif;color:#fff">Pulse</div>
+<div class="mark24"><svg viewBox="0 0 64 64" width="24" height="24"><rect x="9" y="41" width="20" height="7" rx="3.5" fill="#fff"/><rect x="9" y="29" width="33" height="7" rx="3.5" fill="#fff"/><rect x="9" y="17" width="46" height="7" rx="3.5" fill="#fff"/></svg><span class="tile-cap" style="opacity:.6;color:#fff">24px</span></div>
+</div>
+</div>
+<div class="tile" style="background:oklch(94% 0.006 250);margin-top:12px">
+<span class="tile-cap">Lockup with Tamil name (placeholder transliteration — needs localisation review)</span>
+<div style="display:flex;align-items:center;gap:12px">
+<svg viewBox="0 0 64 64" width="40" height="40"><rect x="9" y="41" width="20" height="7" rx="3.5" fill="oklch(45% 0.1 250)"/><rect x="9" y="29" width="33" height="7" rx="3.5" fill="oklch(45% 0.1 250)"/><rect x="9" y="17" width="46" height="7" rx="3.5" fill="oklch(45% 0.1 250)"/></svg>
+<div>
+<div style="font:700 18px 'Hind',sans-serif;color:oklch(22% 0.01 250)">Pulse</div>
+<div style="font:600 18px 'Hind Madurai',sans-serif;color:oklch(22% 0.01 250)">பல்ஸ்</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="sec">
+<p class="lbl">Colour</p>
+<p style="margin:0 0 10px;font-size:12px;opacity:.65">Neutral ramp — cool slate, hue 250, chroma 0.006</p>
+<div class="ramp" style="margin-bottom:16px">
+<div class="swatch" style="background:oklch(98% 0.004 250);border:1px solid oklch(88% 0.006 250)"><span class="swatch-name">50</span></div>
+<div class="swatch" style="background:oklch(94% 0.006 250)"><span class="swatch-name">100</span></div>
+<div class="swatch" style="background:oklch(87% 0.008 250)"><span class="swatch-name">200</span></div>
+<div class="swatch" style="background:oklch(70% 0.01 250)"><span class="swatch-name" style="color:oklch(22% 0.01 250)">400</span></div>
+<div class="swatch" style="background:oklch(43% 0.012 250)"><span class="swatch-name" style="color:#fff">600</span></div>
+<div class="swatch" style="background:oklch(32% 0.012 250)"><span class="swatch-name" style="color:#fff">800</span></div>
+<div class="swatch" style="background:oklch(18% 0.01 250)"><span class="swatch-name" style="color:#fff">900</span></div>
+</div>
+<p style="margin:0 0 8px;font-size:12px;opacity:.65">Primary — slate blue oklch(45% 0.1 250). Text ink on bg-50 ≈16.1:1</p>
+<p style="margin:0 0 8px;font-size:12px;opacity:.65">Booking states</p>
+<div class="pill-row" style="margin-bottom:6px">
+<span class="pill" style="background:oklch(92% 0.045 230);color:oklch(32% 0.1 230)">Confirmed</span>
+<span class="pill" style="background:oklch(92% 0.045 270);color:oklch(34% 0.1 270)">En route</span>
+<span class="pill" style="background:oklch(92% 0.055 80);color:oklch(35% 0.1 80)">In progress</span>
+<span class="pill" style="background:oklch(92% 0.045 150);color:oklch(32% 0.1 150)">Completed</span>
+<span class="pill" style="background:oklch(90% 0.005 250);color:oklch(40% 0.01 250)">Cancelled</span>
+<span class="pill" style="background:oklch(92% 0.045 25);color:oklch(35% 0.1 25)">Failed</span>
+</div>
+<p class="contrast-note">Each pill ≈7.8–8.6:1 — verify precisely in tooling before ship.</p>
+<p style="margin:14px 0 6px;font-size:12px;opacity:.65">Verified badge — muted violet, orthogonal to both primary and status hues so it never gets mistaken for a status</p>
+<span class="pill" style="background:oklch(42% 0.1 300);color:#fff">✓ Verified by Pulse</span>
+</div>
+
+<div class="sec">
+<p class="lbl">Type — Hind / Hind Madurai</p>
+<p style="margin:0 0 10px;font-size:12px;line-height:1.6;opacity:.75">Both released together by the Indian Type Foundry as one series across scripts — built for dense UI and data-forward reading, which fits an operations desk as much as a booking flow.</p>
+<div class="specimen" style="background:oklch(94% 0.006 250)">
+<p class="en" style="font:600 22px 'Hind',sans-serif;color:oklch(22% 0.01 250)">Reliable home healthcare, near you.</p>
+<p class="ta" style="font:600 22px 'Hind Madurai',sans-serif;line-height:1.6;color:oklch(22% 0.01 250)">நம்பகமான வீட்டு சுகாதார சேவை, உங்கள் அருகில்.</p>
+</div>
+<div class="miniapp" style="background:oklch(94% 0.006 250);margin-top:14px">
+<span class="tile-cap">Bilingual card — no truncation</span>
+<div style="font:600 14px 'Hind',sans-serif;color:oklch(22% 0.01 250)">Home Nursing Visit</div>
+<div style="font:600 14px 'Hind Madurai',sans-serif;line-height:1.55;color:oklch(22% 0.01 250)">வீட்டு செவிலியர் வருகை</div>
+<span class="pill" style="background:oklch(92% 0.045 230);color:oklch(32% 0.1 230);width:fit-content">Confirmed</span>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<div class="dv-notes">
+<h4>Flags on the brief</h4>
+<ul>
+<li>Tamil strings above (பல்ஸ், "நம்பகமான வீட்டு சுகாதார சேவை", "சரிபார்க்கப்பட்டது") are my best-effort placeholders, not verified copy — get a Tamil-fluent reviewer on the wordmark transliteration and all UI strings before this goes further.</li>
+<li>Contrast ratios shown are close estimates from the oklch values, not measured — re-check every text/background pair in a real contrast tool once a direction is picked.</li>
+<li>"Assign vs. choose your professional" is still open per the brief — none of these three directions assume either; the provider card pattern and booking-state colours work the same way under both models.</li>
+<li>The brief calls the platform fee "always itemised as its own line" — worth deciding now whether that line lives inside the price-breakdown pattern only, or also as a small persistent label on summary/list views, since that changes how much space the pattern needs.</li>
+<li>No source is specified for "rating" shown next to a professional — is that a Pulse-collected post-visit rating, or something else? Affects whether the verified badge and a rating badge ever appear together and need to be visually distinguished.</li>
+</ul>
+</div>
+
+<p class="dv-next">Which direction should I develop further — <a class="dv-oid" href="#1a">1a</a>, <a class="dv-oid" href="#1b">1b</a>, or <a class="dv-oid" href="#1c">1c</a>? Or say "combine <a class="dv-oid" href="#1a">1a</a>'s mark with <a class="dv-oid" href="#1b">1b</a>'s colour" / "show more logo concepts for one direction" / "go deeper on components next."</p>
+</section>
+
+</x-dc>
+</body>
+</html>
