@@ -1,0 +1,262 @@
+/*
+  Pulse design tokens — ported verbatim from docs/design/project/Pulse Website.dc.html
+  (the :root block at the top of that file). Single light theme only; the source
+  design has no dark-mode variant, so none is introduced here.
+*/
+:root {
+  /* Colour primitives — never reference these outside this file. */
+  --blue-50: oklch(96% 0.018 255);
+  --blue-100: oklch(94% 0.03 255);
+  --blue-400: oklch(62% 0.14 255);
+  --blue-600: oklch(42% 0.13 255);
+  --blue-700: oklch(36% 0.12 255);
+  --blue-800: oklch(30% 0.1 255);
+
+  --ink-0: #ffffff;
+  --ink-50: oklch(96.5% 0.006 262);
+  --ink-100: oklch(93% 0.007 262);
+  --ink-200: oklch(91% 0.008 262);
+  --ink-300: oklch(85% 0.01 262);
+  --ink-400: oklch(72% 0.012 262);
+  --ink-500: oklch(58% 0.015 262);
+  --ink-600: oklch(45% 0.018 262);
+  --ink-800: oklch(31% 0.015 262);
+  --ink-900: oklch(20% 0.015 262);
+  --ink-950: oklch(17% 0.015 262);
+
+  --green-100: oklch(92% 0.05 152);
+  --green-700: oklch(31% 0.09 152);
+  --red-100: oklch(92% 0.05 22);
+  --red-700: oklch(35% 0.11 22);
+
+  /* Semantic aliases — components consume these, never the primitives above. */
+  --color-surface-base: var(--ink-0);
+  --color-surface-sunken: var(--ink-50);
+  --color-surface-selected: var(--blue-100);
+  --color-surface-brand: var(--blue-600);
+  --color-surface-inverse: var(--ink-950);
+
+  --color-text-primary: var(--ink-900);
+  --color-text-secondary: var(--ink-600);
+  /* Contrast conflict, flagged in the design and not resolved: ink-500 is
+     ~4.8:1 on white, under the 7:1 body floor. Placeholder / non-content
+     labels only — never a body or content string. */
+  --color-text-tertiary: var(--ink-500);
+  --color-text-brand: var(--blue-600);
+  --color-text-inverse: var(--ink-0);
+  --color-text-on-brand: var(--ink-0);
+
+  --color-border-subtle: var(--ink-200);
+  --color-border-default: var(--ink-300);
+  --color-border-strong: var(--ink-900);
+  --color-border-brand: var(--blue-600);
+  --color-border-focus: oklch(52% 0.16 255);
+
+  --color-action-primary: var(--blue-600);
+  --color-action-primary-text: var(--ink-0);
+
+  --color-verified-border: var(--ink-900);
+  --color-verified-text: var(--ink-900);
+
+  --color-success-surface: var(--green-100);
+  --color-success-text: var(--green-700);
+  --color-error-surface: var(--red-100);
+  --color-error-text: var(--red-700);
+
+  /* Spacing — 4/8/12/16/24/32/48/64px. No other spacing values are used. */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  --size-target-min: 48px;
+
+  --elevation-1: 0 1px 2px oklch(20% 0.03 262 / 0.06), 0 1px 3px oklch(20% 0.03 262 / 0.05);
+  --elevation-2: 0 4px 10px oklch(20% 0.03 262 / 0.08), 0 1px 3px oklch(20% 0.03 262 / 0.05);
+
+  --motion-duration-fast: 120ms;
+  --motion-duration-base: 180ms;
+  --motion-duration-slow: 240ms;
+  --motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Type scale — encoded as tokens (the source document hardcodes these
+     per-element; the EN/TA pairing is a real design decision worth naming). */
+  --step-display-en: 32px;
+  --step-display-ta: 30px;
+  --step-h2-en: 24px;
+  --step-h2-ta: 22px;
+  --step-h3-en: 18px;
+  --step-h3-ta: 17px;
+  --step-lead-en: 17px;
+  --step-lead-ta: 17px;
+  --step-body-en: 15px;
+  --step-body-ta: 15px;
+  --step-caption-en: 13px;
+  --step-caption-ta: 13px;
+  --step-eyebrow: 12px;
+
+  --leading-display-en: 1.15;
+  --leading-display-ta: 1.3;
+  --leading-h2-en: 1.25;
+  --leading-h2-ta: 1.4;
+  --leading-h3-en: 1.35;
+  --leading-h3-ta: 1.5;
+  --leading-lead-en: 1.55;
+  --leading-lead-ta: 1.75;
+  --leading-body-en: 1.6;
+  --leading-body-ta: 1.75;
+  --leading-caption-en: 1.5;
+  --leading-caption-ta: 1.75;
+
+  --font-family-latin: "Hind", system-ui, sans-serif;
+  --font-family-tamil: "Hind Madurai", "Noto Sans Tamil", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  max-width: 100vw;
+}
+
+body {
+  min-height: 100%;
+  color: var(--color-text-primary);
+  background: var(--color-surface-base);
+  font-family: var(--font-family-latin);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+/* Tamil is selected by document/element language, never by a class switch.
+   Never negative letter-spacing, never uppercase, always taller line-height. */
+:lang(ta) {
+  font-family: var(--font-family-tamil);
+  line-height: 1.75;
+}
+
+a {
+  color: var(--blue-600);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+a:hover {
+  color: var(--blue-700);
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+@keyframes pulseRise {
+  from {
+    transform: translateY(115%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Layout utilities shared by every page. */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.page-section {
+  padding: var(--space-xl) var(--space-md);
+}
+@media (min-width: 900px) {
+  .page-section {
+    padding: var(--space-3xl) var(--space-2xl);
+  }
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+@media (min-width: 900px) {
+  .two-col {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+  }
+}
+
+.sidebar-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+@media (min-width: 900px) {
+  .sidebar-col {
+    grid-template-columns: 1fr 420px;
+    gap: var(--space-3xl);
+    align-items: start;
+  }
+}
+
+.chip {
+  min-height: var(--size-target-min);
+  display: inline-flex;
+  align-items: center;
+  padding: 0 var(--space-md);
+  border-radius: var(--radius-full);
+  font-size: 15px;
+  border: 1px solid var(--color-border-default);
+  background: transparent;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+.chip[aria-pressed="true"] {
+  border: 2px solid var(--color-border-brand);
+  background: var(--color-surface-selected);
+  color: var(--color-text-brand);
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
