@@ -394,21 +394,10 @@ export const en = {
     },
   },
   professionals: {
-    h1: "Work with Pulse",
-    introThree: "For nurses and attenders working in Adyar, Besant Nagar and Thiruvanmiyur. Three documents, one conversation, and you are on the list.",
-    introFour: "For nurses, attenders, physiotherapists and doctors working in Adyar, Besant Nagar and Thiruvanmiyur. What we need from you depends on the role — pick yours and send only those documents.",
-    sendHeading: "What you need to send",
-    documents: [
-      { title: "Photo ID", body: "Aadhaar, voter ID, driving licence or passport. A clear photograph of it is fine." },
-      {
-        title: "Registration or training certificate",
-        body: "Nursing council registration if you are a nurse; your attender training certificate otherwise.",
-      },
-      {
-        title: "Police verification certificate",
-        body: "If you do not have one yet, send the other two and we will tell you how to get it.",
-      },
-    ],
+    eyebrow: "For professionals",
+    h1: "Work near where you live, with the paperwork done once.",
+    lead: "Joining is free. Never more than three documents, and you can send them on WhatsApp.",
+    zone: "Chennai · zone based",
     rolesHeading: "Which role are you applying for?",
     roles: [
       { title: "Nurse", body: "Nursing council registration · photo ID · police verification certificate." },
@@ -423,20 +412,11 @@ export const en = {
         note: "Doctor applications are reviewed separately, and each item is confirmed with the body that issued it. Expect it to take longer than a nursing application.",
       },
     ],
-    whatsapp: {
-      heading: "Send them on WhatsApp",
-      body: "Photograph each document and send it to the number below. No account, no upload form, no email attachment.",
-      button: "Open WhatsApp — placeholder number",
-      altNote: "Prefer to come in person? Call the same number and we will fix a time.",
-    },
     approvalHeading: "How long approval takes",
-    approvalPlaceholder: "figure not published yet",
     approvalNoteThree: "The slot is designed and reserved. No number goes here until we have measured it across real applications — a guess would be the first promise we break.",
     approvalNoteFour: "Still withheld, and now for a second reason: doctor verification and attender verification are not the same job, so one published figure would be wrong for at least one role. When we publish, it will be per role or not at all.",
-    noLabCard: {
-      heading: "No card for lab collection",
-      body: "Home lab collection launches as a service, but whether the sample is drawn by Pulse staff or by a partner lab is not decided. No role card is drawn until it is — inventing a credential list would put a promise on the site that nobody has agreed to keep.",
-    },
+    noLabNote: "Home lab collection launches as a service, but whether the sample is drawn by Pulse staff or by a partner lab is not decided. No role card is drawn until it is — inventing a credential list would put a promise on the site that nobody has agreed to keep.",
+    whatsappCta: "Message us on WhatsApp",
   },
   hospitals: {
     h1: "Discharge referrals",
