@@ -194,6 +194,30 @@ button {
   }
 }
 
+@keyframes pulseMarq {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* [data-parallax] is a reserved convention (element + a -depth factor,
+   0-1, meant as a fraction of element height) — space held for a future
+   scroll-linked effect. Not wired: WEB-D04/D05 (no scroll-hijacking,
+   expressive motion confined to the hero entrance) hasn't been reversed
+   for this in WEB-00. Never build/ship the live effect without that
+   confirmed, but the reduced-motion guard is cheap to have ready now. */
+[data-parallax] {
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-parallax] {
+    transform: none !important;
+  }
+}
+
 /* Layout utilities shared by every page. */
 .container {
   max-width: 1280px;
