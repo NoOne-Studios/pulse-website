@@ -279,36 +279,17 @@ export const en = {
     badgeNote: "The stamp appears next to a professional only while all three checks are current. If a check lapses, the stamp disappears before the person does.",
   },
   about: {
-    h1: "Why we started Pulse",
-    origin: [
-      "Placeholder origin paragraph, written at roughly the length the real one should be. It says what happened — a family, a discharge, a week of phone calls — in plain sentences and without a single adjective doing work that a fact should do.",
-      "Second paragraph: what that week showed. Finding someone was not the hard part. Knowing whether to trust them, what it would cost, and whether the same person would come back — that was the hard part, and none of it was written down anywhere.",
-      "Third paragraph: what we decided to build instead, kept small on purpose — three neighbourhoods, a short list of professionals we have actually met, and prices we say out loud before anyone is booked.",
-    ],
+    eyebrow: "About us",
+    h1: "We started this because arranging care for a parent should not depend on luck.",
+    lead: "When someone comes home from hospital, the family is handed a list of things to arrange and no way to arrange them.",
     whatWeWillNot: {
-      heading: "What we will not do",
-      intro: "This list is a commitment, not marketing. If we ever break one of these, it comes off this page first.",
+      eyebrow: "What we will not do",
+      heading: "Some things we have decided against",
       items: [
-        {
-          strong: "We will not give medical advice.",
-          rest: "Not on the phone, not on this site, not in a blog post. We arrange care; your doctor decides care.",
-        },
-        {
-          strong: "We will not ask for medical records",
-          rest: "to make an enquiry. No diagnosis, no reports, no medication lists in a web form.",
-        },
-        {
-          strong: "We will not sell or share your contact details",
-          rest: "with anyone, including the professionals, beyond what a visit requires.",
-        },
-        {
-          strong: "We will not claim coverage we do not have.",
-          rest: "Three neighbourhoods today. When that changes, the page changes.",
-        },
-        {
-          strong: "We will not list a professional we have not met in person",
-          rest: "— however urgent the request, and however good the paperwork looks.",
-        },
+        "We will not tell you what is wrong with someone. Our doctors do that; the app does not.",
+        "We are not an emergency service. In an emergency, call 108.",
+        "We will not list anyone we have not checked ourselves.",
+        "We will not claim to cover the whole city before we do.",
       ],
     },
   },
