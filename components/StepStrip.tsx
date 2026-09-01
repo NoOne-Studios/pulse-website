@@ -1,78 +1,75 @@
+import { ImageSlot } from "./ImageSlot";
+
+interface Step {
+  n: string;
+  stepLabel: string;
+  title: string;
+  body: string;
+  brief: string;
+  items: string[];
+}
+
 /**
- * Horizontal, snap-scrolling "how it works" strip — mobile and desktop
- * both use it, native CSS scroll-snap only, no JS carousel, no dots.
- * Deliberately a different component from VerificationSteps' vertical
- * rail (WEB-D13) even though both number 1..n.
+ * "How it works" — stacked full-width rows (image + copy), image on the
+ * left at desktop. Each step carries its own photo and a short "what this
+ * means" checklist. Deliberately a different component from
+ * VerificationSteps' vertical numbered rail (WEB-D13) even though both
+ * number 1..n.
  */
-export function StepStrip({ heading, swipeHint, steps }: { heading: string; swipeHint: string; steps: { title: string; body: string }[] }) {
+export function StepStrip({ heading, meansLabel, steps }: { heading: string; meansLabel: string; steps: Step[] }) {
   return (
-    <div className="page-section" style={{ background: "var(--color-surface-sunken)", borderTop: "1px solid var(--color-border-subtle)", borderBottom: "1px solid var(--color-border-subtle)" }}>
-      <div className="container">
-        <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2xs)" }}>
-          <h2 style={{ margin: 0, fontSize: "var(--step-h2-en)", lineHeight: "var(--leading-h2-en)", fontWeight: 700 }}>{heading}</h2>
-          <div className="swipe-hint" style={{ fontSize: 13, fontWeight: 600, letterSpacing: ".04em", color: "var(--color-text-brand)" }}>
-            {swipeHint}
-          </div>
-        </div>
-        <div
-          role="group"
-          aria-label={heading}
-          tabIndex={0}
-          style={{
-            marginTop: "var(--space-md)",
-            display: "grid",
-            gridAutoFlow: "column",
-            gridAutoColumns: "250px",
-            gap: "var(--space-sm)",
-            overflowX: "auto",
-            scrollSnapType: "x mandatory",
-            paddingBottom: "var(--space-xs)",
-          }}
-          className="step-strip-track"
-        >
-          {steps.map((step, i) => (
-            <div
-              key={step.title}
-              style={{
-                scrollSnapAlign: "start",
-                background: "var(--color-surface-base)",
-                border: "1px solid var(--color-border-default)",
-                borderRadius: "var(--radius-md)",
-                padding: "var(--space-md)",
-              }}
-            >
-              <div
-                style={{
-                  width: 32,
-                  height: 32,
-                  borderRadius: "var(--radius-full)",
-                  background: "var(--color-surface-brand)",
-                  color: "var(--color-text-on-brand)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: 15,
-                  fontWeight: 700,
-                }}
-              >
-                {i + 1}
+    <div className="page-section">
+      <div className="container" style={{ display: "flex", flexDirection: "column", gap: "var(--space-lg)" }}>
+        <h2 style={{ margin: 0, fontSize: "var(--step-h2-en)", lineHeight: "var(--leading-h2-en)", fontWeight: 700, maxWidth: "40ch" }}>
+          {heading}
+        </h2>
+        {steps.map((step) => (
+          <div
+            key={step.n}
+            className="two-col"
+            style={{ alignItems: "start", border: "1px solid var(--color-border-default)", borderRadius: "var(--radius-md)", padding: "var(--space-md)" }}
+          >
+            <ImageSlot ratio="3/2" label="PHOTO" brief={step.brief} />
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-sm)" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "var(--space-sm)" }}>
+                <span
+                  aria-hidden="true"
+                  style={{
+                    width: 32,
+                    height: 32,
+                    borderRadius: "var(--radius-full)",
+                    background: "var(--color-surface-brand)",
+                    color: "var(--color-text-on-brand)",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 15,
+                    fontWeight: 700,
+                  }}
+                >
+                  {step.n}
+                </span>
+                <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: ".06em", color: "var(--color-text-tertiary)" }}>{step.stepLabel}</span>
               </div>
-              <div style={{ marginTop: "var(--space-sm)", fontSize: "var(--step-h3-en)", fontWeight: 600, lineHeight: "var(--leading-h3-en)" }}>
-                {step.title}
+              <div style={{ fontSize: "var(--step-h3-en)", fontWeight: 600, lineHeight: "var(--leading-h3-en)" }}>{step.title}</div>
+              <p style={{ margin: 0, fontSize: "var(--step-body-en)", lineHeight: "var(--leading-body-en)" }}>{step.body}</p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2xs)", marginTop: "var(--space-2xs)", paddingTop: "var(--space-sm)", borderTop: "1px solid var(--color-border-subtle)" }}>
+                <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: ".06em", color: "var(--color-text-tertiary)" }}>{meansLabel}</span>
+                <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: "var(--space-2xs)" }}>
+                  {step.items.map((item) => (
+                    <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: "var(--space-xs)", fontSize: "var(--step-body-en)", lineHeight: "var(--leading-body-en)" }}>
+                      <span aria-hidden="true" style={{ color: "var(--color-text-brand)", fontWeight: 700 }}>
+                        ✓
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <p style={{ margin: "var(--space-2xs) 0 0", fontSize: "var(--step-body-en)", lineHeight: "var(--leading-body-en)" }}>
-                {step.body}
-              </p>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-      <style>{`
-        @media (min-width: 900px) {
-          .step-strip-track { grid-auto-flow: initial; grid-template-columns: repeat(${steps.length}, 1fr); overflow-x: visible; }
-          .swipe-hint { display: none; }
-        }
-      `}</style>
     </div>
   );
 }

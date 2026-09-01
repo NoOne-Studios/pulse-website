@@ -1,7 +1,6 @@
 interface Row {
-  label: string;
-  onYourOwn: string;
-  withPulse: string;
+  a: string;
+  b: string;
   emphasize?: boolean;
 }
 
@@ -12,19 +11,17 @@ export function ComparisonTable({
   onYourOwnLabel,
   withPulseLabel,
   rows,
-  legend,
 }: {
   heading: string;
   sub: string;
   onYourOwnLabel: string;
   withPulseLabel: string;
   rows: Row[];
-  legend: string;
 }) {
   return (
     <div className="page-section">
       <div className="container">
-        <h2 style={{ margin: "0 0 var(--space-2xs)", fontSize: "var(--step-h2-en)", lineHeight: "var(--leading-h2-en)", fontWeight: 700 }}>
+        <h2 style={{ margin: "0 0 var(--space-2xs)", fontSize: "var(--step-h2-en)", lineHeight: "var(--leading-h2-en)", fontWeight: 700, maxWidth: "36ch" }}>
           {heading}
         </h2>
         <p style={{ margin: "0 0 var(--space-md)", fontSize: "var(--step-body-en)", lineHeight: "var(--leading-body-en)" }}>{sub}</p>
@@ -32,36 +29,54 @@ export function ComparisonTable({
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "minmax(120px,1fr) minmax(84px,auto) minmax(84px,auto)",
+              gridTemplateColumns: "1fr 1fr",
               background: "var(--color-surface-sunken)",
               borderBottom: "1px solid var(--color-border-default)",
             }}
           >
-            <div style={{ padding: "var(--space-sm)" }} />
-            <div style={{ padding: "var(--space-sm)", fontSize: 13, fontWeight: 600, textAlign: "center" }}>{onYourOwnLabel}</div>
-            <div style={{ padding: "var(--space-sm)", fontSize: 13, fontWeight: 600, textAlign: "center", color: "var(--color-text-brand)" }}>
+            <div style={{ padding: "var(--space-sm) var(--space-md)", fontSize: 12, fontWeight: 600, letterSpacing: ".06em", color: "var(--color-text-tertiary)" }}>
+              {onYourOwnLabel}
+            </div>
+            <div
+              style={{
+                padding: "var(--space-sm) var(--space-md)",
+                fontSize: 12,
+                fontWeight: 600,
+                letterSpacing: ".06em",
+                color: "var(--color-text-brand)",
+                borderLeft: "1px solid var(--color-border-default)",
+              }}
+            >
               {withPulseLabel}
             </div>
           </div>
           {rows.map((row, i) => (
             <div
-              key={row.label}
+              key={row.a}
               style={{
                 display: "grid",
-                gridTemplateColumns: "minmax(120px,1fr) minmax(84px,auto) minmax(84px,auto)",
-                borderBottom: i === rows.length - 1 ? "none" : "1px solid var(--color-border-subtle)",
+                gridTemplateColumns: "1fr 1fr",
+                borderTop: i === 0 ? "none" : "1px solid var(--color-border-subtle)",
                 background: row.emphasize ? "var(--color-surface-selected)" : undefined,
               }}
             >
-              <div style={{ padding: "var(--space-sm)", fontSize: "var(--step-body-en)", lineHeight: 1.5, fontWeight: row.emphasize ? 600 : 400 }}>
-                {row.label}
+              <div style={{ padding: "var(--space-md)", fontSize: "var(--step-body-en)", lineHeight: "var(--leading-body-en)", color: "var(--color-text-secondary)" }}>
+                {row.a}
               </div>
-              <div style={{ padding: "var(--space-sm)", textAlign: "center", fontSize: 13, fontWeight: 600 }}>— {row.onYourOwn}</div>
-              <div style={{ padding: "var(--space-sm)", textAlign: "center", fontSize: 13, fontWeight: 600 }}>✓ {row.withPulse}</div>
+              <div
+                style={{
+                  padding: "var(--space-md)",
+                  fontSize: "var(--step-body-en)",
+                  lineHeight: "var(--leading-body-en)",
+                  fontWeight: row.emphasize ? 600 : 500,
+                  borderLeft: "1px solid var(--color-border-subtle)",
+                }}
+              >
+                {row.b}
+              </div>
             </div>
           ))}
         </div>
-        <div style={{ marginTop: "var(--space-xs)", fontSize: 13, lineHeight: 1.5, color: "var(--color-text-secondary)" }}>{legend}</div>
       </div>
     </div>
   );

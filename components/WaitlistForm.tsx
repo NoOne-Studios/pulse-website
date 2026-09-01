@@ -3,7 +3,11 @@
 import { useId, useState } from "react";
 import type { Dictionary } from "@/lib/i18n/types";
 
-export function WaitlistForm({ dict }: { dict: Dictionary["home"]["waitlist"] }) {
+/** `inverse` — set true when placed on a dark band (e.g. the CTA band):
+ * swaps the note/error/done-state colors for something visible on
+ * `--color-surface-inverse`, since the default colors assume a light
+ * background like the hero. */
+export function WaitlistForm({ dict, inverse = false }: { dict: Dictionary["home"]["waitlist"]; inverse?: boolean }) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "done" | "error">("idle");
   const fieldId = useId();
@@ -35,9 +39,10 @@ export function WaitlistForm({ dict }: { dict: Dictionary["home"]["waitlist"] })
           display: "flex",
           alignItems: "center",
           padding: "0 var(--space-md)",
-          border: "1.5px solid var(--color-verified-border)",
+          border: `1.5px solid ${inverse ? "var(--color-text-inverse)" : "var(--color-verified-border)"}`,
           borderRadius: "var(--radius-md)",
           fontSize: 15,
+          color: inverse ? "var(--color-text-inverse)" : undefined,
         }}
       >
         ✓ {email}
@@ -88,11 +93,11 @@ export function WaitlistForm({ dict }: { dict: Dictionary["home"]["waitlist"] })
         {dict.button}
       </button>
       {status === "error" ? (
-        <div style={{ fontSize: 13, color: "var(--color-error-text)" }} role="alert">
+        <div style={{ fontSize: 13, color: inverse ? "var(--color-text-inverse)" : "var(--color-error-text)" }} role="alert">
           {dict.invalidEmail}
         </div>
       ) : null}
-      <div style={{ fontSize: 13, lineHeight: 1.5, color: "var(--color-text-primary)" }}>
+      <div style={{ fontSize: 13, lineHeight: 1.5, color: inverse ? "var(--ink-400)" : "var(--color-text-primary)" }}>
         {dict.note} <span style={{ textDecoration: "underline" }}>{dict.privacyLinkLabel}</span>
       </div>
     </form>

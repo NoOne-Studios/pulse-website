@@ -2,12 +2,20 @@ import { isLocale } from "@/lib/i18n/locales";
 import { getDictionary } from "@/lib/i18n";
 import { doctorLive, foundersVisible } from "@/lib/config";
 import { Hero } from "@/components/Hero";
-import { TrustStrip } from "@/components/TrustStrip";
+import { WhatWeCheck } from "@/components/WhatWeCheck";
+import { AboutStrip } from "@/components/AboutStrip";
 import { ServiceRow } from "@/components/ServiceRow";
+import { Marquee } from "@/components/Marquee";
 import { StepStrip } from "@/components/StepStrip";
-import { ComparisonTable } from "@/components/ComparisonTable";
-import { VerificationSteps } from "@/components/VerificationSteps";
 import { Founders } from "@/components/Founders";
+import { WhyWeStarted } from "@/components/WhyWeStarted";
+import { ComparisonTable } from "@/components/ComparisonTable";
+import { Faq } from "@/components/Faq";
+import { JoinUsTeaser } from "@/components/JoinUsTeaser";
+import { ArticlesTeaser } from "@/components/ArticlesTeaser";
+import { CtaBand } from "@/components/CtaBand";
+import { ContactTeaser } from "@/components/ContactTeaser";
+import { WaitlistForm } from "@/components/WaitlistForm";
 import { Reveal } from "@/components/Reveal";
 import { notFound } from "next/navigation";
 
@@ -23,58 +31,96 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
     : home.services.three;
   const servicesSub = doctorLive ? home.services.subFour : home.services.subThree;
   const step4 = doctorLive ? home.howItWorks.step4Four : home.howItWorks.step4Three;
-  const comparisonSub = doctorLive ? home.comparison.subFour : home.comparison.subThree;
-  const comparisonRows = home.comparison.rows.map((row) => ({
-    label: doctorLive ? row.labelFour : row.labelThree,
-    onYourOwn: row.onYourOwn,
-    withPulse: row.withPulse,
-    emphasize: row.emphasize,
-  }));
+  const steps = home.howItWorks.steps.map((s, i) => ({ ...s, n: String(i + 1), stepLabel: `${home.howItWorks.stepLabel} 0${i + 1}` }));
+  const allSteps = [...steps, { ...step4, n: "4", stepLabel: `${home.howItWorks.stepLabel} 04` }];
+
+  const marqueeItems = [
+    ...(doctorLive ? [home.services.four[0].title] : []),
+    ...home.services.three.map((s) => s.title),
+    ...home.marquee.extra,
+  ];
+
+  const joinRoles = dict.professionals.roles.slice(0, doctorLive ? 4 : 3);
+
+  const contactRows = [
+    { label: dict.contact.whatsappLabel, value: dict.contact.whatsappPlaceholder, href: "#" },
+    { label: dict.contact.phoneLabel, value: dict.contact.phonePlaceholder, href: "#" },
+    { label: dict.contact.emailLabel, value: dict.contact.emailPlaceholder, href: `mailto:${dict.contact.emailPlaceholder}` },
+  ];
 
   return (
     <div>
       <Hero locale={locale} dict={dict} lines={hero.lines} lead={hero.lead} />
 
       <Reveal>
-        <TrustStrip items={home.trustStrip} />
+        <WhatWeCheck eyebrow={home.check.eyebrow} title={home.check.title} body={home.check.body} brief={home.check.brief} rows={home.check.rows} />
+      </Reveal>
+
+      <Reveal>
+        <AboutStrip eyebrow={home.about.eyebrow} title={home.about.title} lead={home.about.lead} strip={home.about.strip} />
       </Reveal>
 
       <Reveal>
         <ServiceRow heading={home.services.heading} sub={servicesSub} items={services} />
       </Reveal>
 
-      <Reveal>
-        <StepStrip
-          heading={home.howItWorks.heading}
-          swipeHint={home.howItWorks.swipeHint}
-          steps={[...home.howItWorks.steps, step4]}
-        />
-      </Reveal>
+      <Marquee items={marqueeItems} pauseLabel={home.marquee.pause} playLabel={home.marquee.play} />
 
       <Reveal>
-        <ComparisonTable
-          heading={home.comparison.heading}
-          sub={comparisonSub}
-          onYourOwnLabel={home.comparison.onYourOwn}
-          withPulseLabel={home.comparison.withPulse}
-          rows={comparisonRows}
-          legend={home.comparison.legend}
-        />
-      </Reveal>
-
-      <Reveal>
-        <div className="page-section" style={{ background: "var(--color-surface-sunken)", borderTop: "1px solid var(--color-border-subtle)" }}>
-          <div className="container">
-            <VerificationSteps steps={dict.verification.steps} badge={dict.verification.badge} size="sm" />
-          </div>
-        </div>
+        <StepStrip heading={home.howItWorks.heading} meansLabel={home.howItWorks.meansLabel} steps={allSteps} />
       </Reveal>
 
       {foundersVisible ? (
         <Reveal>
-          <Founders heading={home.founders.heading} people={home.founders.people} />
+          <Founders eyebrow={home.founders.eyebrow} heading={home.founders.heading} note={home.founders.note} people={home.founders.people} />
         </Reveal>
       ) : null}
+
+      <Reveal>
+        <WhyWeStarted eyebrow={home.why.eyebrow} body={home.why.body} signature={home.why.signature} />
+      </Reveal>
+
+      <Reveal>
+        <ComparisonTable heading={home.comparison.heading} sub={home.comparison.sub} onYourOwnLabel={home.comparison.onYourOwn} withPulseLabel={home.comparison.withPulse} rows={home.comparison.rows} />
+      </Reveal>
+
+      <Reveal>
+        <Faq eyebrow={home.faq.eyebrow} heading={home.faq.heading} note={home.faq.note} items={home.faq.items} />
+      </Reveal>
+
+      <Reveal>
+        <JoinUsTeaser
+          eyebrow={home.joinTeaser.eyebrow}
+          heading={home.joinTeaser.heading}
+          body={home.joinTeaser.body}
+          zone={home.joinTeaser.zone}
+          roles={joinRoles}
+          cta={home.joinTeaser.cta}
+          ctaHref="https://wa.me/910000000000"
+        />
+      </Reveal>
+
+      <Reveal>
+        <ArticlesTeaser locale={locale} eyebrow={home.articlesTeaser.eyebrow} heading={home.articlesTeaser.heading} posts={dict.blog.posts} />
+      </Reveal>
+
+      <Reveal>
+        <CtaBand wordmark={dict.nav.brand} title={home.ctaBand.title} brief={home.ctaBand.brief}>
+          <WaitlistForm dict={home.waitlist} inverse />
+        </CtaBand>
+      </Reveal>
+
+      <Reveal>
+        <ContactTeaser
+          locale={locale}
+          eyebrow={home.contactTeaser.eyebrow}
+          heading={home.contactTeaser.heading}
+          body={home.contactTeaser.body}
+          cta={home.contactTeaser.cta}
+          contactRows={contactRows}
+          emergencyNote={home.contactTeaser.emergencyNote}
+        />
+      </Reveal>
     </div>
   );
 }

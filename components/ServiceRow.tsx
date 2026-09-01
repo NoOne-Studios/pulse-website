@@ -1,9 +1,11 @@
 import { DeliveryModePill } from "./DeliveryModePill";
+import { ImageSlot } from "./ImageSlot";
 
 interface ServiceItem {
   pill: string;
   title: string;
   body: string;
+  brief: string;
   brandPill?: boolean;
 }
 
@@ -50,6 +52,7 @@ export function ServiceRow({ heading, sub, items }: { heading: string; sub: stri
                 gap: "var(--space-xs)",
               }}
             >
+              <ImageSlot ratio="3/4" label="PHOTO" brief={item.brief} />
               <DeliveryModePill label={item.pill} brand={Boolean(item.brandPill)} />
               <div style={{ fontSize: "var(--step-h3-en)", fontWeight: 600, lineHeight: "var(--leading-h3-en)" }}>
                 {item.title}
