@@ -31,13 +31,15 @@ function LanguageToggle({ locale }: { locale: Locale }) {
   }
 
   return (
-    <div
+    <span
       style={{
-        display: "flex",
+        display: "inline-flex",
+        alignItems: "stretch",
         border: "1px solid var(--color-border-default)",
         borderRadius: "var(--radius-full)",
         overflow: "hidden",
         minHeight: "var(--size-target-min)",
+        flex: "none",
       }}
       role="group"
       aria-label="Language / மொழி"
@@ -68,7 +70,19 @@ function LanguageToggle({ locale }: { locale: Locale }) {
           </Link>
         );
       })}
-    </div>
+    </span>
+  );
+}
+
+/** Ring + ECG lockup, from the identity sheet's horizontal lockup at 28px —
+ * currentColor so it inherits brand blue and reverses correctly on dark
+ * bands; stroke-width 7 is what the identity sheet specifies at this size. */
+function LogoMark() {
+  return (
+    <svg viewBox="0 0 64 64" width="28" height="28" fill="none" aria-hidden="true" style={{ flex: "none", display: "block" }}>
+      <path d="M32 6 A26 26 0 1 1 12.5 49.5" stroke="currentColor" strokeWidth="7" strokeLinecap="round" />
+      <path d="M8 32 H17 L22 21 L29 43 L34 32 H43" stroke="currentColor" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }
 
@@ -76,7 +90,7 @@ function HamburgerBars() {
   return (
     <>
       {[0, 1, 2].map((i) => (
-        <div key={i} style={{ width: 20, height: 2, background: "var(--color-text-primary)" }} />
+        <span key={i} style={{ width: 20, height: 2, background: "var(--color-text-primary)" }} />
       ))}
     </>
   );
@@ -87,7 +101,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const pathname = usePathname() || "";
   const items = navItems(locale, dict);
   const panelId = useId();
-  const rootRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -112,35 +126,57 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   }
 
   return (
-    <div ref={rootRef} style={{ borderBottom: "1px solid var(--color-border-subtle)", background: "var(--color-surface-base)" }}>
+    <header ref={rootRef} style={{ position: "relative", zIndex: 5, background: "var(--color-surface-base)", borderBottom: "1px solid var(--color-border-subtle)" }}>
+      {/*
+        Three-column grid: symmetric minmax(120px,1fr) side floors are what
+        centre the nav column — replacing them with flex, or adding a grid
+        gap, breaks that centring. Both floors take space from the nav
+        column before the nav wraps to a second row.
+      */}
       <div
         style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: "var(--space-xs)",
-          padding: "var(--space-xs) var(--space-md)",
+          display: "grid",
+          gridTemplateColumns: "minmax(120px,1fr) auto minmax(120px,1fr)",
+          alignItems: "stretch",
+          gap: 0,
+          minHeight: 64,
           maxWidth: 1280,
           margin: "0 auto",
+          padding: "0 var(--space-md)",
         }}
       >
-        <Link
-          href={`/${locale}`}
-          style={{
-            fontSize: 20,
-            fontWeight: 700,
-            letterSpacing: locale === "en" ? "-0.01em" : undefined,
-            color: "var(--color-text-brand)",
-            textDecoration: "none",
-          }}
-        >
-          {dict.nav.brand}
-        </Link>
+        <div style={{ gridColumn: "1", minWidth: 0, display: "flex", alignItems: "center", padding: "var(--space-xs) 0" }}>
+          <Link
+            href={`/${locale}`}
+            aria-label="Pulse — home"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "var(--space-xs)",
+              fontSize: 20,
+              fontWeight: 700,
+              letterSpacing: "-0.01em",
+              color: "var(--color-text-brand)",
+              textDecoration: "none",
+            }}
+          >
+            <LogoMark />
+            <span>Pulse</span>
+          </Link>
+        </div>
 
         <nav
           aria-label="Primary"
           className="desktop-nav"
-          style={{ display: "none", alignItems: "center", gap: "var(--space-lg)" }}
+          style={{
+            gridColumn: "2",
+            display: "none",
+            alignItems: "flex-end",
+            gap: "var(--space-xs)",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            minWidth: 0,
+          }}
         >
           {items.slice(1).map((item) => {
             const active = pathname === item.href;
@@ -150,12 +186,17 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 style={{
+                  minHeight: 64,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  whiteSpace: "nowrap",
+                  marginBottom: -1,
+                  padding: "0 10px",
                   fontSize: 15,
-                  color: "var(--color-text-primary)",
                   textDecoration: "none",
+                  color: active ? "var(--color-text-brand)" : "var(--color-text-primary)",
+                  fontWeight: active ? 600 : 400,
                   borderBottom: active ? "2px solid var(--color-border-brand)" : "2px solid transparent",
-                  paddingBottom: 4,
-                  fontWeight: active ? 600 : 500,
                 }}
               >
                 {item.label}
@@ -164,7 +205,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           })}
         </nav>
 
-        <div style={{ display: "flex", alignItems: "center", gap: "var(--space-xs)" }}>
+        <div style={{ gridColumn: "3", minWidth: 0, display: "flex", alignItems: "center", gap: "var(--space-xs)", justifyContent: "flex-end", padding: "var(--space-xs) 0" }}>
           <LanguageToggle locale={locale} />
           <button
             type="button"
@@ -175,6 +216,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             aria-label={open ? dict.header.closeMenu : dict.header.openMenu}
             onClick={() => setOpen((v) => !v)}
             style={{
+              flex: "none",
               width: "var(--size-target-min)",
               height: "var(--size-target-min)",
               display: "flex",
@@ -204,7 +246,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           id={panelId}
           aria-label="Mobile"
           className="mobile-nav-panel"
-          style={{ display: "flex", flexDirection: "column", borderTop: "1px solid var(--color-border-subtle)" }}
+          style={{ display: "flex", flexDirection: "column", borderBottom: "1px solid var(--color-border-subtle)" }}
         >
           {items.map((item) => {
             const active = pathname === item.href;
@@ -222,7 +264,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                   color: "var(--color-text-primary)",
                   fontWeight: active ? 600 : 400,
                   textDecoration: "none",
-                  borderBottom: "1px solid var(--color-border-subtle)",
+                  borderTop: "1px solid var(--color-border-subtle)",
                 }}
               >
                 {item.label}
@@ -239,6 +281,6 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           .mobile-nav-panel { display: none !important; }
         }
       `}</style>
-    </div>
+    </header>
   );
 }

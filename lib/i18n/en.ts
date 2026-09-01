@@ -7,11 +7,11 @@ export const en = {
   nav: {
     brand: "Pulse",
     home: "Home",
-    about: "About us",
-    techTrust: "Technology and trust",
-    blog: "Blog",
-    professionals: "For professionals",
-    hospitals: "For hospitals",
+    about: "About",
+    techTrust: "Trust",
+    blog: "Articles",
+    professionals: "Professionals",
+    hospitals: "Hospitals",
     contact: "Contact",
   },
   header: {
