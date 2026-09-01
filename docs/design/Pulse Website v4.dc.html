@@ -1,0 +1,706 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse — website prototype v4 (VitalCare structure match)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@400;500;600;700&family=Anek+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B1F30; --ink-2:#42596E; --ink-3:#7B8FA1;
+  --blue:#1268A8; --blue-dk:#0B4C7D; --tint:#E7F1F9; --line-b:#C6DCEE;
+  --paper:#F4F9FC; --card:#FFF; --line:#E1EAF2; --line-2:#BFD2E1;
+  --sand:#8A5A14; --sand-bg:#FBF3E4; --sand-line:#E7D5B4;
+  --scale:1;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#E3EAF0;font-family:'Anek Latin','Anek Tamil',system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+body[data-lang="ta"]{font-family:'Anek Tamil','Anek Latin',system-ui,sans-serif}
+.rev{background:#08131E;color:#C6D6E3;padding:10px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13px;position:sticky;top:0;z-index:90}
+.rev strong{color:#fff;font-weight:500}
+.rev .grp{display:flex;border:1px solid #2C4459;border-radius:7px;overflow:hidden}
+.rev button{background:none;border:0;color:#A6BCCE;font:inherit;padding:6px 11px;cursor:pointer;border-right:1px solid #2C4459}
+.rev button:last-child{border-right:0}
+.rev button[aria-pressed="true"]{background:#1B3A55;color:#fff}
+.rev .note{color:#7B93A8;font-size:12px;margin-left:auto}
+
+.stage{display:flex;justify-content:center;padding:18px 12px 60px}
+.frame{--gut:20px;width:100%;max-width:412px;background:var(--card);border:1px solid var(--line-2);
+  border-radius:20px;overflow:clip;font-size:calc(16px * var(--scale));position:relative}
+.frame[data-vp="desktop"]{--gut:64px;max-width:1200px;font-size:calc(17px * var(--scale))}
+
+/* ---- nav ---- */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:9px var(--gut);gap:10px}
+.logo{display:flex;align-items:center;gap:8px;background:none;border:0;font:inherit;cursor:pointer;color:var(--ink);min-height:48px}
+.logo .mark{width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:.78em;font-weight:700}
+.logo .wd{font-weight:700;font-size:1.12em;letter-spacing:-.02em}
+.icons{display:flex;gap:6px;align-items:center}
+.hbtn{min-width:48px;min-height:48px;border:1px solid var(--line);background:var(--card);border-radius:999px;font:inherit;font-size:.84em;cursor:pointer;color:var(--ink);padding:0 12px}
+.joinbtn{display:none;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:0 20px;min-height:46px;font:inherit;font-size:.9em;font-weight:500;cursor:pointer}
+.frame[data-vp="desktop"] .joinbtn{display:block}
+.hamb{display:block;width:18px}.hamb span{display:block;height:2px;background:var(--ink);border-radius:2px;margin:4px 0}
+nav#menu{display:none;border-top:1px solid var(--line);background:var(--card);padding:4px var(--gut) 10px}
+nav#menu.open{display:block}
+nav#menu button{display:block;width:100%;text-align:left;background:none;border:0;font:inherit;cursor:pointer;color:var(--ink);padding:14px 0;border-bottom:1px solid var(--line);min-height:48px}
+nav#menu button:last-child{border-bottom:0}
+nav#menu button[aria-current="page"]{color:var(--blue);font-weight:600}
+.frame[data-vp="desktop"] #hambtn{display:none}
+.frame[data-vp="desktop"] nav#menu{display:flex;gap:2px;padding:0 var(--gut);border-top:0;position:absolute;left:50%;transform:translateX(-50%);top:0}
+.frame[data-vp="desktop"] nav#menu button{width:auto;border-bottom:0;padding:0 13px;min-height:64px;font-size:.93em}
+.frame[data-vp="desktop"] nav#menu button[aria-current="page"]{box-shadow:inset 0 -3px 0 var(--blue)}
+.frame[data-vp="desktop"] header{position:sticky}
+.frame[data-vp="desktop"] .bar{position:relative;min-height:64px}
+
+/* ---- photo placeholders ---- */
+.ph{background:repeating-linear-gradient(135deg,#EDF4FA 0 10px,#E5EEF7 10px 20px);
+  border:1px dashed var(--line-2);border-radius:16px;display:flex;flex-direction:column;
+  justify-content:flex-end;padding:12px;color:var(--blue-dk);position:relative;overflow:hidden}
+.ph b{font-size:.66em;letter-spacing:.12em;font-weight:700;opacity:.65;display:block;margin-bottom:3px}
+.ph span{font-size:.78em;line-height:1.4;opacity:.85}
+body[data-lang="ta"] .ph b{letter-spacing:.02em;font-size:.72em}
+
+/* ---- sections ---- */
+section{padding:56px var(--gut);border-bottom:1px solid var(--line);background:var(--card)}
+.frame[data-vp="desktop"] section{padding:104px var(--gut)}
+section.tint{background:var(--paper)}
+.eyebrow{display:inline-block;font-size:.72em;letter-spacing:.14em;color:var(--blue);font-weight:700;
+  border:1px solid var(--line-b);background:var(--tint);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+body[data-lang="ta"] .eyebrow{letter-spacing:.02em;font-size:.78em}
+h1{font-size:2.3em;line-height:1.1;font-weight:700;letter-spacing:-.028em}
+h2{font-size:1.75em;line-height:1.15;font-weight:700;letter-spacing:-.024em;margin-bottom:14px}
+.frame[data-vp="desktop"] h2{font-size:3em;max-width:17ch}
+h3{font-size:1.06em;font-weight:600;line-height:1.35}
+p{font-size:.97em;line-height:1.68;color:var(--ink-2);max-width:58ch}
+.lede{font-size:1.05em;margin-top:14px}
+.frame[data-vp="desktop"] .lede{font-size:1.2em}
+
+/* ---- hero ---- */
+.hero{background:radial-gradient(130% 100% at 20% -10%,#D5E8F7 0%,rgba(213,232,247,0) 62%),
+  radial-gradient(90% 70% at 100% 10%,#E3F0FA 0%,rgba(227,240,250,0) 60%),linear-gradient(180deg,#EFF7FC,#FFF);
+  padding-top:44px;padding-bottom:0;overflow:hidden}
+.frame[data-vp="desktop"] .hero{padding-top:80px}
+.bigword{font-size:2.9em;line-height:.94;font-weight:700;letter-spacing:-.045em;color:var(--ink);opacity:.1;white-space:nowrap}
+.frame[data-vp="desktop"] .bigword{font-size:7.4em}
+.bigword.on{opacity:1}
+.herotag{font-size:1.06em;color:var(--ink-2);margin-top:16px;max-width:34ch;line-height:1.55}
+.frame[data-vp="desktop"] .herotag{font-size:1.28em}
+.since{display:inline-flex;align-items:center;gap:8px;font-size:.82em;color:var(--ink-3);
+  border:1px solid var(--line);background:var(--card);border-radius:999px;padding:7px 14px;margin-top:18px}
+.since i{width:6px;height:6px;border-radius:50%;background:var(--blue);font-style:normal}
+.heroimg{height:230px;margin-top:26px}
+.frame[data-vp="desktop"] .heroimg{height:380px}
+.frame[data-vp="desktop"] .herogrid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:end}
+.cta{display:inline-block;min-height:54px;padding:15px 26px;border-radius:999px;background:var(--tint);
+  border:2px dashed var(--blue);color:var(--blue-dk);font:inherit;font-weight:600;font-size:1em;
+  cursor:pointer;text-align:center;line-height:1.4;margin-top:22px;width:100%}
+.frame[data-vp="desktop"] .cta{width:auto;min-width:290px}
+.cta small{display:block;font-weight:400;font-size:.76em;opacity:.85;margin-top:3px}
+.cta.solid{background:var(--ink);border:2px solid var(--ink);color:#fff}
+.cta.solid:hover{background:#132C42}
+.herofoot{border-top:1px solid var(--line);margin-top:30px;padding:18px 0 34px;display:flex;
+  flex-wrap:wrap;gap:10px 22px;align-items:center}
+.hf{display:flex;align-items:center;gap:9px;font-size:.86em;color:var(--ink-2);line-height:1.4}
+.hf i{width:26px;height:26px;border-radius:50%;background:var(--tint);color:var(--blue);
+  display:grid;place-items:center;font-style:normal;font-size:.8em;flex:none;font-weight:700}
+
+/* ---- checked card (replaces stat card) ---- */
+.frame[data-vp="desktop"] .split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.checkcard{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;margin-top:22px}
+.frame[data-vp="desktop"] .checkcard{margin-top:0}
+.checkcard .ph{height:190px;margin-bottom:16px}
+.crow{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.crow:last-child{border-bottom:0}
+.crow i{color:var(--blue);font-style:normal;font-weight:700;flex:none}
+.crow span{font-size:.9em;line-height:1.5;color:var(--ink-2)}
+
+/* ---- image trio ---- */
+.trio{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}
+.frame[data-vp="desktop"] .trio{grid-template-columns:repeat(3,1fr);gap:16px;margin-top:38px}
+.trio .ph:first-child{grid-column:1/-1}
+.frame[data-vp="desktop"] .trio .ph:first-child{grid-column:auto}
+.trio .ph{height:170px}
+.frame[data-vp="desktop"] .trio .ph{height:290px}
+
+/* ---- services grid ---- */
+.svcgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.frame[data-vp="desktop"] .svcgrid{grid-template-columns:repeat(4,1fr);gap:18px}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.svc .ph{border:0;border-radius:0;height:130px}
+.frame[data-vp="desktop"] .svc .ph{height:210px}
+.svc .body{padding:15px;display:flex;flex-direction:column;gap:6px;flex:1}
+.svc p{font-size:.86em;line-height:1.5}
+.svc .arrow{align-self:flex-start;margin-top:auto;padding-top:10px;color:var(--blue);font-size:1.1em}
+.svc.dark-slot{border:1px dashed var(--blue);background:var(--tint)}
+.svc.dark-slot .ph{background:none;border-bottom:1px dashed var(--line-b)}
+.slotnote{font-size:.79em;color:var(--blue-dk);line-height:1.45}
+
+/* ---- marquee ---- */
+.marq{background:var(--ink);color:#fff;overflow:hidden;padding:16px 0;white-space:nowrap;border-bottom:1px solid var(--line)}
+.marq .track{display:inline-flex;gap:30px;padding-left:30px;animation:sl 30s linear infinite;align-items:center}
+.marq span{font-size:1.15em;font-weight:600;letter-spacing:-.01em;display:flex;align-items:center;gap:30px}
+.frame[data-vp="desktop"] .marq span{font-size:1.9em}
+.marq span::after{content:"◦";opacity:.5}
+@keyframes sl{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---- process ---- */
+.pstep{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-bottom:14px}
+.frame[data-vp="desktop"] .pstep{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:20px}
+.pstep .ph{border:0;border-radius:0;height:180px}
+.frame[data-vp="desktop"] .pstep .ph{height:100%;min-height:290px}
+.pstep .body{padding:20px}
+.frame[data-vp="desktop"] .pstep .body{padding:38px}
+.pnum{display:inline-flex;align-items:center;gap:8px;font-size:.74em;letter-spacing:.12em;font-weight:700;color:var(--blue);margin-bottom:10px}
+body[data-lang="ta"] .pnum{letter-spacing:.02em;font-size:.8em}
+.incl{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.incl b{font-size:.72em;letter-spacing:.12em;color:var(--ink-3);font-weight:700;display:block;margin-bottom:9px}
+body[data-lang="ta"] .incl b{letter-spacing:.02em;font-size:.78em}
+.incl li{list-style:none;font-size:.87em;color:var(--ink-2);display:flex;gap:9px;line-height:1.5;padding:4px 0}
+.incl li i{color:var(--blue);font-style:normal;flex:none}
+
+/* ---- founders (replaces team) ---- */
+.people{display:grid;gap:14px;margin-top:8px}
+.frame[data-vp="desktop"] .people{grid-template-columns:1fr 1fr;gap:24px}
+.pcardx{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.pcardx .ph{border:0;border-radius:0;height:220px}
+.frame[data-vp="desktop"] .pcardx .ph{height:320px}
+.pcardx .body{padding:18px}
+.role{font-size:.84em;color:var(--ink-3);margin:3px 0 8px}
+
+/* ---- letter (replaces testimonials) ---- */
+.letter{background:var(--ink);color:#DCE8F1;border-radius:22px;padding:26px}
+.frame[data-vp="desktop"] .letter{padding:56px}
+.letter .qm{font-size:2.4em;color:var(--blue);line-height:1;margin-bottom:12px}
+.letter p{color:#C3D5E2;font-size:1.05em;line-height:1.65;max-width:60ch}
+.frame[data-vp="desktop"] .letter p{font-size:1.25em}
+.letter .sig{margin-top:20px;font-size:.88em;color:#8FA9BD}
+
+/* ---- FAQ ---- */
+.faq{border-top:1px solid var(--line);margin-top:8px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 0;font-size:1em;font-weight:600;
+  display:flex;justify-content:space-between;gap:14px;align-items:flex-start;min-height:48px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--blue);font-size:1.3em;line-height:1;flex:none}
+.faq details[open] summary::after{content:"−"}
+.faq p{padding:0 0 18px;font-size:.93em}
+
+/* ---- comparison ---- */
+.cmp{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--card);margin-top:8px}
+.cmp .hd{display:grid;grid-template-columns:1fr 1fr;background:var(--paper);border-bottom:1px solid var(--line)}
+.cmp .hd div{padding:14px;font-size:.8em;font-weight:700;letter-spacing:.06em;color:var(--ink-3)}
+.cmp .hd div:last-child{border-left:1px solid var(--line);color:var(--blue)}
+body[data-lang="ta"] .cmp .hd div{letter-spacing:.02em}
+.cmp .row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.cmp .row:last-child{border-bottom:0}
+.cmp .row div{padding:14px;font-size:.89em;line-height:1.5;color:var(--ink-3)}
+.cmp .row div:last-child{border-left:1px solid var(--line);color:var(--ink);font-weight:500}
+
+/* ---- roles (replaces careers) ---- */
+.role-row{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:10px}
+.frame[data-vp="desktop"] .roles{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.frame[data-vp="desktop"] .role-row{margin-bottom:0}
+.tagline{display:inline-block;font-size:.76em;color:var(--blue);background:var(--tint);
+  border-radius:999px;padding:4px 11px;margin-bottom:9px}
+.role-row li{list-style:none;font-size:.87em;color:var(--ink-2);display:flex;gap:8px;padding:3px 0;line-height:1.45}
+.role-row li i{color:var(--blue);font-style:normal;flex:none}
+
+/* ---- blog ---- */
+.posts{display:grid;gap:12px;margin-top:8px}
+.frame[data-vp="desktop"] .posts{grid-template-columns:repeat(3,1fr);gap:18px}
+.post{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+  text-align:left;font:inherit;color:var(--ink);cursor:pointer;padding:0;width:100%}
+.post .ph{border:0;border-radius:0;height:150px}
+.post .body{padding:16px}
+.post .meta{font-size:.78em;color:var(--ink-3);margin-top:9px}
+
+/* ---- big CTA band ---- */
+.band{background:radial-gradient(120% 120% at 50% 0%,#14405F 0%,#0B1F30 70%);color:#fff;
+  text-align:center;padding:56px var(--gut);border-bottom:1px solid var(--line);overflow:hidden}
+.frame[data-vp="desktop"] .band{padding:110px var(--gut)}
+.band .bigword{color:#fff;opacity:.09}
+.band h2{color:#fff;margin:18px auto 0;max-width:20ch}
+.band .cta{background:#fff;border:2px solid #fff;color:var(--ink)}
+.band .ph{height:150px;margin-top:30px;background:repeating-linear-gradient(135deg,#153A57 0 10px,#12324B 10px 20px);border-color:#2A506E;color:#9FC2DC}
+.frame[data-vp="desktop"] .band .ph{height:260px}
+
+/* ---- contact ---- */
+.frame[data-vp="desktop"] .csplit{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
+.cinfo{margin-top:20px}
+.cinfo .lbl{font-size:.74em;letter-spacing:.12em;color:var(--ink-3);font-weight:700;display:block;margin:18px 0 8px}
+body[data-lang="ta"] .cinfo .lbl{letter-spacing:.02em;font-size:.8em}
+.cinfo a,.cinfo span.v{display:block;font-size:.98em;color:var(--ink);line-height:1.5}
+.contactbtn{display:flex;align-items:center;gap:12px;padding:15px;background:var(--card);
+  border:1px solid var(--line);border-radius:14px;margin-bottom:10px;width:100%;text-align:left;
+  font:inherit;cursor:pointer;min-height:56px;color:var(--ink)}
+.contactbtn .g{width:38px;height:38px;border-radius:11px;background:var(--tint);color:var(--blue);display:grid;place-items:center;flex:none}
+.contactbtn .lbl2{font-size:.78em;color:var(--ink-3);display:block}
+.contactbtn .val{font-size:.95em;font-weight:600}
+.fs{border:0;margin:0 0 20px;padding:0}
+.lg{font-size:.98em;font-weight:600;margin-bottom:12px;color:var(--ink)}
+.pgrid{display:grid;gap:10px}
+.frame[data-vp="desktop"] .pgrid{grid-template-columns:1fr 1fr}
+.pers{display:flex;flex-direction:column;gap:4px;text-align:left;background:var(--card);
+  border:1px solid var(--line);border-radius:14px;padding:16px;min-height:58px;cursor:pointer;font:inherit;color:var(--ink)}
+.pers.on{border-color:var(--blue);background:var(--tint);box-shadow:inset 0 0 0 1px var(--blue)}
+.pers .pl{font-weight:600;font-size:.95em;line-height:1.4}
+.pers .ph2{font-size:.83em;color:var(--ink-3);line-height:1.4}
+.pers.on .ph2{color:var(--blue-dk)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:12px 16px;
+  min-height:48px;cursor:pointer;font:inherit;font-size:.9em;color:var(--ink)}
+.chip.on{border-color:var(--blue);background:var(--tint);color:var(--blue-dk);font-weight:600}
+.fl{display:block;font-size:.87em;color:var(--ink-2);margin:14px 0 6px}
+.fi{width:100%;font:inherit;font-size:1em;color:var(--ink);background:var(--card);
+  border:1px solid var(--line-2);border-radius:12px;padding:13px 15px;min-height:50px}
+.fi:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:var(--blue)}
+textarea.fi{resize:vertical;line-height:1.5}
+.fh{font-size:.84em;line-height:1.55;color:var(--sand);background:var(--sand-bg);border:1px solid var(--sand-line);
+  border-radius:12px;padding:12px 15px;margin-top:14px}
+.done{background:var(--tint);border:1px solid var(--blue);border-radius:16px;padding:20px}
+.done-t{font-weight:700;color:var(--blue-dk);font-size:1.05em;margin-bottom:6px}
+.note{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;
+  font-size:.87em;line-height:1.6;color:var(--ink-2);margin-top:18px;max-width:62ch}
+.note.open{background:var(--sand-bg);border-color:var(--sand-line);color:var(--sand)}
+ul.plain{list-style:none;display:flex;flex-direction:column;gap:11px;margin-top:6px;max-width:60ch}
+ul.plain li{display:flex;gap:10px;font-size:.93em;line-height:1.55;color:var(--ink-2)}
+ul.plain li i{color:var(--blue);font-style:normal;font-weight:700;flex:none}
+.back{background:none;border:0;font:inherit;color:var(--blue);cursor:pointer;padding:10px 0;min-height:48px}
+
+/* ---- footer ---- */
+footer{background:var(--ink);color:#93AABD;padding:38px var(--gut) 26px}
+.nl{border-bottom:1px solid #24405A;padding-bottom:26px;margin-bottom:24px}
+.nl h4{color:#fff;font-size:1.15em;font-weight:600;margin-bottom:12px;letter-spacing:-.01em}
+.nlrow{display:flex;gap:8px;flex-wrap:wrap}
+.nlrow input{flex:1;min-width:180px;min-height:50px;border-radius:12px;border:1px solid #2C4A66;
+  background:#132C42;color:#fff;padding:12px 15px;font:inherit}
+.nlrow button{min-height:50px;border-radius:12px;border:0;background:#fff;color:var(--ink);
+  font:inherit;font-weight:600;padding:0 22px;cursor:pointer}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.frame[data-vp="desktop"] .fgrid{grid-template-columns:repeat(3,1fr)}
+footer h5{font-size:.74em;letter-spacing:.12em;color:#6D89A1;font-weight:700;margin-bottom:10px}
+body[data-lang="ta"] footer h5{letter-spacing:.02em;font-size:.8em}
+footer button.fl2{display:block;background:none;border:0;font:inherit;color:#CFDEE9;padding:9px 0;
+  cursor:pointer;text-align:left;min-height:44px;font-size:.92em}
+footer button.fl2:hover{color:#fff;text-decoration:underline}
+footer .val2{font-size:.92em;color:#CFDEE9;line-height:1.6;display:block;padding:3px 0}
+.legal{border-top:1px solid #24405A;margin-top:24px;padding-top:18px;font-size:.85em;line-height:1.6;color:#6D89A1;max-width:72ch}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:6px}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s cubic-bezier(.19,1,.22,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important;transition:none!important}.marq .track{animation:none}}
+</style>
+
+<div class="rev">
+  <strong>v4 — structure match</strong>
+  <div class="grp" role="group" aria-label="Language">
+    <button data-lang-btn="en" aria-pressed="true">English</button>
+    <button data-lang-btn="ta" aria-pressed="false">தமிழ்</button></div>
+  <div class="grp" role="group" aria-label="Viewport">
+    <button data-vp="mobile" aria-pressed="true">Mobile</button>
+    <button data-vp="desktop" aria-pressed="false">Desktop</button></div>
+  <div class="grp" role="group" aria-label="Text size">
+    <button data-scale="1" aria-pressed="true">100%</button>
+    <button data-scale="1.5" aria-pressed="false">150%</button>
+    <button data-scale="2" aria-pressed="false">200%</button></div>
+  <div class="grp"><button id="doctog" aria-pressed="false">Doctor slot live</button></div>
+  <div class="grp"><button id="motion" aria-pressed="false">Reduced motion</button></div>
+  <span class="note">Placeholder copy · photo briefs shown in each slot</span>
+</div>
+
+<div class="stage">
+<div class="frame" data-vp="mobile" data-doc="dark" id="frame">
+  <header>
+    <div class="bar">
+      <button class="logo" data-go="home" aria-label="Pulse home"><span class="mark" aria-hidden="true">P</span><span class="wd">Pulse</span></button>
+      <nav id="menu" aria-label="Main"></nav>
+      <div class="icons">
+        <button class="hbtn" id="langtoggle">தமிழ்</button>
+        <button class="joinbtn" data-go="contact" id="joinbtn">Contact</button>
+        <button class="hbtn" id="hambtn" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+          <span class="hamb" aria-hidden="true"><span></span><span></span><span></span></span></button>
+      </div>
+    </div>
+  </header>
+  <main id="view" tabindex="-1"></main>
+  <footer id="foot"></footer>
+</div>
+</div>
+
+<script>
+function deviceLang(){var ls=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||"en"];
+  for(var i=0;i<ls.length;i++){if(/^ta(-|_|$)/i.test(String(ls[i])))return 1}return 0}
+var state={lang:deviceLang(),page:"home",article:0,form:{persona:null,ans:{},sent:false}};
+var ORDER=["home","about","trust","blog","pros","hospitals","contact"];
+function L(){return state.lang}
+function live(){return document.getElementById("frame").getAttribute("data-doc")==="live"}
+var T={nav:{home:["Home","முகப்பு"],about:["About","எங்களைப் பற்றி"],trust:["Trust","நம்பிக்கை"],
+  blog:["Articles","கட்டுரைகள்"],pros:["Professionals","பணியாளர்கள்"],hospitals:["Hospitals","மருத்துவமனைகள்"],
+  contact:["Contact","தொடர்பு"]},
+ cta:["See how it works","இது எப்படி வேலை செய்கிறது"],
+ ctaSub:["Placeholder — destination undecided","இடைநிலை — இலக்கு முடிவாகவில்லை"]};
+
+/* photo placeholder with a shot brief */
+function ph(cls,brief,ta){return '<div class="ph '+(cls||'')+'"><b>'+["PHOTO","புகைப்படம்"][L()]+'</b><span>'+[brief,ta][L()]+'</span></div>'}
+
+var SERVICES=[
+ {k:"doc",n:["Doctor consultation","மருத்துவர் ஆலோசனை"],
+  d:["Video or at home. Your doctor can refer you straight on.","வீடியோ அல்லது வீட்டில். மருத்துவர் நேரடியாகப் பரிந்துரைக்கலாம்."],
+  b:["Doctor on a video call, seen over a family member's shoulder in a Chennai living room. 3:4.","சென்னை வீட்டில் வீடியோ அழைப்பில் மருத்துவர். 3:4."]},
+ {k:"nur",n:["Home nursing","வீட்டு செவிலியர்"],
+  d:["Dressings, injections, care after an operation.","கட்டு, ஊசி, அறுவை சிகிச்சைக்குப் பிந்தைய பராமரிப்பு."],
+  b:["Nurse changing a dressing for an elderly man at home, daylight, no clinical set. 3:4.","வீட்டில் முதியவருக்கு கட்டு மாற்றும் செவிலியர். 3:4."]},
+ {k:"phy",n:["Home physiotherapy","வீட்டு பிசியோதெரபி"],
+  d:["Recovering movement after a fracture, stroke or operation.","முறிவு, பக்கவாதம் அல்லது அறுவை சிகிச்சைக்குப் பின் மீட்பு."],
+  b:["Physiotherapist guiding an older woman through a step exercise beside a bed. 3:4.","படுக்கை அருகே பயிற்சி அளிக்கும் பிசியோதெரபிஸ்ட். 3:4."]},
+ {k:"lab",n:["Home lab collection","வீட்டிலேயே மாதிரி சேகரிப்பு"],
+  d:["Someone comes to the house. The report comes back to the app.","ஒருவர் வீட்டிற்கு வருவார். அறிக்கை செயலிக்கே வரும்."],
+  b:["Sample collector labelling a vial at a dining table, hands in focus. 3:4.","மேசையில் மாதிரி பெயரிடும் சேகரிப்பாளர். 3:4."]}
+];
+function svcCards(){var l=L();return SERVICES.map(function(s){
+  if(s.k==="doc"&&!live()){
+    return '<div class="svc dark-slot">'+ph("", "Reserved — doctor photography commissioned only when the service is published.","ஒதுக்கப்பட்டது — சேவை வெளியிடும்போது மட்டுமே புகைப்படம்.")+
+      '<div class="body"><h3>'+s.n[l]+'</h3><p class="slotnote">'+
+      ["Built, not published. Waits for verified doctors and legal sign-off — WEB-D18.","உருவாக்கப்பட்டது, வெளியிடப்படவில்லை — WEB-D18."][l]+'</p></div></div>';}
+  return '<div class="svc">'+ph("",s.b[0],s.b[1])+'<div class="body"><h3>'+s.n[l]+'</h3><p>'+s.d[l]+'</p><span class="arrow">→</span></div></div>';}).join("")}
+
+var STEPS=[
+ {n:["Tell us what is needed","என்ன தேவை என்று சொல்லுங்கள்"],
+  d:["Choose the service and a time. For a doctor, choose video or a home visit.","சேவையையும் நேரத்தையும் தேர்ந்தெடுங்கள்."],
+  i:[["Four services","Your address","A time that suits you"],["நான்கு சேவைகள்","உங்கள் முகவரி","உங்களுக்கு ஏற்ற நேரம்"]],
+  b:["Woman in her forties on a phone at a kitchen table, evening light. 3:2.","சமையலறை மேசையில் தொலைபேசியில் பெண். 3:2."]},
+ {n:["We assign a verified professional","சரிபார்க்கப்பட்ட ஒருவரை நியமிக்கிறோம்"],
+  d:["You do not have to research anyone. We choose from professionals we have already checked, and tell you who is coming.","நீங்கள் யாரையும் தேட வேண்டியதில்லை."],
+  i:[["Confirmed within 10 minutes","Their name and qualification","Someone else if they cannot come"],["10 நிமிடத்தில் உறுதி","பெயரும் தகுதியும்","வர முடியாவிட்டால் வேறொருவர்"]],
+  b:["Operations reviewer at a desk comparing a certificate against a screen. 3:2.","சான்றிதழைத் திரையுடன் ஒப்பிடும் பணியாளர். 3:2."]},
+ {n:["They come to the house","அவர்கள் வீட்டிற்கு வருகிறார்கள்"],
+  d:["At the time agreed. If anything changes you are told — you do not have to chase it.","ஒப்புக்கொண்ட நேரத்தில். மாற்றம் இருந்தால் தெரிவிக்கப்படும்."],
+  i:[["Within half an hour of the slot","Updates on WhatsApp","Support if something goes wrong"],["அரை மணி நேரத்திற்குள்","வாட்ஸ்அப்பில் தகவல்","சிக்கலுக்கு உதவி"]],
+  b:["Professional at a front door being greeted, seen from inside the house. 3:2.","வீட்டு வாசலில் வரவேற்கப்படும் பணியாளர். 3:2."]},
+ {n:["Care continues without starting again","மீண்டும் தொடங்காமல் தொடர்கிறது"],
+  d:["A doctor can refer you onward inside the app, and your records stay in one place.","மருத்துவர் செயலிக்குள்ளேயே பரிந்துரைக்கலாம்."],
+  i:[["Referral from your doctor","Your reports in one place","Book the next step in a tap"],["மருத்துவரின் பரிந்துரை","அறிக்கைகள் ஒரே இடத்தில்","ஒரே தட்டில் அடுத்த கட்டம்"]],
+  b:["Two generations looking at a phone together on a veranda. 3:2.","திண்ணையில் தொலைபேசியைப் பார்க்கும் இரு தலைமுறை. 3:2."]}
+];
+
+var ARTICLES=[
+ {t:["What to arrange before a parent comes home from hospital","பெற்றோர் வீடு திரும்பும் முன் என்ன ஏற்பாடு"],m:["6 min read","6 நிமிடம்"],
+  x:["The discharge summary tells you what happened. It rarely tells you what to do on Tuesday.","டிஸ்சார்ஜ் சுருக்கம் நடந்ததைச் சொல்கிறது."],
+  b:["Hospital discharge paperwork on a bed, hands holding it. 3:2.","படுக்கையில் டிஸ்சார்ஜ் ஆவணங்கள். 3:2."]},
+ {t:["How to tell whether a home nurse is actually qualified","செவிலியர் தகுதியானவரா என்பதை எப்படி அறிவது"],m:["4 min read","4 நிமிடம்"],
+  x:["There is a registration number, and there is a way to check it.","ஒரு பதிவு எண் உண்டு, சரிபார்க்க வழியும் உண்டு."],
+  b:["Close crop of a nursing council registration certificate. 3:2.","பதிவுச் சான்றிதழின் அருகிலான படம். 3:2."]},
+ {t:["Physiotherapy at home after a fracture","எலும்பு முறிவுக்குப் பின் வீட்டு பிசியோதெரபி"],m:["5 min read","5 நிமிடம்"],
+  x:["Recovery is measured in weeks of repetition, not a single appointment.","மீட்பு வாரக்கணக்கான தொடர் பயிற்சியில்."],
+  b:["Walking frame beside a bed, morning light, nobody in frame. 3:2.","படுக்கை அருகே நடைக்கருவி. 3:2."]}
+];
+
+var P={};
+P.home=function(){var l=L();return `
+<section class="hero">
+ <div class="herogrid"><div>
+  <span class="eyebrow">${["[ CHENNAI · CARE AT HOME ]","[ சென்னை · வீட்டு பராமரிப்பு ]"][l]}</span>
+  <div class="bigword on">${["HOME CARE","வீட்டு பராமரிப்பு"][l]}</div>
+  <div class="bigword">${["HOME CARE","வீட்டு பராமரிப்பு"][l]}</div>
+  <div class="bigword">${["HOME CARE","வீட்டு பராமரிப்பு"][l]}</div>
+  <p class="herotag">${["Checked professionals, sent to your parent's door.","சரிபார்க்கப்பட்ட பணியாளர்கள், உங்கள் பெற்றோரின் வீட்டிற்கு."][l]}</p>
+  <span class="since"><i></i>${["Starting in Adyar and Besant Nagar","அடையாறு மற்றும் பெசன்ட் நகரில் தொடக்கம்"][l]}</span>
+  <button class="cta" data-cta>${T.cta[l]}<small>${T.ctaSub[l]}</small></button>
+ </div>
+ ${ph("heroimg","Hero. A nurse and an elderly man at a doorway in a Chennai home, warm daylight, not clinical. Portrait 3:4, subject right-of-centre.","முதன்மைப் படம். சென்னை வீட்டு வாசலில் செவிலியரும் முதியவரும். 3:4.")}
+ </div>
+ <div class="herofoot">
+  <span class="hf"><i>✓</i>${["Checked by a person","ஒரு நபரால் சரிபார்ப்பு"][l]}</span>
+  <span class="hf"><i>✓</i>${["Works in Tamil","தமிழில் இயங்கும்"][l]}</span>
+  <span class="hf"><i>✓</i>${["One price, agreed first","ஒரே விலை, முன்பே உறுதி"][l]}</span>
+ </div>
+</section>
+
+<section class="tint rv">
+ <div class="split"><div>
+  <span class="eyebrow">${["[ WHAT WE CHECK ]","[ நாங்கள் சரிபார்ப்பவை ]"][l]}</span>
+  <h2>${["Your care in checked hands","சரிபார்க்கப்பட்ட கைகளில் உங்கள் பராமரிப்பு"][l]}</h2>
+  <p>${["Every professional is reviewed by a person on our team before they can visit anyone. Not a form, not software — someone reads the documents.","யாரும் வருவதற்கு முன் ஒவ்வொருவரையும் எங்கள் குழுவினர் பரிசீலிக்கிறார்கள்."][l]}</p>
+ </div>
+ <div class="checkcard">
+  ${ph("","Operations reviewer's desk: certificate, ID and laptop, hands only, no face. 4:3.","பணியாளரின் மேசை: சான்றிதழ், அடையாள அட்டை, மடிக்கணினி. 4:3.")}
+  <div class="crow"><i>1</i><span>${["Council registration number, checked against the certificate","கவுன்சில் பதிவு எண், சான்றிதழுடன் சரிபார்ப்பு"][l]}</span></div>
+  <div class="crow"><i>2</i><span>${["Government ID, matched to the name and the photograph","அரசு அடையாள அட்டை, பெயர் மற்றும் புகைப்படத்துடன் பொருத்தம்"][l]}</span></div>
+  <div class="crow"><i>3</i><span>${["Re-checked every year, not once at sign-up","ஆண்டுதோறும் மீண்டும் சரிபார்ப்பு, ஒரு முறை மட்டுமல்ல"][l]}</span></div>
+ </div></div>
+</section>
+
+<section class="rv">
+ <span class="eyebrow">${["[ ABOUT US ]","[ எங்களைப் பற்றி ]"][l]}</span>
+ <h2>${["Care built around the person arranging it","ஏற்பாடு செய்பவரை மையமாகக் கொண்ட பராமரிப்பு"][l]}</h2>
+ <p class="lede">${["The person carrying all of this is almost never the patient. It is a working adult, often on the phone from another city, for a parent. That is who we build for.","இதைச் சுமப்பவர் பெரும்பாலும் நோயாளி அல்ல — வேறு நகரத்திலிருந்து பெற்றோருக்காக ஏற்பாடு செய்யும் ஒருவர்."][l]}</p>
+ <div class="trio">
+  ${ph("","Daughter on a phone in an office, worried but composed. 3:4.","அலுவலகத்தில் தொலைபேசியில் மகள். 3:4.")}
+  ${ph("","Nurse and elderly patient talking, both seated, home interior. 3:4.","செவிலியரும் முதியவரும் பேசுவது. 3:4.")}
+  ${ph("","Chennai street outside a home, autos and a compound wall. 3:4.","வீட்டிற்கு வெளியே சென்னைத் தெரு. 3:4.")}
+ </div>
+</section>
+
+<section class="tint rv">
+ <span class="eyebrow">${["[ SERVICES ]","[ சேவைகள் ]"][l]}</span>
+ <h2>${["Four services, all at home","நான்கு சேவைகள், அனைத்தும் வீட்டிலேயே"][l]}</h2>
+ <div class="svcgrid">${svcCards()}</div>
+</section>
+
+<div class="marq"><div class="track">${(function(){var a=[["Nursing","செவிலியர்"],["Physiotherapy","பிசியோதெரபி"],["Lab collection","மாதிரி சேகரிப்பு"],["Doctor consultation","மருத்துவர் ஆலோசனை"],["Tamil and English","தமிழும் ஆங்கிலமும்"],["Verified by a person","நபரால் சரிபார்ப்பு"]];
+ return a.concat(a).map(function(x){return '<span>'+x[l]+'</span>'}).join("")})()}</div></div>
+
+<section class="rv">
+ <span class="eyebrow">${["[ HOW IT WORKS ]","[ எப்படி வேலை செய்கிறது ]"][l]}</span>
+ <h2>${["Four steps, and you are told what happens at each one","நான்கு படிகள் — ஒவ்வொன்றிலும் என்ன நடக்கிறது என்பது சொல்லப்படும்"][l]}</h2>
+ ${STEPS.map(function(s,i){return '<div class="pstep">'+ph("",s.b[0],s.b[1])+
+   '<div class="body"><span class="pnum">'+["STEP","படி"][l]+' 0'+(i+1)+'</span><h3>'+s.n[l]+'</h3><p>'+s.d[l]+
+   '</p><div class="incl"><b>'+["WHAT THIS MEANS","இதன் பொருள்"][l]+'</b><ul>'+
+   s.i[l].map(function(x){return '<li><i>✓</i>'+x+'</li>'}).join("")+'</ul></div></div></div>'}).join("")}
+</section>
+
+<section class="tint rv">
+ <span class="eyebrow">${["[ WHO WE ARE ]","[ நாங்கள் யார் ]"][l]}</span>
+ <h2>${["The people behind Pulse","Pulse-ன் பின்னால் இருப்பவர்கள்"][l]}</h2>
+ <p>${["We are not listing our professionals here. They are verified, and you will meet the one assigned to your visit — but we do not advertise individuals.","எங்கள் பணியாளர்களை இங்கு பட்டியலிடவில்லை. தனிநபர்களை விளம்பரப்படுத்துவதில்லை."][l]}</p>
+ <div class="people">
+  <div class="pcardx">${ph("","Founder portrait, real person, natural light, Chennai. Square 1:1.","நிறுவனர் புகைப்படம். 1:1.")}
+   <div class="body"><h3>${["[Founder name]","[நிறுவனர் பெயர்]"][l]}</h3><p class="role">${["Founder","நிறுவனர்"][l]}</p>
+   <p>${["Placeholder. Real names and photographs go here — with no statistics or testimonials, this section carries the trust.","இடைநிலை. உண்மையான பெயர்களும் படங்களும் இங்கே."][l]}</p></div></div>
+  <div class="pcardx">${ph("","Co-founder portrait, same treatment. Square 1:1.","இணை நிறுவனர் புகைப்படம். 1:1.")}
+   <div class="body"><h3>${["[Co-founder name]","[இணை நிறுவனர் பெயர்]"][l]}</h3><p class="role">${["Co-founder","இணை நிறுவனர்"][l]}</p>
+   <p>${["Placeholder bio, two or three sentences in their own words.","இடைநிலைக் குறிப்பு, இரண்டு மூன்று வாக்கியங்கள்."][l]}</p></div></div>
+ </div>
+</section>
+
+<section class="rv">
+ <span class="eyebrow">${["[ WHY WE STARTED ]","[ ஏன் தொடங்கினோம் ]"][l]}</span>
+ <div class="letter"><div class="qm">“</div>
+  <p>${["Placeholder. A short statement from the founder about the family situation that started this — in their own words, not marketing copy. This section stands where a testimonials block would normally go. We have no patients yet, so we are not inventing any.","இடைநிலை. இதைத் தொடங்கக் காரணமான குடும்பச் சூழல் பற்றி நிறுவனரின் சொந்த வார்த்தைகளில் ஒரு குறிப்பு."][l]}</p>
+  <p class="sig">${["[Founder name], Chennai","[நிறுவனர் பெயர்], சென்னை"][l]}</p></div>
+</section>
+
+<section class="tint rv">
+ <span class="eyebrow">${["[ THE DIFFERENCE ]","[ வித்தியாசம் ]"][l]}</span>
+ <h2>${["Arranging care should not depend on luck","பராமரிப்பு ஏற்பாடு அதிர்ஷ்டத்தைச் சார்ந்திருக்கக் கூடாது"][l]}</h2>
+ <div class="cmp">
+  <div class="hd"><div>${["DOING IT YOURSELF","நீங்களே செய்வது"][l]}</div><div>${["WITH PULSE","PULSE உடன்"][l]}</div></div>
+  ${[[["Ask relatives for a phone number","Someone already checked by us"],["உறவினர்களிடம் எண் கேட்பது","ஏற்கனவே சரிபார்க்கப்பட்டவர்"]],
+     [["Hope they are qualified","Registration verified by a person"],["தகுதியானவர் என நம்புவது","நபரால் பதிவு சரிபார்ப்பு"]],
+     [["Guess what a fair price is","One price, agreed beforehand"],["விலையை யூகிப்பது","ஒரே விலை, முன்பே உறுதி"]],
+     [["Nobody to call when it goes wrong","Support that answers"],["அழைக்க யாரும் இல்லை","பதிலளிக்கும் உதவி"]],
+     [["Start again for the next service","A doctor refers you onward"],["அடுத்த சேவைக்கு மீண்டும்","மருத்துவர் பரிந்துரைக்கிறார்"]]]
+    .map(function(r){return '<div class="row"><div>'+r[l][0]+'</div><div>'+r[l][1]+'</div></div>'}).join("")}
+ </div>
+</section>
+
+<section class="rv">
+ <span class="eyebrow">${["[ COMMON QUESTIONS ]","[ பொதுவான கேள்விகள் ]"][l]}</span>
+ <h2>${["What families ask first","குடும்பங்கள் முதலில் கேட்பவை"][l]}</h2>
+ <div class="faq">
+  ${[[["Which areas do you cover?","We start in Adyar and Besant Nagar. If your address is outside them, the app will say so rather than pretending."],["எந்தப் பகுதிகளில் சேவை?","அடையாறு மற்றும் பெசன்ட் நகரில் தொடங்குகிறோம். வெளியே இருந்தால் செயலி அதைச் சொல்லிவிடும்."]],
+     [["How do I know the professional is qualified?","Someone on our team checks their council registration against their certificate, and their ID against their name, before they can take any booking."],["பணியாளர் தகுதியானவரா என எப்படித் தெரியும்?","எங்கள் குழுவினர் பதிவையும் சான்றிதழையும் சரிபார்க்கிறார்கள்."]],
+     [["Can I choose the nurse myself?","No. We assign a verified professional, which is what lets us promise confirmation in ten minutes and send someone else if the first cannot come."],["நானே செவிலியரைத் தேர்வு செய்யலாமா?","இல்லை. நாங்கள் நியமிக்கிறோம் — அதனால்தான் 10 நிமிட உறுதியை உறுதியளிக்க முடிகிறது."]],
+     [["How do I pay?","Online, before the visit, by card or UPI. We do not take cash."],["எப்படிச் செலுத்துவது?","வருகைக்கு முன் ஆன்லைனில், கார்டு அல்லது UPI. பணம் ஏற்கப்படாது."]],
+     [["Is my information private?","The professional visiting sees the address and the reason for the visit, nothing else. Every view of a record is logged."],["என் தகவல் தனிப்பட்டதா?","வருபவர் முகவரியையும் காரணத்தையும் மட்டுமே பார்ப்பார்."]],
+     [["What if something goes wrong?","Call or message us. A low rating opens a support case automatically, and someone answers in Tamil or English."],["தவறு நேர்ந்தால்?","அழையுங்கள் அல்லது செய்தி அனுப்புங்கள். தமிழிலோ ஆங்கிலத்திலோ பதில் வரும்."]]]
+    .map(function(q){return '<details><summary>'+q[l][0]+'</summary><p>'+q[l][1]+'</p></details>'}).join("")}
+ </div>
+ <p class="note">${["No invented questioners. These are the questions the product actually has answers to.","கற்பனையான கேள்வியாளர்கள் இல்லை."][l]}</p>
+</section>
+
+<section class="tint rv">
+ <span class="eyebrow">${["[ JOIN US ]","[ எங்களுடன் இணையுங்கள் ]"][l]}</span>
+ <h2>${["Work near where you live","நீங்கள் வசிக்கும் பகுதிக்கு அருகில் வேலை"][l]}</h2>
+ <p>${["For nurses, physiotherapists and sample collectors in Chennai. Joining is free, and there are never more than three documents.","சென்னையில் உள்ள செவிலியர், பிசியோதெரபிஸ்ட், மாதிரி சேகரிப்பாளர்களுக்கு. இணைவது இலவசம்."][l]}</p>
+ <div class="roles" style="margin-top:22px">
+ ${(function(){var roles=[
+   [["Nurse","Council registration · Government ID · Photo"],["செவிலியர்","கவுன்சில் பதிவு · அரசு அடையாள அட்டை · புகைப்படம்"]],
+   [["Physiotherapist","Council registration · Government ID · Photo"],["பிசியோதெரபிஸ்ட்","கவுன்சில் பதிவு · அரசு அடையாள அட்டை · புகைப்படம்"]],
+   [["Sample collector","Training certificate · Government ID · Photo"],["மாதிரி சேகரிப்பாளர்","பயிற்சிச் சான்றிதழ் · அரசு அடையாள அட்டை · புகைப்படம்"]]];
+   if(live()) roles.push([["Doctor (MBBS)","Medical council registration · MBBS · Government ID"],["மருத்துவர் (MBBS)","மருத்துவ கவுன்சில் பதிவு · MBBS · அரசு அடையாள அட்டை"]]);
+   return roles.map(function(r){return '<div class="role-row"><span class="tagline">'+["Chennai · Zone based","சென்னை · பகுதி வாரியாக"][l]+
+     '</span><h3>'+r[l][0]+'</h3><ul style="margin-top:8px">'+r[l][1].split(" · ").map(function(x){return '<li><i>✓</i>'+x+'</li>'}).join("")+
+     '</ul></div>'}).join("")})()}
+ </div>
+ <p class="note open">${["Approval time: to be confirmed. We will not publish a figure until we are certain we can meet it every time.","அங்கீகார நேரம்: உறுதி செய்யப்படவில்லை."][l]}</p>
+</section>
+
+<section class="rv">
+ <span class="eyebrow">${["[ ARTICLES ]","[ கட்டுரைகள் ]"][l]}</span>
+ <h2>${["Plain answers to the questions families ask","குடும்பங்கள் கேட்கும் கேள்விகளுக்கு நேரடிப் பதில்கள்"][l]}</h2>
+ <div class="posts">${ARTICLES.map(function(a,i){return '<button class="post" data-article="'+i+'">'+ph("",a.b[0],a.b[1])+
+   '<div class="body"><h3>'+a.t[l]+'</h3><p style="font-size:.88em;margin-top:6px">'+a.x[l]+'</p><p class="meta">'+a.m[l]+'</p></div></button>'}).join("")}</div>
+</section>
+
+<div class="band rv">
+ <div class="bigword">${["HOME CARE","வீட்டு பராமரிப்பு"][l]}</div>
+ <h2>${["Take the first step for your parent","உங்கள் பெற்றோருக்கான முதல் அடி"][l]}</h2>
+ <button class="cta" data-cta>${T.cta[l]}<small>${T.ctaSub[l]}</small></button>
+ ${ph("","Wide: professional walking down a Chennai residential street with a bag, morning. 21:9.","அகலப் படம்: காலையில் தெருவில் நடக்கும் பணியாளர். 21:9.")}
+</div>
+
+<section class="rv">
+ <div class="csplit"><div>
+  <span class="eyebrow">${["[ CONTACT ]","[ தொடர்பு ]"][l]}</span>
+  <h2>${["Get in touch","தொடர்பு கொள்ளுங்கள்"][l]}</h2>
+  <p>${["We reply in Tamil or English, between 9am and 8pm.","காலை 9 முதல் இரவு 8 வரை தமிழிலோ ஆங்கிலத்திலோ பதில்."][l]}</p>
+  <div class="cinfo">
+   <span class="lbl">${["WHATSAPP","வாட்ஸ்அப்"][l]}</span><span class="v">+91 00000 00000</span>
+   <span class="lbl">${["PHONE","தொலைபேசி"][l]}</span><span class="v">+91 00000 00000</span>
+   <span class="lbl">${["EMAIL","மின்னஞ்சல்"][l]}</span><span class="v">hello@pulse.example</span>
+  </div>
+ </div>
+ <div>
+  <button class="cta solid" data-go="contact" style="width:100%">${["Open the contact form","தொடர்புப் படிவத்தைத் திற"][l]}</button>
+  <p class="note">${["The form asks who you are first, then a few short questions so the right person answers. It never asks for medical details.","படிவம் முதலில் நீங்கள் யார் என்று கேட்கும். மருத்துவ விவரங்களைக் கேட்காது."][l]}</p>
+  <p class="note open">${["In an emergency do not use this page. Call 108.","அவசரநிலையில் இப்பக்கத்தைப் பயன்படுத்த வேண்டாம். 108."][l]}</p>
+ </div></div>
+</section>`};
+
+/* ---------- inner pages ---------- */
+function simple(eyebrow,h1,lede,blocks){var l=L();
+ return '<section class="hero" style="padding-bottom:56px"><span class="eyebrow">'+eyebrow[l]+'</span><h1>'+h1[l]+'</h1><p class="lede">'+lede[l]+'</p></section>'+blocks;}
+P.about=function(){var l=L();return simple(["[ ABOUT US ]","[ எங்களைப் பற்றி ]"],
+ ["We started this because arranging care for a parent should not depend on luck.","பராமரிப்பு ஏற்பாடு அதிர்ஷ்டத்தைச் சார்ந்திருக்கக் கூடாது என்பதால் தொடங்கினோம்."],
+ ["When someone comes home from hospital, the family is handed a list of things to arrange and no way to arrange them.","மருத்துவமனையிலிருந்து வீடு திரும்பும்போது, செய்ய வேண்டியவற்றின் பட்டியல் மட்டுமே கொடுக்கப்படுகிறது."],
+ '<section class="tint"><span class="eyebrow">'+["[ WHAT WE WILL NOT DO ]","[ செய்யாதவை ]"][l]+'</span><h2>'+["Some things we have decided against","வேண்டாம் என முடிவு செய்தவை"][l]+'</h2><ul class="plain">'+
+ [[["We will not tell you what is wrong with someone. Our doctors do that; the app does not."],["ஒருவருக்கு என்ன பிரச்சினை என்று செயலி சொல்லாது."]],
+  [["We are not an emergency service. In an emergency, call 108."],["நாங்கள் அவசர சேவை அல்ல. 108-ஐ அழைக்கவும்."]],
+  [["We will not list anyone we have not checked ourselves."],["நாங்களே சரிபார்க்காத யாரையும் பட்டியலிட மாட்டோம்."]],
+  [["We will not claim to cover the whole city before we do."],["முழு நகரத்தையும் உள்ளடக்கியதாக முன்பே சொல்ல மாட்டோம்."]]]
+ .map(function(x){return '<li><i>—</i>'+x[l][0]+'</li>'}).join("")+'</ul></section>')};
+P.trust=function(){var l=L();return simple(["[ TRUST ]","[ நம்பிக்கை ]"],
+ ["How we check the person who knocks on your door.","உங்கள் கதவைத் தட்டுபவரை எப்படிச் சரிபார்க்கிறோம்."],
+ ["Manual verification is slow and expensive. That is the point.","கைமுறை சரிபார்ப்பு மெதுவானது, செலவானது. அதுவே நோக்கம்."],
+ '<section class="tint"><span class="eyebrow">'+["[ YOUR INFORMATION ]","[ உங்கள் தகவல்கள் ]"][l]+'</span><h2>'+["Who sees what","யார் எதைப் பார்க்கிறார்கள்"][l]+'</h2><ul class="plain">'+
+ [[["The professional visiting you sees the address and the reason for the visit. Nothing else."],["வருபவர் முகவரியையும் காரணத்தையும் மட்டுமே பார்ப்பார்."]],
+  [["Records you keep here are locked, and every view is recorded."],["இங்குள்ள பதிவுகள் பாதுகாக்கப்படும்; ஒவ்வொரு பார்வையும் பதிவாகும்."]],
+  [["We do not sell anything about you to anyone."],["உங்களைப் பற்றிய எதையும் விற்க மாட்டோம்."]]]
+ .map(function(x){return '<li><i>✓</i>'+x[l][0]+'</li>'}).join("")+'</ul></section>')};
+P.blog=function(){var l=L();return simple(["[ ARTICLES ]","[ கட்டுரைகள் ]"],
+ ["Plain answers to the questions families actually ask.","குடும்பங்கள் கேட்கும் கேள்விகளுக்கு நேரடிப் பதில்கள்."],["",""],
+ '<section class="tint"><div class="posts">'+ARTICLES.map(function(a,i){return '<button class="post" data-article="'+i+'">'+ph("",a.b[0],a.b[1])+
+  '<div class="body"><h3>'+a.t[l]+'</h3><p style="font-size:.88em;margin-top:6px">'+a.x[l]+'</p><p class="meta">'+a.m[l]+'</p></div></button>'}).join("")+'</div></section>')};
+P.article=function(){var l=L(),a=ARTICLES[state.article]||ARTICLES[0];
+ return '<section class="hero" style="padding-bottom:40px"><button class="back" data-go="blog">'+["← All articles","← அனைத்துக் கட்டுரைகளும்"][l]+
+  '</button><h1 style="margin-top:6px">'+a.t[l]+'</h1><p class="lede">'+a.x[l]+'</p></section>'+
+  '<section class="tint"><p>'+["Placeholder body copy. Real articles go here, written for someone tired and worried.","இடைநிலை உரை."][l]+
+  '</p><p class="note open">'+["General information, not medical advice.","பொதுத் தகவல் மட்டுமே, மருத்துவ ஆலோசனை அல்ல."][l]+'</p></section>'};
+P.pros=function(){var l=L();return simple(["[ FOR PROFESSIONALS ]","[ பணியாளர்களுக்கு ]"],
+ ["Work near where you live, with the paperwork done once.","அருகிலேயே வேலை — ஆவணங்கள் ஒரே முறை."],
+ ["Joining is free. Never more than three documents, and you can send them on WhatsApp.","இணைவது இலவசம். மூன்று ஆவணங்கள், வாட்ஸ்அப்பில் அனுப்பலாம்."],
+ '<section class="tint"><p class="note open">'+["Approval time: to be confirmed.","அங்கீகார நேரம்: உறுதி செய்யப்படவில்லை."][l]+'</p>'+
+ '<button class="cta solid" data-cta>'+["Message us on WhatsApp","வாட்ஸ்அப்பில் தொடர்பு"][l]+'</button></section>')};
+P.hospitals=function(){var l=L();return simple(["[ FOR HOSPITALS ]","[ மருத்துவமனைகளுக்கு ]"],
+ ["Your discharge desk can hand over more than a phone number.","டிஸ்சார்ஜ் மேசை தொலைபேசி எண்ணைவிட அதிகம் கொடுக்க முடியும்."],
+ ["Patients leave with instructions for care they then have to arrange themselves.","நோயாளிகள் அறிவுரையுடன் வெளியேறுகிறார்கள்; ஏற்பாடு அவர்களுடையது."],
+ '<section class="tint"><button class="cta solid" data-go="contact">'+["Talk to us","எங்களுடன் பேசுங்கள்"][l]+'</button></section>')};
+
+var FORM={personas:[
+  {id:"family",label:["I am arranging care for someone","ஒருவருக்குப் பராமரிப்பு ஏற்பாடு"],hint:["A parent, a relative, or yourself","பெற்றோர், உறவினர் அல்லது நீங்களே"]},
+  {id:"pro",label:["I am a healthcare professional","நான் மருத்துவப் பணியாளர்"],hint:["You want to work with us","எங்களுடன் பணியாற்ற"]},
+  {id:"hospital",label:["I am from a hospital or clinic","மருத்துவமனை / கிளினிக்"],hint:["Referrals and partnerships","பரிந்துரை, கூட்டாண்மை"]},
+  {id:"support",label:["I need help with something","எனக்கு உதவி தேவை"],hint:["A visit, a payment, or a complaint","வருகை, கட்டணம், புகார்"]}],
+ q:{family:[{k:"s",label:["What kind of care?","எந்த வகைப் பராமரிப்பு?"],o:function(){var a=[["Nursing","செவிலியர்"],["Physiotherapy","பிசியோதெரபி"],["Lab collection","மாதிரி சேகரிப்பு"],["Not sure yet","தெரியவில்லை"]];if(live())a.unshift(["Doctor consultation","மருத்துவர் ஆலோசனை"]);return a}},
+   {k:"a",label:["Which area?","எந்தப் பகுதி?"],o:function(){return [["Adyar","அடையாறு"],["Besant Nagar","பெசன்ட் நகர்"],["Elsewhere in Chennai","வேறு பகுதி"],["Outside Chennai","வெளியே"]]}},
+   {k:"w",label:["When would you need it?","எப்போது தேவை?"],o:function(){return [["Within a week","ஒரு வாரத்தில்"],["This month","இந்த மாதம்"],["Looking ahead","முன்கூட்டியே"]]}}],
+  pro:[{k:"r",label:["What is your role?","உங்கள் பணி?"],o:function(){var a=[["Nurse","செவிலியர்"],["Physiotherapist","பிசியோதெரபிஸ்ட்"],["Sample collector","மாதிரி சேகரிப்பாளர்"]];if(live())a.unshift(["Doctor","மருத்துவர்"]);return a}},
+   {k:"g",label:["Do you have a registration number?","பதிவு எண் உள்ளதா?"],o:function(){return [["Yes","ஆம்"],["Applied for it","விண்ணப்பித்தேன்"],["No","இல்லை"]]}}],
+  hospital:[{k:"k",label:["What kind of organisation?","எந்த வகை நிறுவனம்?"],o:function(){return [["Hospital","மருத்துவமனை"],["Clinic","கிளினிக்"],["Diagnostic lab","ஆய்வகம்"],["Pharmacy","மருந்தகம்"]]}},
+   {k:"t",label:["What would you like to discuss?","எதைப் பற்றி?"],o:function(){return [["Discharge referrals","டிஸ்சார்ஜ் பரிந்துரை"],["Ongoing partnership","தொடர் கூட்டாண்மை"],["Something else","வேறு"]]}}],
+  support:[{k:"t",label:["What is it about?","எதைப் பற்றியது?"],o:function(){return [["A visit that happened","நடந்த வருகை"],["A booking coming up","வரவிருக்கும் முன்பதிவு"],["Payment","கட்டணம்"],["Something else","வேறு"]]}},
+   {k:"u",label:["How soon do you need an answer?","எவ்வளவு விரைவில்?"],o:function(){return [["Today","இன்று"],["A few days","சில நாட்கள்"],["No rush","அவசரம் இல்லை"]]}}]}};
+
+P.contact=function(){var l=L(),f=state.form;
+ var head='<section class="hero" style="padding-bottom:48px"><span class="eyebrow">'+["[ CONTACT ]","[ தொடர்பு ]"][l]+
+  '</span><h1>'+["Tell us who you are and we will come back to you.","நீங்கள் யார் என்று சொல்லுங்கள்."][l]+
+  '</h1><p class="lede">'+["A few short questions so the right person answers.","சரியான நபர் பதிலளிக்க சில கேள்விகள்."][l]+'</p></section>';
+ var tail='<section class="tint"><span class="eyebrow">'+["[ OR REACH US DIRECTLY ]","[ நேரடித் தொடர்பு ]"][l]+'</span>'+
+  '<button class="contactbtn"><span class="g">✆</span><span><span class="lbl2">WhatsApp</span><span class="val">+91 00000 00000</span></span></button>'+
+  '<button class="contactbtn"><span class="g">☏</span><span><span class="lbl2">'+["Phone","தொலைபேசி"][l]+'</span><span class="val">+91 00000 00000</span></span></button>'+
+  '<button class="contactbtn"><span class="g">✉</span><span><span class="lbl2">'+["Email","மின்னஞ்சல்"][l]+'</span><span class="val">hello@pulse.example</span></span></button>'+
+  '<p class="note open">'+["In an emergency do not use this page. Call 108.","அவசரநிலையில் 108-ஐ அழைக்கவும்."][l]+'</p></section>';
+ if(f.sent) return head+'<section><div class="done"><p class="done-t">'+["Thank you — we have your details.","நன்றி — விவரங்கள் கிடைத்தன."][l]+
+  '</p><p>'+["Someone will reply on the number you gave.","நீங்கள் அளித்த எண்ணுக்குப் பதில் வரும்."][l]+'</p></div>'+
+  '<p class="note open">'+["Prototype only — nothing was sent or stored.","மாதிரி மட்டுமே."][l]+'</p>'+
+  '<button class="back" data-formreset>'+["Start again","மீண்டும்"][l]+'</button></section>'+tail;
+ var body='<section><fieldset class="fs"><legend class="lg">'+["Who is getting in touch?","யார் தொடர்பு கொள்கிறார்கள்?"][l]+'</legend><div class="pgrid">'+
+  FORM.personas.map(function(p){var on=f.persona===p.id?" on":"";
+   return '<button class="pers'+on+'" data-persona="'+p.id+'" aria-pressed="'+(on?"true":"false")+'"><span class="pl">'+p.label[l]+'</span><span class="ph2">'+p.hint[l]+'</span></button>'}).join("")+'</div></fieldset>';
+ if(f.persona){
+  body+=FORM.q[f.persona].map(function(q){return '<fieldset class="fs"><legend class="lg">'+q.label[l]+'</legend><div class="chips">'+
+   q.o().map(function(o,i){var s=f.ans[q.k]===i?" on":"";
+    return '<button class="chip'+s+'" data-q="'+q.k+'" data-i="'+i+'" aria-pressed="'+(s?"true":"false")+'">'+o[l]+'</button>'}).join("")+'</div></fieldset>'}).join("");
+  body+='<fieldset class="fs"><legend class="lg">'+["How do we reach you?","உங்களை எப்படித் தொடர்புகொள்வது?"][l]+'</legend>'+
+   '<label class="fl" for="fn">'+["Your name","உங்கள் பெயர்"][l]+'</label><input class="fi" id="fn" type="text" autocomplete="name">'+
+   '<label class="fl" for="fp">'+["Mobile number","கைபேசி எண்"][l]+'</label><input class="fi" id="fp" type="tel" inputmode="numeric" autocomplete="tel">'+
+   '<label class="fl" for="fx">'+["Anything else? (optional)","வேறு ஏதேனும்? (விருப்பம்)"][l]+'</label><textarea class="fi" id="fx" rows="3"></textarea>'+
+   '<p class="fh">'+["Please do not write medical details, test results, or anything about the patient’s condition here.","மருத்துவ விவரங்களை இங்கு எழுத வேண்டாம்."][l]+'</p></fieldset>'+
+   '<button class="cta solid" data-formsend style="width:100%">'+["Send","அனுப்பு"][l]+'</button>';
+  if(f.persona==="support") body+='<p class="note open">'+["If someone is unwell right now, do not wait. Call 108.","இப்போது உடல்நலமின்றி இருந்தால் 108."][l]+'</p>';
+ }
+ return head+body+'</section>'+tail;
+};
+
+var io;
+function wire(){if(io)io.disconnect();
+ io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.1});
+ document.querySelectorAll("#view .rv").forEach(function(el){io.observe(el)})}
+function renderNav(){var l=L();
+ document.getElementById("menu").innerHTML=ORDER.map(function(k){
+  var c=(state.page===k||(state.page==="article"&&k==="blog"))?' aria-current="page"':'';
+  return '<button type="button" data-go="'+k+'"'+c+'>'+T.nav[k][l]+'</button>'}).join("");
+ document.getElementById("langtoggle").textContent=l===0?"தமிழ்":"English";
+ document.getElementById("joinbtn").textContent=T.nav.contact[l];}
+function renderFoot(){var l=L();
+ document.getElementById("foot").innerHTML=
+  '<div class="nl"><h4>'+["Get news when we launch in your area","உங்கள் பகுதியில் தொடங்கும்போது தெரிந்துகொள்ளுங்கள்"][l]+'</h4>'+
+  '<div class="nlrow"><input type="email" placeholder="'+["Your email","உங்கள் மின்னஞ்சல்"][l]+'" aria-label="'+["Your email","உங்கள் மின்னஞ்சல்"][l]+'"><button type="button" data-cta>'+["Submit","அனுப்பு"][l]+'</button></div></div>'+
+  '<div class="fgrid"><div><h5>'+["PAGES","பக்கங்கள்"][l]+'</h5>'+
+   ORDER.map(function(k){return '<button type="button" class="fl2" data-go="'+k+'">'+T.nav[k][l]+'</button>'}).join("")+'</div>'+
+  '<div><h5>'+["FIND US","எங்களைத் தொடரவும்"][l]+'</h5>'+
+   ["WhatsApp","Instagram","YouTube"].map(function(n){return '<button type="button" class="fl2">'+n+'</button>'}).join("")+
+   '<p style="font-size:.8em;color:#6D89A1;margin-top:6px;line-height:1.5">'+["Placeholder — only link accounts that are maintained.","இடைநிலை — பராமரிக்கப்படும் கணக்குகள் மட்டும்."][l]+'</p></div>'+
+  '<div><h5>'+["CONTACT","தொடர்பு"][l]+'</h5><span class="val2">+91 00000 00000</span><span class="val2">hello@pulse.example</span>'+
+   '<span class="val2">'+["Adyar and Besant Nagar, Chennai","அடையாறு, பெசன்ட் நகர், சென்னை"][l]+'</span></div></div>'+
+  '<div class="legal">'+["Pulse is not an emergency service. In an emergency, call 108. Nothing on this site is medical advice.",
+   "Pulse அவசர சேவை அல்ல. அவசரநிலையில் 108-ஐ அழைக்கவும். இத்தளத்தில் உள்ள எதுவும் மருத்துவ ஆலோசனை அல்ல."][l]+'</div>';}
+function render(f){document.body.setAttribute("data-lang",L()===0?"en":"ta");
+ document.documentElement.lang=L()===0?"en":"ta";
+ var v=document.getElementById("view");v.innerHTML=(P[state.page]||P.home)();
+ renderNav();renderFoot();wire();
+ if(f){v.scrollIntoView({block:"start"});v.focus({preventScroll:true})}}
+function go(p){state.page=p;document.getElementById("menu").classList.remove("open");
+ document.getElementById("hambtn").setAttribute("aria-expanded","false");render(true)}
+document.addEventListener("click",function(e){
+ var t=e.target.closest("[data-go]");if(t){go(t.getAttribute("data-go"));return}
+ var a=e.target.closest("[data-article]");if(a){state.article=+a.getAttribute("data-article");go("article");return}
+ var p=e.target.closest("[data-persona]");if(p){state.form.persona=p.getAttribute("data-persona");state.form.ans={};render(false);return}
+ var c=e.target.closest("[data-q]");if(c){state.form.ans[c.getAttribute("data-q")]=+c.getAttribute("data-i");render(false);return}
+ if(e.target.closest("[data-formsend]")){state.form.sent=true;render(false);return}
+ if(e.target.closest("[data-formreset]")){state.form={persona:null,ans:{},sent:false};render(false);return}
+ if(e.target.closest("[data-cta]")){alert(L()===0?"Primary CTA — destination not decided.\n\nWaitlist, app store link, or a static “launching soon” panel.":"முதன்மை CTA — இலக்கு முடிவாகவில்லை.")}});
+document.getElementById("hambtn").addEventListener("click",function(){
+ var m=document.getElementById("menu"),o=m.classList.toggle("open");this.setAttribute("aria-expanded",o?"true":"false")});
+document.getElementById("langtoggle").addEventListener("click",function(){state.lang=L()===0?1:0;sync();render(false)});
+function sync(){document.querySelectorAll("[data-lang-btn]").forEach(function(b){
+ b.setAttribute("aria-pressed",(b.getAttribute("data-lang-btn")==="en")===(L()===0)?"true":"false")})}
+document.querySelectorAll("[data-lang-btn]").forEach(function(b){b.addEventListener("click",function(){
+ state.lang=b.getAttribute("data-lang-btn")==="en"?0:1;sync();render(false)})});
+document.querySelectorAll(".rev [data-vp]").forEach(function(b){b.addEventListener("click",function(){
+ document.getElementById("frame").setAttribute("data-vp",b.getAttribute("data-vp"));
+ document.querySelectorAll(".rev [data-vp]").forEach(function(o){o.setAttribute("aria-pressed",o===b?"true":"false")})})});
+document.querySelectorAll("[data-scale]").forEach(function(b){b.addEventListener("click",function(){
+ document.documentElement.style.setProperty("--scale",b.getAttribute("data-scale"));
+ document.querySelectorAll("[data-scale]").forEach(function(o){o.setAttribute("aria-pressed",o===b?"true":"false")})})});
+document.getElementById("doctog").addEventListener("click",function(){
+ var on=this.getAttribute("aria-pressed")==="true";this.setAttribute("aria-pressed",on?"false":"true");
+ document.getElementById("frame").setAttribute("data-doc",on?"dark":"live");state.form.ans={};render(false)});
+document.getElementById("motion").addEventListener("click",function(){
+ var on=this.getAttribute("aria-pressed")==="true";this.setAttribute("aria-pressed",on?"false":"true");
+ var s=document.getElementById("rm");
+ if(on){if(s)s.remove()}else{s=document.createElement("style");s.id="rm";
+  s.textContent=".rv{opacity:1!important;transform:none!important;transition:none!important}.marq .track{animation:none}";
+  document.head.appendChild(s)}});
+sync();render(false);
+</script>
