@@ -12,9 +12,7 @@ interface Step {
 /**
  * "How it works" — stacked full-width rows (image + copy), image on the
  * left at desktop. Each step carries its own photo and a short "what this
- * means" checklist. Deliberately a different component from
- * VerificationSteps' vertical numbered rail (WEB-D13) even though both
- * number 1..n.
+ * means" checklist.
  */
 export function StepStrip({ heading, meansLabel, steps }: { heading: string; meansLabel: string; steps: Step[] }) {
   return (

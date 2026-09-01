@@ -1,55 +1,40 @@
 import { notFound } from "next/navigation";
 import { isLocale } from "@/lib/i18n/locales";
 import { getDictionary } from "@/lib/i18n";
-import { VerificationSteps } from "@/components/VerificationSteps";
 
 export default async function TechTrustPage(props: PageProps<"/[locale]/technology-and-trust">) {
   const { locale } = await props.params;
   if (!isLocale(locale)) notFound();
   const dict = getDictionary(locale);
   const t = dict.techTrust;
-  const isTamil = locale === "ta";
 
   return (
-    <div className="page-section">
-      <div className="container">
-        <h1
-          style={{
-            margin: 0,
-            maxWidth: "24ch",
-            fontSize: isTamil ? "var(--step-display-ta)" : "var(--step-display-en)",
-            lineHeight: isTamil ? "var(--leading-display-ta)" : "var(--leading-display-en)",
-            fontWeight: 700,
-            letterSpacing: isTamil ? undefined : "-0.01em",
-          }}
-        >
-          {t.h1}
-        </h1>
-        <p style={{ margin: "var(--space-md) 0 var(--space-xl)", fontSize: "var(--step-lead-en)", lineHeight: isTamil ? "var(--leading-lead-ta)" : "var(--leading-lead-en)" }}>
-          {t.intro}
-        </p>
-        <div className="two-col">
-          <div>
-            <h2 style={{ margin: "0 0 var(--space-lg)", fontSize: "var(--step-h2-en)", lineHeight: "var(--leading-h2-en)", fontWeight: 700 }}>
-              {dict.verification.heading}
-            </h2>
-            <VerificationSteps steps={dict.verification.steps} badge={dict.verification.badge} badgeNote={dict.verification.badgeNote} />
-          </div>
-          <div>
-            <h2 style={{ margin: "0 0 var(--space-lg)", fontSize: "var(--step-h2-en)", lineHeight: "var(--leading-h2-en)", fontWeight: 700 }}>
-              {t.infoHeading}
-            </h2>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(150px,1fr))", gap: "var(--space-md)" }}>
-              {t.cards.map((card) => (
-                <div key={card.label} style={{ border: "1px solid var(--color-border-default)", borderRadius: "var(--radius-md)", padding: "var(--space-md)" }}>
-                  <div style={{ fontSize: 15, fontWeight: 600, letterSpacing: isTamil ? undefined : ".04em", textTransform: isTamil ? "none" : "uppercase", color: "var(--color-text-brand)" }}>
-                    {card.label}
-                  </div>
-                  <p style={{ margin: "var(--space-2xs) 0 0", fontSize: "var(--step-body-en)", lineHeight: "var(--leading-body-en)" }}>{card.body}</p>
-                </div>
-              ))}
+    <div>
+      <div className="page-section">
+        <div className="container" style={{ display: "flex", flexDirection: "column", gap: "var(--space-md)", maxWidth: "70ch" }}>
+          <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: ".06em", textTransform: "uppercase", color: "var(--color-text-tertiary)" }}>{t.eyebrow}</span>
+          <h1 style={{ margin: 0, fontSize: "var(--step-display-en)", lineHeight: "var(--leading-display-en)", fontWeight: 700, letterSpacing: "-0.01em" }}>{t.h1}</h1>
+          <p style={{ margin: 0, fontSize: "var(--step-lead-en)", lineHeight: "var(--leading-lead-en)", color: "var(--color-text-secondary)" }}>{t.intro}</p>
+        </div>
+      </div>
+
+      <div className="page-section" style={{ background: "var(--color-surface-sunken)", borderTop: "1px solid var(--color-border-subtle)" }}>
+        <div className="container two-col" style={{ alignItems: "stretch" }}>
+          {t.trustBlocks.map((b) => (
+            <div key={b.head} style={{ display: "flex", flexDirection: "column", gap: "var(--space-sm)", padding: "var(--space-lg)", border: "1px solid var(--color-border-default)", borderRadius: "var(--radius-md)", background: "var(--color-surface-base)" }}>
+              <h3 style={{ margin: 0, fontSize: "var(--step-h3-en)", lineHeight: "var(--leading-h3-en)", fontWeight: 600 }}>{b.head}</h3>
+              <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: "var(--space-xs)" }}>
+                {b.items.map((item) => (
+                  <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: "var(--space-xs)", color: "var(--color-text-secondary)", fontSize: "var(--step-body-en)", lineHeight: "var(--leading-body-en)" }}>
+                    <span aria-hidden="true" style={{ flex: "none", color: "var(--color-text-brand)", fontWeight: 700 }}>
+                      {b.mark}
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

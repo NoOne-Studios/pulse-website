@@ -95,10 +95,8 @@ nothing persisted). Still open:
   `ta.ts` (typechecked against it), `locales.ts`, `index.ts`
   (`getDictionary`).
 - `components/` — one component per design-system pattern (`Hero`,
-  `ServiceRow`, `StepStrip` = horizontal snap strip, `VerificationSteps` =
-  vertical numbered rail — these two are deliberately different
-  components per WEB-D13 even though both number steps — `ComparisonTable`,
-  `ContactForm`, `Header`/`Footer`, etc).
+  `ServiceRow`, `StepStrip` = horizontal "how it works" strip,
+  `ComparisonTable`, `ContactForm`, `Header`/`Footer`, etc).
 - `app/[locale]/` — one folder per page; `app/api/{enquiry,waitlist}` —
   stub route handlers.
 - `docs/design/` — the original Claude Design handoff bundle (HTML

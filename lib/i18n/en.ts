@@ -294,22 +294,45 @@ export const en = {
     },
   },
   techTrust: {
-    h1: "How we check people, and how we treat your information",
-    intro: "Two things, both written plainly. Neither is a feature list.",
-    infoHeading: "What we do with your information",
-    cards: [
-      { label: "What we ask for", body: "Your name, your mobile number, your neighbourhood, and when you need help. That is the whole list." },
+    eyebrow: "Trust",
+    h1: "How we check the person who knocks on your door.",
+    intro: "Manual verification is slow and expensive. That is the point.",
+    trustBlocks: [
       {
-        label: "What we never ask for",
-        body: "Anything about the person needing care — no name, no age, no condition, no reports, no medicines. Not on the website, not in the form.",
+        head: "What we ask for",
+        mark: "✓",
+        items: [
+          "The address the visit happens at",
+          "A name and a mobile number",
+          "The reason for the visit, in your own words",
+        ],
       },
       {
-        label: "Who can see it",
-        body: "The two or three people at Pulse who arrange visits. A professional is given your address and your first name only once a visit is agreed.",
+        head: "What we never ask for",
+        mark: "—",
+        items: [
+          "Symptoms, to decide what is wrong. We do not do triage.",
+          "Test results or a diagnosis, to book a visit",
+          "Anything about a condition on a web form",
+        ],
       },
       {
-        label: "How long we keep it",
-        body: "Retention period placeholder. Ask us to delete your details and we will, by return.",
+        head: "Who can see it",
+        mark: "✓",
+        items: [
+          "The professional visiting you sees the address and the reason for the visit. Nothing else.",
+          "Every view of a record is logged.",
+          "We do not sell anything about you to anyone.",
+        ],
+      },
+      {
+        head: "How long we keep it",
+        mark: "✓",
+        items: [
+          "Records you keep here stay until you delete them.",
+          "A record of your prescription is kept for reference.",
+          "Ask us to remove everything and we will.",
+        ],
       },
     ],
   },
