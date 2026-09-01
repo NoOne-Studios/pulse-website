@@ -337,8 +337,9 @@ export const en = {
     ],
   },
   blog: {
-    h1: "Notes for families",
-    intro: "Practical writing about arranging care at home. Nothing here is medical advice.",
+    eyebrow: "Articles",
+    h1: "Plain answers to the questions families actually ask.",
+    intro: "Written for someone tired and worried, not for a search engine.",
     posts: [
       {
         slug: "questions-before-you-hire-a-home-attender",

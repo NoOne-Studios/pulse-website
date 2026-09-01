@@ -13,9 +13,10 @@ export default async function BlogIndexPage(props: PageProps<"/[locale]/blog">) 
   return (
     <div className="page-section">
       <div className="container">
+        <span style={{ display: "block", fontSize: 12, fontWeight: 600, letterSpacing: ".06em", textTransform: "uppercase", color: "var(--color-text-tertiary)" }}>{t.eyebrow}</span>
         <h1
           style={{
-            margin: 0,
+            margin: "var(--space-md) 0 0",
             fontSize: isTamil ? "var(--step-display-ta)" : "var(--step-display-en)",
             lineHeight: isTamil ? "var(--leading-display-ta)" : "var(--leading-display-en)",
             fontWeight: 700,
@@ -24,7 +25,7 @@ export default async function BlogIndexPage(props: PageProps<"/[locale]/blog">) 
         >
           {t.h1}
         </h1>
-        <p style={{ margin: "var(--space-xs) 0 var(--space-xl)", maxWidth: "58ch", fontSize: "var(--step-lead-en)", lineHeight: isTamil ? "var(--leading-lead-ta)" : "var(--leading-lead-en)" }}>
+        <p style={{ margin: "var(--space-md) 0 var(--space-xl)", maxWidth: "58ch", fontSize: "var(--step-lead-en)", lineHeight: isTamil ? "var(--leading-lead-ta)" : "var(--leading-lead-en)", color: "var(--color-text-secondary)" }}>
           {t.intro}
         </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: "var(--space-md)", alignItems: "stretch" }}>
