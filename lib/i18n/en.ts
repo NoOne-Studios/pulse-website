@@ -419,26 +419,21 @@ export const en = {
     whatsappCta: "Message us on WhatsApp",
   },
   hospitals: {
-    h1: "Discharge referrals",
-    intro: "For discharge coordinators and ward sisters in and around Adyar. When a patient goes home and the family has nobody arranged, refer them to us and we will take the call from there.",
-    howHeading: "How a referral works",
-    steps: [
+    eyebrow: "For hospitals",
+    h1: "Your discharge desk can hand over more than a phone number.",
+    intro: "Patients leave with instructions for care they then have to arrange themselves.",
+    howHeading: "What we can take off the discharge desk",
+    hospBlocks: [
       {
-        title: "You give the family our number",
-        body: "Or call us yourself with their consent. No patient details are needed to start — only a name to expect and a neighbourhood.",
+        head: "A referral instead of a phone number",
+        body: "Hand the family a booked visit rather than a list of things to arrange. We confirm and tell them who is coming.",
       },
       {
-        title: "We speak to the family the same day",
-        body: "We tell them plainly whether we can help and what it will cost, before the discharge if there is time.",
-      },
-      {
-        title: "The ward hears back",
-        body: "One message telling you whether care was arranged. A referral that goes nowhere is worse for you than no referral.",
+        head: "Verified professionals, checked by a person",
+        body: "Council registration checked against the certificate, ID against the name, re-checked every year.",
       },
     ],
-    whatWeDontHeading: "What we do not do",
-    whatWeDontBody: "We do not take clinical handover, we do not carry out treatment plans, and we do not ask your staff for records. Care instructions stay between your doctor and the family.",
-    cta: "Talk to us about referrals",
+    cta: "Talk to us",
   },
   doctor: {
     h1: "Talk to a doctor — at the house, or on video",
