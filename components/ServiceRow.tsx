@@ -40,7 +40,7 @@ export function ServiceRow({ heading, sub, items }: { heading: string; sub: stri
             overflowWrap: "break-word",
           }}
         >
-          {items.map((item) => (
+          {items.map((item, i) => (
             <div
               key={item.title}
               style={{
@@ -52,7 +52,10 @@ export function ServiceRow({ heading, sub, items }: { heading: string; sub: stri
                 gap: "var(--space-xs)",
               }}
             >
-              <ImageSlot ratio="3/4" label="PHOTO" brief={item.brief} />
+              {/* Keyed by card position (svc-{index}), per the design bundle's
+                  own convention — the doctor slot shifts which panel lands
+                  where when doctorLive flips, matching the design intent. */}
+              <ImageSlot ratio="3/4" label="PHOTO" brief={item.brief} src={`/images/panels/panel-svc-${i}.png`} />
               <DeliveryModePill label={item.pill} brand={Boolean(item.brandPill)} />
               <div style={{ fontSize: "var(--step-h3-en)", fontWeight: 600, lineHeight: "var(--leading-h3-en)" }}>
                 {item.title}

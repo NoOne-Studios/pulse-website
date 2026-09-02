@@ -1,21 +1,49 @@
 /**
- * Reserved image slot — a neutral placeholder standing in for a real
- * photograph, never stock imagery. Ratio is load-bearing (it reserves the
- * space a real photo will occupy so layout doesn't jump when one lands),
- * `label` is the short category tag shown top-left, `brief` is the shot
- * description an art director would actually be handed.
+ * Reserved image slot. Ratio is load-bearing (it reserves the space a real
+ * photograph will occupy so layout doesn't jump when one lands). `label` is
+ * the short category tag shown top-left on the placeholder, `brief` is the
+ * shot description an art director would actually be handed.
+ *
+ * With `src`: renders the interim brand graphic panel (see docs/design —
+ * "Imagery, interim brand graphic panels") as a real `<img>`, `object-fit:
+ * cover`, `brief` moved to `alt`/`title` rather than shown as a caption.
+ * These are placeholders with intent, not final art — retire them for real
+ * photography per-slot, not by reverting to `src`-less mode.
+ *
+ * Without `src`: falls back to the neutral dashed-border placeholder, never
+ * stock imagery — used where no panel exists yet (e.g. founders, WEB-D02).
  */
 export function ImageSlot({
   ratio,
   label,
   brief,
   minHeight,
+  src,
 }: {
   ratio: `${number}/${number}`;
   label: string;
   brief: string;
   minHeight?: number;
+  src?: string;
 }) {
+  if (src) {
+    return (
+      <figure
+        style={{
+          margin: 0,
+          aspectRatio: ratio,
+          minHeight,
+          width: "100%",
+          borderRadius: "var(--radius-md)",
+          overflow: "hidden",
+        }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element -- fixed-ratio interim graphic panel, not a photograph needing next/image optimisation */}
+        <img src={src} alt={brief} title={brief} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+      </figure>
+    );
+  }
+
   return (
     <div
       style={{

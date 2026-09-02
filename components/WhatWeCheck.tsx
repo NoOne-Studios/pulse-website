@@ -22,7 +22,7 @@ export function WhatWeCheck({
           <p style={{ margin: 0, fontSize: "var(--step-body-en)", lineHeight: "var(--leading-body-en)", maxWidth: "54ch", color: "var(--color-text-secondary)" }}>{body}</p>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-md)", padding: "var(--space-md)", border: "1px solid var(--color-border-default)", borderRadius: "var(--radius-md)", background: "var(--color-surface-base)" }}>
-          <ImageSlot ratio="4/3" label="PHOTO" brief={brief} />
+          <ImageSlot ratio="4/3" label="PHOTO" brief={brief} src="/images/panels/panel-verify.png" />
           {rows.map((row, i) => (
             <div key={row} style={{ display: "flex", alignItems: "flex-start", gap: "var(--space-sm)" }}>
               <span

@@ -85,7 +85,7 @@ export function Hero({ locale, dict, lines, lead }: { locale: Locale; dict: Dict
             </div>
           </div>
           <div>
-            <ImageSlot ratio="3/4" label="HERO" brief={home.hero.heroBrief} minHeight={280} />
+            <ImageSlot ratio="3/4" label="HERO" brief={home.hero.heroBrief} minHeight={280} src="/images/panels/panel-hero.png" />
           </div>
         </div>
 

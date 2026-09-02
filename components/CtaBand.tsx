@@ -33,7 +33,7 @@ export function CtaBand({ wordmark, title, brief, children }: { wordmark: string
         <h2 style={{ margin: 0, fontSize: "var(--step-h2-en)", lineHeight: "var(--leading-h2-en)", fontWeight: 700, maxWidth: "30ch" }}>{title}</h2>
         {children}
         <div style={{ width: "100%", marginTop: "var(--space-xs)" }}>
-          <ImageSlot ratio="21/9" label="WIDE" brief={brief} />
+          <ImageSlot ratio="21/9" label="WIDE" brief={brief} src="/images/panels/panel-band.png" />
         </div>
       </div>
     </div>

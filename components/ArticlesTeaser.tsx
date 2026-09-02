@@ -20,7 +20,7 @@ export function ArticlesTeaser({
           <h2 style={{ margin: 0, fontSize: "var(--step-h2-en)", lineHeight: "var(--leading-h2-en)", fontWeight: 700, maxWidth: "40ch" }}>{heading}</h2>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: "var(--space-sm)", alignItems: "stretch" }}>
-          {posts.map((post) => (
+          {posts.map((post, i) => (
             <Link
               key={post.slug}
               href={`/${locale}/blog/${post.slug}`}
@@ -36,7 +36,10 @@ export function ArticlesTeaser({
                 color: "var(--color-text-primary)",
               }}
             >
-              <ImageSlot ratio="3/2" label="PHOTO" brief={post.brief} />
+              {/* Only 3 art-* panels ship in the design bundle; this site's
+                  real post count (4) exceeds it, so panels cycle rather
+                  than running out. */}
+              <ImageSlot ratio="3/2" label="PHOTO" brief={post.brief} src={`/images/panels/panel-art-${i % 3}.png`} />
               <div style={{ fontSize: "var(--step-h3-en)", fontWeight: 600, lineHeight: "var(--leading-h3-en)", marginTop: "var(--space-xs)" }}>{post.title}</div>
               <p style={{ margin: 0, fontSize: "var(--step-body-en)", lineHeight: "var(--leading-body-en)", color: "var(--color-text-secondary)" }}>{post.body}</p>
               <span style={{ fontSize: 13, color: "var(--color-text-tertiary)", marginTop: "auto", paddingTop: "var(--space-xs)" }}>

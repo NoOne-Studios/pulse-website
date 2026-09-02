@@ -21,13 +21,13 @@ export function StepStrip({ heading, meansLabel, steps }: { heading: string; mea
         <h2 style={{ margin: 0, fontSize: "var(--step-h2-en)", lineHeight: "var(--leading-h2-en)", fontWeight: 700, maxWidth: "40ch" }}>
           {heading}
         </h2>
-        {steps.map((step) => (
+        {steps.map((step, i) => (
           <div
             key={step.n}
             className="two-col"
             style={{ alignItems: "start", border: "1px solid var(--color-border-default)", borderRadius: "var(--radius-md)", padding: "var(--space-md)" }}
           >
-            <ImageSlot ratio="3/2" label="PHOTO" brief={step.brief} />
+            <ImageSlot ratio="3/2" label="PHOTO" brief={step.brief} src={`/images/panels/panel-step-${i}.png`} />
             <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-sm)" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "var(--space-sm)" }}>
                 <span
